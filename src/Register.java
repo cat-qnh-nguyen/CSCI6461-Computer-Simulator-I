@@ -10,40 +10,35 @@ public class Register {
 	 * MBR - 16 - Short
 	 * MFR -4 - Byte 
 	 */
+	short value;
+	int bitSize; //number of bits in the register
+
+	//Constructors:
+	public Register() {}
+	public Register(short newValue, int newBitSize) {
+		this.value = newValue;
+		this.bitSize = newBitSize;
+	}
 	
-	// 4 general purpose registers: R0-3
-	public short R0;
-	public short R1;
-	public short R2;
-	public short R3;
+	public short getValue() {
+		return this.value;
+	}
 	
-	// 3 index registers: X1-3
-	public short X1;
-	public short X2;
-	public short X3;
+	public void setValue (short value) {
+		this.value = value;
+	}
 	
-	// Program counter: address of the next instruction to be executed
-	// Need to limit the PC to 12 bits: 4096 max
-	public short PC;
 	
-	// Condition Code: 4 bits, need to limit to 4 bits only
-	public byte CC;
+	public int getSize() {
+		return this.bitSize;
+	}
 	
-	// Instruction Register: Holds the instruction to be executed
-	public short IR;
+	public void setSize(int size) {
+		this.bitSize = size;
+	}
+
 	
-	// Memory Address Register: holds the address of the word to be fetched from memory
-	// 12 bits only
-	public short MAR;
-	
-	// Memory Buffer Register: holds the word just fetched from or the word to be/last stored into memory
-	public short MBR;
-	
-	// Machine Fault Register: contains the ID code if a machine fault after it occurs
-	// 4 bits
-	public byte MFR;
-	
-	// Constructor (? not sure if needed yet)
-	public Register() {};
+
+
 	
 }
