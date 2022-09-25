@@ -5,5 +5,6 @@ public class Memory {
     * Each word is 2 bytes, which is the size of short in Java
     * 
     */
-    short[] memory = new short[2048];
+    short[] newMemory = new short[2048];
+    
 }
