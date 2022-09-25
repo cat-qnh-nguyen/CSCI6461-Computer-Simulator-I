@@ -10,8 +10,8 @@ public class Register {
 	 * MBR - 16 - Short
 	 * MFR -4 - Byte 
 	 */
-	short value;
-	int bitSize; //number of bits in the register
+	private short value;
+	private int bitSize; //number of bits in the register
 
 	//Constructors:
 	public Register() {}
