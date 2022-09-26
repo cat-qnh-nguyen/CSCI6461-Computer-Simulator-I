@@ -1,4 +1,7 @@
 public class Operations {
-	
-	public static functiong
+	//r
+	public static void loadRegfromMem(int reg, int indexReg, int indirect)
+	{
+		
+	}
 }
