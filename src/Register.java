@@ -1,4 +1,3 @@
-import java.io.InvalidObjectException;
 public class Register {
 	/*
 	 * 4 General Purpose Registers (GPRs) – each 16 bits in length
