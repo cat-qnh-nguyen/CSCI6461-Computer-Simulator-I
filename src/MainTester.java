@@ -8,16 +8,18 @@ public class MainTester {
 		
 		String testInstruction = "0001 004F";
 		
-		int location = 0;
+		int location = 01;
 		short value = 79;
 		
 		int genReg = 2;
 		
 		Register.setGeneralReg(genReg, value);
-		//Register.setIndexReg(location, value);
-		//System.out.println(hexStringToInt("12BA"));	
+		Register.setIndexReg(location, value);
+		Register.R0 = 2;
+		System.out.println(Register.R0);	
 		
 		decodeInstruction("0001 019A");
+		decodeInstruction(testInstruction);
 		
 	}
 	
@@ -31,8 +33,4 @@ public class MainTester {
 		System.out.println(Memory.load(address));
 	}
 	
-	//Probably won't need this function but will put here for now
-	public static short hexStringToInt (String hex) {
-		return Short.parseShort(hex, 16);
-	}
 }

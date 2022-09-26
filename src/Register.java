@@ -130,7 +130,8 @@ public class Register {
 	public static void setMAR(short value) {
 		//Because MAR is 12 bits, its value has to be between 2047 and -2048
 		//Java does not have unsigned data type
-		if(value > 2047 || value < -2048) {
+		//Since our memory size is 2048
+		if(value > 2048 || value < 0) {
 			throw new IllegalArgumentException("Invalid MAR value.");			
 		}
 		else {
@@ -165,8 +166,6 @@ public class Register {
 			MFR = value;
 		}
 	}
-
-
 	
 	
 }
