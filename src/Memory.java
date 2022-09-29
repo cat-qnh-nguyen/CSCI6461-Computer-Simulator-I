@@ -7,11 +7,18 @@ public class Memory {
 	
 	//Creating an Instance to ensure only one memory object is created
 	private static Memory INSTANCE = new Memory();
-	private short[] memory = new short[2048];
+	
+	//Because Java does not have unsigned data types
+	//we will use int and limit the value of data
+	private int[] memory = new int[2048];
+	
+	//Max value is 2^16 which is 65536
+	private final int MAX_VALUE = 65536;
+	
 	
 	private Memory() {}
 	private Memory(int size) {
-		memory = new short[size];
+		memory = new int[size];
 	}
 	
 	//Singleton function to access the class
@@ -22,11 +29,15 @@ public class Memory {
 	}
 	
 	//load and store into memory
-	public short load(int index) {
+	public int load(int index) {
 		return memory[index];
 	}
 	
-	public void store(int index, short content) {
+	public void store(int index, int content) {
+		//Because we are only using 16 bits of the 32 bits of type int
+		//we are not expecting any negative values
+		if(content > MAX_VALUE && content < 0)
+			throw new IllegalArgumentException("Invalid Value.");
 		memory[index] = content;
 	}
 }
