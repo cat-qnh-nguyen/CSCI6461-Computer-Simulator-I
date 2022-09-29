@@ -1,30 +1,30 @@
 import java.io.*;
 
 // A class to perform the loading of instructions and decoding them at the same time.
-public class load {
+public class Load {
 
     //Decoded contents of the instructions
-    String opcode;
-    String R;
-    String IX;
-    String I;
-    String Address;
+    public static int opcode;
+    public static int R;
+    public static int IX;
+    public static int I;
+    public static int Address;
 
-    //Decodes instructions and seperates them into opcode, R, IX, I and Address
-    public void DecodeInstructions(String ins) {
+    //Decodes instructions and separates them into opcode, R, IX, I and Address
+    public static void instructionDecode(String ins) {
 
-        opcode = ins.substring(0, 6);
-        R = ins.substring(6, 8);
-        IX = ins.substring(8, 10);
-        I = ins.substring(10, 11);
-        Address = ins.substring(11, 16);
+        opcode = Integer.parseInt(ins.substring(0, 6),2);
+        R = Integer.parseInt(ins.substring(6, 8),2);
+        IX = Integer.parseInt(ins.substring(8, 10), 2);
+        I = Integer.parseInt(ins.substring(10, 11), 2);
+        Address = Integer.parseInt(ins.substring(11, 16), 2);
 
-        /*System.out.println(" Instruction decoded: " + opcode);
-        *System.out.println(" Instruction decoded: " + R);
-        *System.out.println(" Instruction decoded: " + IX);
-        *System.out.println(" Instruction decoded: " + I);
-        *System.out.println(" Instruction decoded: " + Address);
-        */
+        System.out.println("Opcode: " + opcode);
+        System.out.println("Register number: " + R);
+        System.out.println("Index register: " + IX);
+        System.out.println("Indirect bit: " + I);
+        System.out.println("Address: " + Address);
+        
     }
 
 
@@ -62,54 +62,54 @@ public class load {
 
         }
     }
-
-
-    /**
-     * Loads the instruction from the cache
-     *
-     * @param key of the instruction is the address from which the instruction is to be fetched from the cache
-     * @return is the value at the given key in the cache
-     */
-
-    String loadFromCache(String key) {
-        long startTime = System.nanoTime();
-        String value = "";
-        if (cache.containsKey(key)) {
-                value = cache.get(key);
-        } else {
-            //key does not exists
-            if (cache.size()==16) {
-                String temp = cache.entrySet().iterator().next().getKey();
-                cache.remove(temp);
-            }
-            value = loadFromMemeory(key);
-            cache.put(key,value);
-            //System.out.println("Size of cache----->"+cache.size());
-        }
-        long endTime = System.nanoTime();
-        //System.out.println("Time taken to load from Cache: "+(endTime - startTime) + " ns");
-        return value;
-    }
-
-
-    /**
-     * Stores the instruction into the cache
-     *
-     * @param key,value specifies the address and the instruction to be stored in the cache
-     */
-    void storeToCache(String key, String value) {
-
-        long startTime = System.nanoTime();
-        if (cache.size()==16) {
-            String temp = cache.entrySet().iterator().next().getKey();
-            cache.remove(temp);
-        }
-
-        cache.put(key,value);
-        long endTime = System.nanoTime();
-        //System.out.println("Time taken to store to Cache: "+(endTime - startTime) + " ns");
-        //System.out.println("Size of cache in store----->"+cache.size());
-    }
+//
+//
+//    /**
+//     * Loads the instruction from the cache
+//     *
+//     * @param key of the instruction is the address from which the instruction is to be fetched from the cache
+//     * @return is the value at the given key in the cache
+//     */
+//
+//    String loadFromCache(String key) {
+//        long startTime = System.nanoTime();
+//        String value = "";
+//        if (cache.containsKey(key)) {
+//                value = cache.get(key);
+//        } else {
+//            //key does not exists
+//            if (cache.size()==16) {
+//                String temp = cache.entrySet().iterator().next().getKey();
+//                cache.remove(temp);
+//            }
+//            value = loadFromMemeory(key);
+//            cache.put(key,value);
+//            //System.out.println("Size of cache----->"+cache.size());
+//        }
+//        long endTime = System.nanoTime();
+//        //System.out.println("Time taken to load from Cache: "+(endTime - startTime) + " ns");
+//        return value;
+//    }
+//
+//
+//    /**
+//     * Stores the instruction into the cache
+//     *
+//     * @param key,value specifies the address and the instruction to be stored in the cache
+//     */
+//    void storeToCache(String key, String value) {
+//
+//        long startTime = System.nanoTime();
+//        if (cache.size()==16) {
+//            String temp = cache.entrySet().iterator().next().getKey();
+//            cache.remove(temp);
+//        }
+//
+//        cache.put(key,value);
+//        long endTime = System.nanoTime();
+//        //System.out.println("Time taken to store to Cache: "+(endTime - startTime) + " ns");
+//        //System.out.println("Size of cache in store----->"+cache.size());
+//    }
 
     /**
      *
