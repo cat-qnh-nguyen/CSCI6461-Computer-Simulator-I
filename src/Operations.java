@@ -11,8 +11,7 @@ public class Operations {
 	 * @param the register number, effective address
 	 */
 	//Regular method with Indirect bit
-	public static void loadRegister(int reg, int effAddress)
-	{
+	public static void loadRegister(int reg, int effAddress) {
 		myRegister.setGeneralReg(reg, myMemory.load(effAddress));
 	}
 	
@@ -21,8 +20,7 @@ public class Operations {
 	 * Storing the content of a register into memory
 	 * @param the register number, effective address
 	 */
-	public static void storeRegister(int reg, int effAddress)
-	{
+	public static void storeRegister(int reg, int effAddress) {
 		myMemory.store(effAddress, myRegister.getGeneralReg(reg));
 	}
 
@@ -31,8 +29,7 @@ public class Operations {
 	 * Load register with the effective address (r <- EA)
 	 * @param register number, effective address
 	 */
-	public static void loadAddress(int reg, int effAddress)
-	{
+	public static void loadAddress(int reg, int effAddress)	{
 		myRegister.setGeneralReg(reg, myMemory.load(effAddress));
 	}
 	
@@ -41,8 +38,7 @@ public class Operations {
 	 * Load index register from memory
 	 * @param index register number, effective address
 	 */
-	public static void loadIndex(int reg, int effAddress)
-	{
+	public static void loadIndex(int reg, int effAddress) {
 		myRegister.setIndexReg(reg, effAddress);
 	}
 	
@@ -51,8 +47,7 @@ public class Operations {
 	 * Store index register to memory
 	 * @param index register number, effective address
 	 */
-	public static void storeIndex(int reg, int effAddress)
-	{
+	public static void storeIndex(int reg, int effAddress) {
 		myMemory.store(effAddress, myRegister.getIndexReg(reg));
 	}
 	

@@ -39,8 +39,4 @@ public class MainTester {
 		//System.out.println("The effective address is: "+ instruction1.computeEA());
 				
 	}
-	
-	
-
-	
 }

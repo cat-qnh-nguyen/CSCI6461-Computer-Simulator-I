@@ -1,3 +1,4 @@
+
 public class Memory {
     /*
     * Memory of 2048 words, expandable to 4096 words

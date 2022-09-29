@@ -22,8 +22,7 @@ public class Load {
     public static Register myRegister = Register.getInstance();
     
     //Decodes instructions and separates them into opcode, R, IX, I and Address
-    public void instructionDecode(String ins) 
-    {
+    public void instructionDecode(String ins) {
         opcode = Integer.parseInt(ins.substring(0, 6),2);
         R = Integer.parseInt(ins.substring(6, 8),2);
         IX = Integer.parseInt(ins.substring(8, 10), 2);
@@ -58,8 +57,7 @@ public class Load {
      * Computes the EA and returns it
      * @param index register(IX), address, and indirect bit(I)
      */
-    public int computeEA() 
-    {
+    public int computeEA() {
         if (I == 0) // NO Indirect Addressing
         {         
         	if(IX == 0)
