@@ -30,15 +30,19 @@ public class MainTester {
 		System.out.println("R3: " + myRegister.getGeneralReg(3));
 		//saveInstruction("0001 019A");
 		saveInstruction(testInstruction);
+		
+		//Creating a 
 		Load.instructionDecode("00000011100000111");
 	}
 	
+	
+	//For reading the file with address and instruction in one line
 	public static void saveInstruction(String instruction) {
 		String addressStr = instruction.substring(0,4);
 		String contentStr = instruction.substring(5);
 		
-		int address = Integer.parseInt(addressStr, 2);
-		short content = Short.parseShort(contentStr, 16);
+		int address = Integer.parseInt(addressStr, 16);
+		int content = Integer.parseInt(contentStr, 16);
 		
 		//Memory myMemory = Memory.getInstance();
 		
