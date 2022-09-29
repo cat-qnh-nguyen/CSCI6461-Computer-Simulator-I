@@ -4,11 +4,11 @@ import java.io.*;
 public class Load {
 
     //Decoded contents of the instructions
-    public static int opcode;
-    public static int R;
-    public static int IX;
-    public static int I;
-    public static int Address;
+    public int opcode;		//Opcode
+    public int R;   		//General Register 
+    public int IX;  		//Index Register
+    public int I;   		//Indirect Bit
+    public int address; 	//Address
     
     //Constructor for each object/instruction
     public Load() {}
@@ -19,19 +19,19 @@ public class Load {
     public static Register myRegister = Register.getInstance();
     
     //Decodes instructions and separates them into opcode, R, IX, I and Address
-    public static void instructionDecode(String ins) 
+    public void instructionDecode(String ins) 
     {
         opcode = Integer.parseInt(ins.substring(0, 6),2);
         R = Integer.parseInt(ins.substring(6, 8),2);
         IX = Integer.parseInt(ins.substring(8, 10), 2);
         I = Integer.parseInt(ins.substring(10, 11), 2);
-        Address = Integer.parseInt(ins.substring(11, 16), 2);
+        address = Integer.parseInt(ins.substring(11, 16), 2);
 
 //        System.out.println("Opcode: " + opcode);
 //        System.out.println("Register number: " + R);
 //        System.out.println("Index register: " + IX);
 //        System.out.println("Indirect bit: " + I);
-//        System.out.println("Address: " + Address);
+//        System.out.println("Address: " + address);
     }
 
 
@@ -42,7 +42,13 @@ public class Load {
      */
     public static String loadInstruction(int address) {
         int instruction = myMemory.load(address);
-        return Integer.toBinaryString(instruction);
+        
+        String result = Integer.toBinaryString(instruction);
+        result = String.format("%16s", result).replaceAll(" ", "0");
+        
+        //System.out.println(result);
+        return result;
+
     }
 
 //    /**
@@ -68,33 +74,31 @@ public class Load {
      * Computes the EA and returns it
      * @param index register(IX), address, and indirect bit(I)
      */
-    public static int computeEA(int indexReg, int address, int indirect) 
+    public int computeEA() 
     {
-        //System.out.println(" IN EA : ");
-        //System.out.println(" IN EA : I= " + I);
         int EA = 0;
 
-        if (indirect == 0) // NO Indirect Addressing
+        if (I == 0) // NO Indirect Addressing
         {         
-        	if(indexReg == 0)
+        	if(IX == 0)
         	{
         		EA = address;
             }
         	else
         	{
-        		EA = myRegister.getIndexReg(indexReg) + address;
+        		EA = myRegister.getIndexReg(IX) + address;
         	}
             //System.out.println("EA : " + EA);
         } 
-        else if (indirect == 1)  // indirect addressing
+        else if (I == 1)  // indirect addressing
         {             
-        	if(indexReg == 0)
+        	if(IX == 0)
         	{
         		EA = myMemory.load(address);
         	}
         	else
         	{
-        		EA = myMemory.load(myRegister.getIndexReg(indexReg) + address);
+        		EA = myMemory.load(myRegister.getIndexReg(IX) + address);
         	}
 
         }

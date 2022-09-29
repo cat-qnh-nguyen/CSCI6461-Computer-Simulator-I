@@ -13,7 +13,7 @@ public class MainTester {
 	
 	public static void main(String[] args) {
 		
-		String testInstruction = "0001 004F";
+		String testInstruction = "0001 093F";
 		
 		int location = 01;
 		short value = 89;
@@ -25,6 +25,8 @@ public class MainTester {
 		
 		Operations.loadRegister(3, 0, 31);
 		
+		myRegister.setIndexReg(1, 2);
+		
 		System.out.println("Mem[31]: " + myMemory.load(31));
 		System.out.println("R0: " + myRegister.getGeneralReg(0));
 		System.out.println("R3: " + myRegister.getGeneralReg(3));
@@ -32,7 +34,13 @@ public class MainTester {
 		saveInstruction(testInstruction);
 		
 		//Creating a 
-		Load.instructionDecode("00000011100000111");
+
+		Load instruction1 = new Load();
+		
+		String ins1 = Load.loadInstruction(1);
+		instruction1.instructionDecode(ins1);
+		
+		System.out.println("The effective address is: "+ instruction1.computeEA());
 	}
 	
 	
@@ -47,7 +55,7 @@ public class MainTester {
 		//Memory myMemory = Memory.getInstance();
 		
 		myMemory.store(address, content);
-		System.out.println("Address: " + address + " has" + myMemory.load(address));
+		System.out.println("Address: " + address + " has " + myMemory.load(address));
 		
 	}
 	
