@@ -11,18 +11,24 @@ public class Register {
 	 */
 
 	//Constructors:
-	public Register() {}
-//	public Register(short newValue, int newBitSize) {
-//		this.value = newValue;
-//		this.bitSize = newBitSize;
-//	}
+	//Creating an Instance to ensure only one memory object is created
+	private static Register INSTANCE = new Register();
+	
+	private Register() {}
+	
+	//Singleton function to access the class' singular object
+	public static Register getInstance() {
+		if(INSTANCE == null)
+			INSTANCE = new Register();
+		return INSTANCE;
+	}
 	
 	
 // 4 general purpose registers: R0-3, 16 bits
-	public short R0;
-	public short R1;
-	public short R2;
-	public short R3;
+	private short R0;
+	private short R1;
+	private short R2;
+	private short R3;
 	
 	public short getGeneralReg(int reg) {
 		switch(reg) {
@@ -49,9 +55,9 @@ public class Register {
 	}
 	
 // 3 index registers: X1-3, 16 bits
-	public short X1;
-	public short X2;
-	public short X3;
+	private short X1;
+	private short X2;
+	private short X3;
 	
 	public short getIndexReg(int reg) {
 		switch(reg) {
@@ -75,16 +81,16 @@ public class Register {
 	}
 	
 // Program counter: address of the next instruction to be executed
-	// Need to limit the PC to 12 bits: 4096 max
-	public short PC;
+	// Need to limit the PC to 12 bits: 4095 max
+	private short PC;
 	
-	public short getPC() {
+	private short getPC() {
 		return PC;
 	}
 	public void setPC(short value) {
-		//Because PC is 12 bits, its value has to be between 2047 and -2048
+		//Because PC is 12 bits, its value cannot be more than 4095
 		//Java does not have unsigned data type
-		if(value > 2047 || value < -2048) {
+		if(value > 4095) {
 			throw new IllegalArgumentException("Invalid PC value.");			
 		}
 		else {
@@ -93,14 +99,14 @@ public class Register {
 	}
 	
 // Condition Code: 4 bits, need to limit to 4 bits only
-	public byte CC;
+	private byte CC;
 	
 	public byte getCC() {
 		return CC;
 	}
 	public void setCC(byte value) {
-		//Since CC can only be 4 bits, value has to be between 7 and -8
-		if(value > 7 || value < -8) {
+		//Since CC can only be 4 bits, it cannot be bigger than 15
+		if(value > 15) {
 			throw new IllegalArgumentException("Invalid CC value.");			
 		}
 		else {
@@ -110,7 +116,7 @@ public class Register {
 	
 	
 // Instruction Register: Holds the instruction to be executed, 16 bits
-	public short IR;
+	private short IR;
 	
 	public short getIR() {
 		return IR;
@@ -121,15 +127,14 @@ public class Register {
 	
 // Memory Address Register: holds the address of the word to be fetched from memory
 	// 12 bits only
-	public short MAR;
+	private short MAR;
 	
 	public short getMAR() {
 		return MAR;
 	}
 	
 	public void setMAR(short value) {
-		//Because MAR is 12 bits, its value has to be between 2047 and -2048
-		//Java does not have unsigned data type
+		//Because MAR is 12 bits, its value cannot be > 4095
 		//Since our memory size is 2048
 		if(value > 2048 || value < 0) {
 			throw new IllegalArgumentException("Invalid MAR value.");			
