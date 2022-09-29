@@ -54,25 +54,6 @@ public class Load {
         instructionDecode(instruction);
     }
 
-//    /**
-//     * Stores instruction into memory
-//     * @param address,value specifies the instruction and the address to be stored in the memory
-//     */
-//    public static void storeInstruction(int address, int value) {
-//
-//        int intAddress = Integer.parseInt(address, 2);
-//        //System.out.println("Address " + intAddress);
-//        //System.out.println("Value " + value.length());
-//
-//        for (int i = 0; i < 16; i++) {
-//            //System.out.println("Value " + value);
-//            memory[intAddress][i] = Integer.parseInt(value.substring(0, 1));
-//            value = value.substring(1, value.length());
-//
-//        }
-//    }
-
-
     /**
      * Computes the EA and returns it
      * @param index register(IX), address, and indirect bit(I)
