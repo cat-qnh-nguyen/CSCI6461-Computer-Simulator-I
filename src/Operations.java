@@ -8,59 +8,68 @@ public class Operations {
 	
 	/**
 	 * Loading the content of an address in memory to a general register
-	 * @param the register number, index register, address, indirect bit
+	 * @param the register number, effective address
 	 */
 	//Regular method with Indirect bit
-	public static void loadRegister(int reg, int indexReg, int effAddress, int indirect)
+	public static void loadRegister(int reg, int effAddress)
 	{
 		myRegister.setGeneralReg(reg, myMemory.load(effAddress));
-	}
-	
-	//Overloading method without Indirect bit
-	public static void loadRegister(int reg, int indexReg, int effAddress)
-	{
-		System.out.println("R0: " + myRegister.getGeneralReg(0));
 	}
 	
 	
 	/**
 	 * Storing the content of a register into memory
-	 * @param the register number, index register, address, indirect bit
+	 * @param the register number, effective address
 	 */
-	public static void storeRegister(int reg, int indexReg, int effAddress, int indirect)
+	public static void storeRegister(int reg, int effAddress)
 	{
 		myMemory.store(effAddress, myRegister.getGeneralReg(reg));
 	}
+
 	
-	//Overloaded method without indirect bit
-	public static void storeRegister(int reg, int indexReg, int effAddres) 
+	/**
+	 * Load register with the effective address (r <- EA)
+	 * @param register number, effective address
+	 */
+	public static void loadAddress(int reg, int effAddress)
 	{
-		myMemory.store(effAddres, myRegister.getGeneralReg(reg));
+		myRegister.setGeneralReg(reg, myMemory.load(effAddress));
 	}
 	
 	
 	/**
-	 * Load register with the address (r <- EA)
-	 * @param register number, index register, address, indirect bit
-	 */
-	public static void loadAddress(int reg, int indexReg, int effAddress, int indirect)
-	{
-		myRegister.setGeneralReg(reg, myMemory.load(effAddress));
-	}
-	
-	//Overloaded method without indirect bit
-	public static void loadAddress(int reg, int indexReg, int effAddress)
-	{
-		myRegister.setGeneralReg(reg, myMemory.load(effAddress));
-	}
-	
-	
-	/*
 	 * Load index register from memory
-	 * @param register number, index number, address, indirect bit
+	 * @param index register number, effective address
 	 */
-	public static void loadIndex(int reg, int indexReg, int effAddress, int indirect)
+	public static void loadIndex(int reg, int effAddress)
 	{
-		//myRegister.setIndexReg(reg, );
+		myRegister.setIndexReg(reg, effAddress);
+	}
+	
+	
+	/**
+	 * Store index register to memory
+	 * @param index register number, effective address
+	 */
+	public static void storeIndex(int reg, int effAddress)
+	{
+		myMemory.store(effAddress, myRegister.getIndexReg(reg));
+	}
+	
+	
+	//For reading the file with address and instruction in one line
+	/**
+	 * Storing the second hex number in the first number as the address
+	 * @param hexInstruction as a string
+	 */
+	public static void saveInstruction(String hexInstruction) {
+		String addressStr = hexInstruction.substring(0,4);
+		String contentStr = hexInstruction.substring(5);
+		
+		int address = Integer.parseInt(addressStr, 16);
+		int content = Integer.parseInt(contentStr, 16);
+		
+		myMemory.store(address, content);
+		//System.out.println("Address: " + address + " has " + myMemory.load(address));
 	}
 }

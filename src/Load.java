@@ -9,7 +9,8 @@ public class Load {
     public int R;   			//General Register 
     public int IX;  			//Index Register
     public int I;   			//Indirect Bit
-    public int address; 		//Address
+    public int address; 		//Address field in the instruction
+    public int EA; 				//Effective address
 
     
     //Constructor for each object/instruction
@@ -78,8 +79,6 @@ public class Load {
      */
     public int computeEA() 
     {
-        int EA = 0;
-
         if (I == 0) // NO Indirect Addressing
         {         
         	if(IX == 0)
@@ -106,6 +105,26 @@ public class Load {
         }
         return EA;
     }
+    
+    /**
+     * Loading Operations based on Opcode
+     * 
+     */
+    public void runInstruction() {
+    	switch(opcode) {
+    		case 1: Operations.loadRegister(R, EA);					//load register from memory
+    			break;
+    		case 2: Operations.storeRegister(R, EA);					//store register to memory
+    			break;
+    		case 3: Operations.loadAddress(R, EA);						//load register with address
+    			break;
+    		case 33: Operations.loadIndex(IX, EA);					//load index register from memory
+    			break;
+    		case 34: Operations.storeIndex(IX, EA);					//store index register to memory
+    			break;
+    	}
+    }
+    
     
     
 //  /**
