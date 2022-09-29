@@ -33,14 +33,15 @@ public class MainTester {
 		//saveInstruction("0001 019A");
 		saveInstruction(testInstruction);
 		
-		//Creating a 
-
+		//Creating an instruction
 		Load instruction1 = new Load();
 		
-		String ins1 = Load.loadInstruction(1);
-		instruction1.instructionDecode(ins1);
+		instruction1.loadInstruction(1);
+
 		
 		System.out.println("The effective address is: "+ instruction1.computeEA());
+		
+		
 	}
 	
 	

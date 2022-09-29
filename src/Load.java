@@ -4,11 +4,13 @@ import java.io.*;
 public class Load {
 
     //Decoded contents of the instructions
-    public int opcode;		//Opcode
-    public int R;   		//General Register 
-    public int IX;  		//Index Register
-    public int I;   		//Indirect Bit
-    public int address; 	//Address
+    public String instruction;	//Instruction in String form
+    public int opcode;			//Opcode
+    public int R;   			//General Register 
+    public int IX;  			//Index Register
+    public int I;   			//Indirect Bit
+    public int address; 		//Address
+
     
     //Constructor for each object/instruction
     public Load() {}
@@ -40,15 +42,15 @@ public class Load {
      * @param address is the address to fetch the instruction from
      * @return is the instruction in form of a string
      */
-    public static String loadInstruction(int address) {
-        int instruction = myMemory.load(address);
+    public void loadInstruction(int memAddress) {
+        int insInMem = myMemory.load(memAddress);
         
-        String result = Integer.toBinaryString(instruction);
-        result = String.format("%16s", result).replaceAll(" ", "0");
+        instruction = Integer.toBinaryString(insInMem);
+        instruction = String.format("%16s", instruction).replaceAll(" ", "0");
         
-        //System.out.println(result);
-        return result;
-
+        System.out.println(instruction);
+        
+        instructionDecode(instruction);
     }
 
 //    /**
