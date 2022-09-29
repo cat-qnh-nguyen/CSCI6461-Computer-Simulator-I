@@ -3,6 +3,13 @@ import java.io.*;
 // A class to perform the loading of instructions and decoding them at the same time.
 public class load {
 
+    //Decoded contents of the instructions
+    String opcode;
+    String R;
+    String IX;
+    String I;
+    String Address;
+
     //Decodes instructions and seperates them into opcode, R, IX, I and Address
     public void DecodeInstructions(String ins) {
 
@@ -55,4 +62,115 @@ public class load {
 
         }
     }
+
+
+    /**
+     * Loads the instruction from the cache
+     *
+     * @param key of the instruction is the address from which the instruction is to be fetched from the cache
+     * @return is the value at the given key in the cache
+     */
+
+    String loadFromCache(String key) {
+        long startTime = System.nanoTime();
+        String value = "";
+        if (cache.containsKey(key)) {
+                value = cache.get(key);
+        } else {
+            //key does not exists
+            if (cache.size()==16) {
+                String temp = cache.entrySet().iterator().next().getKey();
+                cache.remove(temp);
+            }
+            value = loadFromMemeory(key);
+            cache.put(key,value);
+            //System.out.println("Size of cache----->"+cache.size());
+        }
+        long endTime = System.nanoTime();
+        //System.out.println("Time taken to load from Cache: "+(endTime - startTime) + " ns");
+        return value;
+    }
+
+
+    /**
+     * Stores the instruction into the cache
+     *
+     * @param key,value specifies the address and the instruction to be stored in the cache
+     */
+    void storeToCache(String key, String value) {
+
+        long startTime = System.nanoTime();
+        if (cache.size()==16) {
+            String temp = cache.entrySet().iterator().next().getKey();
+            cache.remove(temp);
+        }
+
+        cache.put(key,value);
+        long endTime = System.nanoTime();
+        //System.out.println("Time taken to store to Cache: "+(endTime - startTime) + " ns");
+        //System.out.println("Size of cache in store----->"+cache.size());
+    }
+
+    /**
+     *
+     * Computes the EA and returns it
+     */
+    String computeEA() {
+        //System.out.println(" IN EA : ");
+        //System.out.println(" IN EA : I= " + I);
+
+        String EA = "";
+
+        if (I.equals("0")) {          // NO Indirect Addressing
+            //System.out.println(" IN EA : I=0");
+
+            switch (IX) {
+                case "01":
+                    EA = String.format("%12s", Integer.toBinaryString(Integer.parseInt(x1.getValue(), 2)
+                            + Integer.parseInt(Address, 2))).replace(' ', '0');
+                    break;
+                case "10":
+                    EA = String.format("%12s", Integer.toBinaryString(Integer.parseInt(x2.getValue(), 2)
+                            + Integer.parseInt(Address, 2))).replace(' ', '0');
+                    break;
+                case "11":
+                    EA = String.format("%12s", Integer.toBinaryString(Integer.parseInt(x3.getValue(), 2)
+                            + Integer.parseInt(Address, 2))).replace(' ', '0');
+                    break;
+                default:
+                    EA = Address;
+                    break;
+            }
+
+            //System.out.println("EA : " + EA);
+
+        } else if (I.equals("1")) {              // indirect addressing
+
+            switch (IX) {
+                case "01": 			// both indirect addressing and indexing
+                    EA = loadFromCache(String.format("%12s", Integer.toBinaryString(Integer.parseInt(x1.getValue(), 2)
+                            + Integer.parseInt(Address, 2))).replace(' ', '0'));
+                    break;
+                case "10": 			// both indirect addressing and indexing
+                    EA = loadFromCache(String.format("%12s", Integer.toBinaryString(Integer.parseInt(x2.getValue(), 2)
+                            + Integer.parseInt(Address, 2))).replace(' ', '0'));
+                    break;
+                case "11": 			// both indirect addressing and indexing
+                    EA = Address;
+
+
+                    break;
+                default:  			// indirect addressing, but NO indexing
+                    EA = loadFromCache(String.format("%12s", Integer.toBinaryString(Integer.parseInt(x3.getValue(), 2)
+                            + Integer.parseInt(Address, 2))).replace(' ', '0'));
+                    EA = Address;
+
+                    break;
+            }
+
+        }
+        return String.valueOf(Integer.valueOf(EA, 2));
+
+    }
+
 }
