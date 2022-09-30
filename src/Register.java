@@ -150,15 +150,14 @@ public class Register {
 	
 	public void setMAR(int value) {
 		//Because MAR is 12 bits, its value cannot be > 4095
-//		if(value > 4095 || value < 0) {
-//			throw new IllegalArgumentException("Invalid MAR value.");			
-//		}
-//		else {
-//			MAR = value;
-//		}
-		
-		MAR = value;
-		System.out.println("setsetMAR " + MAR);
+
+		if(value > 4095 || value < 0) {
+			throw new IllegalArgumentException("Invalid MAR value.");			
+		}
+		else {
+			MAR = value;
+			System.out.println("setsetMAR " + MAR);
+		}		
 	}
 	
 	// Memory Buffer Register: holds the word just fetched from or the word to be/last stored into memory
