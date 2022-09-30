@@ -150,8 +150,7 @@ public class Register {
 	
 	public void setMAR(int value) {
 		//Because MAR is 12 bits, its value cannot be > 4095
-		//Since our memory size is 2048
-//		if(value > 2048 || value < 0) {
+//		if(value > 4095 || value < 0) {
 //			throw new IllegalArgumentException("Invalid MAR value.");			
 //		}
 //		else {
