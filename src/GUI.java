@@ -1113,6 +1113,47 @@ public class GUI extends JFrame {
 		  
 		  JButton stBtn = new JButton("St+");
 		  stBtn.setBounds(335, 362, 75, 30);
+		  stBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				//storing the value MBR in MAR
+				Memory.getInstance().store(Register.getInstance().getMAR(), Register.getInstance().getMBR());
+				
+				//Incrementing the MAR and changing the string array - data
+				String MAR = Integer.toBinaryString(Register.getInstance().getMAR() + 1);				
+				
+				for(int i=0; i<=15-MAR.length(); i++) {
+					data[i] = "0";
+				}
+			
+				for (int i = 0; i < MAR.length(); i++) {
+		            data[16-MAR.length()+i] = MAR.substring(i, i+1);
+		        }
+				
+				//setting the new incremented MAR value
+				Register.getInstance().setMAR(Integer.parseInt(MAR.toString(), 2));
+				
+				//displaying on the MAR field
+				textMar_1.setText(data[4]);
+				textMar_2.setText(data[5]);
+				textMar_3.setText(data[6]);
+				textMar_4.setText(data[7]);
+				textMar_5.setText(data[8]);
+				textMar_6.setText(data[9]);
+				textMar_7.setText(data[10]);
+				textMar_8.setText(data[11]);
+				textMar_9.setText(data[12]);
+				textMar_10.setText(data[13]);
+				textMar_11.setText(data[14]);
+				textMar_12.setText(data[15]);
+								
+			    
+			}
+			  
+		  });
 		  panel.add(stBtn);
 		  
 		  JButton loadBtn = new JButton("Load");
@@ -1123,14 +1164,14 @@ public class GUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				String str = Integer.toBinaryString(Memory.getInstance().load(Register.getInstance().getMAR()));
-				System.out.println(str.length());
-				for (int i = 0; i < str.length(); i++) {
-		            data[15-i] = str.substring(i, i+1);
-		        }
 				
 				for(int i=0; i<=15-str.length(); i++) {
 					data[i] = "0";
 				}
+			
+				for (int i = 0; i < str.length(); i++) {
+		            data[16-str.length()+i] = str.substring(i, i+1);
+		        }
 				
 				textMbr_1.setText(data[0]);
 				textMbr_2.setText(data[1]);
