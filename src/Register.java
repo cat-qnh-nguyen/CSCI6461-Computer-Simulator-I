@@ -1,7 +1,7 @@
 public class Register {
 	/**
-	 * 4 General Purpose Registers (GPRs) – each 16 bits in length
-	 * 3 Index Registers – 16 bits in length 
+	 * 4 General Purpose Registers (GPRs) ï¿½ each 16 bits in length
+	 * 3 Index Registers ï¿½ 16 bits in length 
 	 * PC - 12 bits - int
 	 * CC - 4 - Byte
 	 * IR -16 - int
@@ -151,12 +151,15 @@ public class Register {
 	public void setMAR(int value) {
 		//Because MAR is 12 bits, its value cannot be > 4095
 		//Since our memory size is 2048
-		if(value > 2048 || value < 0) {
-			throw new IllegalArgumentException("Invalid MAR value.");			
-		}
-		else {
-			MAR = value;
-		}
+//		if(value > 2048 || value < 0) {
+//			throw new IllegalArgumentException("Invalid MAR value.");			
+//		}
+//		else {
+//			MAR = value;
+//		}
+		
+		MAR = value;
+		System.out.println("setsetMAR " + MAR);
 	}
 	
 	// Memory Buffer Register: holds the word just fetched from or the word to be/last stored into memory
@@ -170,6 +173,7 @@ public class Register {
 		if(value > MAX_16 || value < 0)
 			throw new IllegalArgumentException("Invalid value.");
 		MBR = value;
+		System.out.println("setsetMBR " + MBR);
 	}
 	
 	// Machine Fault Register: contains the ID code if a machine fault after it occurs

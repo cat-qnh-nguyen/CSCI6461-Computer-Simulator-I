@@ -1,10 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.StringJoiner;
+
 import javax.swing.border.EmptyBorder;
 
 public class GUI extends JFrame {
 	  private JPanel panel;
+	  String data[] = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"} ;
+
 	  
 	  public static void main(String[] args) {
 		  EventQueue.invokeLater(new Runnable() {
@@ -29,7 +34,7 @@ public class GUI extends JFrame {
 		  panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		  setContentPane(panel);
 		  panel.setLayout(null);
-		  
+		  		  
 		  //Labels for GPR
 		  JLabel lblGPR_0 = new JLabel("GPR 0");
 		  lblGPR_0.setBounds(20, 20, 41, 16);
@@ -408,67 +413,86 @@ public class GUI extends JFrame {
 		  panel.add(MARlbl);
 		  
 		  JTextField textMar_1 = new JTextField();
-		  textMar_1.setBounds(375, 40, 15, 16);
-		  textMar_1.setBackground(Color.black);
+		  textMar_1.setBounds(375, 40, 20, 16);
+//		  textMar_1.setBackground(Color.white);
 		  panel.add(textMar_1);
 		  
 		  JTextField textMar_2 = new JTextField();
-		  textMar_2.setBounds(395, 40, 15, 16);
-		  textMar_2.setBackground(Color.black);
+		  textMar_2.setBounds(395, 40, 20, 16);
 		  panel.add(textMar_2);
 		  
 		  JTextField textMar_3 = new JTextField();
-		  textMar_3.setBounds(415, 40, 15, 16);
-		  textMar_3.setBackground(Color.black);
+		  textMar_3.setBounds(415, 40, 20, 16);
 		  panel.add(textMar_3);
 		  
 		  JTextField textMar_4 = new JTextField();
-		  textMar_4.setBounds(435, 40, 15, 16);
-		  textMar_4.setBackground(Color.black);
+		  textMar_4.setBounds(435, 40, 20, 16);
 		  panel.add(textMar_4);
 		  
 		  JTextField textMar_5 = new JTextField();
-		  textMar_5.setBounds(455, 40, 15, 16);
-		  textMar_5.setBackground(Color.black);
+		  textMar_5.setBounds(455, 40, 20, 16);
 		  panel.add(textMar_5);
 		  
 		  JTextField textMar_6 = new JTextField();
-		  textMar_6.setBounds(475, 40, 15, 16);
-		  textMar_6.setBackground(Color.black);
+		  textMar_6.setBounds(475, 40, 20, 16);
 		  panel.add(textMar_6);
 		  
 		  JTextField textMar_7 = new JTextField();
-		  textMar_7.setBounds(495, 40, 15, 16);
-		  textMar_7.setBackground(Color.black);
+		  textMar_7.setBounds(495, 40, 20, 16);
 		  panel.add(textMar_7);
 		  
 		  JTextField textMar_8 = new JTextField();
-		  textMar_8.setBounds(515, 40, 15, 16);
-		  textMar_8.setBackground(Color.black);
+		  textMar_8.setBounds(515, 40, 20, 16);
 		  panel.add(textMar_8);
 		  
 		  JTextField textMar_9 = new JTextField();
-		  textMar_9.setBounds(535, 40, 15, 16);
-		  textMar_9.setBackground(Color.black);
+		  textMar_9.setBounds(535, 40, 20, 16);
 		  panel.add(textMar_9);
 		  
 		  JTextField textMar_10 = new JTextField();
-		  textMar_10.setBounds(555, 40, 15, 16);
-		  textMar_10.setBackground(Color.black);
+		  textMar_10.setBounds(555, 40, 20, 16);
 		  panel.add(textMar_10);
 		  
 		  JTextField textMar_11 = new JTextField();
-		  textMar_11.setBounds(575, 40, 15, 16);
-		  textMar_11.setBackground(Color.black);
+		  textMar_11.setBounds(575, 40, 20, 16);
 		  panel.add(textMar_11);
 		  
 		  JTextField textMar_12 = new JTextField();
-		  textMar_12.setBounds(595, 40, 15, 16);
-		  textMar_12.setBackground(Color.black);
+		  textMar_12.setBounds(595, 40, 20, 16);
 		  panel.add(textMar_12);
 		  
+//		  ArrayList<JTextField> marTextArr= new ArrayList<JTextField>();
+//		  marTextArr.add(textMar_12); marTextArr.add(textMar_11); marTextArr.add(textMar_10); marTextArr.add(textMar_9); marTextArr.add(textMar_8); marTextArr.add(textMar_7);
+//		  marTextArr.add(textMar_6); marTextArr.add(textMar_5); marTextArr.add(textMar_4); marTextArr.add(textMar_3); marTextArr.add(textMar_2); marTextArr.add(textMar_1);
+
 		  JButton MARbtn = new JButton("LD");
-		  MARbtn.setBounds(615, 40, 55, 16);
+		  MARbtn.setBounds(695, 40, 55, 16);
+		  MARbtn.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				textMar_1.setText(data[4]);
+				textMar_2.setText(data[5]);
+				textMar_3.setText(data[6]);
+				textMar_4.setText(data[7]);
+				textMar_5.setText(data[8]);
+				textMar_6.setText(data[9]);
+				textMar_7.setText(data[10]);
+				textMar_8.setText(data[11]);
+				textMar_9.setText(data[12]);
+				textMar_10.setText(data[13]);
+				textMar_11.setText(data[14]);
+				textMar_12.setText(data[15]);
+				
+				StringJoiner joiner = new StringJoiner("");
+			    for(int i = 0; i < data.length; i++) {
+			    	joiner.add(data[i]);
+			    }
+				
+			    Register.getInstance().setMAR(Integer.parseInt(joiner.toString(), 2));
+			}
+		  });
 		  panel.add(MARbtn);
 		  
 		  JLabel MBRlbl = new JLabel("MBR");
@@ -476,67 +500,101 @@ public class GUI extends JFrame {
 		  panel.add(MBRlbl);
 		  
 		  JTextField textMbr_1 = new JTextField();
-		  textMbr_1.setBounds(375, 61, 15, 16);
-		  textMbr_1.setBackground(Color.black);
+		  textMbr_1.setBounds(375, 61, 20, 16);
 		  panel.add(textMbr_1);
 		  
 		  JTextField textMbr_2 = new JTextField();
-		  textMbr_2.setBounds(395, 61, 15, 16);
-		  textMbr_2.setBackground(Color.black);
+		  textMbr_2.setBounds(395, 61, 20, 16);
 		  panel.add(textMbr_2);
 		  
 		  JTextField textMbr_3 = new JTextField();
-		  textMbr_3.setBounds(415, 61, 15, 16);
-		  textMbr_3.setBackground(Color.black);
+		  textMbr_3.setBounds(415, 61, 20, 16);
 		  panel.add(textMbr_3);
 		  
 		  JTextField textMbr_4 = new JTextField();
-		  textMbr_4.setBounds(435, 61, 15, 16);
-		  textMbr_4.setBackground(Color.black);
+		  textMbr_4.setBounds(435, 61, 20, 16);
 		  panel.add(textMbr_4);
 		  
 		  JTextField textMbr_5 = new JTextField();
-		  textMbr_5.setBounds(455, 61, 15, 16);
-		  textMbr_5.setBackground(Color.black);
+		  textMbr_5.setBounds(455, 61, 20, 16);
 		  panel.add(textMbr_5);
 		  
 		  JTextField textMbr_6 = new JTextField();
-		  textMbr_6.setBounds(475, 61, 15, 16);
-		  textMbr_6.setBackground(Color.black);
+		  textMbr_6.setBounds(475, 61, 20, 16);
 		  panel.add(textMbr_6);
 		  
 		  JTextField textMbr_7 = new JTextField();
-		  textMbr_7.setBounds(495, 61, 15, 16);
-		  textMbr_7.setBackground(Color.black);
+		  textMbr_7.setBounds(495, 61, 20, 16);
 		  panel.add(textMbr_7);
 		  
 		  JTextField textMbr_8 = new JTextField();
-		  textMbr_8.setBounds(515, 61, 15, 16);
-		  textMbr_8.setBackground(Color.black);
+		  textMbr_8.setBounds(515, 61, 20, 16);
 		  panel.add(textMbr_8);
 		  
 		  JTextField textMbr_9 = new JTextField();
-		  textMbr_9.setBounds(535, 61, 15, 16);
-		  textMbr_9.setBackground(Color.black);
+		  textMbr_9.setBounds(535, 61, 20, 16);
 		  panel.add(textMbr_9);
 		  
 		  JTextField textMbr_10 = new JTextField();
-		  textMbr_10.setBounds(555, 61, 15, 16);
-		  textMbr_10.setBackground(Color.black);
+		  textMbr_10.setBounds(555, 61, 20, 16);
 		  panel.add(textMbr_10);
 		  
 		  JTextField textMbr_11 = new JTextField();
-		  textMbr_11.setBounds(575, 61, 15, 16);
-		  textMbr_11.setBackground(Color.black);
+		  textMbr_11.setBounds(575, 61, 20, 16);
 		  panel.add(textMbr_11);
 		  
 		  JTextField textMbr_12 = new JTextField();
-		  textMbr_12.setBounds(595, 61, 15, 16);
-		  textMbr_12.setBackground(Color.black);
+		  textMbr_12.setBounds(595, 61, 20, 16);
 		  panel.add(textMbr_12);
 		  
+		  JTextField textMbr_13 = new JTextField();
+		  textMbr_13.setBounds(615, 61, 20, 16);
+		  panel.add(textMbr_13);
+		  
+		  JTextField textMbr_14 = new JTextField();
+		  textMbr_14.setBounds(635, 61, 20, 16);
+		  panel.add(textMbr_14);
+		  
+		  JTextField textMbr_15 = new JTextField();
+		  textMbr_15.setBounds(655, 61, 20, 16);
+		  panel.add(textMbr_15);
+		  
+		  JTextField textMbr_16 = new JTextField();
+		  textMbr_16.setBounds(675, 61, 20, 16);
+		  panel.add(textMbr_16);
+		  
 		  JButton MBRbtn = new JButton("LD");
-		  MBRbtn.setBounds(615, 61, 55, 16);
+		  MBRbtn.setBounds(695, 61, 55, 16);
+		  MBRbtn.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+					textMbr_1.setText(data[0]);
+					textMbr_2.setText(data[1]);
+					textMbr_3.setText(data[2]);
+					textMbr_4.setText(data[3]);
+					textMbr_5.setText(data[4]);
+					textMbr_6.setText(data[5]);
+					textMbr_7.setText(data[6]);
+					textMbr_8.setText(data[7]);
+					textMbr_9.setText(data[8]);
+					textMbr_10.setText(data[9]);
+					textMbr_11.setText(data[10]);
+					textMbr_12.setText(data[11]);
+					textMbr_13.setText(data[12]);
+					textMbr_14.setText(data[13]);
+					textMbr_15.setText(data[14]);
+					textMbr_16.setText(data[15]);
+					
+					StringJoiner joiner = new StringJoiner("");
+				    for(int i = 0; i < data.length; i++) {
+				    	joiner.add(data[i]);
+				    }
+					
+				    Register.getInstance().setMBR(Integer.parseInt(joiner.toString(), 2));
+				}
+			  });
 		  panel.add(MBRbtn);
 		  
 		  
@@ -637,96 +695,420 @@ public class GUI extends JFrame {
 		  Privlbl_textfield.setBackground(Color.black);
 		  panel.add(Privlbl_textfield);
 		  
-		    //Buttons for instruction 0-15
-			//User cannot click these buttons for now. 
-			JButton btnNewButton = new JButton("15");
-			btnNewButton.setBounds(20, 250, 48, 45);
-			panel.add(btnNewButton);
+		  
+		  
+		  //Buttons for instruction 0-15
+		  //User cannot click these buttons for now. 
+		  
+//		  String data = "0000000000000000" ;
+//		  int btnLeftSideGap = 20;
+//		  
+//		  for(int i=15; i>=0; i--) {
+//			  JButton btnNewButton = new JButton("15");
+//			  btnNewButton.setBounds(btnLeftSideGap, 250, 48, 45);
+//			  btnNewButton.setText("0");
+//			  
+//			  btnNewButton.addActionListener(new ActionListener() {
+//				  
+//				  @Override
+//				  public void actionPerformed(ActionEvent e) {
+//					  // TODO Auto-generated method stub
+//					  if(btnNewButton.getText()=="0") {
+//						  btnNewButton.setText("1");
+//					  }
+//					  else{
+//						  btnNewButton.setText("0");
+//					  }
+//					  data = getDataValue();
+//				  }
+//			  });
+//			  
+//			  panel.add(btnNewButton);
+//			  
+//			  if(i==10 || i==8 || i==6 || i==5) {
+//				  btnLeftSideGap += 54;
+//			  }
+//			  else {
+//				  btnLeftSideGap += 44;
+//			  }
+//			  
+//		  }
+		  
+		  
 			
-			JButton btnNewButton_1 = new JButton("14");
-			btnNewButton_1.setBounds(65, 250, 48, 45);
-			panel.add(btnNewButton_1);
+			JButton btnNewButton_15 = new JButton("15");
+			btnNewButton_15.setBounds(20, 250, 48, 45);
+			btnNewButton_15.setText("0");
+			btnNewButton_15.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_15.getText()=="0") {
+						btnNewButton_15.setText("1");
+						data[0] ="1";
+					}
+					else{
+						btnNewButton_15.setText("0");
+						data[0] ="0";
+					}
+					
+				}
+				
+			});
+			panel.add(btnNewButton_15);
 			
-			JButton btnNewButton_2 = new JButton("13");
-			btnNewButton_2.setBounds(110, 250, 48, 45);
-			panel.add(btnNewButton_2);
+			JButton btnNewButton_14 = new JButton("14");
+			btnNewButton_14.setBounds(64, 250, 48, 45);
+			btnNewButton_14.setText("0");
+			btnNewButton_14.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_14.getText()=="0") {
+						btnNewButton_14.setText("1");
+						data[1] ="1";
+					}
+					else{
+						btnNewButton_14.setText("0");
+						data[1] ="0";
+					}
+				}
+				
+			});
+			panel.add(btnNewButton_14);
 			
-			JButton btnNewButton_3 = new JButton("12");
-			btnNewButton_3.setBounds(150, 250, 48, 45);
-			panel.add(btnNewButton_3);
+			JButton btnNewButton_13 = new JButton("13");
+			btnNewButton_13.setBounds(108, 250, 48, 45);
+			btnNewButton_13.setText("0");
+			btnNewButton_13.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_13.getText()=="0") {
+						btnNewButton_13.setText("1");
+						data[2] ="1";
+					}
+					else{
+						btnNewButton_13.setText("0");
+						data[2] ="0";
+					}
+				}
+				
+			});
+			panel.add(btnNewButton_13);
 			
-			JButton btnNewButton_4 = new JButton("11");
-			btnNewButton_4.setBounds(190, 250, 48, 45);
-			panel.add(btnNewButton_4);
+			JButton btnNewButton_12 = new JButton("12");
+			btnNewButton_12.setBounds(152, 250, 48, 45);
+			btnNewButton_12.setText("0");
+			btnNewButton_12.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_12.getText()=="0") {
+						btnNewButton_12.setText("1");
+						data[3] ="1";
+					}
+					else{
+						btnNewButton_12.setText("0");
+						data[3] ="0";
+					}
+//					data[3] = btnNewButton_15.getText();
+				}
+				
+			});
+			panel.add(btnNewButton_12);
 			
-			JButton btnNewButton_5 = new JButton("10");
-			btnNewButton_5.setBounds(235, 250, 48, 45);
+			JButton btnNewButton_11 = new JButton("11");
+			btnNewButton_11.setBounds(196, 250, 48, 45);
+			btnNewButton_11.setText("0");
+			btnNewButton_11.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_11.getText()=="0") {
+						btnNewButton_11.setText("1");
+						data[4] ="1";
+					}
+					else{
+						btnNewButton_11.setText("0");
+						data[4] ="0";
+					}
+				}
+				
+			});
+			panel.add(btnNewButton_11);
+			
+			JButton btnNewButton_10 = new JButton("10");
+			btnNewButton_10.setBounds(240, 250, 48, 45);
+			btnNewButton_10.setText("0");
+			btnNewButton_10.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_10.getText()=="0") {
+						btnNewButton_10.setText("1");
+						data[5] ="1";
+					}
+					else{
+						btnNewButton_10.setText("0");
+						data[5] ="0";
+					}
+				}
+				
+			});
+			panel.add(btnNewButton_10);
+			
+			JButton btnNewButton_9 = new JButton("9");
+			btnNewButton_9.setBounds(294, 250, 48, 45);
+			btnNewButton_9.setText("0");
+			btnNewButton_9.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_9.getText()=="0") {
+						btnNewButton_9.setText("1");
+						data[6] ="1";
+					}
+					else{
+						btnNewButton_9.setText("0");
+						data[6] ="0";
+					}
+				}
+				
+			});
+			panel.add(btnNewButton_9);
+			
+			JButton btnNewButton_8 = new JButton("8");
+			btnNewButton_8.setBounds(338, 250, 48, 45);
+			btnNewButton_8.setText("0");
+			btnNewButton_8.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_8.getText()=="0") {
+						btnNewButton_8.setText("1");
+						data[7] ="1";
+					}
+					else{
+						btnNewButton_8.setText("0");
+						data[7] ="0";
+					}
+				}
+				
+			});
+			panel.add(btnNewButton_8);
+			
+			JButton btnNewButton_7 = new JButton("7");
+			btnNewButton_7.setBounds(392, 250, 48, 45);
+			btnNewButton_7.setText("0");
+			btnNewButton_7.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_7.getText()=="0") {
+						btnNewButton_7.setText("1");
+						data[8] ="1";
+					}
+					else{
+						btnNewButton_7.setText("0");
+						data[8] ="0";
+					}
+				}
+				
+			});
+			panel.add(btnNewButton_7);
+			
+			JButton btnNewButton_6 = new JButton("6");
+			btnNewButton_6.setBounds(436, 250, 48, 45);
+			btnNewButton_6.setText("0");
+			btnNewButton_6.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_6.getText()=="0") {
+						btnNewButton_6.setText("1");
+						data[9] ="1";
+					}
+					else{
+						btnNewButton_6.setText("0");
+						data[9] ="0";
+					}
+				}
+				
+			});
+			panel.add(btnNewButton_6);
+			
+			JButton btnNewButton_5 = new JButton("5");
+			btnNewButton_5.setBounds(490, 250, 48, 45);
+			btnNewButton_5.setText("0");
+			btnNewButton_5.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_5.getText()=="0") {
+						btnNewButton_5.setText("1");
+						data[10] ="1";
+					}
+					else{
+						btnNewButton_5.setText("0");
+						data[10] ="0";
+					}
+				}
+				
+			});
 			panel.add(btnNewButton_5);
 			
-			JButton btnNewButton_5_1 = new JButton("9");
-			btnNewButton_5_1.setBounds(300, 250, 48, 45);
-			panel.add(btnNewButton_5_1);
+			JButton btnNewButton_4 = new JButton("4");
+			btnNewButton_4.setBounds(544, 250, 48, 45);
+			btnNewButton_4.setText("0");
+			btnNewButton_4.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_4.getText()=="0") {
+						btnNewButton_4.setText("1");
+						data[11] ="1";
+					}
+					else{
+						btnNewButton_4.setText("0");
+						data[11] ="0";
+					}
+				}
+				
+			});
+			panel.add(btnNewButton_4);
 			
-			JButton btnNewButton_5_2 = new JButton("8");
-			btnNewButton_5_2.setBounds(345, 250, 48, 45);
-			panel.add(btnNewButton_5_2);
+			JButton btnNewButton_3 = new JButton("3");
+			btnNewButton_3.setBounds(588, 250, 48, 45);
+			btnNewButton_3.setText("0");
+			btnNewButton_3.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_3.getText()=="0") {
+						btnNewButton_3.setText("1");
+						data[12] ="1";
+					}
+					else{
+						btnNewButton_3.setText("0");
+						data[12] ="0";
+					}
+				}
+				
+			});
+			panel.add(btnNewButton_3);
 			
-			JButton btnNewButton_5_2_1 = new JButton("7");
-			btnNewButton_5_2_1.setBounds(400, 250, 48, 45);
-			panel.add(btnNewButton_5_2_1);
+			JButton btnNewButton_2 = new JButton("2");
+			btnNewButton_2.setBounds(632, 250, 48, 45);
+			btnNewButton_2.setText("0");
+			btnNewButton_2.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_2.getText()=="0") {
+						btnNewButton_2.setText("1");
+						data[13] ="1";
+					}
+					else{
+						btnNewButton_2.setText("0");
+						data[13] ="0";
+					}
+				}
+				
+			});
+			panel.add(btnNewButton_2);
 			
-			JButton btnNewButton_5_2_2 = new JButton("6");
-			btnNewButton_5_2_2.setBounds(445, 250, 48, 45);
-			panel.add(btnNewButton_5_2_2);
+			JButton btnNewButton_1 = new JButton("1");
+			btnNewButton_1.setBounds(676, 250, 48, 45);
+			btnNewButton_1.setText("0");
+			btnNewButton_1.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_1.getText()=="0") {
+						btnNewButton_1.setText("1");
+						data[14] ="1";
+					}
+					else{
+						btnNewButton_1.setText("0");
+						data[14] ="0";
+					}
+				}
+				
+			});
+			panel.add(btnNewButton_1);
 			
-			JButton btnNewButton_5_2_3 = new JButton("5");
-			btnNewButton_5_2_3.setBounds(500, 250, 48, 45);
-			panel.add(btnNewButton_5_2_3);
-			
-			JButton btnNewButton_5_2_4 = new JButton("4");
-			btnNewButton_5_2_4.setBounds(560, 250, 48, 45);
-			panel.add(btnNewButton_5_2_4);
-			
-			JButton btnNewButton_5_2_4_1 = new JButton("3");
-			btnNewButton_5_2_4_1.setBounds(600, 250, 48, 45);
-			panel.add(btnNewButton_5_2_4_1);
-			
-			JButton btnNewButton_5_2_4_2 = new JButton("2");
-			btnNewButton_5_2_4_2.setBounds(640, 250, 48, 45);
-			panel.add(btnNewButton_5_2_4_2);
-			
-			JButton btnNewButton_5_2_4_3 = new JButton("1");
-			btnNewButton_5_2_4_3.setBounds(680, 250, 48, 45);
-			panel.add(btnNewButton_5_2_4_3);
-			
-			JButton btnNewButton_5_2_4_4 = new JButton("0");
-			btnNewButton_5_2_4_4.setBounds(720, 250, 48, 45);
-			panel.add(btnNewButton_5_2_4_4);
+			JButton btnNewButton_0 = new JButton("0");
+			btnNewButton_0.setBounds(720, 250, 48, 45);
+			btnNewButton_0.setText("0");
+			btnNewButton_0.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(btnNewButton_0.getText()=="0") {
+						btnNewButton_0.setText("1");
+						data[15] ="1";
+					}
+					else{
+						btnNewButton_0.setText("0");
+						data[15] ="0";
+					}
+				}
+				
+			});
+			panel.add(btnNewButton_0);
 			
 			//Labels for Operation, GPR, IXR, I, Address
 			JLabel lblNewLabel = new JLabel("Operation");
-			lblNewLabel.setBounds(100, 307, 66, 16);
+			lblNewLabel.setBounds(120, 307, 66, 16);
 			panel.add(lblNewLabel);
 			
 			JLabel lblNewLabel_1 = new JLabel("GPR");
-			lblNewLabel_1.setBounds(345, 307, 30, 16);
+			lblNewLabel_1.setBounds(330, 307, 30, 16);
 			panel.add(lblNewLabel_1);
 			
 			JLabel lblNewLabel_2 = new JLabel("IXR");
-			lblNewLabel_2.setBounds(440, 307, 25, 16);
+			lblNewLabel_2.setBounds(430, 307, 25, 16);
 			panel.add(lblNewLabel_2);
 			
 			JLabel lblNewLabel_3 = new JLabel("I");
-			lblNewLabel_3.setBounds(525, 307, 9, 16);
+			lblNewLabel_3.setBounds(510, 307, 9, 16);
+//			lblNewLabel_3.setFont(new Font("", Font.BOLD, 15));
 			panel.add(lblNewLabel_3);
 			
 			JLabel lblNewLabel_4 = new JLabel("Address");
-			lblNewLabel_4.setBounds(640, 307, 65, 16);
+			lblNewLabel_4.setBounds(630, 307, 65, 16);
 			panel.add(lblNewLabel_4);
 			
 		  //Store,St+,Load,Init Buttons
 		  JButton storeBtn = new JButton("Store");
 		  storeBtn.setBounds(245, 362, 75, 30);
+		  storeBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				Memory.getInstance().store(Register.getInstance().getMAR(), Register.getInstance().getMBR());
+			}
+			  
+		  });
 		  panel.add(storeBtn);
 		  
 		  JButton stBtn = new JButton("St+");
@@ -735,6 +1117,47 @@ public class GUI extends JFrame {
 		  
 		  JButton loadBtn = new JButton("Load");
 		  loadBtn.setBounds(435, 362, 75, 30);
+		  loadBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String str = Integer.toBinaryString(Memory.getInstance().load(Register.getInstance().getMAR()));
+				System.out.println(str.length());
+				for (int i = 0; i < str.length(); i++) {
+		            data[15-i] = str.substring(i, i+1);
+		        }
+				
+				for(int i=0; i<=15-str.length(); i++) {
+					data[i] = "0";
+				}
+				
+				textMbr_1.setText(data[0]);
+				textMbr_2.setText(data[1]);
+				textMbr_3.setText(data[2]);
+				textMbr_4.setText(data[3]);
+				textMbr_5.setText(data[4]);
+				textMbr_6.setText(data[5]);
+				textMbr_7.setText(data[6]);
+				textMbr_8.setText(data[7]);
+				textMbr_9.setText(data[8]);
+				textMbr_10.setText(data[9]);
+				textMbr_11.setText(data[10]);
+				textMbr_12.setText(data[11]);
+				textMbr_13.setText(data[12]);
+				textMbr_14.setText(data[13]);
+				textMbr_15.setText(data[14]);
+				textMbr_16.setText(data[15]);
+				
+				StringJoiner joiner = new StringJoiner("");
+			    for(int i = 0; i < data.length; i++) {
+			    	joiner.add(data[i]);
+			    }
+				
+			    Register.getInstance().setMBR(Integer.parseInt(joiner.toString(), 2));
+			}
+			  
+		  });
 		  panel.add(loadBtn);
 		  
 		  JButton initBtn = new JButton("Init");
@@ -769,4 +1192,5 @@ public class GUI extends JFrame {
 		  panel.add(textfield_2);
 		  
 	  }
+	  
 }
