@@ -36,6 +36,7 @@ public class MainTester {
 		
 		instruction1.loadInstruction(1);
 		
+		CPU.readIPL();
 		//System.out.println("The effective address is: "+ instruction1.computeEA());
 				
 	}
