@@ -85,14 +85,14 @@ public class CPU {
 		register.setPC(register.getPC() + 1);
 		
 		//Create new instruction and loading it from memory
-		Load instruction = new Load();
-		instruction.loadInstruction(register.getMAR());
-		instruction.runInstruction();
+//		Load instruction = new Load();
+//		instruction.loadInstruction(register.getMAR());
+//		instruction.runInstruction();
 		
 		//Test code print
 		System.out.println("PC: " + register.getPC());
 		
-		register.setMAR(register.getMAR() + 1);
+//		register.setMAR(register.getMAR() + 1);
 
 	}
 	

@@ -158,7 +158,7 @@ public class Register {
 		}
 		else {
 			MAR = value;
-			System.out.println("setsetMAR " + MAR);
+			System.out.println("setMAR " + MAR);
 		}		
 	}
 	
@@ -173,7 +173,7 @@ public class Register {
 		if(value > MAX_16 || value < 0)
 			throw new IllegalArgumentException("Invalid value.");
 		MBR = value;
-		System.out.println("setsetMBR " + MBR);
+		System.out.println("setMBR " + MBR);
 	}
 	
 	// Machine Fault Register: contains the ID code if a machine fault after it occurs
