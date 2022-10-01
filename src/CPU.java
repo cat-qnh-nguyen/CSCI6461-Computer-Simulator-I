@@ -53,10 +53,9 @@ public class CPU {
 			instruction.loadInstruction(register.getIR());
 			
 			if(instruction.opcode == 0) {
-				//System.out.println("Break happened.");
+				//System.out.println("Instruction Halt.");
 				break;		//HLT
 			}
-
 			
 			instruction.runInstruction();
 			
@@ -82,16 +81,17 @@ public class CPU {
 		register.setIR(register.getMBR());
 		
 		//Increment PC
-		register.setPC(register.getPC() + 1);
+		//register.setPC(register.getPC() + 1);
 		
 		//Create new instruction and loading it from memory
 		Load instruction = new Load();
 		instruction.loadInstruction(register.getMAR());
 		instruction.runInstruction();
 		
-		//Test code print
-		System.out.println("PC: " + register.getPC());
+		//Increment PC and print test
 		register.setPC(register.getPC() + 1);
+		System.out.println("PC: " + register.getPC());
+
 	}
 	
 	
