@@ -26,8 +26,10 @@ public class Register {
 	}
 	
 	//Because Java does not have unsigned data type, we will limit the data value instead of having a short
-	//For data of 16 bits, the max value is 2^16 = 65536
-	public final int MAX_16 = 65536;
+	//For data of 16 bits, the max value is = 65535
+	public final int MAX_16 = 65535;
+	public final int MAX_12 = 4095;
+	public final int MAX_4 = 15;
 	
 // 4 general purpose registers: R0-3, 16 bits
 
@@ -96,13 +98,13 @@ public class Register {
 	// Need to limit the PC to 12 bits: 4095 max
 	private int PC;
 	
-	private int getPC() {
+	public int getPC() {
 		return PC;
 	}
 	public void setPC(int value) {
 		//Because PC is 12 bits, its value cannot be more than 4095
 		//Java does not have unsigned data type
-		if(value > 4095 || value < 0) {
+		if(value > MAX_12 || value < 0) {
 			throw new IllegalArgumentException("Invalid PC value.");			
 		}
 		else {
@@ -118,7 +120,7 @@ public class Register {
 	}
 	public void setCC(byte value) {
 		//Since CC can only be 4 bits, it cannot be bigger than 15
-		if(value > 15 || value < 0) {
+		if(value > MAX_4 || value < 0) {
 			throw new IllegalArgumentException("Invalid CC value.");			
 		}
 		else {
@@ -150,15 +152,14 @@ public class Register {
 	
 	public void setMAR(int value) {
 		//Because MAR is 12 bits, its value cannot be > 4095
-		if(value > 4095 || value < 0) {
+
+		if(value > MAX_12 || value < 0) {
 			throw new IllegalArgumentException("Invalid MAR value.");			
 		}
 		else {
 			MAR = value;
 			System.out.println("setsetMAR " + MAR);
-
-		}
-		
+		}		
 	}
 	
 	// Memory Buffer Register: holds the word just fetched from or the word to be/last stored into memory
@@ -184,7 +185,7 @@ public class Register {
 	}
 	public void setMFR(byte value) {
 		//Since CC can only be 4 bits, value has to be between 0 and 15
-		if(value > 15 || value < 0) {
+		if(value > MAX_4 || value < 0) {
 			throw new IllegalArgumentException("Invalid MFR value.");			
 		}
 		else {

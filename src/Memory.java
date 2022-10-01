@@ -13,7 +13,7 @@ public class Memory {
 	private int[] memory = new int[2048];
 	
 	//Max value is 2^16 which is 65536
-	private final int MAX_VALUE = 65536;
+	private final int MAX_VALUE = 65535;
 	
 	
 	private Memory() {}
