@@ -27,10 +27,10 @@ public class GUI extends JFrame {
 	  public GUI() {
 		  setTitle("User Interface");
 		  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		  setBounds(100, 100, 800, 650);
+		  setBounds(100, 100, 980, 650);
 		  
 		  JPanel panel = new JPanel();
-		  panel.setBackground(Color.blue);
+		  panel.setBackground(Color.LIGHT_GRAY);
 		  panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		  setContentPane(panel);
 		  panel.setLayout(null);
@@ -40,172 +40,288 @@ public class GUI extends JFrame {
 		  lblGPR_0.setBounds(20, 20, 41, 16);
 		  panel.add(lblGPR_0);
 		  
-		  JTextField lblGPR_0_textfield_1 = new JTextField();
-		  lblGPR_0_textfield_1.setBounds(65, 20, 15, 16);
-		  lblGPR_0_textfield_1.setBackground(Color.black);
-		  panel.add(lblGPR_0_textfield_1);
+		  JTextField GPR_0_TF1 = new JTextField("0");
+		  GPR_0_TF1.setBounds(65, 20, 20, 16);
+		  panel.add(GPR_0_TF1);
 		  
-		  JTextField lblGPR_0_textfield_2 = new JTextField();
-		  lblGPR_0_textfield_2.setBounds(85, 20, 15, 16);
-		  lblGPR_0_textfield_2.setBackground(Color.black);
-		  panel.add(lblGPR_0_textfield_2);
+		  JTextField GPR_0_TF2 = new JTextField("0");
+		  GPR_0_TF2.setBounds(85, 20, 20, 16);
+		  panel.add(GPR_0_TF2);
 		  
-		  JTextField lblGPR_0_textfield_3 = new JTextField();
-		  lblGPR_0_textfield_3.setBounds(105, 20, 15, 16);
-		  lblGPR_0_textfield_3.setBackground(Color.black);
-		  panel.add(lblGPR_0_textfield_3);
+		  JTextField GPR_0_TF3 = new JTextField("0");
+		  GPR_0_TF3.setBounds(105, 20, 20, 16);
+		  panel.add(GPR_0_TF3);
 		  
-		  JTextField lblGPR_0_textfield_4 = new JTextField();
-		  lblGPR_0_textfield_4.setBounds(125, 20, 15, 16);
-		  lblGPR_0_textfield_4.setBackground(Color.black);
-		  panel.add(lblGPR_0_textfield_4);
+		  JTextField GPR_0_TF4 = new JTextField("0");
+		  GPR_0_TF4.setBounds(125, 20, 20, 16);
+		  panel.add(GPR_0_TF4);
 		  
-		  JTextField lblGPR_0_textfield_5 = new JTextField();
-		  lblGPR_0_textfield_5.setBounds(145, 20, 15, 16);
-		  lblGPR_0_textfield_5.setBackground(Color.black);
-		  panel.add(lblGPR_0_textfield_5);
+		  JTextField GPR_0_TF5 = new JTextField("0");
+		  GPR_0_TF5.setBounds(145, 20, 20, 16);
+		  panel.add(GPR_0_TF5);
 		  
-		  JTextField lblGPR_0_textfield_6 = new JTextField();
-		  lblGPR_0_textfield_6.setBounds(165, 20, 15, 16);
-		  lblGPR_0_textfield_6.setBackground(Color.black);
-		  panel.add(lblGPR_0_textfield_6);
+		  JTextField GPR_0_TF6 = new JTextField("0");
+		  GPR_0_TF6.setBounds(165, 20, 20, 16);
+		  panel.add(GPR_0_TF6);
 		  
-		  JTextField lblGPR_0_textfield_7 = new JTextField();
-		  lblGPR_0_textfield_7.setBounds(185, 20, 15, 16);
-		  lblGPR_0_textfield_7.setBackground(Color.black);
-		  panel.add(lblGPR_0_textfield_7);
+		  JTextField GPR_0_TF7 = new JTextField("0");
+		  GPR_0_TF7.setBounds(185, 20, 20, 16);
+		  panel.add(GPR_0_TF7);
 		  
-		  JButton lblGPR_0_loadBtn = new JButton("LD");
-		  lblGPR_0_loadBtn.setBounds(205, 20, 55, 16);
-		  panel.add(lblGPR_0_loadBtn);
+		  JTextField GPR_0_TF8 = new JTextField("0");
+		  GPR_0_TF8.setBounds(205, 20, 20, 16);
+		  panel.add(GPR_0_TF8);
+		  
+		  JTextField GPR_0_TF9 = new JTextField("0");
+		  GPR_0_TF9.setBounds(225, 20, 20, 16);
+		  panel.add(GPR_0_TF9);
+		  
+		  JTextField GPR_0_TF10 = new JTextField("0");
+		  GPR_0_TF10.setBounds(245, 20, 20, 16);
+		  panel.add(GPR_0_TF10);
+		  
+		  JTextField GPR_0_TF11 = new JTextField("0");
+		  GPR_0_TF11.setBounds(265, 20, 20, 16);
+		  panel.add(GPR_0_TF11);
+		  
+		  JTextField GPR_0_TF12 = new JTextField("0");
+		  GPR_0_TF12.setBounds(285, 20, 20, 16);
+		  panel.add(GPR_0_TF12);
+		  
+		  JTextField GPR_0_TF13 = new JTextField("0");
+		  GPR_0_TF13.setBounds(305, 20, 20, 16);
+		  panel.add(GPR_0_TF13);
+		  
+		  JTextField GPR_0_TF14 = new JTextField("0");
+		  GPR_0_TF14.setBounds(325, 20, 20, 16);
+		  panel.add(GPR_0_TF14);
+		  
+		  JTextField GPR_0_TF15 = new JTextField("0");
+		  GPR_0_TF15.setBounds(345, 20, 20, 16);
+		  panel.add(GPR_0_TF15);
+		  
+		  JTextField GPR_0_TF16 = new JTextField("0");
+		  GPR_0_TF16.setBounds(365, 20, 20, 16);
+		  panel.add(GPR_0_TF16);
+		  
+		  JButton GPR_0_loadBtn = new JButton("LD");
+		  GPR_0_loadBtn.setBounds(395, 20, 55, 16);
+		  panel.add(GPR_0_loadBtn);
 		  
 		  JLabel lblGPR_1 = new JLabel("GPR 1");
 		  lblGPR_1.setBounds(20, 40, 41, 16);
 		  panel.add(lblGPR_1);
 		  
-		  JTextField lblGPR_1_textfield_1 = new JTextField();
-		  lblGPR_1_textfield_1.setBounds(65, 40, 15, 16);
-		  lblGPR_1_textfield_1.setBackground(Color.black);
-		  panel.add(lblGPR_1_textfield_1);
+		  JTextField GPR_1_TF1 = new JTextField("0");
+		  GPR_1_TF1.setBounds(65, 40, 20, 16);
+		  panel.add(GPR_1_TF1);
 		  
-		  JTextField lblGPR_1_textfield_2 = new JTextField();
-		  lblGPR_1_textfield_2.setBounds(85, 40, 15, 16);
-		  lblGPR_1_textfield_2.setBackground(Color.black);
-		  panel.add(lblGPR_1_textfield_2);
+		  JTextField GPR_1_TF2 = new JTextField("0");
+		  GPR_1_TF2.setBounds(85, 40, 20, 16);
+		  panel.add(GPR_1_TF2);
 		  
-		  JTextField lblGPR_1_textfield_3 = new JTextField();
-		  lblGPR_1_textfield_3.setBounds(105, 40, 15, 16);
-		  lblGPR_1_textfield_3.setBackground(Color.black);
-		  panel.add(lblGPR_1_textfield_3);
+		  JTextField GPR_1_TF3 = new JTextField("0");
+		  GPR_1_TF3.setBounds(105, 40, 20, 16);
+		  panel.add(GPR_1_TF3);
 		  
-		  JTextField lblGPR_1_textfield_4 = new JTextField();
-		  lblGPR_1_textfield_4.setBounds(125, 40, 15, 16);
-		  lblGPR_1_textfield_4.setBackground(Color.black);
-		  panel.add(lblGPR_1_textfield_4);
+		  JTextField GPR_1_TF4 = new JTextField("0");
+		  GPR_1_TF4.setBounds(125, 40, 20, 16);
+		  panel.add(GPR_1_TF4);
 		  
-		  JTextField lblGPR_1_textfield_5 = new JTextField();
-		  lblGPR_1_textfield_5.setBounds(145, 40, 15, 16);
-		  lblGPR_1_textfield_5.setBackground(Color.black);
-		  panel.add(lblGPR_1_textfield_5);
+		  JTextField GPR_1_TF5 = new JTextField("0");
+		  GPR_1_TF5.setBounds(145, 40, 20, 16);
+		  panel.add(GPR_1_TF5);
 		  
-		  JTextField lblGPR_1_textfield_6 = new JTextField();
-		  lblGPR_1_textfield_6.setBounds(165, 40, 15, 16);
-		  lblGPR_1_textfield_6.setBackground(Color.black);
-		  panel.add(lblGPR_1_textfield_6);
+		  JTextField GPR_1_TF6 = new JTextField("0");
+		  GPR_1_TF6.setBounds(165, 40, 20, 16);
+		  panel.add(GPR_1_TF6);
 		  
-		  JTextField lblGPR_1_textfield_7 = new JTextField();
-		  lblGPR_1_textfield_7.setBounds(185, 40, 15, 16);
-		  lblGPR_1_textfield_7.setBackground(Color.black);
-		  panel.add(lblGPR_1_textfield_7);
+		  JTextField GPR_1_TF7 = new JTextField("0");
+		  GPR_1_TF7.setBounds(185, 40, 20, 16);
+		  panel.add(GPR_1_TF7);
 		  
-		  JButton lblGPR_1_loadBtn = new JButton("LD");
-		  lblGPR_1_loadBtn.setBounds(205, 40, 55, 16);
-		  panel.add(lblGPR_1_loadBtn);
+		  JTextField GPR_1_TF8 = new JTextField("0");
+		  GPR_1_TF8.setBounds(205, 40, 20, 16);
+		  panel.add(GPR_1_TF8);
+		  
+		  JTextField GPR_1_TF9 = new JTextField("0");
+		  GPR_1_TF9.setBounds(225, 40, 20, 16);
+		  panel.add(GPR_1_TF9);
+		  
+		  JTextField GPR_1_TF10 = new JTextField("0");
+		  GPR_1_TF10.setBounds(245, 40, 20, 16);
+		  panel.add(GPR_1_TF10);
+		  
+		  JTextField GPR_1_TF11 = new JTextField("0");
+		  GPR_1_TF11.setBounds(265, 40, 20, 16);
+		  panel.add(GPR_1_TF11);
+		  
+		  JTextField GPR_1_TF12 = new JTextField("0");
+		  GPR_1_TF12.setBounds(285, 40, 20, 16);
+		  panel.add(GPR_1_TF12);
+		  
+		  JTextField GPR_1_TF13 = new JTextField("0");
+		  GPR_1_TF13.setBounds(305, 40, 20, 16);
+		  panel.add(GPR_1_TF13);
+		  
+		  JTextField GPR_1_TF14 = new JTextField("0");
+		  GPR_1_TF14.setBounds(325, 40, 20, 16);
+		  panel.add(GPR_1_TF14);
+		  
+		  JTextField GPR_1_TF15 = new JTextField("0");
+		  GPR_1_TF15.setBounds(345, 40, 20, 16);
+		  panel.add(GPR_1_TF15);
+		  
+		  JTextField GPR_1_TF16 = new JTextField("0");
+		  GPR_1_TF16.setBounds(365, 40, 20, 16);
+		  panel.add(GPR_1_TF16);
+		  
+		  JButton GPR_1_loadBtn = new JButton("LD");
+		  GPR_1_loadBtn.setBounds(395, 40, 55, 16);
+		  panel.add(GPR_1_loadBtn);
 		  
 		  JLabel lblGPR_2 = new JLabel("GPR 2");
 		  lblGPR_2.setBounds(20, 60, 41, 16);
 		  panel.add(lblGPR_2);
 		  
-		  JTextField lblGPR_2_textfield_1 = new JTextField();
-		  lblGPR_2_textfield_1.setBounds(65, 60, 15, 16);
-		  lblGPR_2_textfield_1.setBackground(Color.black);
-		  panel.add(lblGPR_2_textfield_1);
+		  JTextField GPR_2_TF_1 = new JTextField("0");
+		  GPR_2_TF_1.setBounds(65, 60, 20, 16);
+		  panel.add(GPR_2_TF_1);
 		  
-		  JTextField lblGPR_2_textfield_2 = new JTextField();
-		  lblGPR_2_textfield_2.setBounds(85, 60, 15, 16);
-		  lblGPR_2_textfield_2.setBackground(Color.black);
-		  panel.add(lblGPR_2_textfield_2);
+		  JTextField GPR_2_TF_2 = new JTextField("0");
+		  GPR_2_TF_2.setBounds(85, 60, 20, 16);
+		  panel.add(GPR_2_TF_2);
 		  
-		  JTextField lblGPR_2_textfield_3 = new JTextField();
-		  lblGPR_2_textfield_3.setBounds(105, 60, 15, 16);
-		  lblGPR_2_textfield_3.setBackground(Color.black);
-		  panel.add(lblGPR_2_textfield_3);
+		  JTextField GPR_2_TF_3 = new JTextField("0");
+		  GPR_2_TF_3.setBounds(105, 60, 20, 16);
+		  panel.add(GPR_2_TF_3);
 		  
-		  JTextField lblGPR_2_textfield_4 = new JTextField();
-		  lblGPR_2_textfield_4.setBounds(125, 60, 15, 16);
-		  lblGPR_2_textfield_4.setBackground(Color.black);
-		  panel.add(lblGPR_2_textfield_4);
+		  JTextField GPR_2_TF_4 = new JTextField("0");
+		  GPR_2_TF_4.setBounds(125, 60, 20, 16);
+		  panel.add(GPR_2_TF_4);
 		  
-		  JTextField lblGPR_2_textfield_5 = new JTextField();
-		  lblGPR_2_textfield_5.setBounds(145, 60, 15, 16);
-		  lblGPR_2_textfield_5.setBackground(Color.black);
-		  panel.add(lblGPR_2_textfield_5);
+		  JTextField GPR_2_TF_5 = new JTextField("0");
+		  GPR_2_TF_5.setBounds(145, 60, 20, 16);
+		  panel.add(GPR_2_TF_5);
 		  
-		  JTextField lblGPR_2_textfield_6 = new JTextField();
-		  lblGPR_2_textfield_6.setBounds(165, 60, 15, 16);
-		  lblGPR_2_textfield_6.setBackground(Color.black);
-		  panel.add(lblGPR_2_textfield_6);
+		  JTextField GPR_2_TF_6 = new JTextField("0");
+		  GPR_2_TF_6.setBounds(165, 60, 20, 16);
+		  panel.add(GPR_2_TF_6);
 		  
-		  JTextField lblGPR_2_textfield_7 = new JTextField();
-		  lblGPR_2_textfield_7.setBounds(185, 60, 15, 16);
-		  lblGPR_2_textfield_7.setBackground(Color.black);
-		  panel.add(lblGPR_2_textfield_7);
+		  JTextField GPR_2_TF_7 = new JTextField("0");
+		  GPR_2_TF_7.setBounds(185, 60, 20, 16);
+		  panel.add(GPR_2_TF_7);
+		  
+		  JTextField GPR_2_TF_8 = new JTextField("0");
+		  GPR_2_TF_8.setBounds(205, 60, 20, 16);
+		  panel.add(GPR_2_TF_8);
+		  
+		  JTextField GPR_2_TF_9 = new JTextField("0");
+		  GPR_2_TF_9.setBounds(225, 60, 20, 16);
+		  panel.add(GPR_2_TF_9);
+		  
+		  JTextField GPR_2_TF_10 = new JTextField("0");
+		  GPR_2_TF_10.setBounds(245, 60, 20, 16);
+		  panel.add(GPR_2_TF_10);
+		  
+		  JTextField GPR_2_TF_11 = new JTextField("0");
+		  GPR_2_TF_11.setBounds(265, 60, 20, 16);
+		  panel.add(GPR_2_TF_11);
+		  
+		  JTextField GPR_2_TF_12 = new JTextField("0");
+		  GPR_2_TF_12.setBounds(285, 60, 20, 16);
+		  panel.add(GPR_2_TF_12);
+		  
+		  JTextField GPR_2_TF_13 = new JTextField("0");
+		  GPR_2_TF_13.setBounds(305, 60, 20, 16);
+		  panel.add(GPR_2_TF_13);
+		  
+		  JTextField GPR_2_TF_14 = new JTextField("0");
+		  GPR_2_TF_14.setBounds(325, 60, 20, 16);
+		  panel.add(GPR_2_TF_14);
+		  
+		  JTextField GPR_2_TF_15 = new JTextField("0");
+		  GPR_2_TF_15.setBounds(345, 60, 20, 16);
+		  panel.add(GPR_2_TF_15);
+		  
+		  JTextField GPR_2_TF_16 = new JTextField("0");
+		  GPR_2_TF_16.setBounds(365, 60, 20, 16);
+		  panel.add(GPR_2_TF_16);
 		  
 		  JButton lblGPR_2_loadBtn = new JButton("LD");
-		  lblGPR_2_loadBtn.setBounds(205, 60, 55, 16);
+		  lblGPR_2_loadBtn.setBounds(395, 60, 55, 16);
 		  panel.add(lblGPR_2_loadBtn);
 		  
 		  JLabel lblGPR_3 = new JLabel("GPR 3");
 		  lblGPR_3.setBounds(20, 80, 41, 16);
 		  panel.add(lblGPR_3);
 		  
-		  JTextField lblGPR_3_textfield_1 = new JTextField();
-		  lblGPR_3_textfield_1.setBounds(65, 80, 15, 16);
-		  lblGPR_3_textfield_1.setBackground(Color.black);
-		  panel.add(lblGPR_3_textfield_1);
+		  JTextField GPR_3_TF1 = new JTextField("0");
+		  GPR_3_TF1.setBounds(65, 80, 20, 16);
+		  panel.add(GPR_3_TF1);
 		  
-		  JTextField lblGPR_3_textfield_2 = new JTextField();
-		  lblGPR_3_textfield_2.setBounds(85, 80, 15, 16);
-		  lblGPR_3_textfield_2.setBackground(Color.black);
-		  panel.add(lblGPR_3_textfield_2);
+		  JTextField GPR_3_TF2 = new JTextField("0");
+		  GPR_3_TF2.setBounds(85, 80, 20, 16);
+		  panel.add(GPR_3_TF2);
 		  
-		  JTextField lblGPR_3_textfield_3 = new JTextField();
-		  lblGPR_3_textfield_3.setBounds(105, 80, 15, 16);
-		  lblGPR_3_textfield_3.setBackground(Color.black);
-		  panel.add(lblGPR_3_textfield_3);
+		  JTextField GPR_3_TF3 = new JTextField("0");
+		  GPR_3_TF3.setBounds(105, 80, 20, 16);
+		  panel.add(GPR_3_TF3);
 		  
-		  JTextField lblGPR_3_textfield_4 = new JTextField();
-		  lblGPR_3_textfield_4.setBounds(125, 80, 15, 16);
-		  lblGPR_3_textfield_4.setBackground(Color.black);
-		  panel.add(lblGPR_3_textfield_4);
+		  JTextField GPR_3_TF4 = new JTextField("0");
+		  GPR_3_TF4.setBounds(125, 80, 20, 16);
+		  panel.add(GPR_3_TF4);
 		  
-		  JTextField lblGPR_3_textfield_5 = new JTextField();
-		  lblGPR_3_textfield_5.setBounds(145, 80, 15, 16);
-		  lblGPR_3_textfield_5.setBackground(Color.black);
-		  panel.add(lblGPR_3_textfield_5);
+		  JTextField GPR_3_TF5 = new JTextField("0");
+		  GPR_3_TF5.setBounds(145, 80, 20, 16);
+		  panel.add(GPR_3_TF5);
 		  
-		  JTextField lblGPR_3_textfield_6 = new JTextField();
-		  lblGPR_3_textfield_6.setBounds(165, 80, 15, 16);
-		  lblGPR_3_textfield_6.setBackground(Color.black);
-		  panel.add(lblGPR_3_textfield_6);
+		  JTextField GPR_3_TF6 = new JTextField("0");
+		  GPR_3_TF6.setBounds(165, 80, 20, 16);
+		  panel.add(GPR_3_TF6);
 		  
-		  JTextField lblGPR_3_textfield_7 = new JTextField();
-		  lblGPR_3_textfield_7.setBounds(185, 80, 15, 16);
-		  lblGPR_3_textfield_7.setBackground(Color.black);
-		  panel.add(lblGPR_3_textfield_7);
+		  JTextField GPR_3_TF7 = new JTextField("0");
+		  GPR_3_TF7.setBounds(185, 80, 20, 16);
+		  panel.add(GPR_3_TF7);
+		  
+		  JTextField GPR_3_TF8 = new JTextField("0");
+		  GPR_3_TF8.setBounds(205, 80, 20, 16);
+		  panel.add(GPR_3_TF8);
+		  
+		  JTextField GPR_3_TF9 = new JTextField("0");
+		  GPR_3_TF9.setBounds(225, 80, 20, 16);
+		  panel.add(GPR_3_TF9);
+		  
+		  JTextField GPR_3_TF10 = new JTextField("0");
+		  GPR_3_TF10.setBounds(245, 80, 20, 16);
+		  panel.add(GPR_3_TF10);
+		  
+		  JTextField GPR_3_TF11 = new JTextField("0");
+		  GPR_3_TF11.setBounds(265, 80, 20, 16);
+		  panel.add(GPR_3_TF11);
+		  
+		  JTextField GPR_3_TF12 = new JTextField("0");
+		  GPR_3_TF12.setBounds(285, 80, 20, 16);
+		  panel.add(GPR_3_TF12);
+		  
+		  JTextField GPR_3_TF13 = new JTextField("0");
+		  GPR_3_TF13.setBounds(305, 80, 20, 16);
+		  panel.add(GPR_3_TF13);
+		  
+		  JTextField GPR_3_TF14 = new JTextField("0");
+		  GPR_3_TF14.setBounds(325, 80, 20, 16);
+		  panel.add(GPR_3_TF14);
+		  
+		  JTextField GPR_3_TF15 = new JTextField("0");
+		  GPR_3_TF15.setBounds(345, 80, 20, 16);
+		  panel.add(GPR_3_TF15);
+		  
+		  JTextField GPR_3_TF16 = new JTextField("0");
+		  GPR_3_TF16.setBounds(365, 80, 20, 16);
+		  panel.add(GPR_3_TF16);
 		  
 		  JButton lblGPR_3_loadBtn = new JButton("LD");
-		  lblGPR_3_loadBtn.setBounds(205, 80, 55, 16);
+		  lblGPR_3_loadBtn.setBounds(395, 80, 55, 16);
 		  panel.add(lblGPR_3_loadBtn);
 		  
 		  //Labels for IXR
@@ -213,260 +329,332 @@ public class GUI extends JFrame {
 		  lblIXR_1.setBounds(20, 120, 41, 16);
 		  panel.add(lblIXR_1);
 		  
-		  JTextField lblIXR_1_textfield_1 = new JTextField();
-		  lblIXR_1_textfield_1.setBounds(65, 120, 15, 16);
-		  lblIXR_1_textfield_1.setBackground(Color.black);
-		  panel.add(lblIXR_1_textfield_1);
+		  JTextField IXR_1_TF1 = new JTextField("0");
+		  IXR_1_TF1.setBounds(65, 120, 20, 16);
+		  panel.add(IXR_1_TF1);
 		  
-		  JTextField lblIXR_1_textfield_2 = new JTextField();
-		  lblIXR_1_textfield_2.setBounds(85, 120, 15, 16);
-		  lblIXR_1_textfield_2.setBackground(Color.black);
-		  panel.add(lblIXR_1_textfield_2);
+		  JTextField IXR_1_TF2 = new JTextField("0");
+		  IXR_1_TF2.setBounds(85, 120, 20, 16);
+		  panel.add(IXR_1_TF2);
 		  
-		  JTextField lblIXR_1_textfield_3 = new JTextField();
-		  lblIXR_1_textfield_3.setBounds(105, 120, 15, 16);
-		  lblIXR_1_textfield_3.setBackground(Color.black);
-		  panel.add(lblIXR_1_textfield_3);
+		  JTextField IXR_1_TF3 = new JTextField("0");
+		  IXR_1_TF3.setBounds(105, 120, 20, 16);
+		  panel.add(IXR_1_TF3);
 		  
-		  JTextField lblIXR_1_textfield_4 = new JTextField();
-		  lblIXR_1_textfield_4.setBounds(125, 120, 15, 16);
-		  lblIXR_1_textfield_4.setBackground(Color.black);
-		  panel.add(lblIXR_1_textfield_4);
+		  JTextField IXR_1_TF4 = new JTextField("0");
+		  IXR_1_TF4.setBounds(125, 120, 20, 16);
+		  panel.add(IXR_1_TF4);
 		  
-		  JTextField lblIXR_1_textfield_5 = new JTextField();
-		  lblIXR_1_textfield_5.setBounds(145, 120, 15, 16);
-		  lblIXR_1_textfield_5.setBackground(Color.black);
-		  panel.add(lblIXR_1_textfield_5);
+		  JTextField IXR_1_TF5 = new JTextField("0");
+		  IXR_1_TF5.setBounds(145, 120, 20, 16);
+		  panel.add(IXR_1_TF5);
 		  
-		  JTextField lblIXR_1_textfield_6 = new JTextField();
-		  lblIXR_1_textfield_6.setBounds(165, 120, 15, 16);
-		  lblIXR_1_textfield_6.setBackground(Color.black);
-		  panel.add(lblIXR_1_textfield_6);
+		  JTextField IXR_1_TF6 = new JTextField("0");
+		  IXR_1_TF6.setBounds(165, 120, 20, 16);
+		  panel.add(IXR_1_TF6);
 		  
-		  JTextField lblIXR_1_textfield_7 = new JTextField();
-		  lblIXR_1_textfield_7.setBounds(185, 120, 15, 16);
-		  lblIXR_1_textfield_7.setBackground(Color.black);
-		  panel.add(lblIXR_1_textfield_7);
+		  JTextField IXR_1_TF7 = new JTextField("0");
+		  IXR_1_TF7.setBounds(185, 120, 20, 16);
+		  panel.add(IXR_1_TF7);
 		  
-		  JButton lblIXR_1_loadBtn = new JButton("LD");
-		  lblIXR_1_loadBtn.setBounds(205, 120, 55, 16);
-		  panel.add(lblIXR_1_loadBtn);
+		  JTextField IXR_1_TF8 = new JTextField("0");
+		  IXR_1_TF8.setBounds(205, 120, 20, 16);
+		  panel.add(IXR_1_TF8);
+		  
+		  JTextField IXR_1_TF9 = new JTextField("0");
+		  IXR_1_TF9.setBounds(225, 120, 20, 16);
+		  panel.add(IXR_1_TF9);
+		  
+		  JTextField IXR_1_TF10 = new JTextField("0");
+		  IXR_1_TF10.setBounds(245, 120, 20, 16);
+		  panel.add(IXR_1_TF10);
+		  
+		  JTextField IXR_1_TF11 = new JTextField("0");
+		  IXR_1_TF11.setBounds(265, 120, 20, 16);
+		  panel.add(IXR_1_TF11);
+		  
+		  JTextField IXR_1_TF12 = new JTextField("0");
+		  IXR_1_TF12.setBounds(285, 120, 20, 16);
+		  panel.add(IXR_1_TF12);
+		  
+		  JTextField IXR_1_TF13 = new JTextField("0");
+		  IXR_1_TF13.setBounds(305, 120, 20, 16);
+		  panel.add(IXR_1_TF13);
+		  
+		  JTextField IXR_1_TF14 = new JTextField("0");
+		  IXR_1_TF14.setBounds(325, 120, 20, 16);
+		  panel.add(IXR_1_TF14);
+		  
+		  JTextField IXR_1_TF15 = new JTextField("0");
+		  IXR_1_TF15.setBounds(345, 120, 20, 16);
+		  panel.add(IXR_1_TF15);
+		  
+		  JTextField IXR_1_TF16 = new JTextField("0");
+		  IXR_1_TF16.setBounds(365, 120, 20, 16);
+		  panel.add(IXR_1_TF16);
+		  
+		  JButton IXR_1_loadBtn = new JButton("LD");
+		  IXR_1_loadBtn.setBounds(395, 120, 55, 16);
+		  panel.add(IXR_1_loadBtn);
 		  
 		  JLabel lblIXR_2 = new JLabel("IXR 2");
 		  lblIXR_2.setBounds(20, 140, 41, 16);
 		  panel.add(lblIXR_2);
 		  
-		  JTextField lblIXR_2_textfield_1 = new JTextField();
-		  lblIXR_2_textfield_1.setBounds(65, 140, 15, 16);
-		  lblIXR_2_textfield_1.setBackground(Color.black);
-		  panel.add(lblIXR_2_textfield_1);
+		  JTextField IXR_2_TF1 = new JTextField("0");
+		  IXR_2_TF1.setBounds(65, 140, 20, 16);
+		  panel.add(IXR_2_TF1);
 		  
-		  JTextField lblIXR_2_textfield_2 = new JTextField();
-		  lblIXR_2_textfield_2.setBounds(85, 140, 15, 16);
-		  lblIXR_2_textfield_2.setBackground(Color.black);
-		  panel.add(lblIXR_2_textfield_2);
+		  JTextField IXR_2_TF2 = new JTextField("0");
+		  IXR_2_TF2.setBounds(85, 140, 20, 16);
+		  panel.add(IXR_2_TF2);
 		  
-		  JTextField lblIXR_2_textfield_3 = new JTextField();
-		  lblIXR_2_textfield_3.setBounds(105, 140, 15, 16);
-		  lblIXR_2_textfield_3.setBackground(Color.black);
-		  panel.add(lblIXR_2_textfield_3);
+		  JTextField IXR_2_TF3 = new JTextField("0");
+		  IXR_2_TF3.setBounds(105, 140, 20, 16);
+		  panel.add(IXR_2_TF3);
 		  
-		  JTextField lblIXR_2_textfield_4 = new JTextField();
-		  lblIXR_2_textfield_4.setBounds(125, 140, 15, 16);
-		  lblIXR_2_textfield_4.setBackground(Color.black);
-		  panel.add(lblIXR_2_textfield_4);
+		  JTextField IXR_2_TF4 = new JTextField("0");
+		  IXR_2_TF4.setBounds(125, 140, 20, 16);
+		  panel.add(IXR_2_TF4);
 		  
-		  JTextField lblIXR_2_textfield_5 = new JTextField();
-		  lblIXR_2_textfield_5.setBounds(145, 140, 15, 16);
-		  lblIXR_2_textfield_5.setBackground(Color.black);
-		  panel.add(lblIXR_2_textfield_5);
+		  JTextField IXR_2_TF5 = new JTextField("0");
+		  IXR_2_TF5.setBounds(145, 140, 20, 16);
+		  panel.add(IXR_2_TF5);
 		  
-		  JTextField lblIXR_2_textfield_6 = new JTextField();
-		  lblIXR_2_textfield_6.setBounds(165, 140, 15, 16);
-		  lblIXR_2_textfield_6.setBackground(Color.black);
-		  panel.add(lblIXR_2_textfield_6);
+		  JTextField IXR_2_TF6 = new JTextField("0");
+		  IXR_2_TF6.setBounds(165, 140, 20, 16);
+		  panel.add(IXR_2_TF6);
 		  
-		  JTextField lblIXR_2_textfield_7 = new JTextField();
-		  lblIXR_2_textfield_7.setBounds(185, 140, 15, 16);
-		  lblIXR_2_textfield_7.setBackground(Color.black);
-		  panel.add(lblIXR_2_textfield_7);
+		  JTextField IXR_2_TF7 = new JTextField("0");
+		  IXR_2_TF7.setBounds(185, 140, 20, 16);
+		  panel.add(IXR_2_TF7);
 		  
-		  JButton lblIXR_2_loadBtn = new JButton("LD");
-		  lblIXR_2_loadBtn.setBounds(205, 140, 55, 16);
-		  panel.add(lblIXR_2_loadBtn);
+		  JTextField IXR_2_TF8 = new JTextField("0");
+		  IXR_2_TF8.setBounds(205, 140, 20, 16);
+		  panel.add(IXR_2_TF8);
+		  
+		  JTextField IXR_2_TF9 = new JTextField("0");
+		  IXR_2_TF9.setBounds(225, 140, 20, 16);
+		  panel.add(IXR_2_TF9);
+		  
+		  JTextField IXR_2_TF10 = new JTextField("0");
+		  IXR_2_TF10.setBounds(245, 140, 20, 16);
+		  panel.add(IXR_2_TF10);
+		  
+		  JTextField IXR_2_TF11 = new JTextField("0");
+		  IXR_2_TF11.setBounds(265, 140, 20, 16);
+		  panel.add(IXR_2_TF11);
+		  
+		  JTextField IXR_2_TF12 = new JTextField("0");
+		  IXR_2_TF12.setBounds(285, 140, 20, 16);
+		  panel.add(IXR_2_TF12);
+		  
+		  JTextField IXR_2_TF13 = new JTextField("0");
+		  IXR_2_TF13.setBounds(305, 140, 20, 16);
+		  panel.add(IXR_2_TF13);
+		  
+		  JTextField IXR_2_TF14 = new JTextField("0");
+		  IXR_2_TF14.setBounds(325, 140, 20, 16);
+		  panel.add(IXR_2_TF14);
+		  
+		  JTextField IXR_2_TF15 = new JTextField("0");
+		  IXR_2_TF15.setBounds(345, 140, 20, 16);
+		  panel.add(IXR_2_TF15);
+		  
+		  JTextField IXR_2_TF16 = new JTextField("0");
+		  IXR_2_TF16.setBounds(365, 140, 20, 16);
+		  panel.add(IXR_2_TF16);
+		  
+		  JButton IXR_2_loadBtn = new JButton("LD");
+		  IXR_2_loadBtn.setBounds(395, 140, 55, 16);
+		  panel.add(IXR_2_loadBtn);
 		  
 		  JLabel lblIXR_3 = new JLabel("IXR 3");
 		  lblIXR_3.setBounds(20, 160, 41, 16);
 		  panel.add(lblIXR_3);
 		  
-		  JTextField lblIXR_3_textfield_1 = new JTextField();
-		  lblIXR_3_textfield_1.setBounds(65, 160, 15, 16);
-		  lblIXR_3_textfield_1.setBackground(Color.black);
-		  panel.add(lblIXR_3_textfield_1);
+		  JTextField IXR_3_TF1 = new JTextField("0");
+		  IXR_3_TF1.setBounds(65, 160, 20, 16);
+		  panel.add(IXR_3_TF1);
 		  
-		  JTextField lblIXR_3_textfield_2 = new JTextField();
-		  lblIXR_3_textfield_2.setBounds(85, 160, 15, 16);
-		  lblIXR_3_textfield_2.setBackground(Color.black);
-		  panel.add(lblIXR_3_textfield_2);
+		  JTextField IXR_3_TF2 = new JTextField("0");
+		  IXR_3_TF2.setBounds(85, 160, 20, 16);
+		  panel.add(IXR_3_TF2);
 		  
-		  JTextField lblIXR_3_textfield_3 = new JTextField();
-		  lblIXR_3_textfield_3.setBounds(105, 160, 15, 16);
-		  lblIXR_3_textfield_3.setBackground(Color.black);
-		  panel.add(lblIXR_3_textfield_3);
+		  JTextField IXR_3_TF3 = new JTextField("0");
+		  IXR_3_TF3.setBounds(105, 160, 20, 16);
+		  panel.add(IXR_3_TF3);
 		  
-		  JTextField lblIXR_3_textfield_4 = new JTextField();
-		  lblIXR_3_textfield_4.setBounds(125, 160, 15, 16);
-		  lblIXR_3_textfield_4.setBackground(Color.black);
-		  panel.add(lblIXR_3_textfield_4);
+		  JTextField IXR_3_TF4 = new JTextField("0");
+		  IXR_3_TF4.setBounds(125, 160, 20, 16);
+		  panel.add(IXR_3_TF4);
 		  
-		  JTextField lblIXR_3_textfield_5 = new JTextField();
-		  lblIXR_3_textfield_5.setBounds(145, 160, 15, 16);
-		  lblIXR_3_textfield_5.setBackground(Color.black);
-		  panel.add(lblIXR_3_textfield_5);
+		  JTextField IXR_3_TF5 = new JTextField("0");
+		  IXR_3_TF5.setBounds(145, 160, 20, 16);
+		  panel.add(IXR_3_TF5);
 		  
-		  JTextField lblIXR_3_textfield_6 = new JTextField();
-		  lblIXR_3_textfield_6.setBounds(165, 160, 15, 16);
-		  lblIXR_3_textfield_6.setBackground(Color.black);
-		  panel.add(lblIXR_3_textfield_6);
+		  JTextField IXR_3_TF6 = new JTextField("0");
+		  IXR_3_TF6.setBounds(165, 160, 20, 16);
+		  panel.add(IXR_3_TF6);
 		  
-		  JTextField lblIXR_3_textfield_7 = new JTextField();
-		  lblIXR_3_textfield_7.setBounds(185, 160, 15, 16);
-		  lblIXR_3_textfield_7.setBackground(Color.black);
-		  panel.add(lblIXR_3_textfield_7);
+		  JTextField IXR_3_TF7 = new JTextField("0");
+		  IXR_3_TF7.setBounds(185, 160, 20, 16);
+		  panel.add(IXR_3_TF7);
 		  
-		  JButton lblIXR_3_loadBtn = new JButton("LD");
-		  lblIXR_3_loadBtn.setBounds(205, 160, 55, 16);
-		  panel.add(lblIXR_3_loadBtn);
+		  JTextField IXR_3_TF8 = new JTextField("0");
+		  IXR_3_TF8.setBounds(205, 160, 20, 16);
+		  panel.add(IXR_3_TF8);
+		  
+		  JTextField IXR_3_TF9 = new JTextField("0");
+		  IXR_3_TF9.setBounds(225, 160, 20, 16);
+		  panel.add(IXR_3_TF9);
+		  
+		  JTextField IXR_3_TF10 = new JTextField("0");
+		  IXR_3_TF10.setBounds(245, 160, 20, 16);
+		  panel.add(IXR_3_TF10);
+		  
+		  JTextField IXR_3_TF11 = new JTextField("0");
+		  IXR_3_TF11.setBounds(265, 160, 20, 16);
+		  panel.add(IXR_3_TF11);
+		  
+		  JTextField IXR_3_TF12 = new JTextField("0");
+		  IXR_3_TF12.setBounds(285, 160, 20, 16);
+		  panel.add(IXR_3_TF12);
+		  
+		  JTextField IXR_3_TF13 = new JTextField("0");
+		  IXR_3_TF13.setBounds(305, 160, 20, 16);
+		  panel.add(IXR_3_TF13);
+		  
+		  JTextField IXR_3_TF14 = new JTextField("0");
+		  IXR_3_TF14.setBounds(325, 160, 20, 16);
+		  panel.add(IXR_3_TF14);
+		  
+		  JTextField IXR_3_TF15 = new JTextField("0");
+		  IXR_3_TF15.setBounds(345, 160, 20, 16);
+		  panel.add(IXR_3_TF15);
+		  
+		  JTextField IXR_3_TF16 = new JTextField("0");
+		  IXR_3_TF16.setBounds(365, 160, 20, 16);
+		  panel.add(IXR_3_TF16);
+		  
+		  JButton IXR_3_loadBtn = new JButton("LD");
+		  IXR_3_loadBtn.setBounds(395, 160, 55, 16);
+		  panel.add(IXR_3_loadBtn);
 		  
 		  
 		  //Labels for PC, MAR, MBR, IR, MFR, Privileged
 		  JLabel PClbl = new JLabel("PC");
-		  PClbl.setBounds(335, 20, 25, 16);
+		  PClbl.setBounds(500, 20, 25, 16);
 		  panel.add(PClbl);
 		  
-		  JTextField textPc_1 = new JTextField();
-		  textPc_1.setBounds(375, 20, 15, 16);
-		  textPc_1.setBackground(Color.black);
+		  JTextField textPc_1 = new JTextField("0");
+		  textPc_1.setBounds(545, 20, 20, 16);
 		  panel.add(textPc_1);
 		  
-		  JTextField textPc_2 = new JTextField();
-		  textPc_2.setBounds(395, 20, 15, 16);
-		  textPc_2.setBackground(Color.black);
+		  JTextField textPc_2 = new JTextField("0");
+		  textPc_2.setBounds(565, 20, 20, 16);
 		  panel.add(textPc_2);
 		  
-		  JTextField textPc_3 = new JTextField();
-		  textPc_3.setBounds(415, 20, 15, 16);
-		  textPc_3.setBackground(Color.black);
+		  JTextField textPc_3 = new JTextField("0");
+		  textPc_3.setBounds(585, 20, 20, 16);
 		  panel.add(textPc_3);
 		  
-		  JTextField textPc_4 = new JTextField();
-		  textPc_4.setBounds(435, 20, 15, 16);
-		  textPc_4.setBackground(Color.black);
+		  JTextField textPc_4 = new JTextField("0");
+		  textPc_4.setBounds(605, 20, 20, 16);
 		  panel.add(textPc_4);
 		  
-		  JTextField textPc_5 = new JTextField();
-		  textPc_5.setBounds(455, 20, 15, 16);
-		  textPc_5.setBackground(Color.black);
+		  JTextField textPc_5 = new JTextField("0");
+		  textPc_5.setBounds(625, 20, 20, 16);
 		  panel.add(textPc_5);
 		  
-		  JTextField textPc_6 = new JTextField();
-		  textPc_6.setBounds(475, 20, 15, 16);
-		  textPc_6.setBackground(Color.black);
+		  JTextField textPc_6 = new JTextField("0");
+		  textPc_6.setBounds(645, 20, 20, 16);
 		  panel.add(textPc_6);
 		  
-		  JTextField textPc_7 = new JTextField();
-		  textPc_7.setBounds(495, 20, 15, 16);
-		  textPc_7.setBackground(Color.black);
+		  JTextField textPc_7 = new JTextField("0");
+		  textPc_7.setBounds(665, 20, 20, 16);
 		  panel.add(textPc_7);
 		  
-		  JTextField textPc_8 = new JTextField();
-		  textPc_8.setBounds(515, 20, 15, 16);
-		  textPc_8.setBackground(Color.black);
+		  JTextField textPc_8 = new JTextField("0");
+		  textPc_8.setBounds(685, 20, 20, 16);
 		  panel.add(textPc_8);
 		  
-		  JTextField textPc_9 = new JTextField();
-		  textPc_9.setBounds(535, 20, 15, 16);
-		  textPc_9.setBackground(Color.black);
+		  JTextField textPc_9 = new JTextField("0");
+		  textPc_9.setBounds(705, 20, 20, 16);
 		  panel.add(textPc_9);
 		  
-		  JTextField textPc_10 = new JTextField();
-		  textPc_10.setBounds(555, 20, 15, 16);
-		  textPc_10.setBackground(Color.black);
+		  JTextField textPc_10 = new JTextField("0");
+		  textPc_10.setBounds(725, 20, 20, 16);
 		  panel.add(textPc_10);
 		  
-		  JTextField textPc_11 = new JTextField();
-		  textPc_11.setBounds(575, 20, 15, 16);
-		  textPc_11.setBackground(Color.black);
+		  JTextField textPc_11 = new JTextField("0");
+		  textPc_11.setBounds(745, 20, 20, 16);
 		  panel.add(textPc_11);
 		  
-		  JTextField textPc_12 = new JTextField();
-		  textPc_12.setBounds(595, 20, 15, 16);
-		  textPc_12.setBackground(Color.black);
+		  JTextField textPc_12 = new JTextField("0");
+		  textPc_12.setBounds(765, 20, 20, 16);
 		  panel.add(textPc_12);
 		  
 		  JButton PCbtn = new JButton("LD");
-		  PCbtn.setBounds(615, 20, 55, 16);
+		  PCbtn.setBounds(875, 20, 55, 16);
 		  panel.add(PCbtn);
 		  
+		  //MAR
 		  JLabel MARlbl = new JLabel("MAR");
-		  MARlbl.setBounds(335, 40, 30, 16);
+		  MARlbl.setBounds(500, 40, 30, 16);
 		  panel.add(MARlbl);
 		  
-		  JTextField textMar_1 = new JTextField();
-		  textMar_1.setBounds(375, 40, 20, 16);
-//		  textMar_1.setBackground(Color.white);
+		  JTextField textMar_1 = new JTextField("0");
+		  textMar_1.setBounds(545, 40, 20, 16);
 		  panel.add(textMar_1);
 		  
-		  JTextField textMar_2 = new JTextField();
-		  textMar_2.setBounds(395, 40, 20, 16);
+		  JTextField textMar_2 = new JTextField("0");
+		  textMar_2.setBounds(565, 40, 20, 16);
 		  panel.add(textMar_2);
 		  
-		  JTextField textMar_3 = new JTextField();
-		  textMar_3.setBounds(415, 40, 20, 16);
+		  JTextField textMar_3 = new JTextField("0");
+		  textMar_3.setBounds(585, 40, 20, 16);
 		  panel.add(textMar_3);
 		  
-		  JTextField textMar_4 = new JTextField();
-		  textMar_4.setBounds(435, 40, 20, 16);
+		  JTextField textMar_4 = new JTextField("0");
+		  textMar_4.setBounds(605, 40, 20, 16);
 		  panel.add(textMar_4);
 		  
-		  JTextField textMar_5 = new JTextField();
-		  textMar_5.setBounds(455, 40, 20, 16);
+		  JTextField textMar_5 = new JTextField("0");
+		  textMar_5.setBounds(625, 40, 20, 16);
 		  panel.add(textMar_5);
 		  
-		  JTextField textMar_6 = new JTextField();
-		  textMar_6.setBounds(475, 40, 20, 16);
+		  JTextField textMar_6 = new JTextField("0");
+		  textMar_6.setBounds(645, 40, 20, 16);
 		  panel.add(textMar_6);
 		  
-		  JTextField textMar_7 = new JTextField();
-		  textMar_7.setBounds(495, 40, 20, 16);
+		  JTextField textMar_7 = new JTextField("0");
+		  textMar_7.setBounds(665, 40, 20, 16);
 		  panel.add(textMar_7);
 		  
-		  JTextField textMar_8 = new JTextField();
-		  textMar_8.setBounds(515, 40, 20, 16);
+		  JTextField textMar_8 = new JTextField("0");
+		  textMar_8.setBounds(685, 40, 20, 16);
 		  panel.add(textMar_8);
 		  
-		  JTextField textMar_9 = new JTextField();
-		  textMar_9.setBounds(535, 40, 20, 16);
+		  JTextField textMar_9 = new JTextField("0");
+		  textMar_9.setBounds(705, 40, 20, 16);
 		  panel.add(textMar_9);
 		  
-		  JTextField textMar_10 = new JTextField();
-		  textMar_10.setBounds(555, 40, 20, 16);
+		  JTextField textMar_10 = new JTextField("0");
+		  textMar_10.setBounds(725, 40, 20, 16);
 		  panel.add(textMar_10);
 		  
-		  JTextField textMar_11 = new JTextField();
-		  textMar_11.setBounds(575, 40, 20, 16);
+		  JTextField textMar_11 = new JTextField("0");
+		  textMar_11.setBounds(745, 40, 20, 16);
 		  panel.add(textMar_11);
 		  
-		  JTextField textMar_12 = new JTextField();
-		  textMar_12.setBounds(595, 40, 20, 16);
+		  JTextField textMar_12 = new JTextField("0");
+		  textMar_12.setBounds(765, 40, 20, 16);
 		  panel.add(textMar_12);
 		  
-//		  ArrayList<JTextField> marTextArr= new ArrayList<JTextField>();
-//		  marTextArr.add(textMar_12); marTextArr.add(textMar_11); marTextArr.add(textMar_10); marTextArr.add(textMar_9); marTextArr.add(textMar_8); marTextArr.add(textMar_7);
-//		  marTextArr.add(textMar_6); marTextArr.add(textMar_5); marTextArr.add(textMar_4); marTextArr.add(textMar_3); marTextArr.add(textMar_2); marTextArr.add(textMar_1);
 
 		  JButton MARbtn = new JButton("LD");
-		  MARbtn.setBounds(695, 40, 55, 16);
+		  MARbtn.setBounds(875, 40, 55, 16);
 		  MARbtn.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -495,76 +683,77 @@ public class GUI extends JFrame {
 		  });
 		  panel.add(MARbtn);
 		  
+		  //MBR
 		  JLabel MBRlbl = new JLabel("MBR");
-		  MBRlbl.setBounds(335, 61, 30, 15);
+		  MBRlbl.setBounds(500, 61, 30, 15);
 		  panel.add(MBRlbl);
 		  
-		  JTextField textMbr_1 = new JTextField();
-		  textMbr_1.setBounds(375, 61, 20, 16);
+		  JTextField textMbr_1 = new JTextField("0");
+		  textMbr_1.setBounds(545, 61, 20, 16);
 		  panel.add(textMbr_1);
 		  
-		  JTextField textMbr_2 = new JTextField();
-		  textMbr_2.setBounds(395, 61, 20, 16);
+		  JTextField textMbr_2 = new JTextField("0");
+		  textMbr_2.setBounds(565, 61, 20, 16);
 		  panel.add(textMbr_2);
 		  
-		  JTextField textMbr_3 = new JTextField();
-		  textMbr_3.setBounds(415, 61, 20, 16);
+		  JTextField textMbr_3 = new JTextField("0");
+		  textMbr_3.setBounds(585, 61, 20, 16);
 		  panel.add(textMbr_3);
 		  
-		  JTextField textMbr_4 = new JTextField();
-		  textMbr_4.setBounds(435, 61, 20, 16);
+		  JTextField textMbr_4 = new JTextField("0");
+		  textMbr_4.setBounds(605, 61, 20, 16);
 		  panel.add(textMbr_4);
 		  
-		  JTextField textMbr_5 = new JTextField();
-		  textMbr_5.setBounds(455, 61, 20, 16);
+		  JTextField textMbr_5 = new JTextField("0");
+		  textMbr_5.setBounds(625, 61, 20, 16);
 		  panel.add(textMbr_5);
 		  
-		  JTextField textMbr_6 = new JTextField();
-		  textMbr_6.setBounds(475, 61, 20, 16);
+		  JTextField textMbr_6 = new JTextField("0");
+		  textMbr_6.setBounds(645, 61, 20, 16);
 		  panel.add(textMbr_6);
 		  
-		  JTextField textMbr_7 = new JTextField();
-		  textMbr_7.setBounds(495, 61, 20, 16);
+		  JTextField textMbr_7 = new JTextField("0");
+		  textMbr_7.setBounds(665, 61, 20, 16);
 		  panel.add(textMbr_7);
 		  
-		  JTextField textMbr_8 = new JTextField();
-		  textMbr_8.setBounds(515, 61, 20, 16);
+		  JTextField textMbr_8 = new JTextField("0");
+		  textMbr_8.setBounds(685, 61, 20, 16);
 		  panel.add(textMbr_8);
 		  
-		  JTextField textMbr_9 = new JTextField();
-		  textMbr_9.setBounds(535, 61, 20, 16);
+		  JTextField textMbr_9 = new JTextField("0");
+		  textMbr_9.setBounds(705, 61, 20, 16);
 		  panel.add(textMbr_9);
 		  
-		  JTextField textMbr_10 = new JTextField();
-		  textMbr_10.setBounds(555, 61, 20, 16);
+		  JTextField textMbr_10 = new JTextField("0");
+		  textMbr_10.setBounds(725, 61, 20, 16);
 		  panel.add(textMbr_10);
 		  
-		  JTextField textMbr_11 = new JTextField();
-		  textMbr_11.setBounds(575, 61, 20, 16);
+		  JTextField textMbr_11 = new JTextField("0");
+		  textMbr_11.setBounds(745, 61, 20, 16);
 		  panel.add(textMbr_11);
 		  
-		  JTextField textMbr_12 = new JTextField();
-		  textMbr_12.setBounds(595, 61, 20, 16);
+		  JTextField textMbr_12 = new JTextField("0");
+		  textMbr_12.setBounds(765, 61, 20, 16);
 		  panel.add(textMbr_12);
 		  
-		  JTextField textMbr_13 = new JTextField();
-		  textMbr_13.setBounds(615, 61, 20, 16);
+		  JTextField textMbr_13 = new JTextField("0");
+		  textMbr_13.setBounds(785, 61, 20, 16);
 		  panel.add(textMbr_13);
 		  
-		  JTextField textMbr_14 = new JTextField();
-		  textMbr_14.setBounds(635, 61, 20, 16);
+		  JTextField textMbr_14 = new JTextField("0");
+		  textMbr_14.setBounds(805, 61, 20, 16);
 		  panel.add(textMbr_14);
 		  
-		  JTextField textMbr_15 = new JTextField();
-		  textMbr_15.setBounds(655, 61, 20, 16);
+		  JTextField textMbr_15 = new JTextField("0");
+		  textMbr_15.setBounds(825, 61, 20, 16);
 		  panel.add(textMbr_15);
 		  
-		  JTextField textMbr_16 = new JTextField();
-		  textMbr_16.setBounds(675, 61, 20, 16);
+		  JTextField textMbr_16 = new JTextField("0");
+		  textMbr_16.setBounds(845, 61, 20, 16);
 		  panel.add(textMbr_16);
 		  
 		  JButton MBRbtn = new JButton("LD");
-		  MBRbtn.setBounds(695, 61, 55, 16);
+		  MBRbtn.setBounds(875, 61, 55, 16);
 		  MBRbtn.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -597,102 +786,87 @@ public class GUI extends JFrame {
 			  });
 		  panel.add(MBRbtn);
 		  
-		  
+		  //IR
 		  JLabel IRlbl = new JLabel("IR");
-		  IRlbl.setBounds(335, 80, 25, 16);
+		  IRlbl.setBounds(500, 80, 25, 16);
 		  panel.add(IRlbl);
 		  
-		  JTextField textIR_1 = new JTextField();
-		  textIR_1.setBounds(375, 80, 15, 16);
-		  textIR_1.setBackground(Color.black);
+		  JTextField textIR_1 = new JTextField("0");
+		  textIR_1.setBounds(545, 80, 20, 16);
 		  panel.add(textIR_1);
 		  
-		  JTextField textIR_2 = new JTextField();
-		  textIR_2.setBounds(395, 80, 15, 16);
-		  textIR_2.setBackground(Color.black);
+		  JTextField textIR_2 = new JTextField("0");
+		  textIR_2.setBounds(565, 80, 20, 16);
 		  panel.add(textIR_2);
 		  
-		  JTextField textIR_3 = new JTextField();
-		  textIR_3.setBounds(415, 80, 15, 16);
-		  textIR_3.setBackground(Color.black);
+		  JTextField textIR_3 = new JTextField("0");
+		  textIR_3.setBounds(585, 80, 20, 16);
 		  panel.add(textIR_3);
 		  
-		  JTextField textIR_4 = new JTextField();
-		  textIR_4.setBounds(435, 80, 15, 16);
-		  textIR_4.setBackground(Color.black);
+		  JTextField textIR_4 = new JTextField("0");
+		  textIR_4.setBounds(605, 80, 20, 16);
 		  panel.add(textIR_4);
 		  
-		  JTextField textIR_5 = new JTextField();
-		  textIR_5.setBounds(455, 80, 15, 16);
-		  textIR_5.setBackground(Color.black);
+		  JTextField textIR_5 = new JTextField("0");
+		  textIR_5.setBounds(625, 80, 20, 16);
 		  panel.add(textIR_5);
 		  
-		  JTextField textIR_6 = new JTextField();
-		  textIR_6.setBounds(475, 80, 15, 16);
-		  textIR_6.setBackground(Color.black);
+		  JTextField textIR_6 = new JTextField("0");
+		  textIR_6.setBounds(645, 80, 20, 16);
 		  panel.add(textIR_6);
 		  
-		  JTextField textIR_7 = new JTextField();
-		  textIR_7.setBounds(495, 80, 15, 16);
-		  textIR_7.setBackground(Color.black);
+		  JTextField textIR_7 = new JTextField("0");
+		  textIR_7.setBounds(665, 80, 20, 16);
 		  panel.add(textIR_7);
 		  
-		  JTextField textIR_8 = new JTextField();
-		  textIR_8.setBounds(515, 80, 15, 16);
-		  textIR_8.setBackground(Color.black);
+		  JTextField textIR_8 = new JTextField("0");
+		  textIR_8.setBounds(685, 80, 20, 16);
 		  panel.add(textIR_8);
 		  
-		  JTextField textIR_9 = new JTextField();
-		  textIR_9.setBounds(535, 80, 15, 16);
-		  textIR_9.setBackground(Color.black);
+		  JTextField textIR_9 = new JTextField("0");
+		  textIR_9.setBounds(705, 80, 20, 16);
 		  panel.add(textIR_9);
 		  
-		  JTextField textIR_10 = new JTextField();
-		  textIR_10.setBounds(555, 80, 15, 16);
-		  textIR_10.setBackground(Color.black);
+		  JTextField textIR_10 = new JTextField("0");
+		  textIR_10.setBounds(725, 80, 20, 16);
 		  panel.add(textIR_10);
 		  
-		  JTextField textIR_11 = new JTextField();
-		  textIR_11.setBounds(575, 80, 15, 16);
-		  textIR_11.setBackground(Color.black);
+		  JTextField textIR_11 = new JTextField("0");
+		  textIR_11.setBounds(745, 80, 20, 16);
 		  panel.add(textIR_11);
 		  
-		  JTextField textIR_12 = new JTextField();
-		  textIR_12.setBounds(595, 80, 15, 16);
-		  textIR_12.setBackground(Color.black);
+		  JTextField textIR_12 = new JTextField("0");
+		  textIR_12.setBounds(765, 80, 20, 16);
 		  panel.add(textIR_12);
 		  
+		  //MFR
 		  JLabel MFRlbl = new JLabel("MFR");
-		  MFRlbl.setBounds(443, 101, 30, 16);
+		  MFRlbl.setBounds(500, 101, 30, 16);
 		  panel.add(MFRlbl);
 		  
-		  JTextField MFRlbl_textfield_1 = new JTextField();
-		  MFRlbl_textfield_1.setBounds(477, 101, 15, 16);
-		  MFRlbl_textfield_1.setBackground(Color.black);
-		  panel.add(MFRlbl_textfield_1);
+		  JTextField MFR_TF1 = new JTextField("0");
+		  MFR_TF1.setBounds(545, 101, 20, 16);
+		  panel.add(MFR_TF1);
 		  
-		  JTextField MFRlbl_textfield_2 = new JTextField();
-		  MFRlbl_textfield_2.setBounds(497, 101, 15, 16);
-		  MFRlbl_textfield_2.setBackground(Color.black);
-		  panel.add(MFRlbl_textfield_2);
+		  JTextField MFR_TF2 = new JTextField("0");
+		  MFR_TF2.setBounds(565, 101, 20, 16);
+		  panel.add(MFR_TF2);
 		  
-		  JTextField MFRlbl_textfield_3 = new JTextField();
-		  MFRlbl_textfield_3.setBounds(517, 101, 15, 16);
-		  MFRlbl_textfield_3.setBackground(Color.black);
-		  panel.add(MFRlbl_textfield_3);
+		  JTextField MFR_TF3 = new JTextField("0");
+		  MFR_TF3.setBounds(585, 101, 20, 16);
+		  panel.add(MFR_TF3);
 		  
-		  JTextField MFRlbl_textfield_4 = new JTextField();
-		  MFRlbl_textfield_4.setBounds(537, 101, 15, 16);
-		  MFRlbl_textfield_4.setBackground(Color.black);
-		  panel.add(MFRlbl_textfield_4);
+		  JTextField MFR_TF4 = new JTextField("0");
+		  MFR_TF4.setBounds(605, 101, 20, 16);
+		  panel.add(MFR_TF4);
 		  
+		  //Privileged
 		  JLabel Privlbl = new JLabel("Privileged");
-		  Privlbl.setBounds(407, 120, 66, 16);
+		  Privlbl.setBounds(470, 120, 66, 16);
 		  panel.add(Privlbl);
 		  
-		  JTextField Privlbl_textfield = new JTextField();
-		  Privlbl_textfield.setBounds(477, 120, 15, 16);
-		  Privlbl_textfield.setBackground(Color.black);
+		  JTextField Privlbl_textfield = new JTextField("0");
+		  Privlbl_textfield.setBounds(545, 120, 20, 16);
 		  panel.add(Privlbl_textfield);
 		  
 		  
@@ -746,11 +920,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_15.getText()=="0") {
 						btnNewButton_15.setText("1");
-						data[0] ="1";
+						data[0] = "1";
 					}
 					else{
 						btnNewButton_15.setText("0");
-						data[0] ="0";
+						data[0] = "0";
 					}
 					
 				}
@@ -768,11 +942,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_14.getText()=="0") {
 						btnNewButton_14.setText("1");
-						data[1] ="1";
+						data[1] = "1";
 					}
 					else{
 						btnNewButton_14.setText("0");
-						data[1] ="0";
+						data[1] = "0";
 					}
 				}
 				
@@ -789,11 +963,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_13.getText()=="0") {
 						btnNewButton_13.setText("1");
-						data[2] ="1";
+						data[2] = "1";
 					}
 					else{
 						btnNewButton_13.setText("0");
-						data[2] ="0";
+						data[2] = "0";
 					}
 				}
 				
@@ -810,11 +984,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_12.getText()=="0") {
 						btnNewButton_12.setText("1");
-						data[3] ="1";
+						data[3] = "1";
 					}
 					else{
 						btnNewButton_12.setText("0");
-						data[3] ="0";
+						data[3] = "0";
 					}
 //					data[3] = btnNewButton_15.getText();
 				}
@@ -832,11 +1006,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_11.getText()=="0") {
 						btnNewButton_11.setText("1");
-						data[4] ="1";
+						data[4] = "1";
 					}
 					else{
 						btnNewButton_11.setText("0");
-						data[4] ="0";
+						data[4] = "0";
 					}
 				}
 				
@@ -853,11 +1027,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_10.getText()=="0") {
 						btnNewButton_10.setText("1");
-						data[5] ="1";
+						data[5] = "1";
 					}
 					else{
 						btnNewButton_10.setText("0");
-						data[5] ="0";
+						data[5] = "0";
 					}
 				}
 				
@@ -874,11 +1048,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_9.getText()=="0") {
 						btnNewButton_9.setText("1");
-						data[6] ="1";
+						data[6] = "1";
 					}
 					else{
 						btnNewButton_9.setText("0");
-						data[6] ="0";
+						data[6] = "0";
 					}
 				}
 				
@@ -895,11 +1069,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_8.getText()=="0") {
 						btnNewButton_8.setText("1");
-						data[7] ="1";
+						data[7] = "1";
 					}
 					else{
 						btnNewButton_8.setText("0");
-						data[7] ="0";
+						data[7] = "0";
 					}
 				}
 				
@@ -916,11 +1090,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_7.getText()=="0") {
 						btnNewButton_7.setText("1");
-						data[8] ="1";
+						data[8] = "1";
 					}
 					else{
 						btnNewButton_7.setText("0");
-						data[8] ="0";
+						data[8] = "0";
 					}
 				}
 				
@@ -937,11 +1111,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_6.getText()=="0") {
 						btnNewButton_6.setText("1");
-						data[9] ="1";
+						data[9] = "1";
 					}
 					else{
 						btnNewButton_6.setText("0");
-						data[9] ="0";
+						data[9] = "0";
 					}
 				}
 				
@@ -958,11 +1132,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_5.getText()=="0") {
 						btnNewButton_5.setText("1");
-						data[10] ="1";
+						data[10] = "1";
 					}
 					else{
 						btnNewButton_5.setText("0");
-						data[10] ="0";
+						data[10] = "0";
 					}
 				}
 				
@@ -979,11 +1153,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_4.getText()=="0") {
 						btnNewButton_4.setText("1");
-						data[11] ="1";
+						data[11] = "1";
 					}
 					else{
 						btnNewButton_4.setText("0");
-						data[11] ="0";
+						data[11] = "0";
 					}
 				}
 				
@@ -1000,11 +1174,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_3.getText()=="0") {
 						btnNewButton_3.setText("1");
-						data[12] ="1";
+						data[12] = "1";
 					}
 					else{
 						btnNewButton_3.setText("0");
-						data[12] ="0";
+						data[12] = "0";
 					}
 				}
 				
@@ -1021,11 +1195,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_2.getText()=="0") {
 						btnNewButton_2.setText("1");
-						data[13] ="1";
+						data[13] = "1";
 					}
 					else{
 						btnNewButton_2.setText("0");
-						data[13] ="0";
+						data[13] = "0";
 					}
 				}
 				
@@ -1042,11 +1216,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_1.getText()=="0") {
 						btnNewButton_1.setText("1");
-						data[14] ="1";
+						data[14] = "1";
 					}
 					else{
 						btnNewButton_1.setText("0");
-						data[14] ="0";
+						data[14] = "0";
 					}
 				}
 				
@@ -1063,11 +1237,11 @@ public class GUI extends JFrame {
 					// TODO Auto-generated method stub
 					if(btnNewButton_0.getText()=="0") {
 						btnNewButton_0.setText("1");
-						data[15] ="1";
+						data[15] = "1";
 					}
 					else{
 						btnNewButton_0.setText("0");
-						data[15] ="0";
+						data[15] = "0";
 					}
 				}
 				
@@ -1096,7 +1270,7 @@ public class GUI extends JFrame {
 			lblNewLabel_4.setBounds(630, 307, 65, 16);
 			panel.add(lblNewLabel_4);
 			
-		  //Store,St+,Load,Init Buttons
+		  //Store
 		  JButton storeBtn = new JButton("Store");
 		  storeBtn.setBounds(245, 362, 75, 30);
 		  storeBtn.addActionListener(new ActionListener() {
@@ -1111,6 +1285,7 @@ public class GUI extends JFrame {
 		  });
 		  panel.add(storeBtn);
 		  
+		  //St+
 		  JButton stBtn = new JButton("St+");
 		  stBtn.setBounds(335, 362, 75, 30);
 		  stBtn.addActionListener(new ActionListener() {
@@ -1122,40 +1297,40 @@ public class GUI extends JFrame {
 				//storing the value MBR in MAR
 				Memory.getInstance().store(Register.getInstance().getMAR(), Register.getInstance().getMBR());
 				
-				//Incrementing the MAR and changing the string array - data
+				//Incrementing the MAR and changing the string array - dataValue
 				String MAR = Integer.toBinaryString(Register.getInstance().getMAR() + 1);				
 				
-				for(int i=0; i<=15-MAR.length(); i++) {
-					data[i] = "0";
-				}
+				String[] dataValue = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
 			
 				for (int i = 0; i < MAR.length(); i++) {
-		            data[16-MAR.length()+i] = MAR.substring(i, i+1);
+					dataValue[12-MAR.length()+i] = MAR.substring(i, i+1);
 		        }
 				
 				//setting the new incremented MAR value
 				Register.getInstance().setMAR(Integer.parseInt(MAR.toString(), 2));
 				
 				//displaying on the MAR field
-				textMar_1.setText(data[4]);
-				textMar_2.setText(data[5]);
-				textMar_3.setText(data[6]);
-				textMar_4.setText(data[7]);
-				textMar_5.setText(data[8]);
-				textMar_6.setText(data[9]);
-				textMar_7.setText(data[10]);
-				textMar_8.setText(data[11]);
-				textMar_9.setText(data[12]);
-				textMar_10.setText(data[13]);
-				textMar_11.setText(data[14]);
-				textMar_12.setText(data[15]);
-								
+				textMar_1.setText(dataValue[0]);
+				textMar_2.setText(dataValue[1]);
+				textMar_3.setText(dataValue[2]);
+				textMar_4.setText(dataValue[3]);
+				textMar_5.setText(dataValue[4]);
+				textMar_6.setText(dataValue[5]);
+				textMar_7.setText(dataValue[6]);
+				textMar_8.setText(dataValue[7]);
+				textMar_9.setText(dataValue[8]);
+				textMar_10.setText(dataValue[9]);
+				textMar_11.setText(dataValue[10]);
+				textMar_12.setText(dataValue[11]);
+				
+				
 			    
 			}
 			  
 		  });
 		  panel.add(stBtn);
 		  
+		  //Load
 		  JButton loadBtn = new JButton("Load");
 		  loadBtn.setBounds(435, 362, 75, 30);
 		  loadBtn.addActionListener(new ActionListener() {
@@ -1201,19 +1376,22 @@ public class GUI extends JFrame {
 		  });
 		  panel.add(loadBtn);
 		  
+		  //Init
 		  JButton initBtn = new JButton("Init");
 		  initBtn.setBounds(535, 362, 75, 30);
 		  initBtn.setBackground(Color.red);
 		  panel.add(initBtn);
-		  
+		  //SS
 		  JButton ssBtn = new JButton("SS");
 		  ssBtn.setBounds(330, 405, 50, 45);
 		  panel.add(ssBtn);
 		  
+		  //Run
 		  JButton runBtn = new JButton("Run");
 		  runBtn.setBounds(415, 405, 60, 45);
 		  panel.add(runBtn);
 		  
+		  //Halt
 		  JLabel haltlbl = new JLabel("Halt");
 		  haltlbl.setBounds(546, 405, 25, 26);
 		  panel.add(haltlbl);
@@ -1231,7 +1409,8 @@ public class GUI extends JFrame {
 		  textfield_2.setBounds(575, 435, 25, 26);
 		  textfield_2.setBackground(Color.black);
 		  panel.add(textfield_2);
-		  
+		    
 	  }
+	  
 	  
 }
