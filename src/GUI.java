@@ -1609,8 +1609,6 @@ public class GUI extends JFrame {
 		// Run
 		JButton runBtn = new JButton("Run");
 		runBtn.setBounds(415, 405, 60, 45);
-		panel.add(runBtn);
-
 		runBtn.addActionListener(new ActionListener() {
 
 			@Override
@@ -1823,7 +1821,8 @@ public class GUI extends JFrame {
 				} while(true);
 			}
 		});
-		panel.add(ssBtn);
+		panel.add(runBtn);
+
 		// Halt
 		JLabel haltlbl = new JLabel("Halt");
 		haltlbl.setBounds(546, 405, 25, 26);
