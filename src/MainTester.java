@@ -39,5 +39,6 @@ public class MainTester {
 		CPU.readIPL();
 		
 		CPU.run();
+		
 	}
 }

@@ -20,9 +20,9 @@ public class CPU {
 			
 			while(reader.hasNextLine()) {
 				String line = reader.nextLine();
-				if(i == 0) {
+				if(i == 0) {		//Just to test out the function
 					String addressStr = line.substring(0,4);
-					register.setMAR(Integer.parseInt(addressStr, 16));	
+					register.setPC(Integer.parseInt(addressStr, 16));	
 				}
 
 				Operations.saveInstruction(line);
@@ -44,22 +44,28 @@ public class CPU {
 		//Making new instruction object
 		Load instruction = new Load();
 		do {
+			register.setMAR(register.getPC()); 
 			register.setMBR(memory.load(register.getMAR()));
-			register.setIR(memory.load(register.getMAR()));
-			
-			//Increment PC
-			register.setPC(register.getPC() + 1);
+			register.setIR(register.getMBR());
+
 			
 			//Loading instruction from memory
-			instruction.loadInstruction(register.getMAR());
-			if(instruction.opcode == 0)
-				break;
+			instruction.loadInstruction(register.getIR());
+			
+			if(instruction.opcode == 0) {
+				//System.out.println("Break happened.");
+				break;		//HLT
+			}
+
+			
 			instruction.runInstruction();
 			
 			//Test code print
 			System.out.println("PC: " + register.getPC());
 			
-			register.setMAR(register.getMAR() + 1);
+			//Increment PC
+			register.setPC(register.getPC() + 1);
+			System.out.println("PC: "+ register.getPC());
 
 		} while(true);
 	}
@@ -71,8 +77,9 @@ public class CPU {
 	public static void singleStep() {
 		//Not sure if this step should be in here
 		//Might move it around
+		register.setMAR(register.getPC()); 
 		register.setMBR(memory.load(register.getMAR()));
-		register.setIR(memory.load(register.getMAR()));
+		register.setIR(register.getMBR());
 		
 		//Increment PC
 		register.setPC(register.getPC() + 1);

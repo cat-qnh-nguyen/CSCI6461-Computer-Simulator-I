@@ -11,7 +11,7 @@ public class Load {
     public int I;   			//Indirect Bit
     public int address; 		//Address field in the instruction
     public int EA; 				//Effective address
-
+    
     
     //Constructor for each object/instruction
     public Load() {}
