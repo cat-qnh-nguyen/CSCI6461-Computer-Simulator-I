@@ -1,6 +1,6 @@
 //Tester
 //Will be deleted
-import java.io.*;
+//import java.io.*;
 
 public class MainTester {
 	//A tester class to test operations
@@ -38,6 +38,7 @@ public class MainTester {
 //		
 		CPU.readIPL();
 		
+		CPU.singleStep();
 		CPU.singleStep();
 				
 	}

@@ -1,9 +1,9 @@
 public class Operations {
 	//Creating a memory object that points to the singleton
-	public static Memory myMemory = Memory.getInstance();
+	public static Memory memory = Memory.getInstance();
 	
 	//Creating a register object that points to the singleton
-	public static Register myRegister = Register.getInstance();
+	public static Register register = Register.getInstance();
 	
 	
 	/**
@@ -12,7 +12,8 @@ public class Operations {
 	 */
 	//Regular method with Indirect bit
 	public static void loadRegister(int reg, int effAddress) {
-		myRegister.setGeneralReg(reg, myMemory.load(effAddress));
+		register.setGeneralReg(reg, memory.load(effAddress));
+		System.out.println("Register R" + reg + " has " + register.getGeneralReg(reg));
 	}
 	
 	
@@ -21,7 +22,8 @@ public class Operations {
 	 * @param the register number, effective address
 	 */
 	public static void storeRegister(int reg, int effAddress) {
-		myMemory.store(effAddress, myRegister.getGeneralReg(reg));
+		memory.store(effAddress, register.getGeneralReg(reg));
+		System.out.println("Memory["+ effAddress +"] has " + memory.load(effAddress));
 	}
 
 	
@@ -30,7 +32,8 @@ public class Operations {
 	 * @param register number, effective address
 	 */
 	public static void loadAddress(int reg, int effAddress)	{
-		myRegister.setGeneralReg(reg, myMemory.load(effAddress));
+		register.setGeneralReg(reg, effAddress);
+		System.out.println("Register R" + reg + " has " + register.getGeneralReg(reg));
 	}
 	
 	
@@ -39,7 +42,8 @@ public class Operations {
 	 * @param index register number, effective address
 	 */
 	public static void loadIndex(int reg, int effAddress) {
-		myRegister.setIndexReg(reg, effAddress);
+		register.setIndexReg(reg, memory.load(effAddress));
+		System.out.println("Register I" + reg + " has " + register.getIndexReg(reg));
 	}
 	
 	
@@ -48,7 +52,8 @@ public class Operations {
 	 * @param index register number, effective address
 	 */
 	public static void storeIndex(int reg, int effAddress) {
-		myMemory.store(effAddress, myRegister.getIndexReg(reg));
+		memory.store(effAddress, register.getIndexReg(reg));
+		System.out.println("Memory["+ effAddress +"] has " + memory.load(effAddress));
 	}
 	
 	
@@ -64,7 +69,7 @@ public class Operations {
 		int address = Integer.parseInt(addressStr, 16);
 		int content = Integer.parseInt(contentStr, 16);
 		
-		myMemory.store(address, content);
-		System.out.println("Address: " + address + " has " + myMemory.load(address));
+		memory.store(address, content);
+		System.out.println("Address: " + address + " has " + memory.load(address));
 	}
 }

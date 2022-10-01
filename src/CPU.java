@@ -64,8 +64,6 @@ public class CPU {
 		
 		//Test code print
 		System.out.println("PC: " + register.getPC());
-		System.out.println("Register: " + instruction.R
-			+ " has " + register.getGeneralReg(instruction.R));
 		
 		register.setMAR(register.getMAR() + 1);
 

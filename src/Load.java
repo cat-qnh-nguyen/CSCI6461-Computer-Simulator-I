@@ -16,7 +16,6 @@ public class Load {
     //Constructor for each object/instruction
     public Load() {}
     
-    
     // Creating a memory and register instance
     public static Memory memory = Memory.getInstance();
     public static Register register = Register.getInstance();
