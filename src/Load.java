@@ -18,8 +18,8 @@ public class Load {
     
     
     // Creating a memory and register instance
-    public static Memory myMemory = Memory.getInstance();
-    public static Register myRegister = Register.getInstance();
+    public static Memory memory = Memory.getInstance();
+    public static Register register = Register.getInstance();
     
     //Decodes instructions and separates them into opcode, R, IX, I and Address
     public void instructionDecode(String ins) {
@@ -28,7 +28,8 @@ public class Load {
         IX = Integer.parseInt(ins.substring(8, 10), 2);
         I = Integer.parseInt(ins.substring(10, 11), 2);
         address = Integer.parseInt(ins.substring(11, 16), 2);
-
+        
+        computeEA();
 //        System.out.println("Opcode: " + opcode);
 //        System.out.println("Register number: " + R);
 //        System.out.println("Index register: " + IX);
@@ -43,12 +44,12 @@ public class Load {
      * @return is the instruction in form of a string
      */
     public void loadInstruction(int memAddress) {
-        int insInMem = myMemory.load(memAddress);
+        int insInMem = memory.load(memAddress);
         
         instruction = Integer.toBinaryString(insInMem);
         instruction = String.format("%16s", instruction).replaceAll(" ", "0");
         
-        System.out.println(instruction);
+        //System.out.println(instruction);
         
         instructionDecode(instruction);
     }
@@ -57,7 +58,7 @@ public class Load {
      * Computes the EA and returns it
      * @param index register(IX), address, and indirect bit(I)
      */
-    public int computeEA() {
+    public void computeEA() {
         if (I == 0) // NO Indirect Addressing
         {         
         	if(IX == 0)
@@ -66,7 +67,7 @@ public class Load {
             }
         	else
         	{
-        		EA = myRegister.getIndexReg(IX) + address;
+        		EA = register.getIndexReg(IX) + address;
         	}
             //System.out.println("EA : " + EA);
         } 
@@ -74,15 +75,22 @@ public class Load {
         {             
         	if(IX == 0)
         	{
-        		EA = myMemory.load(address);
+        		EA = memory.load(address);
         	}
         	else
         	{
-        		EA = myMemory.load(myRegister.getIndexReg(IX) + address);
+        		EA = memory.load(register.getIndexReg(IX) + address);
         	}
 
         }
-        return EA;
+    }
+    
+    /**
+     * Returning the effective address whenever necessary
+     * @return EA
+     */
+    public int getEA() {
+    	return EA;
     }
     
     /**
@@ -92,15 +100,21 @@ public class Load {
     public void runInstruction() {
     	switch(opcode) {
     		case 1: Operations.loadRegister(R, EA);					//load register from memory
+    			System.out.println("loadRegister: "+ R + "\nEA: " + EA);
     			break;
     		case 2: Operations.storeRegister(R, EA);					//store register to memory
+				System.out.println("storeRegister: "+ R + "\nEA: " + EA);
     			break;
     		case 3: Operations.loadAddress(R, EA);						//load register with address
+				System.out.println("loadAddress: "+ R + "\nEA: " + EA);
     			break;
     		case 33: Operations.loadIndex(IX, EA);					//load index register from memory
+				System.out.println("loadIndex: "+ IX + "\nEA: " + EA);
     			break;
     		case 34: Operations.storeIndex(IX, EA);					//store index register to memory
+				System.out.println("storeIndex: "+ IX + "\nEA: " + EA);
     			break;
+    		default: throw new IllegalArgumentException("Invalid instruction code.");
     	}
     }
     

@@ -15,10 +15,18 @@ public class CPU {
 			File IPL = new File("IPL.txt");
 			Scanner reader = new Scanner(IPL);
 			
+			int i = 0;
+			//System.out.println("MAR: " + register.getMAR() + "\nMBR: " + register.getMBR() + "\nIR: " + register.getIR());
+			
 			while(reader.hasNextLine()) {
 				String line = reader.nextLine();
-				//System.out.println(line);
+				if(i == 0) {
+					String addressStr = line.substring(0,4);
+					register.setMAR(Integer.parseInt(addressStr, 16));	
+				}
+
 				Operations.saveInstruction(line);
+				i++;
 			}
 			
 			reader.close();
@@ -32,10 +40,37 @@ public class CPU {
 	 * Program runs after reading file, when the user hit run or SS
 	 */
 	public static void run() { 	
-		register.setPC(1);
+		register.setPC(register.getPC() + 1);
 		
 		
 	}
+	
+	/**
+	 * Single stepping through the program
+	 */
+	public static void singleStep() {
+		//Not sure if this step should be in here
+		//Might move it around
+		register.setMBR(memory.load(register.getMAR()));
+		register.setIR(memory.load(register.getMAR()));
+		
+		//Increment PC
+		register.setPC(register.getPC() + 1);
+		
+		//Create new instruction and loading it from memory
+		Load instruction = new Load();
+		instruction.loadInstruction(register.getMAR());
+		instruction.runInstruction();
+		
+		//Test code print
+		System.out.println("PC: " + register.getPC());
+		System.out.println("Register: " + instruction.R
+			+ " has " + register.getGeneralReg(instruction.R));
+		
+		register.setMAR(register.getMAR() + 1);
+
+	}
+	
 	
 	/**
 	 * Reseting all registers when user hit Init
@@ -55,7 +90,5 @@ public class CPU {
 		register.setMBR(0);
 		register.setMFR(0);
 	}
-	
-	
 
 }
