@@ -1400,12 +1400,6 @@ public class GUI extends JFrame {
 		});
 		panel.add(loadBtn);
 
-		// Init
-		JButton initBtn = new JButton("Init");
-		initBtn.setBounds(535, 362, 75, 30);
-		initBtn.setBackground(Color.red);
-		panel.add(initBtn);
-
 		// SS
 		JButton ssBtn = new JButton("SS");
 		ssBtn.setBounds(330, 405, 50, 45);
@@ -1696,22 +1690,22 @@ public class GUI extends JFrame {
 				for (int i = 0; i < GPR_2.length(); i++) {
 					gpr2Value[16 - GPR_2.length() + i] = GPR_2.substring(i, i + 1);
 				}
-				GPR_2_TF_1.setText(gpr2Value[0]);
-				GPR_2_TF_2.setText(gpr2Value[1]);
-				GPR_2_TF_3.setText(gpr2Value[2]);
-				GPR_2_TF_4.setText(gpr2Value[3]);
-				GPR_2_TF_5.setText(gpr2Value[4]);
-				GPR_2_TF_6.setText(gpr2Value[5]);
-				GPR_2_TF_7.setText(gpr2Value[6]);
-				GPR_2_TF_8.setText(gpr2Value[7]);
-				GPR_2_TF_9.setText(gpr2Value[8]);
-				GPR_2_TF_10.setText(gpr2Value[9]);
-				GPR_2_TF_11.setText(gpr2Value[10]);
-				GPR_2_TF_12.setText(gpr2Value[11]);
-				GPR_2_TF_13.setText(gpr2Value[12]);
-				GPR_2_TF_14.setText(gpr2Value[13]);
-				GPR_2_TF_15.setText(gpr2Value[14]);
-				GPR_2_TF_16.setText(gpr2Value[15]);
+				GPR_2_TF1.setText(gpr2Value[0]);
+				GPR_2_TF2.setText(gpr2Value[1]);
+				GPR_2_TF3.setText(gpr2Value[2]);
+				GPR_2_TF4.setText(gpr2Value[3]);
+				GPR_2_TF5.setText(gpr2Value[4]);
+				GPR_2_TF6.setText(gpr2Value[5]);
+				GPR_2_TF7.setText(gpr2Value[6]);
+				GPR_2_TF8.setText(gpr2Value[7]);
+				GPR_2_TF9.setText(gpr2Value[8]);
+				GPR_2_TF10.setText(gpr2Value[9]);
+				GPR_2_TF11.setText(gpr2Value[10]);
+				GPR_2_TF12.setText(gpr2Value[11]);
+				GPR_2_TF13.setText(gpr2Value[12]);
+				GPR_2_TF14.setText(gpr2Value[13]);
+				GPR_2_TF15.setText(gpr2Value[14]);
+				GPR_2_TF16.setText(gpr2Value[15]);
 				String GPR_3 = Integer.toBinaryString(get_number(4));
 
 				String[] gpr3Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
@@ -1897,11 +1891,6 @@ public class GUI extends JFrame {
 			}
 		});
 		panel.add(initBtn);
-
-		// SS
-		JButton ssBtn = new JButton("SS");
-		ssBtn.setBounds(330, 405, 50, 45);
-		panel.add(ssBtn);
 
 	}
 
