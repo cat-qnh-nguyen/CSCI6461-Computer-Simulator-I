@@ -38,8 +38,6 @@ public class MainTester {
 //		
 		CPU.readIPL();
 		
-		CPU.singleStep();
-		CPU.singleStep();
-				
+		CPU.run();
 	}
 }

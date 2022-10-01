@@ -57,6 +57,7 @@ public class Operations {
 	}
 	
 	
+	
 	//For reading the file with address and instruction in one line
 	/**
 	 * Storing the second hex number in the first number as the address

@@ -36,14 +36,34 @@ public class CPU {
 		}	
 	}
 	
+	
 	/**
 	 * Program runs after reading file, when the user hit run or SS
 	 */
-	public static void run() { 	
-		register.setPC(register.getPC() + 1);
-		
-		
+	public static void run() { 			
+		//Making new instruction object
+		Load instruction = new Load();
+		do {
+			register.setMBR(memory.load(register.getMAR()));
+			register.setIR(memory.load(register.getMAR()));
+			
+			//Increment PC
+			register.setPC(register.getPC() + 1);
+			
+			//Loading instruction from memory
+			instruction.loadInstruction(register.getMAR());
+			if(instruction.opcode == 0)
+				break;
+			instruction.runInstruction();
+			
+			//Test code print
+			System.out.println("PC: " + register.getPC());
+			
+			register.setMAR(register.getMAR() + 1);
+
+		} while(true);
 	}
+	
 	
 	/**
 	 * Single stepping through the program
