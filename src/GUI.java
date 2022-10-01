@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 
 public class GUI extends JFrame {
 	  private JPanel panel;
+	  public static CPU CPU = new CPU();
+	  
 	  String data[] = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"} ;
 
 	  
@@ -861,13 +863,13 @@ public class GUI extends JFrame {
 		  panel.add(MFR_TF4);
 		  
 		  //Privileged
-		  JLabel Privlbl = new JLabel("Privileged");
-		  Privlbl.setBounds(470, 120, 66, 16);
-		  panel.add(Privlbl);
-		  
-		  JTextField Privlbl_textfield = new JTextField("0");
-		  Privlbl_textfield.setBounds(545, 120, 20, 16);
-		  panel.add(Privlbl_textfield);
+//		  JLabel Privlbl = new JLabel("Privileged");
+//		  Privlbl.setBounds(470, 120, 66, 16);
+//		  panel.add(Privlbl);
+//		  
+//		  JTextField Privlbl_textfield = new JTextField("0");
+//		  Privlbl_textfield.setBounds(545, 120, 20, 16);
+//		  panel.add(Privlbl_textfield);
 		  
 		  
 		  
@@ -1297,7 +1299,7 @@ public class GUI extends JFrame {
 				
 				//storing the value MBR in MAR
 				Memory.getInstance().store(Register.getInstance().getMAR(), Register.getInstance().getMBR());
-				//System.out.println("Memory address " + Memory.getInstance().load(Register.getInstance().getMAR()));
+//				System.out.println("Memory address " + Memory.getInstance().load(Register.getInstance().getMAR()));
 				//Incrementing the MAR and changing the string array - dataValue
 				String MAR = Integer.toBinaryString(Register.getInstance().getMAR() + 1);				
 				
@@ -1377,15 +1379,6 @@ public class GUI extends JFrame {
 		  });
 		  panel.add(loadBtn);
 		  
-		  //Init
-		  JButton initBtn = new JButton("Init");
-		  initBtn.setBounds(535, 362, 75, 30);
-		  initBtn.setBackground(Color.red);
-		  panel.add(initBtn);
-		  //SS
-		  JButton ssBtn = new JButton("SS");
-		  ssBtn.setBounds(330, 405, 50, 45);
-		  panel.add(ssBtn);
 		  
 		  //Run
 		  JButton runBtn = new JButton("Run");
@@ -1410,8 +1403,310 @@ public class GUI extends JFrame {
 		  textfield_2.setBounds(575, 435, 25, 26);
 		  textfield_2.setBackground(Color.black);
 		  panel.add(textfield_2);
-		    
+		  
+		//Init
+		  JButton initBtn = new JButton("Init");
+		  initBtn.setBounds(535, 362, 75, 30);
+		  initBtn.setBackground(Color.red);
+		  initBtn.addActionListener(new ActionListener() {
+			  public void actionPerformed(ActionEvent e) {
+				  int halt = Init_button();
+				  String GPR_0 = Integer.toBinaryString(get_number(1));				
+					
+					String[] gpr0Value = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0","0","0","0","0"};
+				
+					for (int i = 0; i < GPR_0.length(); i++) {
+						gpr0Value[16-GPR_0.length()+i] = GPR_0.substring(i, i+1);
+			        }
+				  GPR_0_TF1.setText(gpr0Value[0]);
+				  GPR_0_TF2.setText(gpr0Value[1]);
+				  GPR_0_TF3.setText(gpr0Value[2]);
+				  GPR_0_TF4.setText(gpr0Value[3]);
+				  GPR_0_TF5.setText(gpr0Value[4]);
+				  GPR_0_TF6.setText(gpr0Value[5]);
+				  GPR_0_TF7.setText(gpr0Value[6]);
+				  GPR_0_TF8.setText(gpr0Value[7]);
+				  GPR_0_TF9.setText(gpr0Value[8]);
+				  GPR_0_TF10.setText(gpr0Value[9]);
+				  GPR_0_TF11.setText(gpr0Value[10]);
+				  GPR_0_TF12.setText(gpr0Value[11]);
+				  GPR_0_TF13.setText(gpr0Value[12]);
+				  GPR_0_TF14.setText(gpr0Value[13]);
+				  GPR_0_TF15.setText(gpr0Value[14]);
+				  GPR_0_TF16.setText(gpr0Value[15]);
+				  String GPR_1 = Integer.toBinaryString(get_number(2));				
+					
+					String[] gpr1Value = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0","0","0","0","0"};
+				
+					for (int i = 0; i < GPR_1.length(); i++) {
+						gpr1Value[16-GPR_1.length()+i] = GPR_1.substring(i, i+1);
+			        }
+				  GPR_1_TF1.setText(gpr1Value[0]);
+				  GPR_1_TF2.setText(gpr1Value[1]);
+				  GPR_1_TF3.setText(gpr1Value[2]);
+				  GPR_1_TF4.setText(gpr1Value[3]);
+				  GPR_1_TF5.setText(gpr1Value[4]);
+				  GPR_1_TF6.setText(gpr1Value[5]);
+				  GPR_1_TF7.setText(gpr1Value[6]);
+				  GPR_1_TF8.setText(gpr1Value[7]);
+				  GPR_1_TF9.setText(gpr1Value[8]);
+				  GPR_1_TF10.setText(gpr1Value[9]);
+				  GPR_1_TF11.setText(gpr1Value[10]);
+				  GPR_1_TF12.setText(gpr1Value[11]);
+				  GPR_1_TF13.setText(gpr1Value[12]);
+				  GPR_1_TF14.setText(gpr1Value[13]);
+				  GPR_1_TF15.setText(gpr1Value[14]);
+				  GPR_1_TF16.setText(gpr1Value[15]);
+				  String GPR_2 = Integer.toBinaryString(get_number(3));				
+					
+					String[] gpr2Value = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0","0","0","0","0"};
+				
+					for (int i = 0; i < GPR_2.length(); i++) {
+						gpr2Value[16-GPR_2.length()+i] = GPR_2.substring(i, i+1);
+			        }
+				  GPR_2_TF_1.setText(gpr2Value[0]);
+				  GPR_2_TF_2.setText(gpr2Value[1]);
+				  GPR_2_TF_3.setText(gpr2Value[2]);
+				  GPR_2_TF_4.setText(gpr2Value[3]);
+				  GPR_2_TF_5.setText(gpr2Value[4]);
+				  GPR_2_TF_6.setText(gpr2Value[5]);
+				  GPR_2_TF_7.setText(gpr2Value[6]);
+				  GPR_2_TF_8.setText(gpr2Value[7]);
+				  GPR_2_TF_9.setText(gpr2Value[8]);
+				  GPR_2_TF_10.setText(gpr2Value[9]);
+				  GPR_2_TF_11.setText(gpr2Value[10]);
+				  GPR_2_TF_12.setText(gpr2Value[11]);
+				  GPR_2_TF_13.setText(gpr2Value[12]);
+				  GPR_2_TF_14.setText(gpr2Value[13]);
+				  GPR_2_TF_15.setText(gpr2Value[14]);
+				  GPR_2_TF_16.setText(gpr2Value[15]);
+				  String GPR_3 = Integer.toBinaryString(get_number(4));				
+					
+					String[] gpr3Value = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0","0","0","0","0"};
+				
+					for (int i = 0; i < GPR_3.length(); i++) {
+						gpr3Value[16-GPR_3.length()+i] = GPR_3.substring(i, i+1);
+			        }
+				  GPR_3_TF1.setText(gpr3Value[0]);
+				  GPR_3_TF2.setText(gpr3Value[1]);
+				  GPR_3_TF3.setText(gpr3Value[2]);
+				  GPR_3_TF4.setText(gpr3Value[3]);
+				  GPR_3_TF5.setText(gpr3Value[4]);
+				  GPR_3_TF6.setText(gpr3Value[5]);
+				  GPR_3_TF7.setText(gpr3Value[6]);
+				  GPR_3_TF8.setText(gpr3Value[7]);
+				  GPR_3_TF9.setText(gpr3Value[8]);
+				  GPR_3_TF10.setText(gpr3Value[9]);
+				  GPR_3_TF11.setText(gpr3Value[10]);
+				  GPR_3_TF12.setText(gpr3Value[11]);
+				  GPR_3_TF13.setText(gpr3Value[12]);
+				  GPR_3_TF14.setText(gpr3Value[13]);
+				  GPR_3_TF15.setText(gpr3Value[14]);
+				  GPR_3_TF16.setText(gpr3Value[15]);
+				  String IXR_1 = Integer.toBinaryString(get_number(5));				
+					
+					String[] ixr1Value = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0","0","0","0","0"};
+				
+					for (int i = 0; i < IXR_1.length(); i++) {
+						ixr1Value[16-IXR_1.length()+i] = IXR_1.substring(i, i+1);
+			        }
+				  IXR_1_TF1.setText(ixr1Value[0]);
+				  IXR_1_TF2.setText(ixr1Value[1]);
+				  IXR_1_TF3.setText(ixr1Value[2]);
+				  IXR_1_TF4.setText(ixr1Value[3]);
+				  IXR_1_TF5.setText(ixr1Value[4]);
+				  IXR_1_TF6.setText(ixr1Value[5]);
+				  IXR_1_TF7.setText(ixr1Value[6]);
+				  IXR_1_TF8.setText(ixr1Value[7]);
+				  IXR_1_TF9.setText(ixr1Value[8]);
+				  IXR_1_TF10.setText(ixr1Value[9]);
+				  IXR_1_TF11.setText(ixr1Value[10]);
+				  IXR_1_TF12.setText(ixr1Value[11]);
+				  IXR_1_TF13.setText(ixr1Value[12]);
+				  IXR_1_TF14.setText(ixr1Value[13]);
+				  IXR_1_TF15.setText(ixr1Value[14]);
+				  IXR_1_TF16.setText(ixr1Value[15]);
+				  String IXR_2 = Integer.toBinaryString(get_number(6));				
+					
+					String[] ixr2Value = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0","0","0","0","0"};
+				
+					for (int i = 0; i < IXR_2.length(); i++) {
+						ixr2Value[16-IXR_2.length()+i] = IXR_2.substring(i, i+1);
+			        }
+			      IXR_2_TF1.setText(ixr2Value[0]);
+			      IXR_2_TF2.setText(ixr2Value[1]);
+			      IXR_2_TF3.setText(ixr2Value[2]);
+			      IXR_2_TF4.setText(ixr2Value[3]);
+			      IXR_2_TF5.setText(ixr2Value[4]);
+			      IXR_2_TF6.setText(ixr2Value[5]);
+			      IXR_2_TF7.setText(ixr2Value[6]);
+			      IXR_2_TF8.setText(ixr2Value[7]);
+			      IXR_2_TF9.setText(ixr2Value[8]);
+			      IXR_2_TF10.setText(ixr2Value[9]);
+			      IXR_2_TF11.setText(ixr2Value[10]);
+			      IXR_2_TF12.setText(ixr2Value[11]);
+			      IXR_2_TF13.setText(ixr2Value[12]);
+			      IXR_2_TF14.setText(ixr2Value[13]);
+			      IXR_2_TF15.setText(ixr2Value[14]);
+			      IXR_2_TF16.setText(ixr2Value[15]);
+			      String IXR_3 = Integer.toBinaryString(get_number(7));				
+					
+					String[] ixr3Value = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0","0","0","0","0"};
+				
+					for (int i = 0; i < IXR_3.length(); i++) {
+						ixr3Value[16-IXR_3.length()+i] = IXR_3.substring(i, i+1);
+			        }
+			      IXR_3_TF1.setText(ixr3Value[0]);
+			      IXR_3_TF2.setText(ixr3Value[1]);
+			      IXR_3_TF3.setText(ixr3Value[2]);
+			      IXR_3_TF4.setText(ixr3Value[3]);
+			      IXR_3_TF5.setText(ixr3Value[4]);
+			      IXR_3_TF6.setText(ixr3Value[5]);
+			      IXR_3_TF7.setText(ixr3Value[6]);
+			      IXR_3_TF8.setText(ixr3Value[7]);
+			      IXR_3_TF9.setText(ixr3Value[8]);
+			      IXR_3_TF10.setText(ixr3Value[9]);
+			      IXR_3_TF11.setText(ixr3Value[10]);
+			      IXR_3_TF12.setText(ixr3Value[11]);
+			      IXR_3_TF13.setText(ixr3Value[12]);
+			      IXR_3_TF14.setText(ixr3Value[13]);
+			      IXR_3_TF15.setText(ixr3Value[14]);
+			      IXR_3_TF16.setText(ixr3Value[15]);
+			      String PC = Integer.toBinaryString(get_number(8));				
+					
+					String[] dataValue = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
+				
+					for (int i = 0; i < PC.length(); i++) {
+						dataValue[12-PC.length()+i] = PC.substring(i, i+1);
+			        }
+			      textPc_1.setText(dataValue[0]);
+			      textPc_2.setText(dataValue[1]);
+			      textPc_3.setText(dataValue[2]);
+			      textPc_4.setText(dataValue[3]);
+			      textPc_5.setText(dataValue[4]);
+			      textPc_6.setText(dataValue[5]);
+			      textPc_7.setText(dataValue[6]);
+			      textPc_8.setText(dataValue[7]);
+			      textPc_9.setText(dataValue[8]);
+			      textPc_10.setText(dataValue[9]);
+			      textPc_11.setText(dataValue[10]);
+			      textPc_12.setText(dataValue[11]);
+			      String MAR = Integer.toBinaryString(get_number(9));
+			      String[] marValue = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
+					
+					for (int i = 0; i < MAR.length(); i++) {
+						marValue[12-MAR.length()+i] = MAR.substring(i, i+1);
+			        }
+			      textMar_1.setText(marValue[0]);
+			      textMar_2.setText(marValue[1]);
+			      textMar_3.setText(marValue[2]);
+			      textMar_4.setText(marValue[3]);
+			      textMar_5.setText(marValue[4]);
+			      textMar_6.setText(marValue[5]);
+			      textMar_7.setText(marValue[6]);
+			      textMar_8.setText(marValue[7]);
+			      textMar_9.setText(marValue[8]);
+			      textMar_10.setText(marValue[9]);
+			      textMar_11.setText(marValue[10]);
+			      textMar_12.setText(marValue[11]);
+			      String MBR = Integer.toBinaryString(get_number(10));
+			      String[] mbrValue = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0","0","0","0","0"};
+					
+					for (int i = 0; i < MBR.length(); i++) {
+						mbrValue[16-MBR.length()+i] = MBR.substring(i, i+1);
+			        }
+			      textMbr_1.setText(mbrValue[0]);
+			      textMbr_2.setText(mbrValue[1]);
+			      textMbr_3.setText(mbrValue[2]);
+			      textMbr_4.setText(mbrValue[3]);
+			      textMbr_5.setText(mbrValue[4]);
+			      textMbr_6.setText(mbrValue[5]);
+			      textMbr_7.setText(mbrValue[6]);
+			      textMbr_8.setText(mbrValue[7]);
+			      textMbr_9.setText(mbrValue[8]);
+			      textMbr_10.setText(mbrValue[9]);
+			      textMbr_11.setText(mbrValue[10]);
+			      textMbr_12.setText(mbrValue[11]);
+			      textMbr_13.setText(mbrValue[12]);
+			      textMbr_14.setText(mbrValue[13]);
+			      textMbr_15.setText(mbrValue[14]);
+			      textMbr_16.setText(mbrValue[15]);
+			      String IR = Integer.toBinaryString(get_number(11));
+			      String[] irValue = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
+					
+					for (int i = 0; i < IR.length(); i++) {
+						irValue[12-IR.length()+i] = IR.substring(i, i+1);
+			        }
+			      textIR_1.setText(irValue[0]);
+			      textIR_2.setText(irValue[1]);
+			      textIR_3.setText(irValue[2]);
+			      textIR_4.setText(irValue[3]);
+			      textIR_5.setText(irValue[4]);
+			      textIR_6.setText(irValue[5]);
+			      textIR_7.setText(irValue[6]);
+			      textIR_8.setText(irValue[7]);
+			      textIR_9.setText(irValue[8]);
+			      textIR_10.setText(irValue[9]);
+			      textIR_11.setText(irValue[10]);
+			      textIR_12.setText(irValue[11]);
+			      String MFR = Integer.toBinaryString(get_number(12));
+			      String[] mfrValue = {"0", "0", "0", "0"};
+					
+					for (int i = 0; i < IR.length(); i++) {
+						mfrValue[4-IR.length()+i] = IR.substring(i, i+1);
+			        }
+			      MFR_TF1.setText(mfrValue[0]);
+			      MFR_TF2.setText(mfrValue[1]);
+			      MFR_TF3.setText(mfrValue[2]);
+			      MFR_TF4.setText(mfrValue[3]);
+//				  textfield_1.setBackground(Color.WHITE);
+//				  textfield_2.setBackground(Color.GREEN);
+				  
+			  }
+		  });
+		  panel.add(initBtn);
+		  
+		  //SS
+		  JButton ssBtn = new JButton("SS");
+		  ssBtn.setBounds(330, 405, 50, 45);
+		  panel.add(ssBtn);
+		  
+	}
+	  
+	  public static int Init_button(){
+		  CPU.readIPL();
+		  return CPU.halt;
 	  }
 	  
+	  public int get_number(int index) {
+			switch (index) {
+			case 1: 		
+				return Register.getInstance().getGeneralReg(0);
+			case 2:
+				return Register.getInstance().getGeneralReg(1);
+			case 3:
+				return Register.getInstance().getGeneralReg(2);
+			case 4:
+				return Register.getInstance().getGeneralReg(3);
+			case 5:
+				return Register.getInstance().getIndexReg(1);
+			case 6:
+				return Register.getInstance().getIndexReg(2);
+			case 7:
+				return Register.getInstance().getIndexReg(3);
+			case 8:
+				return Register.getInstance().getPC();
+			case 9:
+				return Register.getInstance().getMAR();
+			case 10:
+				return Register.getInstance().getMBR();
+			case 11:
+				return Register.getInstance().getIR();
+			case 12:
+				return Register.getInstance().getMFR();
+			}
+			return 0;
+		}
 	  
-}
+	  
+	}
