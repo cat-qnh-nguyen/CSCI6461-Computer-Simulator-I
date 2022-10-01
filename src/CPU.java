@@ -80,9 +80,6 @@ public class CPU {
 		register.setMBR(memory.load(register.getMAR()));
 		register.setIR(register.getMBR());
 
-		// Increment PC
-		// register.setPC(register.getPC() + 1);
-
 		// Create new instruction and loading it from memory
 		// Load instruction = new Load();
 		// instruction.loadInstruction(register.getMAR());
