@@ -1280,6 +1280,7 @@ public class GUI extends JFrame {
 				// TODO Auto-generated method stub
 				
 				Memory.getInstance().store(Register.getInstance().getMAR(), Register.getInstance().getMBR());
+				//System.out.println("Memory address " + Memory.getInstance().load(Register.getInstance().getMAR()));
 			}
 			  
 		  });
@@ -1296,7 +1297,7 @@ public class GUI extends JFrame {
 				
 				//storing the value MBR in MAR
 				Memory.getInstance().store(Register.getInstance().getMAR(), Register.getInstance().getMBR());
-				
+				//System.out.println("Memory address " + Memory.getInstance().load(Register.getInstance().getMAR()));
 				//Incrementing the MAR and changing the string array - dataValue
 				String MAR = Integer.toBinaryString(Register.getInstance().getMAR() + 1);				
 				

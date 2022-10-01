@@ -1,13 +1,13 @@
 public class Register {
 	/**
-	 * 4 General Purpose Registers (GPRs) � each 16 bits in length
-	 * 3 Index Registers � 16 bits in length 
-	 * PC - 12 bits - int
-	 * CC - 4 - Byte
-	 * IR -16 - int
-	 * MAR - 12 - int
-	 * MBR - 16 - int
-	 * MFR -4 - Byte 
+	 * 4 General Purpose Registers (GPRs) each 16 bits in length
+	 * 3 Index Registers  16 bits in length 
+	 * PC - 12 bits 
+	 * CC - 4 
+	 * IR -16
+	 * MAR - 12 
+	 * MBR - 16
+	 * MFR -4 
 	 */
 
 	//Constructors:
@@ -113,12 +113,12 @@ public class Register {
 	}
 	
 // Condition Code: 4 bits, need to limit to 4 bits only
-	private byte CC;
+	private int CC;
 	
-	public byte getCC() {
+	public int getCC() {
 		return CC;
 	}
-	public void setCC(byte value) {
+	public void setCC(int value) {
 		//Since CC can only be 4 bits, it cannot be bigger than 15
 		if(value > MAX_4 || value < 0) {
 			throw new IllegalArgumentException("Invalid CC value.");			
@@ -178,12 +178,12 @@ public class Register {
 	
 	// Machine Fault Register: contains the ID code if a machine fault after it occurs
 	// 4 bits
-	public byte MFR;
+	public int MFR;
 	
-	public byte getMFR() {
+	public int getMFR() {
 		return MFR;
 	}
-	public void setMFR(byte value) {
+	public void setMFR(int value) {
 		//Since CC can only be 4 bits, value has to be between 0 and 15
 		if(value > MAX_4 || value < 0) {
 			throw new IllegalArgumentException("Invalid MFR value.");			

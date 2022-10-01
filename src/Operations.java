@@ -65,6 +65,6 @@ public class Operations {
 		int content = Integer.parseInt(contentStr, 16);
 		
 		myMemory.store(address, content);
-		//System.out.println("Address: " + address + " has " + myMemory.load(address));
+		System.out.println("Address: " + address + " has " + myMemory.load(address));
 	}
 }
