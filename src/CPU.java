@@ -91,9 +91,7 @@ public class CPU {
 		
 		//Test code print
 		System.out.println("PC: " + register.getPC());
-		
-		register.setMAR(register.getMAR() + 1);
-
+		register.setPC(register.getPC() + 1);
 	}
 	
 	
