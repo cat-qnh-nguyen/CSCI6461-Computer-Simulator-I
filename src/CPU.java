@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class CPU {
 	public static Memory memory = Memory.getInstance();
 	public static Register register = Register.getInstance();
+	public int halt = 0;
 	
 	/**
 	 * Reading IPL.txt file and saving instructions into memory
