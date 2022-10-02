@@ -1993,6 +1993,7 @@ public class GUI extends JFrame {
 				textMar_10.setText(marValue[9]);
 				textMar_11.setText(marValue[10]);
 				textMar_12.setText(marValue[11]);
+				
 				String MBR = Integer.toBinaryString(get_number(10));
 				String[] mbrValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -2015,11 +2016,12 @@ public class GUI extends JFrame {
 				textMbr_14.setText(mbrValue[13]);
 				textMbr_15.setText(mbrValue[14]);
 				textMbr_16.setText(mbrValue[15]);
+				
 				String IR = Integer.toBinaryString(get_number(11));
-				String[] irValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+				String[] irValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
 				for (int i = 0; i < IR.length(); i++) {
-					irValue[12 - IR.length() + i] = IR.substring(i, i + 1);
+					irValue[16 - IR.length() + i] = IR.substring(i, i + 1);
 				}
 				textIR_1.setText(irValue[0]);
 				textIR_2.setText(irValue[1]);
@@ -2033,6 +2035,11 @@ public class GUI extends JFrame {
 				textIR_10.setText(irValue[9]);
 				textIR_11.setText(irValue[10]);
 				textIR_12.setText(irValue[11]);
+				textIR_13.setText(irValue[12]);
+				textIR_14.setText(irValue[13]);
+				textIR_15.setText(irValue[14]);
+				textIR_16.setText(irValue[15]);
+				
 				String MFR = Integer.toBinaryString(get_number(12));
 				String[] mfrValue = { "0", "0", "0", "0" };
 
