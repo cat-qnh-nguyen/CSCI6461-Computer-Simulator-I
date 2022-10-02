@@ -9,7 +9,9 @@ import javax.swing.border.EmptyBorder;
 public class GUI extends JFrame {
 	private JPanel panel;
 	public static CPU CPU = new CPU();
-
+	public Register register = Register.getInstance();
+	public Memory memory = Memory.getInstance();
+	
 	String data[] = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
 	public static void main(String[] args) {
@@ -903,52 +905,6 @@ public class GUI extends JFrame {
 		MFR_TF4.setBounds(605, 101, 20, 16);
 		panel.add(MFR_TF4);
 
-		// Privileged
-		// JLabel Privlbl = new JLabel("Privileged");
-		// Privlbl.setBounds(470, 120, 66, 16);
-		// panel.add(Privlbl);
-		//
-		// JTextField Privlbl_textfield = new JTextField("0");
-		// Privlbl_textfield.setBounds(545, 120, 20, 16);
-		// panel.add(Privlbl_textfield);
-
-		// Buttons for instruction 0-15
-		// User cannot click these buttons for now.
-
-		// String data = "0000000000000000" ;
-		// int btnLeftSideGap = 20;
-		//
-		// for(int i=15; i>=0; i--) {
-		// JButton btnNewButton = new JButton("15");
-		// btnNewButton.setBounds(btnLeftSideGap, 250, 48, 45);
-		// btnNewButton.setText("0");
-		//
-		// btnNewButton.addActionListener(new ActionListener() {
-		//
-		// @Override
-		// public void actionPerformed(ActionEvent e) {
-		// // TODO Auto-generated method stub
-		// if(btnNewButton.getText()=="0") {
-		// btnNewButton.setText("1");
-		// }
-		// else{
-		// btnNewButton.setText("0");
-		// }
-		// data = getDataValue();
-		// }
-		// });
-		//
-		// panel.add(btnNewButton);
-		//
-		// if(i==10 || i==8 || i==6 || i==5) {
-		// btnLeftSideGap += 54;
-		// }
-		// else {
-		// btnLeftSideGap += 44;
-		// }
-		//
-		// }
-
 		JButton btnNewButton_15 = new JButton("15");
 		btnNewButton_15.setBounds(20, 250, 48, 45);
 		btnNewButton_15.setText("0");
@@ -1286,7 +1242,6 @@ public class GUI extends JFrame {
 
 		JLabel lblNewLabel_3 = new JLabel("I");
 		lblNewLabel_3.setBounds(510, 307, 9, 16);
-		// lblNewLabel_3.setFont(new Font("", Font.BOLD, 15));
 		panel.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("Address");
@@ -1301,10 +1256,7 @@ public class GUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-
 				Memory.getInstance().store(Register.getInstance().getMAR(), Register.getInstance().getMBR());
-				// System.out.println("Memory address " +
-				// Memory.getInstance().load(Register.getInstance().getMAR()));
 			}
 
 		});
@@ -1321,9 +1273,7 @@ public class GUI extends JFrame {
 
 				// storing the value MBR in MAR
 				Memory.getInstance().store(Register.getInstance().getMAR(), Register.getInstance().getMBR());
-				// System.out.println("Memory address " +
-				// Memory.getInstance().load(Register.getInstance().getMAR()));
-				// Incrementing the MAR and changing the string array - dataValue
+
 				String MAR = Integer.toBinaryString(Register.getInstance().getMAR() + 1);
 
 				String[] dataValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
@@ -1400,18 +1350,19 @@ public class GUI extends JFrame {
 		});
 		panel.add(loadBtn);
 
-		// SS
+		// Single step button that steps through program instruction by instruction
 		JButton ssBtn = new JButton("SS");
 		ssBtn.setBounds(330, 405, 50, 45);
 		ssBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
+				
 				// load and run the instruction
-				CPU cpu = new CPU();
-				cpu.singleStep();
+				register.setMAR(register.getPC());
+				register.setMBR(memory.load(register.getMAR()));
+				register.setIR(register.getMBR());
+				
 				Load loadInst = new Load();
 				loadInst.loadInstruction(Register.getInstance().getMAR());
 				loadInst.runInstruction();
@@ -1574,6 +1525,9 @@ public class GUI extends JFrame {
 				textMbr_15.setText(dataValue[14]);
 				textMbr_16.setText(dataValue[15]);
 
+				//Increment PC
+				register.setPC(register.getPC() + 1);
+				
 				// get incremented PC
 				String PCVal = Integer.toBinaryString(Register.getInstance().getPC());
 				PCVal = String.format("%12s", PCVal).replaceAll(" ", "0");
@@ -1597,25 +1551,18 @@ public class GUI extends JFrame {
 				textPc_10.setText(PCValArr[9]);
 				textPc_11.setText(PCValArr[10]);
 				textPc_12.setText(PCValArr[11]);
-
-				// increment MAR
-				Register.getInstance().setMAR(Register.getInstance().getMAR() + 1);
-
 			}
 
 		});
 		panel.add(ssBtn);
 
-		// Run
+		// Program runs to the end when user hits Run button
 		JButton runBtn = new JButton("Run");
 		runBtn.setBounds(415, 405, 60, 45);
 		runBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				Register register = Register.getInstance();
-				Memory memory = Memory.getInstance();
 				// load and run the instruction
 				do {
 					register.setMAR(register.getPC());
@@ -1625,7 +1572,6 @@ public class GUI extends JFrame {
 					Load loadInst = new Load();
 					loadInst.loadInstruction(Register.getInstance().getMAR());
 					if (loadInst.opcode == 0) {
-						// System.out.println("Instruction Halt.");
 						break; // HLT
 					}
 					loadInst.runInstruction();
@@ -2097,9 +2043,6 @@ public class GUI extends JFrame {
 				MFR_TF2.setText(mfrValue[1]);
 				MFR_TF3.setText(mfrValue[2]);
 				MFR_TF4.setText(mfrValue[3]);
-				// textfield_1.setBackground(Color.WHITE);
-				// textfield_2.setBackground(Color.GREEN);
-
 			}
 		});
 		panel.add(initBtn);
