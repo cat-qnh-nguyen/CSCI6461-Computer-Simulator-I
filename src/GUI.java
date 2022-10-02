@@ -26,7 +26,8 @@ public class GUI extends JFrame {
 			}
 		});
 	}
-
+	
+	//The user interface
 	public GUI() {
 		setTitle("User Interface");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -329,7 +330,7 @@ public class GUI extends JFrame {
 		lblGPR_3_loadBtn.setBounds(395, 80, 55, 16);
 		panel.add(lblGPR_3_loadBtn);
 
-		// Labels for IXR
+		// Labels for IXR1
 		JLabel lblIXR_1 = new JLabel("IXR 1");
 		lblIXR_1.setBounds(20, 120, 41, 16);
 		panel.add(lblIXR_1);
@@ -402,6 +403,7 @@ public class GUI extends JFrame {
 		IXR_1_loadBtn.setBounds(395, 120, 55, 16);
 		panel.add(IXR_1_loadBtn);
 
+		//Labels for IXR2
 		JLabel lblIXR_2 = new JLabel("IXR 2");
 		lblIXR_2.setBounds(20, 140, 41, 16);
 		panel.add(lblIXR_2);
@@ -474,6 +476,7 @@ public class GUI extends JFrame {
 		IXR_2_loadBtn.setBounds(395, 140, 55, 16);
 		panel.add(IXR_2_loadBtn);
 
+		//Labels for IXR3
 		JLabel lblIXR_3 = new JLabel("IXR 3");
 		lblIXR_3.setBounds(20, 160, 41, 16);
 		panel.add(lblIXR_3);
@@ -546,7 +549,7 @@ public class GUI extends JFrame {
 		IXR_3_loadBtn.setBounds(395, 160, 55, 16);
 		panel.add(IXR_3_loadBtn);
 
-		// Labels for PC, MAR, MBR, IR, MFR, Privileged
+		// Labels for PC
 		JLabel PClbl = new JLabel("PC");
 		PClbl.setBounds(500, 20, 25, 16);
 		panel.add(PClbl);
@@ -598,7 +601,8 @@ public class GUI extends JFrame {
 		JTextField textPc_12 = new JTextField("0");
 		textPc_12.setBounds(765, 20, 20, 16);
 		panel.add(textPc_12);
-
+		
+		//Load button for PC
 		JButton PCbtn = new JButton("LD");
 		PCbtn.setBounds(875, 20, 55, 16);
 		PCbtn.addActionListener(new ActionListener() {
@@ -682,6 +686,7 @@ public class GUI extends JFrame {
 		textMar_12.setBounds(765, 40, 20, 16);
 		panel.add(textMar_12);
 
+		//Load button for MAR
 		JButton MARbtn = new JButton("LD");
 		MARbtn.setBounds(875, 40, 55, 16);
 		MARbtn.addActionListener(new ActionListener() {
@@ -781,6 +786,7 @@ public class GUI extends JFrame {
 		textMbr_16.setBounds(845, 61, 20, 16);
 		panel.add(textMbr_16);
 
+		//Load button for MBR
 		JButton MBRbtn = new JButton("LD");
 		MBRbtn.setBounds(875, 61, 55, 16);
 		MBRbtn.addActionListener(new ActionListener() {
@@ -905,6 +911,7 @@ public class GUI extends JFrame {
 		MFR_TF4.setBounds(605, 101, 20, 16);
 		panel.add(MFR_TF4);
 
+		//Buttons for the input field
 		JButton btnNewButton_15 = new JButton("15");
 		btnNewButton_15.setBounds(20, 250, 48, 45);
 		btnNewButton_15.setText("0");
@@ -1266,7 +1273,8 @@ public class GUI extends JFrame {
 		textfield_2.setBounds(575, 435, 25, 26);
 		panel.add(textfield_2);
 
-		// Store
+		// Store button implementation
+		// Clicking button will store data in MBR into memory[MAR]
 		JButton storeBtn = new JButton("Store");
 		storeBtn.setBounds(245, 362, 75, 30);
 		storeBtn.addActionListener(new ActionListener() {
@@ -1280,7 +1288,8 @@ public class GUI extends JFrame {
 		});
 		panel.add(storeBtn);
 
-		// St+
+		// St+ button
+		// Clicking button will store data in MBR into memory[MAR] and increment MAR
 		JButton stBtn = new JButton("St+");
 		stBtn.setBounds(335, 362, 75, 30);
 		stBtn.addActionListener(new ActionListener() {
@@ -1322,7 +1331,8 @@ public class GUI extends JFrame {
 		});
 		panel.add(stBtn);
 
-		// Load
+		// Load button
+		//Clicking button will load memory[MAR] into MBR
 		JButton loadBtn = new JButton("Load");
 		loadBtn.setBounds(435, 362, 75, 30);
 		loadBtn.addActionListener(new ActionListener() {
@@ -1367,7 +1377,8 @@ public class GUI extends JFrame {
 
 		});
 		panel.add(loadBtn);
-
+		
+		// SS (single step) button
 		// Single step button that steps through program instruction by instruction
 		JButton ssBtn = new JButton("SS");
 		ssBtn.setBounds(330, 405, 50, 45);
@@ -1584,6 +1595,7 @@ public class GUI extends JFrame {
 		});
 		panel.add(ssBtn);
 
+		// Run button
 		// Program runs to the end when user hits Run button
 		JButton runBtn = new JButton("Run");
 		runBtn.setBounds(415, 405, 60, 45);
@@ -1800,7 +1812,8 @@ public class GUI extends JFrame {
 		panel.add(runBtn);
 
 
-		// Init
+		// Init button
+		// Clicking button will load IPL.txt file into memory
 		JButton initBtn = new JButton("Init");
 		initBtn.setBounds(535, 362, 75, 30);
 		initBtn.setBackground(Color.red);
@@ -2072,11 +2085,17 @@ public class GUI extends JFrame {
 
 	}
 
+	//Init button call for readIPL
 	public static int Init_button() {
 		CPU.readIPL();
 		return CPU.halt;
 	}
 
+	/**
+	 * Getting the data in any registers
+	 * @param index
+	 * @return data in register corresponding to number
+	 */
 	public int get_number(int index) {
 		switch (index) {
 			case 1:
