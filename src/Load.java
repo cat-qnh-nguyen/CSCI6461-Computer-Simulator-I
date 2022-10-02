@@ -1,9 +1,10 @@
-import java.io.*;
-
-// A class to perform the loading of instructions and decoding them at the same time.
+/**
+ *  A class to perform the loading of instructions and decoding them at the same time.
+ */
 public class Load {
 
-    //Decoded contents of the instructions
+    //Contents of the instructions
+	
     public String instruction;	//Instruction in String form
     public int opcode;			//Opcode
     public int R;   			//General Register 
@@ -29,11 +30,6 @@ public class Load {
         address = Integer.parseInt(ins.substring(11, 16), 2);
         
         computeEA();
-//        System.out.println("Opcode: " + opcode);
-//        System.out.println("Register number: " + R);
-//        System.out.println("Index register: " + IX);
-//        System.out.println("Indirect bit: " + I);
-//        System.out.println("Address: " + address);
     }
 
 
@@ -47,8 +43,6 @@ public class Load {
         
         instruction = Integer.toBinaryString(insInMem);
         instruction = String.format("%16s", instruction).replaceAll(" ", "0");
-        
-        //System.out.println(instruction);
         
         instructionDecode(instruction);
     }
@@ -68,7 +62,6 @@ public class Load {
         	{
         		EA = register.getIndexReg(IX) + address;
         	}
-            //System.out.println("EA : " + EA);
         } 
         else if (I == 1)  // indirect addressing
         {             
@@ -94,7 +87,6 @@ public class Load {
     
     /**
      * Loading Operations based on Opcode
-     * 
      */
     public void runInstruction() {
     	switch(opcode) {
@@ -116,53 +108,4 @@ public class Load {
     		default: throw new IllegalArgumentException("Invalid instruction code.");
     	}
     }
-    
-    
-    
-//  /**
-//  * Loads the instruction from the cache
-//  *
-//  * @param key of the instruction is the address from which the instruction is to be fetched from the cache
-//  * @return is the value at the given key in the cache
-//  */
-//
-// String loadFromCache(String key) {
-//     long startTime = System.nanoTime();
-//     String value = "";
-//     if (cache.containsKey(key)) {
-//             value = cache.get(key);
-//     } else {
-//         //key does not exists
-//         if (cache.size()==16) {
-//             String temp = cache.entrySet().iterator().next().getKey();
-//             cache.remove(temp);
-//         }
-//         value = loadFromMemeory(key);
-//         cache.put(key,value);
-//         //System.out.println("Size of cache----->"+cache.size());
-//     }
-//     long endTime = System.nanoTime();
-//     //System.out.println("Time taken to load from Cache: "+(endTime - startTime) + " ns");
-//     return value;
-// }
-//
-//
-// /**
-//  * Stores the instruction into the cache
-//  *
-//  * @param key,value specifies the address and the instruction to be stored in the cache
-//  */
-// void storeToCache(String key, String value) {
-//
-//     long startTime = System.nanoTime();
-//     if (cache.size()==16) {
-//         String temp = cache.entrySet().iterator().next().getKey();
-//         cache.remove(temp);
-//     }
-//
-//     cache.put(key,value);
-//     long endTime = System.nanoTime();
-//     //System.out.println("Time taken to store to Cache: "+(endTime - startTime) + " ns");
-//     //System.out.println("Size of cache in store----->"+cache.size());
-// }
 }

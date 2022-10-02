@@ -1,5 +1,5 @@
 public class Memory {
-    /*
+    /**
     * Memory of 2048 words, expandable to 4096 words
     * Each word is 2 bytes, which is the size of short in Java
     */
@@ -12,7 +12,7 @@ public class Memory {
 	//we will use int and limit the value of data
 	private int[] memory = new int[2048];
 	
-	//Max value is 2^16 which is 65536
+	//Max value is 2^16 which is 65535
 	private final int MAX_VALUE = 65535;
 	
 	
@@ -28,11 +28,20 @@ public class Memory {
 		return INSTANCE;
 	}
 	
-	//load and store into memory
+	/**
+	 * load value from memory
+	 * @param index the memory address
+	 * @return value in memory[index]
+	 */
 	public int load(int index) {
 		return memory[index];
 	}
 	
+	/**
+	 * store value into memory
+	 * @param index: the memory address
+	 * @param content: value to be stored in memory
+	 */
 	public void store(int index, int content) {
 		//Because we are only using 16 bits of the 32 bits of type int
 		//we are not expecting any negative values

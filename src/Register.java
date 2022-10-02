@@ -25,14 +25,16 @@ public class Register {
 		return INSTANCE;
 	}
 	
-	//Because Java does not have unsigned data type, we will limit the data value instead of having a short
+	//Because Java does not have unsigned data type
+	//we will limit the data value instead of having a short
 	//For data of 16 bits, the max value is = 65535
 	public final int MAX_16 = 65535;
 	public final int MAX_12 = 4095;
 	public final int MAX_4 = 15;
 	
-// 4 general purpose registers: R0-3, 16 bits
-
+	/**
+	 * 4 general purpose registers: R0-3, 16 bits
+	 */
 	private int R0;
 	private int R1;
 	private int R2;
@@ -65,7 +67,9 @@ public class Register {
 		}
 	}
 	
-// 3 index registers: X1-3, 16 bits
+	/**
+	 * 3 index registers: X1-3, 16 bits
+	 */
 	private int X1;
 	private int X2;
 	private int X3;
@@ -94,7 +98,9 @@ public class Register {
 		}
 	}
 	
-// Program counter: address of the next instruction to be executed
+	/**
+	 * Program counter: address of the next instruction to be executed
+	 */
 	// Need to limit the PC to 12 bits: 4095 max
 	private int PC;
 	
@@ -112,7 +118,9 @@ public class Register {
 		}
 	}
 	
-// Condition Code: 4 bits, need to limit to 4 bits only
+	/**
+	 * Condition Code: 4 bits, need to limit to 4 bits only
+	 */
 	private int CC;
 	
 	public int getCC() {
@@ -129,7 +137,9 @@ public class Register {
 	}
 	
 	
-// Instruction Register: Holds the instruction to be executed, 16 bits
+	/**
+	 * Instruction Register: Holds the instruction to be executed, 16 bits
+	 */
 	private int IR;
 	
 	public int getIR() {
@@ -142,7 +152,9 @@ public class Register {
 		IR = value;
 	}
 	
-// Memory Address Register: holds the address of the word to be fetched from memory
+	/**
+	 * Memory Address Register: holds the address of the word to be fetched from memory
+	 */
 	// 12 bits only
 	private int MAR;
 	
@@ -162,7 +174,9 @@ public class Register {
 		}		
 	}
 	
-	// Memory Buffer Register: holds the word just fetched from or the word to be/last stored into memory
+	/**
+	 * Memory Buffer Register: holds the word just fetched from or the word to be/last stored into memory
+	 */
 	//16 bits
 	public int MBR;
 	
@@ -176,7 +190,9 @@ public class Register {
 		System.out.println("setMBR " + MBR);
 	}
 	
-	// Machine Fault Register: contains the ID code if a machine fault after it occurs
+	/**
+	 * Machine Fault Register: contains the ID code if a machine fault after it occurs
+	 */
 	// 4 bits
 	public int MFR;
 	
