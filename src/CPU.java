@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import javax.swing.JFileChooser;
 
 public class CPU {
 	public static Memory memory = Memory.getInstance();
@@ -12,20 +13,27 @@ public class CPU {
 	 */
 	public static void readIPL() { 
 		resetRegister();
-		try {
-			File IPL = new File("IPL.txt");
-			Scanner reader = new Scanner(IPL);
+		JFileChooser fileChooser = new JFileChooser();
+		String pwd = System.clearProperty("user.dir");
+		fileChooser.setCurrentDirectory(new File(pwd));
+		int response = fileChooser.showOpenDialog(null);
+		if(response == JFileChooser.APPROVE_OPTION) {
+			File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+			try {
+				Scanner reader = new Scanner(file);
 
-			while (reader.hasNextLine()) {
-				String line = reader.nextLine();
-				Operations.saveInstruction(line);
+				while (reader.hasNextLine()) {
+					String line = reader.nextLine();
+					Operations.saveInstruction(line);
+				}
+
+				reader.close();
+			} catch (FileNotFoundException e) {
+				System.out.println("File not found.");
+				e.printStackTrace();
 			}
-
-			reader.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found.");
-			e.printStackTrace();
 		}
+
 	}
 
 	/**
