@@ -1939,7 +1939,69 @@ public class GUI extends JFrame {
 							break;
 
 					}
+					
+					switch (loadInst.IX) {	
+					case 1:
+						// display in IXR1
+						IXR_1_TF1.setText(dataValue[0]);
+						IXR_1_TF2.setText(dataValue[1]);
+						IXR_1_TF3.setText(dataValue[2]);
+						IXR_1_TF4.setText(dataValue[3]);
+						IXR_1_TF5.setText(dataValue[4]);
+						IXR_1_TF6.setText(dataValue[5]);
+						IXR_1_TF7.setText(dataValue[6]);
+						IXR_1_TF8.setText(dataValue[7]);
+						IXR_1_TF9.setText(dataValue[8]);
+						IXR_1_TF10.setText(dataValue[9]);
+						IXR_1_TF11.setText(dataValue[10]);
+						IXR_1_TF12.setText(dataValue[11]);
+						IXR_1_TF13.setText(dataValue[12]);
+						IXR_1_TF14.setText(dataValue[13]);
+						IXR_1_TF15.setText(dataValue[14]);
+						IXR_1_TF16.setText(dataValue[15]);
+						break;
 
+					case 2:
+						// display in IXR2
+						IXR_2_TF1.setText(dataValue[0]);
+						IXR_2_TF2.setText(dataValue[1]);
+						IXR_2_TF3.setText(dataValue[2]);
+						IXR_2_TF4.setText(dataValue[3]);
+						IXR_2_TF5.setText(dataValue[4]);
+						IXR_2_TF6.setText(dataValue[5]);
+						IXR_2_TF7.setText(dataValue[6]);
+						IXR_2_TF8.setText(dataValue[7]);
+						IXR_2_TF9.setText(dataValue[8]);
+						IXR_2_TF10.setText(dataValue[9]);
+						IXR_2_TF11.setText(dataValue[10]);
+						IXR_2_TF12.setText(dataValue[11]);
+						IXR_2_TF13.setText(dataValue[12]);
+						IXR_2_TF14.setText(dataValue[13]);
+						IXR_2_TF15.setText(dataValue[14]);
+						IXR_2_TF16.setText(dataValue[15]);
+						break;
+
+					case 3:
+						// display in IXR3
+						IXR_3_TF1.setText(dataValue[0]);
+						IXR_3_TF2.setText(dataValue[1]);
+						IXR_3_TF3.setText(dataValue[2]);
+						IXR_3_TF4.setText(dataValue[3]);
+						IXR_3_TF5.setText(dataValue[4]);
+						IXR_3_TF6.setText(dataValue[5]);
+						IXR_3_TF7.setText(dataValue[6]);
+						IXR_3_TF8.setText(dataValue[7]);
+						IXR_3_TF9.setText(dataValue[8]);
+						IXR_3_TF10.setText(dataValue[9]);
+						IXR_3_TF11.setText(dataValue[10]);
+						IXR_3_TF12.setText(dataValue[11]);
+						IXR_3_TF13.setText(dataValue[12]);
+						IXR_3_TF14.setText(dataValue[13]);
+						IXR_3_TF15.setText(dataValue[14]);
+						IXR_3_TF16.setText(dataValue[15]);
+						break;
+
+				}
 					// display inst value in MBR
 					textMbr_1.setText(dataValue[0]);
 					textMbr_2.setText(dataValue[1]);
@@ -2073,89 +2135,152 @@ public class GUI extends JFrame {
 					for (int i = 0; i < GPRVal.length(); i++) {
 						dataValue[16 - GPRVal.length() + i] = GPRVal.substring(i, i + 1);
 					}
-					switch (loadInst.R) {
-						case 0:
-							// display in GPR0
-							GPR_0_TF1.setText(dataValue[0]);
-							GPR_0_TF2.setText(dataValue[1]);
-							GPR_0_TF3.setText(dataValue[2]);
-							GPR_0_TF4.setText(dataValue[3]);
-							GPR_0_TF5.setText(dataValue[4]);
-							GPR_0_TF6.setText(dataValue[5]);
-							GPR_0_TF7.setText(dataValue[6]);
-							GPR_0_TF8.setText(dataValue[7]);
-							GPR_0_TF9.setText(dataValue[8]);
-							GPR_0_TF10.setText(dataValue[9]);
-							GPR_0_TF11.setText(dataValue[10]);
-							GPR_0_TF12.setText(dataValue[11]);
-							GPR_0_TF13.setText(dataValue[12]);
-							GPR_0_TF14.setText(dataValue[13]);
-							GPR_0_TF15.setText(dataValue[14]);
-							GPR_0_TF16.setText(dataValue[15]);
-							break;
-	
+					
+					switch (loadInst.IX) {	
 						case 1:
-							// display in GPR1
-							GPR_1_TF1.setText(dataValue[0]);
-							GPR_1_TF2.setText(dataValue[1]);
-							GPR_1_TF3.setText(dataValue[2]);
-							GPR_1_TF4.setText(dataValue[3]);
-							GPR_1_TF5.setText(dataValue[4]);
-							GPR_1_TF6.setText(dataValue[5]);
-							GPR_1_TF7.setText(dataValue[6]);
-							GPR_1_TF8.setText(dataValue[7]);
-							GPR_1_TF9.setText(dataValue[8]);
-							GPR_1_TF10.setText(dataValue[9]);
-							GPR_1_TF11.setText(dataValue[10]);
-							GPR_1_TF12.setText(dataValue[11]);
-							GPR_1_TF13.setText(dataValue[12]);
-							GPR_1_TF14.setText(dataValue[13]);
-							GPR_1_TF15.setText(dataValue[14]);
-							GPR_1_TF16.setText(dataValue[15]);
+							// display in IXR1
+							IXR_1_TF1.setText(dataValue[0]);
+							IXR_1_TF2.setText(dataValue[1]);
+							IXR_1_TF3.setText(dataValue[2]);
+							IXR_1_TF4.setText(dataValue[3]);
+							IXR_1_TF5.setText(dataValue[4]);
+							IXR_1_TF6.setText(dataValue[5]);
+							IXR_1_TF7.setText(dataValue[6]);
+							IXR_1_TF8.setText(dataValue[7]);
+							IXR_1_TF9.setText(dataValue[8]);
+							IXR_1_TF10.setText(dataValue[9]);
+							IXR_1_TF11.setText(dataValue[10]);
+							IXR_1_TF12.setText(dataValue[11]);
+							IXR_1_TF13.setText(dataValue[12]);
+							IXR_1_TF14.setText(dataValue[13]);
+							IXR_1_TF15.setText(dataValue[14]);
+							IXR_1_TF16.setText(dataValue[15]);
 							break;
 	
 						case 2:
-							// display in GPR2
-							GPR_2_TF1.setText(dataValue[0]);
-							GPR_2_TF2.setText(dataValue[1]);
-							GPR_2_TF3.setText(dataValue[2]);
-							GPR_2_TF4.setText(dataValue[3]);
-							GPR_2_TF5.setText(dataValue[4]);
-							GPR_2_TF6.setText(dataValue[5]);
-							GPR_2_TF7.setText(dataValue[6]);
-							GPR_2_TF8.setText(dataValue[7]);
-							GPR_2_TF9.setText(dataValue[8]);
-							GPR_2_TF10.setText(dataValue[9]);
-							GPR_2_TF11.setText(dataValue[10]);
-							GPR_2_TF12.setText(dataValue[11]);
-							GPR_2_TF13.setText(dataValue[12]);
-							GPR_2_TF14.setText(dataValue[13]);
-							GPR_2_TF15.setText(dataValue[14]);
-							GPR_2_TF16.setText(dataValue[15]);
+							// display in IXR2
+							IXR_2_TF1.setText(dataValue[0]);
+							IXR_2_TF2.setText(dataValue[1]);
+							IXR_2_TF3.setText(dataValue[2]);
+							IXR_2_TF4.setText(dataValue[3]);
+							IXR_2_TF5.setText(dataValue[4]);
+							IXR_2_TF6.setText(dataValue[5]);
+							IXR_2_TF7.setText(dataValue[6]);
+							IXR_2_TF8.setText(dataValue[7]);
+							IXR_2_TF9.setText(dataValue[8]);
+							IXR_2_TF10.setText(dataValue[9]);
+							IXR_2_TF11.setText(dataValue[10]);
+							IXR_2_TF12.setText(dataValue[11]);
+							IXR_2_TF13.setText(dataValue[12]);
+							IXR_2_TF14.setText(dataValue[13]);
+							IXR_2_TF15.setText(dataValue[14]);
+							IXR_2_TF16.setText(dataValue[15]);
 							break;
 	
 						case 3:
-							// display in GPR3
-							GPR_3_TF1.setText(dataValue[0]);
-							GPR_3_TF2.setText(dataValue[1]);
-							GPR_3_TF3.setText(dataValue[2]);
-							GPR_3_TF4.setText(dataValue[3]);
-							GPR_3_TF5.setText(dataValue[4]);
-							GPR_3_TF6.setText(dataValue[5]);
-							GPR_3_TF7.setText(dataValue[6]);
-							GPR_3_TF8.setText(dataValue[7]);
-							GPR_3_TF9.setText(dataValue[8]);
-							GPR_3_TF10.setText(dataValue[9]);
-							GPR_3_TF11.setText(dataValue[10]);
-							GPR_3_TF12.setText(dataValue[11]);
-							GPR_3_TF13.setText(dataValue[12]);
-							GPR_3_TF14.setText(dataValue[13]);
-							GPR_3_TF15.setText(dataValue[14]);
-							GPR_3_TF16.setText(dataValue[15]);
+							// display in IXR3
+							IXR_3_TF1.setText(dataValue[0]);
+							IXR_3_TF2.setText(dataValue[1]);
+							IXR_3_TF3.setText(dataValue[2]);
+							IXR_3_TF4.setText(dataValue[3]);
+							IXR_3_TF5.setText(dataValue[4]);
+							IXR_3_TF6.setText(dataValue[5]);
+							IXR_3_TF7.setText(dataValue[6]);
+							IXR_3_TF8.setText(dataValue[7]);
+							IXR_3_TF9.setText(dataValue[8]);
+							IXR_3_TF10.setText(dataValue[9]);
+							IXR_3_TF11.setText(dataValue[10]);
+							IXR_3_TF12.setText(dataValue[11]);
+							IXR_3_TF13.setText(dataValue[12]);
+							IXR_3_TF14.setText(dataValue[13]);
+							IXR_3_TF15.setText(dataValue[14]);
+							IXR_3_TF16.setText(dataValue[15]);
 							break;
 	
 					}
-	
+					
+					switch (loadInst.R) {
+					case 0:
+						// display in GPR0
+						GPR_0_TF1.setText(dataValue[0]);
+						GPR_0_TF2.setText(dataValue[1]);
+						GPR_0_TF3.setText(dataValue[2]);
+						GPR_0_TF4.setText(dataValue[3]);
+						GPR_0_TF5.setText(dataValue[4]);
+						GPR_0_TF6.setText(dataValue[5]);
+						GPR_0_TF7.setText(dataValue[6]);
+						GPR_0_TF8.setText(dataValue[7]);
+						GPR_0_TF9.setText(dataValue[8]);
+						GPR_0_TF10.setText(dataValue[9]);
+						GPR_0_TF11.setText(dataValue[10]);
+						GPR_0_TF12.setText(dataValue[11]);
+						GPR_0_TF13.setText(dataValue[12]);
+						GPR_0_TF14.setText(dataValue[13]);
+						GPR_0_TF15.setText(dataValue[14]);
+						GPR_0_TF16.setText(dataValue[15]);
+						break;
+
+					case 1:
+						// display in GPR1
+						GPR_1_TF1.setText(dataValue[0]);
+						GPR_1_TF2.setText(dataValue[1]);
+						GPR_1_TF3.setText(dataValue[2]);
+						GPR_1_TF4.setText(dataValue[3]);
+						GPR_1_TF5.setText(dataValue[4]);
+						GPR_1_TF6.setText(dataValue[5]);
+						GPR_1_TF7.setText(dataValue[6]);
+						GPR_1_TF8.setText(dataValue[7]);
+						GPR_1_TF9.setText(dataValue[8]);
+						GPR_1_TF10.setText(dataValue[9]);
+						GPR_1_TF11.setText(dataValue[10]);
+						GPR_1_TF12.setText(dataValue[11]);
+						GPR_1_TF13.setText(dataValue[12]);
+						GPR_1_TF14.setText(dataValue[13]);
+						GPR_1_TF15.setText(dataValue[14]);
+						GPR_1_TF16.setText(dataValue[15]);
+						break;
+
+					case 2:
+						// display in GPR2
+						GPR_2_TF1.setText(dataValue[0]);
+						GPR_2_TF2.setText(dataValue[1]);
+						GPR_2_TF3.setText(dataValue[2]);
+						GPR_2_TF4.setText(dataValue[3]);
+						GPR_2_TF5.setText(dataValue[4]);
+						GPR_2_TF6.setText(dataValue[5]);
+						GPR_2_TF7.setText(dataValue[6]);
+						GPR_2_TF8.setText(dataValue[7]);
+						GPR_2_TF9.setText(dataValue[8]);
+						GPR_2_TF10.setText(dataValue[9]);
+						GPR_2_TF11.setText(dataValue[10]);
+						GPR_2_TF12.setText(dataValue[11]);
+						GPR_2_TF13.setText(dataValue[12]);
+						GPR_2_TF14.setText(dataValue[13]);
+						GPR_2_TF15.setText(dataValue[14]);
+						GPR_2_TF16.setText(dataValue[15]);
+						break;
+
+					case 3:
+						// display in GPR3
+						GPR_3_TF1.setText(dataValue[0]);
+						GPR_3_TF2.setText(dataValue[1]);
+						GPR_3_TF3.setText(dataValue[2]);
+						GPR_3_TF4.setText(dataValue[3]);
+						GPR_3_TF5.setText(dataValue[4]);
+						GPR_3_TF6.setText(dataValue[5]);
+						GPR_3_TF7.setText(dataValue[6]);
+						GPR_3_TF8.setText(dataValue[7]);
+						GPR_3_TF9.setText(dataValue[8]);
+						GPR_3_TF10.setText(dataValue[9]);
+						GPR_3_TF11.setText(dataValue[10]);
+						GPR_3_TF12.setText(dataValue[11]);
+						GPR_3_TF13.setText(dataValue[12]);
+						GPR_3_TF14.setText(dataValue[13]);
+						GPR_3_TF15.setText(dataValue[14]);
+						GPR_3_TF16.setText(dataValue[15]);
+						break;
+
+				}
 					// display inst value in MBR
 					textMbr_1.setText(dataValue[0]);
 					textMbr_2.setText(dataValue[1]);
