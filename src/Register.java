@@ -28,9 +28,14 @@ public class Register {
 	//Because Java does not have unsigned data type
 	//we will limit the data value instead of having a short
 	//For data of 16 bits, the max value is = 65535
-	public final int MAX_16 = 65535;
-	public final int MAX_12 = 4095;
-	public final int MAX_4 = 15;
+	public final int MAX_16 = 32768;
+	public final int MIN_16 = -32768;
+	
+	public final int MAX_12 = 2047;
+	public final int MIN_12 = -2048;
+	
+	public final int MAX_4 = 7;
+	public final int MIN_4 = -8;
 	
 	/**
 	 * 4 general purpose registers: R0-3, 16 bits
@@ -52,7 +57,7 @@ public class Register {
 	
 	public void setGeneralReg(int reg, int value) {
 		//Because we are only using 16 bits of the 32 bits in int, we are not expecting any negative values
-		if(value > MAX_16 || value < 0)
+		if(value > MAX_16 || value < MIN_16)
 			throw new IllegalArgumentException("Invalid value.");
 		switch(reg) {
 			case 0: R0 = value; 
@@ -85,7 +90,7 @@ public class Register {
 	
 	public void setIndexReg(int reg, int value) {
 		//Because we are only using 16 bits of the 32 bits in int, we are not expecting any negative values
-		if(value > MAX_16 || value < 0)
+		if(value > MAX_16 || value < MIN_16)
 			throw new IllegalArgumentException("Invalid value.");
 		switch(reg) {
 			case 1: X1 = value;
@@ -110,7 +115,7 @@ public class Register {
 	public void setPC(int value) {
 		//Because PC is 12 bits, its value cannot be more than 4095
 		//Java does not have unsigned data type
-		if(value > MAX_12 || value < 0) {
+		if(value > MAX_12 || value < MIN_12) {
 			throw new IllegalArgumentException("Invalid PC value.");			
 		}
 		else {
@@ -128,7 +133,7 @@ public class Register {
 	}
 	public void setCC(int value) {
 		//Since CC can only be 4 bits, it cannot be bigger than 15
-		if(value > MAX_4 || value < 0) {
+		if(value > MAX_4 || value < MIN_4) {
 			throw new IllegalArgumentException("Invalid CC value.");			
 		}
 		else {
@@ -147,7 +152,7 @@ public class Register {
 	}
 	public void setIR(int value) {
 		//Because we are only using 16 bits of the 32 bits in int, we are not expecting any negative values
-		if(value > MAX_16 || value < 0)
+		if(value > MAX_16 || value < MIN_16)
 			throw new IllegalArgumentException("Invalid value.");
 		IR = value;
 	}
@@ -165,7 +170,7 @@ public class Register {
 	public void setMAR(int value) {
 		//Because MAR is 12 bits, its value cannot be > 4095
 
-		if(value > MAX_12 || value < 0) {
+		if(value > MAX_12 || value < MIN_12) {
 			throw new IllegalArgumentException("Invalid MAR value.");			
 		}
 		else {
@@ -184,7 +189,7 @@ public class Register {
 		return MBR;
 	}
 	public void setMBR(int value) {
-		if(value > MAX_16 || value < 0)
+		if(value > MAX_16 || value < MIN_16)
 			throw new IllegalArgumentException("Invalid value.");
 		MBR = value;
 		System.out.println("setMBR " + MBR);
@@ -201,7 +206,7 @@ public class Register {
 	}
 	public void setMFR(int value) {
 		//Since CC can only be 4 bits, value has to be between 0 and 15
-		if(value > MAX_4 || value < 0) {
+		if(value > MAX_4 || value < MIN_4) {
 			throw new IllegalArgumentException("Invalid MFR value.");			
 		}
 		else {
