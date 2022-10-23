@@ -1,3 +1,4 @@
+/CPU.class
 /GUI$1.class
 /GUI$10.class
 /GUI$11.class
@@ -24,10 +25,16 @@
 /GUI$30.class
 /GUI$31.class
 /GUI$32.class
+/GUI$33.class
 /GUI$4.class
 /GUI$5.class
 /GUI$6.class
 /GUI$7.class
 /GUI$8.class
 /GUI$9.class
-/GUI$33.class
+/GUI.class
+/Load.class
+/Memory.class
+/Operations.class
+/Register.class
+/MainTester.class

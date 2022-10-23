@@ -73,4 +73,89 @@ public class Operations {
 		memory.store(address, content);
 		System.out.println("Address: " + address + " has " + memory.load(address));
 	}
+	
+
+	public static void jumpZero (int reg, int ea) {
+		if (register.getGeneralReg(reg) == 0) {
+			register.setPC(ea);
+		}
+		else {
+			register.setPC(register.getPC()+1);
+		}
+	}
+	
+
+	public static void jumpNotZero (int reg, int ea) {
+		if (register.getGeneralReg(reg)!= 0) {
+			register.setPC(ea);
+		}
+		else {
+			register.setPC(register.getPC()+1);
+		}
+	}
+	
+	public static void jumpConditionCode (int cc, int ea) {
+		String conditionStr = Integer.toBinaryString(register.getCC());
+        conditionStr = String.format("%4s", conditionStr).replaceAll(" ", "0");
+        
+        String ccBit = conditionStr.substring(cc, cc + 1);
+        
+        if(Integer.parseInt(ccBit) == 1) {
+        	register.setPC(ea);
+        }
+        else {
+        	register.setPC(register.getPC()+1);
+        }        
+	}
+	
+	
+	public static void jumpAddress(int ea) {
+		register.setPC(ea);
+	}
+	
+	public static void jumpSaveReturn(int ea) {
+		register.setGeneralReg(3, register.getPC() + 1);
+		register.setPC(ea);
+	}
+	
+	public static void returnFromSubroutine(int immed) {
+		register.setGeneralReg(0, immed);
+		register.setPC(register.getGeneralReg(3));
+	}
+	
+	public static void subtractOneBranch(int r, int ea) {
+		register.setGeneralReg(r, register.getGeneralReg(r) - 1);
+		if(register.getGeneralReg(r) > 0) {
+			register.setPC(ea);
+		}
+		else {
+			register.setPC(register.getPC() + 1);
+		}
+	}
+	
+	public static void jumpGreaterEqual (int r, int ea) {
+		if(register.getGeneralReg(r) >= 0) {
+			register.setPC(ea);
+		}
+		else {
+			register.setPC(register.getPC() + 1);
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

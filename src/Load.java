@@ -73,7 +73,6 @@ public class Load {
         	{
         		EA = memory.load(register.getIndexReg(IX) + address);
         	}
-
         }
     }
     
@@ -90,7 +89,7 @@ public class Load {
      */
     public void runInstruction() {
     	switch(opcode) {
-    		case 1: Operations.loadRegister(R, EA);					//load register from memory
+    		case 1: Operations.loadRegister(R, EA);						//load register from memory
     			System.out.println("loadRegister: "+ R + "\nEA: " + EA);
     			break;
     		case 2: Operations.storeRegister(R, EA);					//store register to memory
@@ -98,6 +97,31 @@ public class Load {
     			break;
     		case 3: Operations.loadAddress(R, EA);						//load register with address
 				System.out.println("loadAddress: "+ R + "\nEA: " + EA);
+    			break;
+    		//Transfer instructions
+    		case 8: Operations.jumpZero(R, EA);						//Jump if Zero
+    			System.out.println("jumpZero: " + R + "\nPC:" + register.getPC());
+    			break;
+    		case 9: Operations.jumpNotZero(R, EA);					//Jump Not Zero
+				System.out.println("jumpNotZero: " + R + "\nPC:" + register.getPC());
+				break;
+    		case 10: Operations.jumpConditionCode(R, EA);			//Jump if Condition Code, cc is at the r bits
+    			System.out.println("jumpConditionCode.");
+    			break;
+    		case 11: Operations.jumpAddress(EA);					//Unconditional Jump to Address
+				System.out.println("jumpAddress to:" + EA);
+				break;
+    		case 12: Operations.jumpSaveReturn(EA);					//Jump and Save return address
+				System.out.println("jumpSaveReturn: EA: " + EA + "PC: " + register.getPC());
+				break;
+    		case 13: Operations.returnFromSubroutine(address);		//Return from subroutine
+				System.out.println("returnFromSubroutine."); 		//immed is in the field address
+				break;
+    		case 14: Operations.subtractOneBranch(R, EA);			//subtract one and branch
+    			System.out.println("subtractOneBranch.");
+    			break;
+    		case 15: Operations.jumpGreaterEqual(R, EA);			//jump greater than or equal to
+    			System.out.println("jumpGreaterEqual.");
     			break;
     		case 33: Operations.loadIndex(IX, EA);					//load index register from memory
 				System.out.println("loadIndex: "+ IX + "\nEA: " + EA);
