@@ -63,7 +63,7 @@ public class Operations {
 	 * Storing the second hex number in the first number as the address
 	 * @param hexInstruction as a string
 	 */
-	public static void saveInstruction(String hexInstruction) {
+	public static void saveInstructionFromText(String hexInstruction) {
 		String addressStr = hexInstruction.substring(0,4);
 		String contentStr = hexInstruction.substring(5);
 		
@@ -74,7 +74,42 @@ public class Operations {
 		System.out.println("Address: " + address + " has " + memory.load(address));
 	}
 	
+	/**
+	 * Converting a number into an x-bit string
+	 * @param num is the number to be converted to string
+	 * @param bit is the number of bits that should be formatted
+	 * @return the number in x-bit string
+	 */
+	public static String numToStr(int num, int bit) {
+		String result = Integer.toBinaryString(num);
+		System.out.println("Before:" + result);
+		if(num >= 0) {
+			if(bit == 16) {
+		        result = String.format("%16s", result).replaceAll(" ", "0");
+			}
+			else if(bit == 12) {
+		        result = String.format("%12s", result).replaceAll(" ", "0");
+			}
+			else if(bit == 4) {
+		        result = String.format("%4s", result).replaceAll(" ", "0");
+			}
+		}
+		else {
+			if(bit == 16) {
+		        result = result.substring(result.length()-16);
+			}
+			else if(bit == 12) {
+		        result = result.substring(result.length()-12);
+			}
+			else if(bit == 4) {
+		        result = result.substring(result.length()-4);
+			}
+		}
+		System.out.println("Length of string: " + result.length());
+		return result;
+	}
 
+	
 	public static void jumpZero (int reg, int ea) {
 		if (register.getGeneralReg(reg) == 0) {
 			register.setPC(ea);
