@@ -34,16 +34,16 @@ public class Register {
 	public final int MAX_12 = 2047;
 	public final int MIN_12 = -2048;
 	
-	public final int MAX_4 = 7;
-	public final int MIN_4 = -8;
+	public final int MAX_4 = 8;
+	public final int MIN_4 = 0;
 	
 	/**
 	 * 4 general purpose registers: R0-3, 16 bits
 	 */
-	private int R0;
-	private int R1;
-	private int R2;
-	private int R3;
+	private int R0 = 0;
+	private int R1 = 0;
+	private int R2 = 0;
+	private int R3 = 0;
 	
 	public int getGeneralReg(int reg) {
 		switch(reg) {
@@ -75,9 +75,9 @@ public class Register {
 	/**
 	 * 3 index registers: X1-3, 16 bits
 	 */
-	private int X1;
-	private int X2;
-	private int X3;
+	private int X1 = 0;
+	private int X2 = 0;
+	private int X3 = 0;
 	
 	public int getIndexReg(int reg) {
 		switch(reg) {
@@ -107,7 +107,7 @@ public class Register {
 	 * Program counter: address of the next instruction to be executed
 	 */
 	// Need to limit the PC to 12 bits: 4095 max
-	private int PC;
+	private int PC = 0;
 	
 	public int getPC() {
 		return PC;
@@ -125,13 +125,15 @@ public class Register {
 	
 	/**
 	 * Condition Code: 4 bits, need to limit to 4 bits only
+	 * cc(0), cc(1), cc(2), cc(3). Or by the names OVERFLOW, UNDERFLOW, DIVZERO, EQUALORNOT
 	 */
-	private int CC;
+	private int CC = 0;
 	
 	public int getCC() {
 		return CC;
 	}
 	public void setCC(int value) {
+		// doubt should be unsigned (we are using 8, 4, 2, 1 for overflow, underflow, divide by zero, equal or not)
 		//Since CC can only be 4 bits, it cannot be bigger than 15
 		if(value > MAX_4 || value < MIN_4) {
 			throw new IllegalArgumentException("Invalid CC value.");			
@@ -145,7 +147,7 @@ public class Register {
 	/**
 	 * Instruction Register: Holds the instruction to be executed, 16 bits
 	 */
-	private int IR;
+	private int IR = 0;
 	
 	public int getIR() {
 		return IR;
@@ -161,7 +163,7 @@ public class Register {
 	 * Memory Address Register: holds the address of the word to be fetched from memory
 	 */
 	// 12 bits only
-	private int MAR;
+	private int MAR = 0;
 	
 	public int getMAR() {
 		return MAR;

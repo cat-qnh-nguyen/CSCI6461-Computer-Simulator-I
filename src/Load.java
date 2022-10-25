@@ -89,44 +89,75 @@ public class Load {
      */
     public void runInstruction() {
     	switch(opcode) {
-    		case 1: Operations.loadRegister(R, EA);						//load register from memory
-    			System.out.println("loadRegister: "+ R + "\nEA: " + EA);
+    		case 1: Operations.loadRegister(R, EA);								//load register from memory
+    			System.out.println("loadRegister: "+ R + "\tEA: " + EA);
     			break;
-    		case 2: Operations.storeRegister(R, EA);					//store register to memory
-				System.out.println("storeRegister: "+ R + "\nEA: " + EA);
+    		case 2: Operations.storeRegister(R, EA);							//store register to memory
+				System.out.println("storeRegister: "+ R + "\tEA: " + EA);
     			break;
-    		case 3: Operations.loadAddress(R, EA);						//load register with address
-				System.out.println("loadAddress: "+ R + "\nEA: " + EA);
+    		case 3: Operations.loadAddress(R, EA);								//load register with address
+				System.out.println("loadAddress: "+ R + "\tEA: " + EA);
     			break;
-    		//Transfer instructions
-    		case 8: Operations.jumpZero(R, EA);						//Jump if Zero
-    			System.out.println("jumpZero: " + R + "\nPC:" + register.getPC());
+    		//Arithmetic instructions
+    		case 4: Operations.addMemoryToReg(R, EA); 							// registerValue += memory[EA]
+    			System.out.println("addMemoryToReg: " + R + "\tEA:" + EA);
     			break;
-    		case 9: Operations.jumpNotZero(R, EA);					//Jump Not Zero
-				System.out.println("jumpNotZero: " + R + "\nPC:" + register.getPC());
+    		case 5: Operations.subtractMemoryFromRegister(R, EA); 				// registerValue -= memory[EA]
+				System.out.println("subtractMemoryFromRegister: " + R + "\tEA:" + EA);
 				break;
-    		case 10: Operations.jumpConditionCode(R, EA);			//Jump if Condition Code, cc is at the r bits
+    		case 6: Operations.addImmediateToRegister(R, address); 				// add immediate to the register
+				System.out.println("addImmediateToRegister: " + R + "\tImmediate:" + address);
+				break;
+    		case 7: Operations.subtractImmediateFromRegister(R, address); 		// subtract immediate from the register
+				System.out.println("subtractImmediateFromRegister: " + R + "\tImmediate:" + address);
+				break;
+    		//Transfer instructions
+    		case 8: Operations.jumpZero(R, EA);									//Jump if Zero
+    			System.out.println("jumpZero: " + R + "\tPC:" + register.getPC());
+    			break;
+    		case 9: Operations.jumpNotZero(R, EA);								//Jump Not Zero
+				System.out.println("jumpNotZero: " + R + "\tPC:" + register.getPC());
+				break;
+    		case 10: Operations.jumpConditionCode(R, EA);						//Jump if Condition Code, cc is at the r bits
     			System.out.println("jumpConditionCode.");
     			break;
-    		case 11: Operations.jumpAddress(EA);					//Unconditional Jump to Address
-				System.out.println("jumpAddress to:" + EA);
+    		case 11: Operations.jumpAddress(EA);								//Unconditional Jump to Address
+				System.out.println("jumpAddress to:" + EA);	
 				break;
-    		case 12: Operations.jumpSaveReturn(EA);					//Jump and Save return address
-				System.out.println("jumpSaveReturn: EA: " + EA + "PC: " + register.getPC());
+    		case 12: Operations.jumpSaveReturn(EA);								//Jump and Save return address
+				System.out.println("jumpSaveReturn: EA: " + EA + "\tPC: " + register.getPC());
 				break;
-    		case 13: Operations.returnFromSubroutine(address);		//Return from subroutine
-				System.out.println("returnFromSubroutine."); 		//immed is in the field address
+    		case 13: Operations.returnFromSubroutine(address);					//Return from subroutine
+				System.out.println("returnFromSubroutine."); 					//immed is in the field address
 				break;
-    		case 14: Operations.subtractOneBranch(R, EA);			//subtract one and branch
+    		case 14: Operations.subtractOneBranch(R, EA);						//subtract one and branch
     			System.out.println("subtractOneBranch.");
     			break;
-    		case 15: Operations.jumpGreaterEqual(R, EA);			//jump greater than or equal to
+    		case 15: Operations.jumpGreaterEqual(R, EA);						//jump greater than or equal to
     			System.out.println("jumpGreaterEqual.");
     			break;
-    		case 33: Operations.loadIndex(IX, EA);					//load index register from memory
+    		case 20: Operations.multiplyRegisterByRegister(R, IX); 				// multiple the values in both the registers. Rx - R, Ry - IX .
+				System.out.println("multiplyRegister: " + R + "\tByRegister:" + IX);
+				break;
+    		case 21: Operations.divideRegisterByRegister(R, IX); 				// divide one register value by another register value. Rx - R, Ry - IX.
+				System.out.println("divideRegister: " + R + "\nByRegister:" + IX);
+				break;
+    		case 22: Operations.testEqualityOfRegisterAndRegister(R, IX); 		// check if two registers are equal. Rx - R, Ry - IX.
+				System.out.println("testEqualityOfRegister: " + R + "\tAndRegister:" + IX);
+				break;
+    		case 23: Operations.logicalAndOfRegisterAndRegister(R, IX); 		// logical AND of two register values. Rx - R, Ry - IX.
+				System.out.println("logicalAndOfRegister: " + R + "\nAndRegister:" + IX);
+				break;
+    		case 24: Operations.logicalOrOfRegisterAndRegister(R, IX); 			// logical OR of two register values. Rx - R, Ry - IX.
+				System.out.println("logicalOrOfRegister: " + R + "\nAndRegister:" + IX);
+				break;
+    		case 25: Operations.logicalNotOfRegister(R); 						// logical NOT of a register value.
+				System.out.println("logicalNotOfRegister: " + R);
+				break;
+    		case 33: Operations.loadIndex(IX, EA);								//load index register from memory
 				System.out.println("loadIndex: "+ IX + "\nEA: " + EA);
     			break;
-    		case 34: Operations.storeIndex(IX, EA);					//store index register to memory
+    		case 34: Operations.storeIndex(IX, EA);								//store index register to memory
 				System.out.println("storeIndex: "+ IX + "\nEA: " + EA);
     			break;
     		default: throw new IllegalArgumentException("Invalid instruction code.");
