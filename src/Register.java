@@ -34,7 +34,7 @@ public class Register {
 	public final int MAX_12 = 2047;
 	public final int MIN_12 = -2048;
 	
-	public final int MAX_4 = 8;
+	public final int MAX_4 = 15;
 	public final int MIN_4 = 0;
 	
 	/**
