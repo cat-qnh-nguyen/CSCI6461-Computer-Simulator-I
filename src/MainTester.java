@@ -2,10 +2,13 @@
 public class MainTester {
 	public static Register register = Register.getInstance();
 	public static void main(String[] args) {
-		int num1 = (int)Math.pow(2,14);
+		int num1 =  -430;
 		int bit = 12;
-		System.out.println("After in " + bit + "-bit format: " + Operations.numToStr(3, bit));
-	
+		//System.out.println("After in " + bit + "-bit format: " + Operations.numToStr(3, bit));
+		
+		String str = "A130";
+		
+		
 	}
 	
 	public static void printAll() {
@@ -27,7 +30,34 @@ public class MainTester {
 //		System.out.println("MFR: " + register.getMFR());
 	}
 	
+	/**
+	 * Returning the data in integer (32 bits) form from a string of various sizes
+	 * @param str the data in string form
+	 * @param bits the number of bits for that particular data type (4 bits, 12 bits, or 16 bits)
+	 * @return the data in int form (32 bits)
+	 */
+	public static int strToNum(String str) {
+		int result = 0;
+		String resultStr = "";
+		if(str.charAt(0) == '1') {
+			for(int i = 0; i < str.length(); i++) {
+				if(str.charAt(i) == '0') {
+					resultStr += '1';
+				}
+				else {
+					resultStr += '0';
+				}
+			}
+			System.out.println(resultStr);
+			result = -(Integer.parseInt(resultStr,2) + 1);
+		}
+		else {
+			result = Integer.parseInt(str,2);
+		}
+		return result;
+	}
 	
 	
 
+	
 }

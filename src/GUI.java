@@ -7,7 +7,6 @@ import java.util.StringJoiner;
 import javax.swing.border.EmptyBorder;
 
 public class GUI extends JFrame {
-	private JPanel panel;
 	public static CPU CPU = new CPU();
 	public JTextField GPR_0_TF1;
 	public JTextField GPR_0_TF2;
@@ -185,25 +184,42 @@ public class GUI extends JFrame {
 	public JTextField MFR_TF2;
 	public JTextField MFR_TF3;
 	public JTextField MFR_TF4;
+	public JButton btnNewButton_15;
+	public JButton btnNewButton_14;
+	public JButton btnNewButton_13;
+	public JButton btnNewButton_12;
+	public JButton btnNewButton_11;
+	public JButton btnNewButton_10;
+	public JButton btnNewButton_9;
+	public JButton btnNewButton_8;
+	public JButton btnNewButton_7;
+	public JButton btnNewButton_6;
+	public JButton btnNewButton_5;
+	public JButton btnNewButton_4;
+	public JButton btnNewButton_3;
+	public JButton btnNewButton_2;
+	public JButton btnNewButton_1;
+	public JButton btnNewButton_0;
+	public JButton commonbtn;
 	
 	
 	 String op_bit0;
-		String op_bit1;
-		String op_bit2;
-		String op_bit3;
-		String op_bit4;
-		String op_bit5;
-		String gpr_bit1;
-		String gpr_bit0;
-		String ixr_bit1;
-		String ixr_bit0;
-		String i;
-		String ip_add_4_bit;
-		String ip_add_3_bit;
-		String ip_add_2_bit;
-		String ip_add_1_bit;
-		String ip_add_0_bit;
-		String instruction, operation, address, gpr, ixr;
+	 String op_bit1;
+	 String op_bit2;
+	 String op_bit3;
+	 String op_bit4;
+	 String op_bit5;
+	 String gpr_bit1;
+	 String gpr_bit0;
+	 String ixr_bit1;
+	 String ixr_bit0;
+	 String i;
+	 String ip_add_4_bit;
+	 String ip_add_3_bit;
+	 String ip_add_2_bit;
+	 String ip_add_1_bit;
+	 String ip_add_0_bit;
+	 String instruction, operation, address, gpr, ixr;
 
 	public Register register = Register.getInstance();
 	public Memory memory = Memory.getInstance();
@@ -236,7 +252,7 @@ public class GUI extends JFrame {
 		panel.setLayout(null);
 
 		//Buttons for the input field
-		JButton btnNewButton_15 = new JButton("15");
+		btnNewButton_15 = new JButton("15");
 		btnNewButton_15.setBounds(20, 250, 48, 45);
 		btnNewButton_15.setText("0");
 		btnNewButton_15.addActionListener(new ActionListener() {
@@ -244,20 +260,14 @@ public class GUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_15.getText() == "0") {
-					btnNewButton_15.setText("1");
-					data[0] = "1";
-				} else {
-					btnNewButton_15.setText("0");
-					data[0] = "0";
-				}
+				commonbtn = btnNewButton_15;
+				setBtnvalue(0);
 
 			}
-
 		});
 		panel.add(btnNewButton_15);
 
-		JButton btnNewButton_14 = new JButton("14");
+		btnNewButton_14 = new JButton("14");
 		btnNewButton_14.setBounds(64, 250, 48, 45);
 		btnNewButton_14.setText("0");
 		btnNewButton_14.addActionListener(new ActionListener() {
@@ -265,296 +275,191 @@ public class GUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_14.getText() == "0") {
-					btnNewButton_14.setText("1");
-					data[1] = "1";
-				} else {
-					btnNewButton_14.setText("0");
-					data[1] = "0";
-				}
+				commonbtn = btnNewButton_14;
+				setBtnvalue(1);
 			}
-
 		});
 		panel.add(btnNewButton_14);
 
-		JButton btnNewButton_13 = new JButton("13");
+		btnNewButton_13 = new JButton("13");
 		btnNewButton_13.setBounds(108, 250, 48, 45);
 		btnNewButton_13.setText("0");
 		btnNewButton_13.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_13.getText() == "0") {
-					btnNewButton_13.setText("1");
-					data[2] = "1";
-				} else {
-					btnNewButton_13.setText("0");
-					data[2] = "0";
-				}
+				commonbtn = btnNewButton_13;
+				setBtnvalue(2);
 			}
-
 		});
 		panel.add(btnNewButton_13);
 
-		JButton btnNewButton_12 = new JButton("12");
+		btnNewButton_12 = new JButton("12");
 		btnNewButton_12.setBounds(152, 250, 48, 45);
 		btnNewButton_12.setText("0");
 		btnNewButton_12.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_12.getText() == "0") {
-					btnNewButton_12.setText("1");
-					data[3] = "1";
-				} else {
-					btnNewButton_12.setText("0");
-					data[3] = "0";
-				}
-				// data[3] = btnNewButton_15.getText();
+				commonbtn = btnNewButton_12;
+				setBtnvalue(3);
 			}
-
 		});
 		panel.add(btnNewButton_12);
 
-		JButton btnNewButton_11 = new JButton("11");
+		btnNewButton_11 = new JButton("11");
 		btnNewButton_11.setBounds(196, 250, 48, 45);
 		btnNewButton_11.setText("0");
 		btnNewButton_11.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_11.getText() == "0") {
-					btnNewButton_11.setText("1");
-					data[4] = "1";
-				} else {
-					btnNewButton_11.setText("0");
-					data[4] = "0";
-				}
+				commonbtn = btnNewButton_11;
+				setBtnvalue(4);
 			}
-
 		});
 		panel.add(btnNewButton_11);
 
-		JButton btnNewButton_10 = new JButton("10");
+		btnNewButton_10 = new JButton("10");
 		btnNewButton_10.setBounds(240, 250, 48, 45);
 		btnNewButton_10.setText("0");
 		btnNewButton_10.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_10.getText() == "0") {
-					btnNewButton_10.setText("1");
-					data[5] = "1";
-				} else {
-					btnNewButton_10.setText("0");
-					data[5] = "0";
-				}
+				commonbtn = btnNewButton_10;
+				setBtnvalue(5);
 			}
-
 		});
 		panel.add(btnNewButton_10);
 
-		JButton btnNewButton_9 = new JButton("9");
+		btnNewButton_9 = new JButton("9");
 		btnNewButton_9.setBounds(294, 250, 48, 45);
 		btnNewButton_9.setText("0");
 		btnNewButton_9.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_9.getText() == "0") {
-					btnNewButton_9.setText("1");
-					data[6] = "1";
-				} else {
-					btnNewButton_9.setText("0");
-					data[6] = "0";
-				}
+				commonbtn = btnNewButton_9;
+				setBtnvalue(6);
 			}
-
 		});
 		panel.add(btnNewButton_9);
 
-		JButton btnNewButton_8 = new JButton("8");
+		btnNewButton_8 = new JButton("8");
 		btnNewButton_8.setBounds(338, 250, 48, 45);
 		btnNewButton_8.setText("0");
 		btnNewButton_8.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_8.getText() == "0") {
-					btnNewButton_8.setText("1");
-					data[7] = "1";
-				} else {
-					btnNewButton_8.setText("0");
-					data[7] = "0";
-				}
+				commonbtn = btnNewButton_8;
+				setBtnvalue(7);
 			}
-
 		});
 		panel.add(btnNewButton_8);
 
-		JButton btnNewButton_7 = new JButton("7");
+		btnNewButton_7 = new JButton("7");
 		btnNewButton_7.setBounds(392, 250, 48, 45);
 		btnNewButton_7.setText("0");
 		btnNewButton_7.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_7.getText() == "0") {
-					btnNewButton_7.setText("1");
-					data[8] = "1";
-				} else {
-					btnNewButton_7.setText("0");
-					data[8] = "0";
-				}
+				commonbtn = btnNewButton_7;
+				setBtnvalue(8);
 			}
-
 		});
 		panel.add(btnNewButton_7);
 
-		JButton btnNewButton_6 = new JButton("6");
+		btnNewButton_6 = new JButton("6");
 		btnNewButton_6.setBounds(436, 250, 48, 45);
 		btnNewButton_6.setText("0");
 		btnNewButton_6.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_6.getText() == "0") {
-					btnNewButton_6.setText("1");
-					data[9] = "1";
-				} else {
-					btnNewButton_6.setText("0");
-					data[9] = "0";
-				}
+				commonbtn = btnNewButton_6;
+				setBtnvalue(9);
 			}
-
 		});
 		panel.add(btnNewButton_6);
 
-		JButton btnNewButton_5 = new JButton("5");
+		btnNewButton_5 = new JButton("5");
 		btnNewButton_5.setBounds(490, 250, 48, 45);
 		btnNewButton_5.setText("0");
 		btnNewButton_5.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_5.getText() == "0") {
-					btnNewButton_5.setText("1");
-					data[10] = "1";
-				} else {
-					btnNewButton_5.setText("0");
-					data[10] = "0";
-				}
+				commonbtn = btnNewButton_5;
+				setBtnvalue(10);
 			}
-
 		});
 		panel.add(btnNewButton_5);
 
-		JButton btnNewButton_4 = new JButton("4");
+		btnNewButton_4 = new JButton("4");
 		btnNewButton_4.setBounds(544, 250, 48, 45);
 		btnNewButton_4.setText("0");
 		btnNewButton_4.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_4.getText() == "0") {
-					btnNewButton_4.setText("1");
-					data[11] = "1";
-				} else {
-					btnNewButton_4.setText("0");
-					data[11] = "0";
-				}
+				commonbtn = btnNewButton_4;
+				setBtnvalue(11);
 			}
-
 		});
 		panel.add(btnNewButton_4);
 
-		JButton btnNewButton_3 = new JButton("3");
+		btnNewButton_3 = new JButton("3");
 		btnNewButton_3.setBounds(588, 250, 48, 45);
 		btnNewButton_3.setText("0");
 		btnNewButton_3.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_3.getText() == "0") {
-					btnNewButton_3.setText("1");
-					data[12] = "1";
-				} else {
-					btnNewButton_3.setText("0");
-					data[12] = "0";
-				}
+				commonbtn = btnNewButton_3;
+				setBtnvalue(12);
 			}
-
 		});
 		panel.add(btnNewButton_3);
 
-		JButton btnNewButton_2 = new JButton("2");
+		btnNewButton_2 = new JButton("2");
 		btnNewButton_2.setBounds(632, 250, 48, 45);
 		btnNewButton_2.setText("0");
 		btnNewButton_2.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_2.getText() == "0") {
-					btnNewButton_2.setText("1");
-					data[13] = "1";
-				} else {
-					btnNewButton_2.setText("0");
-					data[13] = "0";
-				}
+				commonbtn = btnNewButton_2;
+				setBtnvalue(13);
 			}
-
 		});
 		panel.add(btnNewButton_2);
 
-		JButton btnNewButton_1 = new JButton("1");
+		btnNewButton_1 = new JButton("1");
 		btnNewButton_1.setBounds(676, 250, 48, 45);
 		btnNewButton_1.setText("0");
 		btnNewButton_1.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_1.getText() == "0") {
-					btnNewButton_1.setText("1");
-					data[14] = "1";
-				} else {
-					btnNewButton_1.setText("0");
-					data[14] = "0";
-				}
+				commonbtn = btnNewButton_1;
+				setBtnvalue(14);
 			}
-
 		});
 		panel.add(btnNewButton_1);
 
-		JButton btnNewButton_0 = new JButton("0");
+		btnNewButton_0 = new JButton("0");
 		btnNewButton_0.setBounds(720, 250, 48, 45);
 		btnNewButton_0.setText("0");
 		btnNewButton_0.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (btnNewButton_0.getText() == "0") {
-					btnNewButton_0.setText("1");
-					data[15] = "1";
-				} else {
-					btnNewButton_0.setText("0");
-					data[15] = "0";
-				}
+				commonbtn = btnNewButton_0;
+				setBtnvalue(15);
 			}
-
 		});
 		panel.add(btnNewButton_0);
 
@@ -631,32 +536,9 @@ public class GUI extends JFrame {
 		  GPR_0_loadBtn.setBounds(395, 20, 55, 16);
 		  GPR_0_loadBtn.addActionListener(new ActionListener() {
 			  public void actionPerformed(ActionEvent e) {
-				  op_bit0 = btnNewButton_15.getText();
-				  op_bit1 = btnNewButton_14.getText();
-				  op_bit2 = btnNewButton_13.getText();
-				  op_bit3 = btnNewButton_12.getText();
-				  op_bit4 = btnNewButton_11.getText();
-				  op_bit5 = btnNewButton_10.getText();
-				  gpr_bit1 = btnNewButton_9.getText();
-					gpr_bit0 = btnNewButton_8.getText();
-					ixr_bit1 = btnNewButton_7.getText();
-					ixr_bit0 = btnNewButton_6.getText();
-					i = btnNewButton_5.getText();
-					ip_add_4_bit = btnNewButton_4.getText();
-					ip_add_3_bit = btnNewButton_3.getText();
-					ip_add_2_bit = btnNewButton_2.getText();
-					ip_add_1_bit = btnNewButton_1.getText();
-					ip_add_0_bit = btnNewButton_0.getText();
-					
-					address =  ip_add_4_bit + ip_add_3_bit + ip_add_2_bit + ip_add_1_bit + ip_add_0_bit;
-					ixr = ixr_bit1 + ixr_bit0;
-					gpr = gpr_bit1 + gpr_bit0;
-					operation = op_bit0 +  op_bit1 + op_bit2 + op_bit3 + op_bit4 + op_bit5;
-					instruction = operation + gpr + ixr + i + address;
-
-					
-				  LD_button(instruction, 1);
-				  display();
+				GPRloadBtn();	
+				LD_button(instruction, 1);
+				display();
 			  }
 		  });
 		  panel.add(GPR_0_loadBtn);
@@ -734,29 +616,7 @@ public class GUI extends JFrame {
 		GPR_1_loadBtn.setBounds(395, 40, 55, 16);
 		GPR_1_loadBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				op_bit0 = btnNewButton_15.getText();
-				  op_bit1 = btnNewButton_14.getText();
-				  op_bit2 = btnNewButton_13.getText();
-				  op_bit3 = btnNewButton_12.getText();
-				  op_bit4 = btnNewButton_11.getText();
-				  op_bit5 = btnNewButton_10.getText();
-				  gpr_bit1 = btnNewButton_9.getText();
-					gpr_bit0 = btnNewButton_8.getText();
-					ixr_bit1 = btnNewButton_7.getText();
-					ixr_bit0 = btnNewButton_6.getText();
-					i = btnNewButton_5.getText();
-					ip_add_4_bit = btnNewButton_4.getText();
-					ip_add_3_bit = btnNewButton_3.getText();
-					ip_add_2_bit = btnNewButton_2.getText();
-					ip_add_1_bit = btnNewButton_1.getText();
-					ip_add_0_bit = btnNewButton_0.getText();
-				
-				address =  ip_add_4_bit + ip_add_3_bit + ip_add_2_bit + ip_add_1_bit + ip_add_0_bit;
-				ixr = ixr_bit1 + ixr_bit0;
-				gpr = gpr_bit1 + gpr_bit0;
-				operation = op_bit0 +  op_bit1 + op_bit2 + op_bit3 + op_bit4 + op_bit5;
-				instruction = operation + gpr + ixr + i + address;
-				
+				GPRloadBtn();
 				LD_button(instruction, 2);
 				display();
 			}
@@ -836,29 +696,7 @@ public class GUI extends JFrame {
 		GPR_2_loadBtn.setBounds(395, 60, 55, 16);
 		GPR_2_loadBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				op_bit0 = btnNewButton_15.getText();
-				  op_bit1 = btnNewButton_14.getText();
-				  op_bit2 = btnNewButton_13.getText();
-				  op_bit3 = btnNewButton_12.getText();
-				  op_bit4 = btnNewButton_11.getText();
-				  op_bit5 = btnNewButton_10.getText();
-				  gpr_bit1 = btnNewButton_9.getText();
-					gpr_bit0 = btnNewButton_8.getText();
-					ixr_bit1 = btnNewButton_7.getText();
-					ixr_bit0 = btnNewButton_6.getText();
-					i = btnNewButton_5.getText();
-					ip_add_4_bit = btnNewButton_4.getText();
-					ip_add_3_bit = btnNewButton_3.getText();
-					ip_add_2_bit = btnNewButton_2.getText();
-					ip_add_1_bit = btnNewButton_1.getText();
-					ip_add_0_bit = btnNewButton_0.getText();
-				
-				address =  ip_add_4_bit + ip_add_3_bit + ip_add_2_bit + ip_add_1_bit + ip_add_0_bit;
-				ixr = ixr_bit1 + ixr_bit0;
-				gpr = gpr_bit1 + gpr_bit0;
-				operation = op_bit0 +  op_bit1 + op_bit2 + op_bit3 + op_bit4 + op_bit5;
-				instruction = operation + gpr + ixr + i + address;
-				
+				GPRloadBtn();
 				LD_button(instruction, 3);
 				display();
 			}
@@ -937,29 +775,7 @@ public class GUI extends JFrame {
 		GPR_3_loadBtn.setBounds(395, 80, 55, 16);
 		GPR_3_loadBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				op_bit0 = btnNewButton_15.getText();
-				  op_bit1 = btnNewButton_14.getText();
-				  op_bit2 = btnNewButton_13.getText();
-				  op_bit3 = btnNewButton_12.getText();
-				  op_bit4 = btnNewButton_11.getText();
-				  op_bit5 = btnNewButton_10.getText();
-				  gpr_bit1 = btnNewButton_9.getText();
-					gpr_bit0 = btnNewButton_8.getText();
-					ixr_bit1 = btnNewButton_7.getText();
-					ixr_bit0 = btnNewButton_6.getText();
-					i = btnNewButton_5.getText();
-					ip_add_4_bit = btnNewButton_4.getText();
-					ip_add_3_bit = btnNewButton_3.getText();
-					ip_add_2_bit = btnNewButton_2.getText();
-					ip_add_1_bit = btnNewButton_1.getText();
-					ip_add_0_bit = btnNewButton_0.getText();
-				
-				address =  ip_add_4_bit + ip_add_3_bit + ip_add_2_bit + ip_add_1_bit + ip_add_0_bit;
-				ixr = ixr_bit1 + ixr_bit0;
-				gpr = gpr_bit1 + gpr_bit0;
-				operation = op_bit0 +  op_bit1 + op_bit2 + op_bit3 + op_bit4 + op_bit5;
-				instruction = operation + gpr + ixr + i + address;
-				
+				GPRloadBtn();
 				LD_button(instruction, 4);
 				display();
 			}
@@ -1039,29 +855,7 @@ public class GUI extends JFrame {
 		IXR_1_loadBtn.setBounds(395, 120, 55, 16);
 		IXR_1_loadBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				op_bit0 = btnNewButton_15.getText();
-				  op_bit1 = btnNewButton_14.getText();
-				  op_bit2 = btnNewButton_13.getText();
-				  op_bit3 = btnNewButton_12.getText();
-				  op_bit4 = btnNewButton_11.getText();
-				  op_bit5 = btnNewButton_10.getText();
-				  gpr_bit1 = btnNewButton_9.getText();
-					gpr_bit0 = btnNewButton_8.getText();
-					ixr_bit1 = btnNewButton_7.getText();
-					ixr_bit0 = btnNewButton_6.getText();
-					i = btnNewButton_5.getText();
-					ip_add_4_bit = btnNewButton_4.getText();
-					ip_add_3_bit = btnNewButton_3.getText();
-					ip_add_2_bit = btnNewButton_2.getText();
-					ip_add_1_bit = btnNewButton_1.getText();
-					ip_add_0_bit = btnNewButton_0.getText();
-				
-				address =  ip_add_4_bit + ip_add_3_bit + ip_add_2_bit + ip_add_1_bit + ip_add_0_bit;
-				ixr = ixr_bit1 + ixr_bit0;
-				gpr = gpr_bit1 + gpr_bit0;
-				operation = op_bit0 +  op_bit1 + op_bit2 + op_bit3 + op_bit4 + op_bit5;
-				instruction = operation + gpr + ixr + i + address;
-				
+				GPRloadBtn();
 				LD_button(instruction, 5);
 				display();
 			}
@@ -1141,29 +935,7 @@ public class GUI extends JFrame {
 		IXR_2_loadBtn.setBounds(395, 140, 55, 16);
 		IXR_2_loadBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				op_bit0 = btnNewButton_15.getText();
-				  op_bit1 = btnNewButton_14.getText();
-				  op_bit2 = btnNewButton_13.getText();
-				  op_bit3 = btnNewButton_12.getText();
-				  op_bit4 = btnNewButton_11.getText();
-				  op_bit5 = btnNewButton_10.getText();
-				  gpr_bit1 = btnNewButton_9.getText();
-					gpr_bit0 = btnNewButton_8.getText();
-					ixr_bit1 = btnNewButton_7.getText();
-					ixr_bit0 = btnNewButton_6.getText();
-					i = btnNewButton_5.getText();
-					ip_add_4_bit = btnNewButton_4.getText();
-					ip_add_3_bit = btnNewButton_3.getText();
-					ip_add_2_bit = btnNewButton_2.getText();
-					ip_add_1_bit = btnNewButton_1.getText();
-					ip_add_0_bit = btnNewButton_0.getText();
-				
-				address =  ip_add_4_bit + ip_add_3_bit + ip_add_2_bit + ip_add_1_bit + ip_add_0_bit;
-				ixr = ixr_bit1 + ixr_bit0;
-				gpr = gpr_bit1 + gpr_bit0;
-				operation = op_bit0 +  op_bit1 + op_bit2 + op_bit3 + op_bit4 + op_bit5;
-				instruction = operation + gpr + ixr + i + address;
-				
+				GPRloadBtn();
 				LD_button(instruction, 6);
 				display();
 			}
@@ -1242,29 +1014,7 @@ public class GUI extends JFrame {
 		IXR_3_loadBtn.setBounds(395, 160, 55, 16);
 		IXR_3_loadBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				op_bit0 = btnNewButton_15.getText();
-				  op_bit1 = btnNewButton_14.getText();
-				  op_bit2 = btnNewButton_13.getText();
-				  op_bit3 = btnNewButton_12.getText();
-				  op_bit4 = btnNewButton_11.getText();
-				  op_bit5 = btnNewButton_10.getText();
-				  gpr_bit1 = btnNewButton_9.getText();
-					gpr_bit0 = btnNewButton_8.getText();
-					ixr_bit1 = btnNewButton_7.getText();
-					ixr_bit0 = btnNewButton_6.getText();
-					i = btnNewButton_5.getText();
-					ip_add_4_bit = btnNewButton_4.getText();
-					ip_add_3_bit = btnNewButton_3.getText();
-					ip_add_2_bit = btnNewButton_2.getText();
-					ip_add_1_bit = btnNewButton_1.getText();
-					ip_add_0_bit = btnNewButton_0.getText();
-				
-				address =  ip_add_4_bit + ip_add_3_bit + ip_add_2_bit + ip_add_1_bit + ip_add_0_bit;
-				ixr = ixr_bit1 + ixr_bit0;
-				gpr = gpr_bit1 + gpr_bit0;
-				operation = op_bit0 +  op_bit1 + op_bit2 + op_bit3 + op_bit4 + op_bit5;
-				instruction = operation + gpr + ixr + i + address;
-				
+				GPRloadBtn();
 				LD_button(instruction, 7);
 				display();
 			}
@@ -1350,7 +1100,7 @@ public class GUI extends JFrame {
 					joiner.add(data[i]);
 				}
 
-				Register.getInstance().setPC(Integer.parseInt(joiner.toString(), 2));
+				register.setPC(Operations.strToNum(joiner.toString()));
 			}
 		});
 		panel.add(PCbtn);
@@ -1434,7 +1184,7 @@ public class GUI extends JFrame {
 					joiner.add(data[i]);
 				}
 
-				Register.getInstance().setMAR(Integer.parseInt(joiner.toString(), 2));
+				register.setMAR(Operations.strToNum(joiner.toString()));
 			}
 		});
 		panel.add(MARbtn);
@@ -1514,7 +1264,6 @@ public class GUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-
 				textMbr_1.setText(data[0]);
 				textMbr_2.setText(data[1]);
 				textMbr_3.setText(data[2]);
@@ -1537,7 +1286,7 @@ public class GUI extends JFrame {
 					joiner.add(data[i]);
 				}
 
-				Register.getInstance().setMBR(Integer.parseInt(joiner.toString(), 2));
+				register.setMBR(Operations.strToNum(joiner.toString()));
 			}
 		});
 		panel.add(MBRbtn);
@@ -1658,7 +1407,7 @@ public class GUI extends JFrame {
 		haltlbl.setBounds(546, 405, 25, 26);
 		panel.add(haltlbl);
 
-		JTextField textfield_1 = new JTextField();
+		JButton textfield_1 = new JButton();
 		textfield_1.setBounds(575, 405, 25, 26);
 		textfield_1.setBackground(Color.red);
 		panel.add(textfield_1);
@@ -1667,7 +1416,7 @@ public class GUI extends JFrame {
 		runlbl.setBounds(546, 435, 25, 26);
 		panel.add(runlbl);
 
-		JTextField textfield_2 = new JTextField();
+		JButton textfield_2 = new JButton();
 		textfield_2.setBounds(575, 435, 25, 26);
 		panel.add(textfield_2);
 
@@ -1676,13 +1425,11 @@ public class GUI extends JFrame {
 		JButton storeBtn = new JButton("Store");
 		storeBtn.setBounds(245, 362, 75, 30);
 		storeBtn.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Memory.getInstance().store(Register.getInstance().getMAR(), Register.getInstance().getMBR());
+				memory.store(register.getMAR(), register.getMBR());
 			}
-
 		});
 		panel.add(storeBtn);
 
@@ -1691,15 +1438,14 @@ public class GUI extends JFrame {
 		JButton stBtn = new JButton("St+");
 		stBtn.setBounds(335, 362, 75, 30);
 		stBtn.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
 				// storing the value MBR in MAR
-				Memory.getInstance().store(Register.getInstance().getMAR(), Register.getInstance().getMBR());
+				memory.store(register.getMAR(), register.getMBR());
 
-				String MAR = Integer.toBinaryString(Register.getInstance().getMAR() + 1);
+				String MAR = Integer.toBinaryString(register.getMAR() + 1);
 
 				String[] dataValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -1708,7 +1454,7 @@ public class GUI extends JFrame {
 				}
 
 				// setting the new incremented MAR value
-				Register.getInstance().setMAR(Integer.parseInt(MAR.toString(), 2));
+				register.setMAR(Integer.parseInt(MAR.toString(), 2));
 
 				// displaying on the MAR field
 				textMar_1.setText(dataValue[0]);
@@ -1725,7 +1471,6 @@ public class GUI extends JFrame {
 				textMar_12.setText(dataValue[11]);
 
 			}
-
 		});
 		panel.add(stBtn);
 
@@ -1734,11 +1479,10 @@ public class GUI extends JFrame {
 		JButton loadBtn = new JButton("Load");
 		loadBtn.setBounds(435, 362, 75, 30);
 		loadBtn.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				String str = Integer.toBinaryString(Memory.getInstance().load(Register.getInstance().getMAR()));
+				String str = Integer.toBinaryString(memory.load(register.getMAR()));
 
 				for (int i = 0; i <= 15 - str.length(); i++) {
 					data[i] = "0";
@@ -1769,10 +1513,9 @@ public class GUI extends JFrame {
 				for (int i = 0; i < data.length; i++) {
 					joiner.add(data[i]);
 				}
-
-				Register.getInstance().setMBR(Integer.parseInt(joiner.toString(), 2));
+				
+				register.setMBR(Operations.strToNum(joiner.toString()));
 			}
-
 		});
 		panel.add(loadBtn);
 		
@@ -1781,17 +1524,16 @@ public class GUI extends JFrame {
 		JButton ssBtn = new JButton("SS");
 		ssBtn.setBounds(330, 405, 50, 45);
 		ssBtn.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				System.out.println("\n ---------------------------------------------- \n");
 				// load and run the instruction
 				register.setMAR(register.getPC());
 				register.setMBR(memory.load(register.getMAR()));
 				register.setIR(register.getMBR());
 				
 				Load loadInst = new Load();
-				loadInst.loadInstruction(Register.getInstance().getMAR());
+				loadInst.loadInstruction(register.getMAR());
 				
 				if(loadInst.opcode != 0) {
 
@@ -1799,259 +1541,259 @@ public class GUI extends JFrame {
 					textfield_2.setBackground(Color.green);
 					
 					loadInst.runInstruction();
-
-					// get MAR
-					String MARVal = Integer.toBinaryString(Register.getInstance().getMAR());
-					MARVal = String.format("%12s", MARVal).replaceAll(" ", "0");
-					System.out.println("MARVal" + MARVal);
-					String[] MARValArr = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
-
-					for (int i = 0; i < MARVal.length(); i++) {
-						MARValArr[i] = MARVal.substring(i, i + 1);
-					}
-
-					// display MAR
-					textMar_1.setText(MARValArr[0]);
-					textMar_2.setText(MARValArr[1]);
-					textMar_3.setText(MARValArr[2]);
-					textMar_4.setText(MARValArr[3]);
-					textMar_5.setText(MARValArr[4]);
-					textMar_6.setText(MARValArr[5]);
-					textMar_7.setText(MARValArr[6]);
-					textMar_8.setText(MARValArr[7]);
-					textMar_9.setText(MARValArr[8]);
-					textMar_10.setText(MARValArr[9]);
-					textMar_11.setText(MARValArr[10]);
-					textMar_12.setText(MARValArr[11]);
-
-					// get IR
-					String instruction = Integer.toBinaryString(Register.getInstance().getIR());
-					instruction = String.format("%16s", instruction).replaceAll(" ", "0");
-					String[] instArr = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
-
-					for (int i = 0; i < instruction.length(); i++) {
-						instArr[i] = instruction.substring(i, i + 1);
-					}
-
-					// displaying in the IR field
-					textIR_1.setText(instArr[0]);
-					textIR_2.setText(instArr[1]);
-					textIR_3.setText(instArr[2]);
-					textIR_4.setText(instArr[3]);
-					textIR_5.setText(instArr[4]);
-					textIR_6.setText(instArr[5]);
-					textIR_7.setText(instArr[6]);
-					textIR_8.setText(instArr[7]);
-					textIR_9.setText(instArr[8]);
-					textIR_10.setText(instArr[9]);
-					textIR_11.setText(instArr[10]);
-					textIR_12.setText(instArr[11]);
-					textIR_13.setText(instArr[12]);
-					textIR_14.setText(instArr[13]);
-					textIR_15.setText(instArr[14]);
-					textIR_16.setText(instArr[15]);
-
-					// display instruction output in GPR
-					String GPRVal = Integer.toBinaryString(Register.getInstance().getGeneralReg(loadInst.R));
-					String[] dataValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
-					for (int i = 0; i < GPRVal.length(); i++) {
-						dataValue[16 - GPRVal.length() + i] = GPRVal.substring(i, i + 1);
-					}
-					switch (loadInst.R) {
-						case 0:
-							// display in GPR0
-							GPR_0_TF1.setText(dataValue[0]);
-							GPR_0_TF2.setText(dataValue[1]);
-							GPR_0_TF3.setText(dataValue[2]);
-							GPR_0_TF4.setText(dataValue[3]);
-							GPR_0_TF5.setText(dataValue[4]);
-							GPR_0_TF6.setText(dataValue[5]);
-							GPR_0_TF7.setText(dataValue[6]);
-							GPR_0_TF8.setText(dataValue[7]);
-							GPR_0_TF9.setText(dataValue[8]);
-							GPR_0_TF10.setText(dataValue[9]);
-							GPR_0_TF11.setText(dataValue[10]);
-							GPR_0_TF12.setText(dataValue[11]);
-							GPR_0_TF13.setText(dataValue[12]);
-							GPR_0_TF14.setText(dataValue[13]);
-							GPR_0_TF15.setText(dataValue[14]);
-							GPR_0_TF16.setText(dataValue[15]);
-							break;
-
-						case 1:
-							// display in GPR1
-							GPR_1_TF1.setText(dataValue[0]);
-							GPR_1_TF2.setText(dataValue[1]);
-							GPR_1_TF3.setText(dataValue[2]);
-							GPR_1_TF4.setText(dataValue[3]);
-							GPR_1_TF5.setText(dataValue[4]);
-							GPR_1_TF6.setText(dataValue[5]);
-							GPR_1_TF7.setText(dataValue[6]);
-							GPR_1_TF8.setText(dataValue[7]);
-							GPR_1_TF9.setText(dataValue[8]);
-							GPR_1_TF10.setText(dataValue[9]);
-							GPR_1_TF11.setText(dataValue[10]);
-							GPR_1_TF12.setText(dataValue[11]);
-							GPR_1_TF13.setText(dataValue[12]);
-							GPR_1_TF14.setText(dataValue[13]);
-							GPR_1_TF15.setText(dataValue[14]);
-							GPR_1_TF16.setText(dataValue[15]);
-							break;
-
-						case 2:
-							// display in GPR2
-							GPR_2_TF1.setText(dataValue[0]);
-							GPR_2_TF2.setText(dataValue[1]);
-							GPR_2_TF3.setText(dataValue[2]);
-							GPR_2_TF4.setText(dataValue[3]);
-							GPR_2_TF5.setText(dataValue[4]);
-							GPR_2_TF6.setText(dataValue[5]);
-							GPR_2_TF7.setText(dataValue[6]);
-							GPR_2_TF8.setText(dataValue[7]);
-							GPR_2_TF9.setText(dataValue[8]);
-							GPR_2_TF10.setText(dataValue[9]);
-							GPR_2_TF11.setText(dataValue[10]);
-							GPR_2_TF12.setText(dataValue[11]);
-							GPR_2_TF13.setText(dataValue[12]);
-							GPR_2_TF14.setText(dataValue[13]);
-							GPR_2_TF15.setText(dataValue[14]);
-							GPR_2_TF16.setText(dataValue[15]);
-							break;
-
-						case 3:
-							// display in GPR3
-							GPR_3_TF1.setText(dataValue[0]);
-							GPR_3_TF2.setText(dataValue[1]);
-							GPR_3_TF3.setText(dataValue[2]);
-							GPR_3_TF4.setText(dataValue[3]);
-							GPR_3_TF5.setText(dataValue[4]);
-							GPR_3_TF6.setText(dataValue[5]);
-							GPR_3_TF7.setText(dataValue[6]);
-							GPR_3_TF8.setText(dataValue[7]);
-							GPR_3_TF9.setText(dataValue[8]);
-							GPR_3_TF10.setText(dataValue[9]);
-							GPR_3_TF11.setText(dataValue[10]);
-							GPR_3_TF12.setText(dataValue[11]);
-							GPR_3_TF13.setText(dataValue[12]);
-							GPR_3_TF14.setText(dataValue[13]);
-							GPR_3_TF15.setText(dataValue[14]);
-							GPR_3_TF16.setText(dataValue[15]);
-							break;
-
-					}
-					
-					switch (loadInst.IX) {	
-					case 1:
-						// display in IXR1
-						IXR_1_TF1.setText(dataValue[0]);
-						IXR_1_TF2.setText(dataValue[1]);
-						IXR_1_TF3.setText(dataValue[2]);
-						IXR_1_TF4.setText(dataValue[3]);
-						IXR_1_TF5.setText(dataValue[4]);
-						IXR_1_TF6.setText(dataValue[5]);
-						IXR_1_TF7.setText(dataValue[6]);
-						IXR_1_TF8.setText(dataValue[7]);
-						IXR_1_TF9.setText(dataValue[8]);
-						IXR_1_TF10.setText(dataValue[9]);
-						IXR_1_TF11.setText(dataValue[10]);
-						IXR_1_TF12.setText(dataValue[11]);
-						IXR_1_TF13.setText(dataValue[12]);
-						IXR_1_TF14.setText(dataValue[13]);
-						IXR_1_TF15.setText(dataValue[14]);
-						IXR_1_TF16.setText(dataValue[15]);
-						break;
-
-					case 2:
-						// display in IXR2
-						IXR_2_TF1.setText(dataValue[0]);
-						IXR_2_TF2.setText(dataValue[1]);
-						IXR_2_TF3.setText(dataValue[2]);
-						IXR_2_TF4.setText(dataValue[3]);
-						IXR_2_TF5.setText(dataValue[4]);
-						IXR_2_TF6.setText(dataValue[5]);
-						IXR_2_TF7.setText(dataValue[6]);
-						IXR_2_TF8.setText(dataValue[7]);
-						IXR_2_TF9.setText(dataValue[8]);
-						IXR_2_TF10.setText(dataValue[9]);
-						IXR_2_TF11.setText(dataValue[10]);
-						IXR_2_TF12.setText(dataValue[11]);
-						IXR_2_TF13.setText(dataValue[12]);
-						IXR_2_TF14.setText(dataValue[13]);
-						IXR_2_TF15.setText(dataValue[14]);
-						IXR_2_TF16.setText(dataValue[15]);
-						break;
-
-					case 3:
-						// display in IXR3
-						IXR_3_TF1.setText(dataValue[0]);
-						IXR_3_TF2.setText(dataValue[1]);
-						IXR_3_TF3.setText(dataValue[2]);
-						IXR_3_TF4.setText(dataValue[3]);
-						IXR_3_TF5.setText(dataValue[4]);
-						IXR_3_TF6.setText(dataValue[5]);
-						IXR_3_TF7.setText(dataValue[6]);
-						IXR_3_TF8.setText(dataValue[7]);
-						IXR_3_TF9.setText(dataValue[8]);
-						IXR_3_TF10.setText(dataValue[9]);
-						IXR_3_TF11.setText(dataValue[10]);
-						IXR_3_TF12.setText(dataValue[11]);
-						IXR_3_TF13.setText(dataValue[12]);
-						IXR_3_TF14.setText(dataValue[13]);
-						IXR_3_TF15.setText(dataValue[14]);
-						IXR_3_TF16.setText(dataValue[15]);
-						break;
-
-				}
-					// display inst value in MBR
-					textMbr_1.setText(dataValue[0]);
-					textMbr_2.setText(dataValue[1]);
-					textMbr_3.setText(dataValue[2]);
-					textMbr_4.setText(dataValue[3]);
-					textMbr_5.setText(dataValue[4]);
-					textMbr_6.setText(dataValue[5]);
-					textMbr_7.setText(dataValue[6]);
-					textMbr_8.setText(dataValue[7]);
-					textMbr_9.setText(dataValue[8]);
-					textMbr_10.setText(dataValue[9]);
-					textMbr_11.setText(dataValue[10]);
-					textMbr_12.setText(dataValue[11]);
-					textMbr_13.setText(dataValue[12]);
-					textMbr_14.setText(dataValue[13]);
-					textMbr_15.setText(dataValue[14]);
-					textMbr_16.setText(dataValue[15]);
+					display();
+//					// get MAR
+//					String MARVal = Operations.numToStr(register.getMAR(), 12);
+//					
+//					System.out.println("MAR Value: " + MARVal);
+//					String[] MARValArr = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+//
+//					for (int i = 0; i < MARVal.length(); i++) {
+//						MARValArr[i] = MARVal.substring(i, i + 1);
+//					}
+//
+//					// display MAR
+//					textMar_1.setText(MARValArr[0]);
+//					textMar_2.setText(MARValArr[1]);
+//					textMar_3.setText(MARValArr[2]);
+//					textMar_4.setText(MARValArr[3]);
+//					textMar_5.setText(MARValArr[4]);
+//					textMar_6.setText(MARValArr[5]);
+//					textMar_7.setText(MARValArr[6]);
+//					textMar_8.setText(MARValArr[7]);
+//					textMar_9.setText(MARValArr[8]);
+//					textMar_10.setText(MARValArr[9]);
+//					textMar_11.setText(MARValArr[10]);
+//					textMar_12.setText(MARValArr[11]);
+//
+//					// get IR
+//					String instruction = Operations.numToStr(register.getIR(), 16);
+//					
+//					String[] instArr = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+//
+//					for (int i = 0; i < instruction.length(); i++) {
+//						instArr[i] = instruction.substring(i, i + 1);
+//					}
+//
+//					// displaying in the IR field
+//					textIR_1.setText(instArr[0]);
+//					textIR_2.setText(instArr[1]);
+//					textIR_3.setText(instArr[2]);
+//					textIR_4.setText(instArr[3]);
+//					textIR_5.setText(instArr[4]);
+//					textIR_6.setText(instArr[5]);
+//					textIR_7.setText(instArr[6]);
+//					textIR_8.setText(instArr[7]);
+//					textIR_9.setText(instArr[8]);
+//					textIR_10.setText(instArr[9]);
+//					textIR_11.setText(instArr[10]);
+//					textIR_12.setText(instArr[11]);
+//					textIR_13.setText(instArr[12]);
+//					textIR_14.setText(instArr[13]);
+//					textIR_15.setText(instArr[14]);
+//					textIR_16.setText(instArr[15]);
+//
+//					// display instruction output in GPR
+//					String GPRVal = Operations.numToStr(register.getGeneralReg(loadInst.R), 16);
+//					
+//					String[] dataValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+//					for (int i = 0; i < GPRVal.length(); i++) {
+//						dataValue[16 - GPRVal.length() + i] = GPRVal.substring(i, i + 1);
+//					}
+//					switch (loadInst.R) {
+//						case 0:
+//							// display in GPR0
+//							GPR_0_TF1.setText(dataValue[0]);
+//							GPR_0_TF2.setText(dataValue[1]);
+//							GPR_0_TF3.setText(dataValue[2]);
+//							GPR_0_TF4.setText(dataValue[3]);
+//							GPR_0_TF5.setText(dataValue[4]);
+//							GPR_0_TF6.setText(dataValue[5]);
+//							GPR_0_TF7.setText(dataValue[6]);
+//							GPR_0_TF8.setText(dataValue[7]);
+//							GPR_0_TF9.setText(dataValue[8]);
+//							GPR_0_TF10.setText(dataValue[9]);
+//							GPR_0_TF11.setText(dataValue[10]);
+//							GPR_0_TF12.setText(dataValue[11]);
+//							GPR_0_TF13.setText(dataValue[12]);
+//							GPR_0_TF14.setText(dataValue[13]);
+//							GPR_0_TF15.setText(dataValue[14]);
+//							GPR_0_TF16.setText(dataValue[15]);
+//							break;
+//
+//						case 1:
+//							// display in GPR1
+//							GPR_1_TF1.setText(dataValue[0]);
+//							GPR_1_TF2.setText(dataValue[1]);
+//							GPR_1_TF3.setText(dataValue[2]);
+//							GPR_1_TF4.setText(dataValue[3]);
+//							GPR_1_TF5.setText(dataValue[4]);
+//							GPR_1_TF6.setText(dataValue[5]);
+//							GPR_1_TF7.setText(dataValue[6]);
+//							GPR_1_TF8.setText(dataValue[7]);
+//							GPR_1_TF9.setText(dataValue[8]);
+//							GPR_1_TF10.setText(dataValue[9]);
+//							GPR_1_TF11.setText(dataValue[10]);
+//							GPR_1_TF12.setText(dataValue[11]);
+//							GPR_1_TF13.setText(dataValue[12]);
+//							GPR_1_TF14.setText(dataValue[13]);
+//							GPR_1_TF15.setText(dataValue[14]);
+//							GPR_1_TF16.setText(dataValue[15]);
+//							break;
+//
+//						case 2:
+//							// display in GPR2
+//							GPR_2_TF1.setText(dataValue[0]);
+//							GPR_2_TF2.setText(dataValue[1]);
+//							GPR_2_TF3.setText(dataValue[2]);
+//							GPR_2_TF4.setText(dataValue[3]);
+//							GPR_2_TF5.setText(dataValue[4]);
+//							GPR_2_TF6.setText(dataValue[5]);
+//							GPR_2_TF7.setText(dataValue[6]);
+//							GPR_2_TF8.setText(dataValue[7]);
+//							GPR_2_TF9.setText(dataValue[8]);
+//							GPR_2_TF10.setText(dataValue[9]);
+//							GPR_2_TF11.setText(dataValue[10]);
+//							GPR_2_TF12.setText(dataValue[11]);
+//							GPR_2_TF13.setText(dataValue[12]);
+//							GPR_2_TF14.setText(dataValue[13]);
+//							GPR_2_TF15.setText(dataValue[14]);
+//							GPR_2_TF16.setText(dataValue[15]);
+//							break;
+//
+//						case 3:
+//							// display in GPR3
+//							GPR_3_TF1.setText(dataValue[0]);
+//							GPR_3_TF2.setText(dataValue[1]);
+//							GPR_3_TF3.setText(dataValue[2]);
+//							GPR_3_TF4.setText(dataValue[3]);
+//							GPR_3_TF5.setText(dataValue[4]);
+//							GPR_3_TF6.setText(dataValue[5]);
+//							GPR_3_TF7.setText(dataValue[6]);
+//							GPR_3_TF8.setText(dataValue[7]);
+//							GPR_3_TF9.setText(dataValue[8]);
+//							GPR_3_TF10.setText(dataValue[9]);
+//							GPR_3_TF11.setText(dataValue[10]);
+//							GPR_3_TF12.setText(dataValue[11]);
+//							GPR_3_TF13.setText(dataValue[12]);
+//							GPR_3_TF14.setText(dataValue[13]);
+//							GPR_3_TF15.setText(dataValue[14]);
+//							GPR_3_TF16.setText(dataValue[15]);
+//							break;
+//
+//					}
+//					
+//					switch (loadInst.IX) {	
+//					case 1:
+//						// display in IXR1
+//						IXR_1_TF1.setText(dataValue[0]);
+//						IXR_1_TF2.setText(dataValue[1]);
+//						IXR_1_TF3.setText(dataValue[2]);
+//						IXR_1_TF4.setText(dataValue[3]);
+//						IXR_1_TF5.setText(dataValue[4]);
+//						IXR_1_TF6.setText(dataValue[5]);
+//						IXR_1_TF7.setText(dataValue[6]);
+//						IXR_1_TF8.setText(dataValue[7]);
+//						IXR_1_TF9.setText(dataValue[8]);
+//						IXR_1_TF10.setText(dataValue[9]);
+//						IXR_1_TF11.setText(dataValue[10]);
+//						IXR_1_TF12.setText(dataValue[11]);
+//						IXR_1_TF13.setText(dataValue[12]);
+//						IXR_1_TF14.setText(dataValue[13]);
+//						IXR_1_TF15.setText(dataValue[14]);
+//						IXR_1_TF16.setText(dataValue[15]);
+//						break;
+//
+//					case 2:
+//						// display in IXR2
+//						IXR_2_TF1.setText(dataValue[0]);
+//						IXR_2_TF2.setText(dataValue[1]);
+//						IXR_2_TF3.setText(dataValue[2]);
+//						IXR_2_TF4.setText(dataValue[3]);
+//						IXR_2_TF5.setText(dataValue[4]);
+//						IXR_2_TF6.setText(dataValue[5]);
+//						IXR_2_TF7.setText(dataValue[6]);
+//						IXR_2_TF8.setText(dataValue[7]);
+//						IXR_2_TF9.setText(dataValue[8]);
+//						IXR_2_TF10.setText(dataValue[9]);
+//						IXR_2_TF11.setText(dataValue[10]);
+//						IXR_2_TF12.setText(dataValue[11]);
+//						IXR_2_TF13.setText(dataValue[12]);
+//						IXR_2_TF14.setText(dataValue[13]);
+//						IXR_2_TF15.setText(dataValue[14]);
+//						IXR_2_TF16.setText(dataValue[15]);
+//						break;
+//
+//					case 3:
+//						// display in IXR3
+//						IXR_3_TF1.setText(dataValue[0]);
+//						IXR_3_TF2.setText(dataValue[1]);
+//						IXR_3_TF3.setText(dataValue[2]);
+//						IXR_3_TF4.setText(dataValue[3]);
+//						IXR_3_TF5.setText(dataValue[4]);
+//						IXR_3_TF6.setText(dataValue[5]);
+//						IXR_3_TF7.setText(dataValue[6]);
+//						IXR_3_TF8.setText(dataValue[7]);
+//						IXR_3_TF9.setText(dataValue[8]);
+//						IXR_3_TF10.setText(dataValue[9]);
+//						IXR_3_TF11.setText(dataValue[10]);
+//						IXR_3_TF12.setText(dataValue[11]);
+//						IXR_3_TF13.setText(dataValue[12]);
+//						IXR_3_TF14.setText(dataValue[13]);
+//						IXR_3_TF15.setText(dataValue[14]);
+//						IXR_3_TF16.setText(dataValue[15]);
+//						break;
+//
+//				}
+//					// display inst value in MBR
+//					textMbr_1.setText(dataValue[0]);
+//					textMbr_2.setText(dataValue[1]);
+//					textMbr_3.setText(dataValue[2]);
+//					textMbr_4.setText(dataValue[3]);
+//					textMbr_5.setText(dataValue[4]);
+//					textMbr_6.setText(dataValue[5]);
+//					textMbr_7.setText(dataValue[6]);
+//					textMbr_8.setText(dataValue[7]);
+//					textMbr_9.setText(dataValue[8]);
+//					textMbr_10.setText(dataValue[9]);
+//					textMbr_11.setText(dataValue[10]);
+//					textMbr_12.setText(dataValue[11]);
+//					textMbr_13.setText(dataValue[12]);
+//					textMbr_14.setText(dataValue[13]);
+//					textMbr_15.setText(dataValue[14]);
+//					textMbr_16.setText(dataValue[15]);
 
 					//Increment PC
 					register.setPC(register.getPC() + 1);
 					
-					// get incremented PC
-					String PCVal = Integer.toBinaryString(Register.getInstance().getPC());
-					PCVal = String.format("%12s", PCVal).replaceAll(" ", "0");
-					System.out.println(PCVal);
-					String[] PCValArr = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
-
-					for (int i = 0; i < PCVal.length(); i++) {
-						PCValArr[i] = PCVal.substring(i, i + 1);
-					}
-
-					// display PC
-					textPc_1.setText(PCValArr[0]);
-					textPc_2.setText(PCValArr[1]);
-					textPc_3.setText(PCValArr[2]);
-					textPc_4.setText(PCValArr[3]);
-					textPc_5.setText(PCValArr[4]);
-					textPc_6.setText(PCValArr[5]);
-					textPc_7.setText(PCValArr[6]);
-					textPc_8.setText(PCValArr[7]);
-					textPc_9.setText(PCValArr[8]);
-					textPc_10.setText(PCValArr[9]);
-					textPc_11.setText(PCValArr[10]);
-					textPc_12.setText(PCValArr[11]);
+//					// get incremented PC
+//					String PCVal = Operations.numToStr(register.getPC(), 12);
+//					
+//					System.out.println("PC value: " + PCVal);
+//					String[] PCValArr = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+//
+//					for (int i = 0; i < PCVal.length(); i++) {
+//						PCValArr[i] = PCVal.substring(i, i + 1);
+//					}
+//
+//					// display PC
+//					textPc_1.setText(PCValArr[0]);
+//					textPc_2.setText(PCValArr[1]);
+//					textPc_3.setText(PCValArr[2]);
+//					textPc_4.setText(PCValArr[3]);
+//					textPc_5.setText(PCValArr[4]);
+//					textPc_6.setText(PCValArr[5]);
+//					textPc_7.setText(PCValArr[6]);
+//					textPc_8.setText(PCValArr[7]);
+//					textPc_9.setText(PCValArr[8]);
+//					textPc_10.setText(PCValArr[9]);
+//					textPc_11.setText(PCValArr[10]);
+//					textPc_12.setText(PCValArr[11]);
 				
 				}
 				textfield_1.setBackground(Color.red);
 				textfield_2.setBackground(Color.white);
 			}
-
 		});
 		panel.add(ssBtn);
 
@@ -2060,7 +1802,6 @@ public class GUI extends JFrame {
 		JButton runBtn = new JButton("Run");
 		runBtn.setBounds(415, 405, 60, 45);
 		runBtn.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// load and run the instruction
@@ -2070,264 +1811,266 @@ public class GUI extends JFrame {
 					register.setIR(register.getMBR());
 					
 					Load loadInst = new Load();
-					loadInst.loadInstruction(Register.getInstance().getMAR());
+					loadInst.loadInstruction(register.getMAR());
+					
 					if (loadInst.opcode == 0) {
 						textfield_1.setBackground(Color.red);
 						textfield_2.setBackground(Color.white);
 						break; // HLT
 					}
+					
 					loadInst.runInstruction();
 	
-					// get MAR
-					String MARVal = Integer.toBinaryString(Register.getInstance().getMAR());
-					MARVal = String.format("%12s", MARVal).replaceAll(" ", "0");
-					System.out.println("MARVal" + MARVal);
-					String[] MARValArr = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
-	
-					for (int i = 0; i < MARVal.length(); i++) {
-						MARValArr[i] = MARVal.substring(i, i + 1);
-					}
-	
-					// display MAR
-					textMar_1.setText(MARValArr[0]);
-					textMar_2.setText(MARValArr[1]);
-					textMar_3.setText(MARValArr[2]);
-					textMar_4.setText(MARValArr[3]);
-					textMar_5.setText(MARValArr[4]);
-					textMar_6.setText(MARValArr[5]);
-					textMar_7.setText(MARValArr[6]);
-					textMar_8.setText(MARValArr[7]);
-					textMar_9.setText(MARValArr[8]);
-					textMar_10.setText(MARValArr[9]);
-					textMar_11.setText(MARValArr[10]);
-					textMar_12.setText(MARValArr[11]);
-	
-					// get IR
-					String instruction = Integer.toBinaryString(Register.getInstance().getIR());
-					instruction = String.format("%16s", instruction).replaceAll(" ", "0");
-					String[] instArr = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
-	
-					for (int i = 0; i < instruction.length(); i++) {
-						instArr[i] = instruction.substring(i, i + 1);
-					}
-	
-					// displaying in the IR field
-					textIR_1.setText(instArr[0]);
-					textIR_2.setText(instArr[1]);
-					textIR_3.setText(instArr[2]);
-					textIR_4.setText(instArr[3]);
-					textIR_5.setText(instArr[4]);
-					textIR_6.setText(instArr[5]);
-					textIR_7.setText(instArr[6]);
-					textIR_8.setText(instArr[7]);
-					textIR_9.setText(instArr[8]);
-					textIR_10.setText(instArr[9]);
-					textIR_11.setText(instArr[10]);
-					textIR_12.setText(instArr[11]);
-					textIR_13.setText(instArr[12]);
-					textIR_14.setText(instArr[13]);
-					textIR_15.setText(instArr[14]);
-					textIR_16.setText(instArr[15]);
-	
-					// display instruction output in GPR
-					String GPRVal = Integer.toBinaryString(Register.getInstance().getGeneralReg(loadInst.R));
-					String[] dataValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
-					for (int i = 0; i < GPRVal.length(); i++) {
-						dataValue[16 - GPRVal.length() + i] = GPRVal.substring(i, i + 1);
-					}
-					
-					switch (loadInst.IX) {	
-						case 1:
-							// display in IXR1
-							IXR_1_TF1.setText(dataValue[0]);
-							IXR_1_TF2.setText(dataValue[1]);
-							IXR_1_TF3.setText(dataValue[2]);
-							IXR_1_TF4.setText(dataValue[3]);
-							IXR_1_TF5.setText(dataValue[4]);
-							IXR_1_TF6.setText(dataValue[5]);
-							IXR_1_TF7.setText(dataValue[6]);
-							IXR_1_TF8.setText(dataValue[7]);
-							IXR_1_TF9.setText(dataValue[8]);
-							IXR_1_TF10.setText(dataValue[9]);
-							IXR_1_TF11.setText(dataValue[10]);
-							IXR_1_TF12.setText(dataValue[11]);
-							IXR_1_TF13.setText(dataValue[12]);
-							IXR_1_TF14.setText(dataValue[13]);
-							IXR_1_TF15.setText(dataValue[14]);
-							IXR_1_TF16.setText(dataValue[15]);
-							break;
-	
-						case 2:
-							// display in IXR2
-							IXR_2_TF1.setText(dataValue[0]);
-							IXR_2_TF2.setText(dataValue[1]);
-							IXR_2_TF3.setText(dataValue[2]);
-							IXR_2_TF4.setText(dataValue[3]);
-							IXR_2_TF5.setText(dataValue[4]);
-							IXR_2_TF6.setText(dataValue[5]);
-							IXR_2_TF7.setText(dataValue[6]);
-							IXR_2_TF8.setText(dataValue[7]);
-							IXR_2_TF9.setText(dataValue[8]);
-							IXR_2_TF10.setText(dataValue[9]);
-							IXR_2_TF11.setText(dataValue[10]);
-							IXR_2_TF12.setText(dataValue[11]);
-							IXR_2_TF13.setText(dataValue[12]);
-							IXR_2_TF14.setText(dataValue[13]);
-							IXR_2_TF15.setText(dataValue[14]);
-							IXR_2_TF16.setText(dataValue[15]);
-							break;
-	
-						case 3:
-							// display in IXR3
-							IXR_3_TF1.setText(dataValue[0]);
-							IXR_3_TF2.setText(dataValue[1]);
-							IXR_3_TF3.setText(dataValue[2]);
-							IXR_3_TF4.setText(dataValue[3]);
-							IXR_3_TF5.setText(dataValue[4]);
-							IXR_3_TF6.setText(dataValue[5]);
-							IXR_3_TF7.setText(dataValue[6]);
-							IXR_3_TF8.setText(dataValue[7]);
-							IXR_3_TF9.setText(dataValue[8]);
-							IXR_3_TF10.setText(dataValue[9]);
-							IXR_3_TF11.setText(dataValue[10]);
-							IXR_3_TF12.setText(dataValue[11]);
-							IXR_3_TF13.setText(dataValue[12]);
-							IXR_3_TF14.setText(dataValue[13]);
-							IXR_3_TF15.setText(dataValue[14]);
-							IXR_3_TF16.setText(dataValue[15]);
-							break;
-	
-					}
-					
-					switch (loadInst.R) {
-					case 0:
-						// display in GPR0
-						GPR_0_TF1.setText(dataValue[0]);
-						GPR_0_TF2.setText(dataValue[1]);
-						GPR_0_TF3.setText(dataValue[2]);
-						GPR_0_TF4.setText(dataValue[3]);
-						GPR_0_TF5.setText(dataValue[4]);
-						GPR_0_TF6.setText(dataValue[5]);
-						GPR_0_TF7.setText(dataValue[6]);
-						GPR_0_TF8.setText(dataValue[7]);
-						GPR_0_TF9.setText(dataValue[8]);
-						GPR_0_TF10.setText(dataValue[9]);
-						GPR_0_TF11.setText(dataValue[10]);
-						GPR_0_TF12.setText(dataValue[11]);
-						GPR_0_TF13.setText(dataValue[12]);
-						GPR_0_TF14.setText(dataValue[13]);
-						GPR_0_TF15.setText(dataValue[14]);
-						GPR_0_TF16.setText(dataValue[15]);
-						break;
-
-					case 1:
-						// display in GPR1
-						GPR_1_TF1.setText(dataValue[0]);
-						GPR_1_TF2.setText(dataValue[1]);
-						GPR_1_TF3.setText(dataValue[2]);
-						GPR_1_TF4.setText(dataValue[3]);
-						GPR_1_TF5.setText(dataValue[4]);
-						GPR_1_TF6.setText(dataValue[5]);
-						GPR_1_TF7.setText(dataValue[6]);
-						GPR_1_TF8.setText(dataValue[7]);
-						GPR_1_TF9.setText(dataValue[8]);
-						GPR_1_TF10.setText(dataValue[9]);
-						GPR_1_TF11.setText(dataValue[10]);
-						GPR_1_TF12.setText(dataValue[11]);
-						GPR_1_TF13.setText(dataValue[12]);
-						GPR_1_TF14.setText(dataValue[13]);
-						GPR_1_TF15.setText(dataValue[14]);
-						GPR_1_TF16.setText(dataValue[15]);
-						break;
-
-					case 2:
-						// display in GPR2
-						GPR_2_TF1.setText(dataValue[0]);
-						GPR_2_TF2.setText(dataValue[1]);
-						GPR_2_TF3.setText(dataValue[2]);
-						GPR_2_TF4.setText(dataValue[3]);
-						GPR_2_TF5.setText(dataValue[4]);
-						GPR_2_TF6.setText(dataValue[5]);
-						GPR_2_TF7.setText(dataValue[6]);
-						GPR_2_TF8.setText(dataValue[7]);
-						GPR_2_TF9.setText(dataValue[8]);
-						GPR_2_TF10.setText(dataValue[9]);
-						GPR_2_TF11.setText(dataValue[10]);
-						GPR_2_TF12.setText(dataValue[11]);
-						GPR_2_TF13.setText(dataValue[12]);
-						GPR_2_TF14.setText(dataValue[13]);
-						GPR_2_TF15.setText(dataValue[14]);
-						GPR_2_TF16.setText(dataValue[15]);
-						break;
-
-					case 3:
-						// display in GPR3
-						GPR_3_TF1.setText(dataValue[0]);
-						GPR_3_TF2.setText(dataValue[1]);
-						GPR_3_TF3.setText(dataValue[2]);
-						GPR_3_TF4.setText(dataValue[3]);
-						GPR_3_TF5.setText(dataValue[4]);
-						GPR_3_TF6.setText(dataValue[5]);
-						GPR_3_TF7.setText(dataValue[6]);
-						GPR_3_TF8.setText(dataValue[7]);
-						GPR_3_TF9.setText(dataValue[8]);
-						GPR_3_TF10.setText(dataValue[9]);
-						GPR_3_TF11.setText(dataValue[10]);
-						GPR_3_TF12.setText(dataValue[11]);
-						GPR_3_TF13.setText(dataValue[12]);
-						GPR_3_TF14.setText(dataValue[13]);
-						GPR_3_TF15.setText(dataValue[14]);
-						GPR_3_TF16.setText(dataValue[15]);
-						break;
-
-				}
-					// display inst value in MBR
-					textMbr_1.setText(dataValue[0]);
-					textMbr_2.setText(dataValue[1]);
-					textMbr_3.setText(dataValue[2]);
-					textMbr_4.setText(dataValue[3]);
-					textMbr_5.setText(dataValue[4]);
-					textMbr_6.setText(dataValue[5]);
-					textMbr_7.setText(dataValue[6]);
-					textMbr_8.setText(dataValue[7]);
-					textMbr_9.setText(dataValue[8]);
-					textMbr_10.setText(dataValue[9]);
-					textMbr_11.setText(dataValue[10]);
-					textMbr_12.setText(dataValue[11]);
-					textMbr_13.setText(dataValue[12]);
-					textMbr_14.setText(dataValue[13]);
-					textMbr_15.setText(dataValue[14]);
-					textMbr_16.setText(dataValue[15]);
+//					// get MAR
+//					String MARVal = Operations.numToStr(register.getMAR(), 12);
+//					System.out.println("MAR Value: " + MARVal);
+//					String[] MARValArr = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+//	
+//					for (int i = 0; i < MARVal.length(); i++) {
+//						MARValArr[i] = MARVal.substring(i, i + 1);
+//					}
+//	
+//					// display MAR
+//					textMar_1.setText(MARValArr[0]);
+//					textMar_2.setText(MARValArr[1]);
+//					textMar_3.setText(MARValArr[2]);
+//					textMar_4.setText(MARValArr[3]);
+//					textMar_5.setText(MARValArr[4]);
+//					textMar_6.setText(MARValArr[5]);
+//					textMar_7.setText(MARValArr[6]);
+//					textMar_8.setText(MARValArr[7]);
+//					textMar_9.setText(MARValArr[8]);
+//					textMar_10.setText(MARValArr[9]);
+//					textMar_11.setText(MARValArr[10]);
+//					textMar_12.setText(MARValArr[11]);
+//	
+//					// get IR
+//					String instruction = Operations.numToStr(register.getIR(),16);
+//
+//					String[] instArr = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+//	
+//					for (int i = 0; i < instruction.length(); i++) {
+//						instArr[i] = instruction.substring(i, i + 1);
+//					}
+//	
+//					// displaying in the IR field
+//					textIR_1.setText(instArr[0]);
+//					textIR_2.setText(instArr[1]);
+//					textIR_3.setText(instArr[2]);
+//					textIR_4.setText(instArr[3]);
+//					textIR_5.setText(instArr[4]);
+//					textIR_6.setText(instArr[5]);
+//					textIR_7.setText(instArr[6]);
+//					textIR_8.setText(instArr[7]);
+//					textIR_9.setText(instArr[8]);
+//					textIR_10.setText(instArr[9]);
+//					textIR_11.setText(instArr[10]);
+//					textIR_12.setText(instArr[11]);
+//					textIR_13.setText(instArr[12]);
+//					textIR_14.setText(instArr[13]);
+//					textIR_15.setText(instArr[14]);
+//					textIR_16.setText(instArr[15]);
+//	
+//					// display instruction output in GPR
+//					String GPRVal = Operations.numToStr(register.getGeneralReg(loadInst.R), 16);
+//					String[] dataValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+//					for (int i = 0; i < GPRVal.length(); i++) {
+//						dataValue[16 - GPRVal.length() + i] = GPRVal.substring(i, i + 1);
+//					}
+//					
+//					switch (loadInst.IX) {	
+//						case 1:
+//							// display in IXR1
+//							IXR_1_TF1.setText(dataValue[0]);
+//							IXR_1_TF2.setText(dataValue[1]);
+//							IXR_1_TF3.setText(dataValue[2]);
+//							IXR_1_TF4.setText(dataValue[3]);
+//							IXR_1_TF5.setText(dataValue[4]);
+//							IXR_1_TF6.setText(dataValue[5]);
+//							IXR_1_TF7.setText(dataValue[6]);
+//							IXR_1_TF8.setText(dataValue[7]);
+//							IXR_1_TF9.setText(dataValue[8]);
+//							IXR_1_TF10.setText(dataValue[9]);
+//							IXR_1_TF11.setText(dataValue[10]);
+//							IXR_1_TF12.setText(dataValue[11]);
+//							IXR_1_TF13.setText(dataValue[12]);
+//							IXR_1_TF14.setText(dataValue[13]);
+//							IXR_1_TF15.setText(dataValue[14]);
+//							IXR_1_TF16.setText(dataValue[15]);
+//							break;
+//	
+//						case 2:
+//							// display in IXR2
+//							IXR_2_TF1.setText(dataValue[0]);
+//							IXR_2_TF2.setText(dataValue[1]);
+//							IXR_2_TF3.setText(dataValue[2]);
+//							IXR_2_TF4.setText(dataValue[3]);
+//							IXR_2_TF5.setText(dataValue[4]);
+//							IXR_2_TF6.setText(dataValue[5]);
+//							IXR_2_TF7.setText(dataValue[6]);
+//							IXR_2_TF8.setText(dataValue[7]);
+//							IXR_2_TF9.setText(dataValue[8]);
+//							IXR_2_TF10.setText(dataValue[9]);
+//							IXR_2_TF11.setText(dataValue[10]);
+//							IXR_2_TF12.setText(dataValue[11]);
+//							IXR_2_TF13.setText(dataValue[12]);
+//							IXR_2_TF14.setText(dataValue[13]);
+//							IXR_2_TF15.setText(dataValue[14]);
+//							IXR_2_TF16.setText(dataValue[15]);
+//							break;
+//	
+//						case 3:
+//							// display in IXR3
+//							IXR_3_TF1.setText(dataValue[0]);
+//							IXR_3_TF2.setText(dataValue[1]);
+//							IXR_3_TF3.setText(dataValue[2]);
+//							IXR_3_TF4.setText(dataValue[3]);
+//							IXR_3_TF5.setText(dataValue[4]);
+//							IXR_3_TF6.setText(dataValue[5]);
+//							IXR_3_TF7.setText(dataValue[6]);
+//							IXR_3_TF8.setText(dataValue[7]);
+//							IXR_3_TF9.setText(dataValue[8]);
+//							IXR_3_TF10.setText(dataValue[9]);
+//							IXR_3_TF11.setText(dataValue[10]);
+//							IXR_3_TF12.setText(dataValue[11]);
+//							IXR_3_TF13.setText(dataValue[12]);
+//							IXR_3_TF14.setText(dataValue[13]);
+//							IXR_3_TF15.setText(dataValue[14]);
+//							IXR_3_TF16.setText(dataValue[15]);
+//							break;
+//	
+//					}
+//					
+//					switch (loadInst.R) {
+//					case 0:
+//						// display in GPR0
+//						GPR_0_TF1.setText(dataValue[0]);
+//						GPR_0_TF2.setText(dataValue[1]);
+//						GPR_0_TF3.setText(dataValue[2]);
+//						GPR_0_TF4.setText(dataValue[3]);
+//						GPR_0_TF5.setText(dataValue[4]);
+//						GPR_0_TF6.setText(dataValue[5]);
+//						GPR_0_TF7.setText(dataValue[6]);
+//						GPR_0_TF8.setText(dataValue[7]);
+//						GPR_0_TF9.setText(dataValue[8]);
+//						GPR_0_TF10.setText(dataValue[9]);
+//						GPR_0_TF11.setText(dataValue[10]);
+//						GPR_0_TF12.setText(dataValue[11]);
+//						GPR_0_TF13.setText(dataValue[12]);
+//						GPR_0_TF14.setText(dataValue[13]);
+//						GPR_0_TF15.setText(dataValue[14]);
+//						GPR_0_TF16.setText(dataValue[15]);
+//						break;
+//
+//					case 1:
+//						// display in GPR1
+//						GPR_1_TF1.setText(dataValue[0]);
+//						GPR_1_TF2.setText(dataValue[1]);
+//						GPR_1_TF3.setText(dataValue[2]);
+//						GPR_1_TF4.setText(dataValue[3]);
+//						GPR_1_TF5.setText(dataValue[4]);
+//						GPR_1_TF6.setText(dataValue[5]);
+//						GPR_1_TF7.setText(dataValue[6]);
+//						GPR_1_TF8.setText(dataValue[7]);
+//						GPR_1_TF9.setText(dataValue[8]);
+//						GPR_1_TF10.setText(dataValue[9]);
+//						GPR_1_TF11.setText(dataValue[10]);
+//						GPR_1_TF12.setText(dataValue[11]);
+//						GPR_1_TF13.setText(dataValue[12]);
+//						GPR_1_TF14.setText(dataValue[13]);
+//						GPR_1_TF15.setText(dataValue[14]);
+//						GPR_1_TF16.setText(dataValue[15]);
+//						break;
+//
+//					case 2:
+//						// display in GPR2
+//						GPR_2_TF1.setText(dataValue[0]);
+//						GPR_2_TF2.setText(dataValue[1]);
+//						GPR_2_TF3.setText(dataValue[2]);
+//						GPR_2_TF4.setText(dataValue[3]);
+//						GPR_2_TF5.setText(dataValue[4]);
+//						GPR_2_TF6.setText(dataValue[5]);
+//						GPR_2_TF7.setText(dataValue[6]);
+//						GPR_2_TF8.setText(dataValue[7]);
+//						GPR_2_TF9.setText(dataValue[8]);
+//						GPR_2_TF10.setText(dataValue[9]);
+//						GPR_2_TF11.setText(dataValue[10]);
+//						GPR_2_TF12.setText(dataValue[11]);
+//						GPR_2_TF13.setText(dataValue[12]);
+//						GPR_2_TF14.setText(dataValue[13]);
+//						GPR_2_TF15.setText(dataValue[14]);
+//						GPR_2_TF16.setText(dataValue[15]);
+//						break;
+//
+//					case 3:
+//						// display in GPR3
+//						GPR_3_TF1.setText(dataValue[0]);
+//						GPR_3_TF2.setText(dataValue[1]);
+//						GPR_3_TF3.setText(dataValue[2]);
+//						GPR_3_TF4.setText(dataValue[3]);
+//						GPR_3_TF5.setText(dataValue[4]);
+//						GPR_3_TF6.setText(dataValue[5]);
+//						GPR_3_TF7.setText(dataValue[6]);
+//						GPR_3_TF8.setText(dataValue[7]);
+//						GPR_3_TF9.setText(dataValue[8]);
+//						GPR_3_TF10.setText(dataValue[9]);
+//						GPR_3_TF11.setText(dataValue[10]);
+//						GPR_3_TF12.setText(dataValue[11]);
+//						GPR_3_TF13.setText(dataValue[12]);
+//						GPR_3_TF14.setText(dataValue[13]);
+//						GPR_3_TF15.setText(dataValue[14]);
+//						GPR_3_TF16.setText(dataValue[15]);
+//						break;
+//
+//				}
+//					// display inst value in MBR
+//					textMbr_1.setText(dataValue[0]);
+//					textMbr_2.setText(dataValue[1]);
+//					textMbr_3.setText(dataValue[2]);
+//					textMbr_4.setText(dataValue[3]);
+//					textMbr_5.setText(dataValue[4]);
+//					textMbr_6.setText(dataValue[5]);
+//					textMbr_7.setText(dataValue[6]);
+//					textMbr_8.setText(dataValue[7]);
+//					textMbr_9.setText(dataValue[8]);
+//					textMbr_10.setText(dataValue[9]);
+//					textMbr_11.setText(dataValue[10]);
+//					textMbr_12.setText(dataValue[11]);
+//					textMbr_13.setText(dataValue[12]);
+//					textMbr_14.setText(dataValue[13]);
+//					textMbr_15.setText(dataValue[14]);
+//					textMbr_16.setText(dataValue[15]);
 	
 					//Increment PC
 					register.setPC(register.getPC() + 1);
 					
-					// get incremented PC
-					String PCVal = Integer.toBinaryString(Register.getInstance().getPC());
-					PCVal = String.format("%12s", PCVal).replaceAll(" ", "0");
-					System.out.println(PCVal);
-					String[] PCValArr = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
-	
-					for (int i = 0; i < PCVal.length(); i++) {
-						PCValArr[i] = PCVal.substring(i, i + 1);
-					}
-	
-					// display PC
-					textPc_1.setText(PCValArr[0]);
-					textPc_2.setText(PCValArr[1]);
-					textPc_3.setText(PCValArr[2]);
-					textPc_4.setText(PCValArr[3]);
-					textPc_5.setText(PCValArr[4]);
-					textPc_6.setText(PCValArr[5]);
-					textPc_7.setText(PCValArr[6]);
-					textPc_8.setText(PCValArr[7]);
-					textPc_9.setText(PCValArr[8]);
-					textPc_10.setText(PCValArr[9]);
-					textPc_11.setText(PCValArr[10]);
-					textPc_12.setText(PCValArr[11]);
+//					// get incremented PC
+//					String PCVal = Integer.toBinaryString(register.getPC());
+//					PCVal = String.format("%12s", PCVal).replaceAll(" ", "0");
+//					System.out.println("PC Value: " + PCVal);
+//					String[] PCValArr = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+//	
+//					for (int i = 0; i < PCVal.length(); i++) {
+//						PCValArr[i] = PCVal.substring(i, i + 1);
+//					}
+//	
+//					// display PC
+//					textPc_1.setText(PCValArr[0]);
+//					textPc_2.setText(PCValArr[1]);
+//					textPc_3.setText(PCValArr[2]);
+//					textPc_4.setText(PCValArr[3]);
+//					textPc_5.setText(PCValArr[4]);
+//					textPc_6.setText(PCValArr[5]);
+//					textPc_7.setText(PCValArr[6]);
+//					textPc_8.setText(PCValArr[7]);
+//					textPc_9.setText(PCValArr[8]);
+//					textPc_10.setText(PCValArr[9]);
+//					textPc_11.setText(PCValArr[10]);
+//					textPc_12.setText(PCValArr[11]);
 	
 					// increment MAR
-					Register.getInstance().setMAR(Register.getInstance().getMAR() + 1);
+					display();
+					register.setMAR(register.getMAR() + 1);
 	
 				} while(true);
 			}
@@ -2353,7 +2096,7 @@ public class GUI extends JFrame {
 	}
 	
 	public void display() {
-		String GPR_0 = Integer.toBinaryString(get_number(1));
+		String GPR_0 = Operations.numToStr(get_number(1), 16);
 
 		String[] gpr0Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -2376,7 +2119,8 @@ public class GUI extends JFrame {
 		GPR_0_TF14.setText(gpr0Value[13]);
 		GPR_0_TF15.setText(gpr0Value[14]);
 		GPR_0_TF16.setText(gpr0Value[15]);
-		String GPR_1 = Integer.toBinaryString(get_number(2));
+		
+		String GPR_1 = Operations.numToStr(get_number(2), 16);
 
 		String[] gpr1Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -2399,7 +2143,8 @@ public class GUI extends JFrame {
 		GPR_1_TF14.setText(gpr1Value[13]);
 		GPR_1_TF15.setText(gpr1Value[14]);
 		GPR_1_TF16.setText(gpr1Value[15]);
-		String GPR_2 = Integer.toBinaryString(get_number(3));
+		
+		String GPR_2 = Operations.numToStr(get_number(3), 16);
 
 		String[] gpr2Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -2422,7 +2167,8 @@ public class GUI extends JFrame {
 		GPR_2_TF14.setText(gpr2Value[13]);
 		GPR_2_TF15.setText(gpr2Value[14]);
 		GPR_2_TF16.setText(gpr2Value[15]);
-		String GPR_3 = Integer.toBinaryString(get_number(4));
+		
+		String GPR_3 = Operations.numToStr(get_number(4), 16);
 
 		String[] gpr3Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -2445,7 +2191,8 @@ public class GUI extends JFrame {
 		GPR_3_TF14.setText(gpr3Value[13]);
 		GPR_3_TF15.setText(gpr3Value[14]);
 		GPR_3_TF16.setText(gpr3Value[15]);
-		String IXR_1 = Integer.toBinaryString(get_number(5));
+		
+		String IXR_1 = Operations.numToStr(get_number(5), 16);
 
 		String[] ixr1Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -2468,7 +2215,8 @@ public class GUI extends JFrame {
 		IXR_1_TF14.setText(ixr1Value[13]);
 		IXR_1_TF15.setText(ixr1Value[14]);
 		IXR_1_TF16.setText(ixr1Value[15]);
-		String IXR_2 = Integer.toBinaryString(get_number(6));
+		
+		String IXR_2 = Operations.numToStr(get_number(6), 16);
 
 		String[] ixr2Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -2491,7 +2239,8 @@ public class GUI extends JFrame {
 		IXR_2_TF14.setText(ixr2Value[13]);
 		IXR_2_TF15.setText(ixr2Value[14]);
 		IXR_2_TF16.setText(ixr2Value[15]);
-		String IXR_3 = Integer.toBinaryString(get_number(7));
+		
+		String IXR_3 = Operations.numToStr(get_number(7), 16);
 
 		String[] ixr3Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -2514,7 +2263,8 @@ public class GUI extends JFrame {
 		IXR_3_TF14.setText(ixr3Value[13]);
 		IXR_3_TF15.setText(ixr3Value[14]);
 		IXR_3_TF16.setText(ixr3Value[15]);
-		String PC = Integer.toBinaryString(get_number(8));
+		
+		String PC = Operations.numToStr(get_number(8), 12);
 
 		String[] dataValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -2533,7 +2283,8 @@ public class GUI extends JFrame {
 		textPc_10.setText(dataValue[9]);
 		textPc_11.setText(dataValue[10]);
 		textPc_12.setText(dataValue[11]);
-		String MAR = Integer.toBinaryString(get_number(9));
+		
+		String MAR = Operations.numToStr(get_number(9), 12);
 		String[] marValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
 		for (int i = 0; i < MAR.length(); i++) {
@@ -2551,7 +2302,9 @@ public class GUI extends JFrame {
 		textMar_10.setText(marValue[9]);
 		textMar_11.setText(marValue[10]);
 		textMar_12.setText(marValue[11]);
-		String MBR = Integer.toBinaryString(get_number(10));
+		
+		
+		String MBR = Operations.numToStr(get_number(10), 16);
 		String[] mbrValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
 		for (int i = 0; i < MBR.length(); i++) {
@@ -2573,7 +2326,8 @@ public class GUI extends JFrame {
 		textMbr_14.setText(mbrValue[13]);
 		textMbr_15.setText(mbrValue[14]);
 		textMbr_16.setText(mbrValue[15]);
-		String IR = Integer.toBinaryString(get_number(11));
+		
+		String IR = Operations.numToStr(get_number(11), 12);
 		String[] irValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
 		for (int i = 0; i < IR.length(); i++) {
@@ -2591,11 +2345,12 @@ public class GUI extends JFrame {
 		textIR_10.setText(irValue[9]);
 		textIR_11.setText(irValue[10]);
 		textIR_12.setText(irValue[11]);
-		String MFR = Integer.toBinaryString(get_number(12));
+		
+		String MFR = Operations.numToStr(get_number(12), 4);
 		String[] mfrValue = { "0", "0", "0", "0" };
 
-		for (int i = 0; i < IR.length(); i++) {
-			mfrValue[4 - IR.length() + i] = IR.substring(i, i + 1);
+		for (int i = 0; i < MFR.length(); i++) {
+			mfrValue[4 - MFR.length() + i] = MFR.substring(i, i + 1);
 		}
 		MFR_TF1.setText(mfrValue[0]);
 		MFR_TF2.setText(mfrValue[1]);
@@ -2604,37 +2359,37 @@ public class GUI extends JFrame {
 	}
 	
 	public void LD_button(String InputofBin, int index) {
-		int Input = Integer.parseInt(InputofBin,2);
+		int Input = Operations.strToNum(InputofBin);
 		switch (index) {
 		case 1:
-			 Register.getInstance().setGeneralReg(0,Input);
+			 register.setGeneralReg(0,Input);
 			 break;
 		case 2:
-			 Register.getInstance().setGeneralReg(1,Input);
+			 register.setGeneralReg(1,Input);
 			 break;
 		case 3:
-			 Register.getInstance().setGeneralReg(2,Input);
+			 register.setGeneralReg(2,Input);
 			 break;
 		case 4:
-			 Register.getInstance().setGeneralReg(3,Input);
+			 register.setGeneralReg(3,Input);
 			 break;
 		case 5:
-			 Register.getInstance().setIndexReg(1, Input);
+			 register.setIndexReg(1, Input);
 			 break;
 		case 6:
-			 Register.getInstance().setIndexReg(2, Input);
+			 register.setIndexReg(2, Input);
 			 break;
 		case 7:
-			 Register.getInstance().setIndexReg(3, Input);
+			 register.setIndexReg(3, Input);
 			 break;
 		case 8:
-			 Register.getInstance().setPC(Input);
+			 register.setPC(Input);
 			 break;
 		case 9:
-			 Register.getInstance().setMAR(Input);
+			 register.setMAR(Input);
 			 break;
 		case 10:
-			 Register.getInstance().setMBR(Input);
+			 register.setMBR(Input);
 			 break;
 		}
 	}
@@ -2653,30 +2408,65 @@ public class GUI extends JFrame {
 	public int get_number(int index) {
 		switch (index) {
 			case 1:
-				return Register.getInstance().getGeneralReg(0);
+				return register.getGeneralReg(0);
 			case 2:
-				return Register.getInstance().getGeneralReg(1);
+				return register.getGeneralReg(1);
 			case 3:
-				return Register.getInstance().getGeneralReg(2);
+				return register.getGeneralReg(2);
 			case 4:
-				return Register.getInstance().getGeneralReg(3);
+				return register.getGeneralReg(3);
 			case 5:
-				return Register.getInstance().getIndexReg(1);
+				return register.getIndexReg(1);
 			case 6:
-				return Register.getInstance().getIndexReg(2);
+				return register.getIndexReg(2);
 			case 7:
-				return Register.getInstance().getIndexReg(3);
+				return register.getIndexReg(3);
 			case 8:
-				return Register.getInstance().getPC();
+				return register.getPC();
 			case 9:
-				return Register.getInstance().getMAR();
+				return register.getMAR();
 			case 10:
-				return Register.getInstance().getMBR();
+				return register.getMBR();
 			case 11:
-				return Register.getInstance().getIR();
+				return register.getIR();
 			case 12:
-				return Register.getInstance().getMFR();
+				return register.getMFR();
 		}
 		return 0;
+	}
+
+	public void setBtnvalue(int index){
+		if (commonbtn.getText() == "0") {
+			commonbtn.setText("1");
+			data[index] = "1";
+		} else {
+			commonbtn.setText("0");
+			data[index] = "0";
+		}
+	}
+
+	public void GPRloadBtn() {
+		op_bit0 = btnNewButton_15.getText();
+		op_bit1 = btnNewButton_14.getText();
+		op_bit2 = btnNewButton_13.getText();
+		op_bit3 = btnNewButton_12.getText();
+		op_bit4 = btnNewButton_11.getText();
+		op_bit5 = btnNewButton_10.getText();
+		gpr_bit1 = btnNewButton_9.getText();
+		gpr_bit0 = btnNewButton_8.getText();
+		ixr_bit1 = btnNewButton_7.getText();
+		ixr_bit0 = btnNewButton_6.getText();
+		i = btnNewButton_5.getText();
+		ip_add_4_bit = btnNewButton_4.getText();
+		ip_add_3_bit = btnNewButton_3.getText();
+		ip_add_2_bit = btnNewButton_2.getText();
+		ip_add_1_bit = btnNewButton_1.getText();
+		ip_add_0_bit = btnNewButton_0.getText();
+			
+		address =  ip_add_4_bit + ip_add_3_bit + ip_add_2_bit + ip_add_1_bit + ip_add_0_bit;
+		ixr = ixr_bit1 + ixr_bit0;
+		gpr = gpr_bit1 + gpr_bit0;
+		operation = op_bit0 +  op_bit1 + op_bit2 + op_bit3 + op_bit4 + op_bit5;
+		instruction = operation + gpr + ixr + i + address;
 	}
 }
