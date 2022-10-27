@@ -34,8 +34,8 @@ public class Register {
 	public final int MAX_12 = 2047;
 	public final int MIN_12 = -2048;
 	
-	public final int MAX_4 = 7;
-	public final int MIN_4 = -8;
+	public final int MAX_4 = 15;
+	public final int MIN_4 = 0;
 	
 	/**
 	 * 4 general purpose registers: R0-3, 16 bits
@@ -61,12 +61,16 @@ public class Register {
 			throw new IllegalArgumentException("Invalid value.");
 		switch(reg) {
 			case 0: R0 = value; 
+				System.out.println("Set R0:" + value);
 				break;
 			case 1: R1 = value;
+				System.out.println("Set R1:" + value);
 				break;
 			case 2: R2 = value;
+				System.out.println("Set R2:" + value);
 				break;
 			case 3: R3 = value;
+				System.out.println("Set R3:" + value);
 				break;
 			default: throw new IllegalArgumentException("Invalid General Register.");
 		}
@@ -94,10 +98,13 @@ public class Register {
 			throw new IllegalArgumentException("Invalid value.");
 		switch(reg) {
 			case 1: X1 = value;
+				System.out.println("Set X1:" + value);
 				break;
 			case 2: X2 = value;
+				System.out.println("Set X2:" + value);
 				break;
 			case 3: X3 = value;
+				System.out.println("Set X3:" + value);
 				break;
 			default: throw new IllegalArgumentException("Invalid Index Register.");
 		}
@@ -120,6 +127,7 @@ public class Register {
 		}
 		else {
 			PC = value;
+			System.out.println("Set PC:" + value);
 		}
 	}
 	
@@ -138,6 +146,7 @@ public class Register {
 		}
 		else {
 			CC = value;
+			System.out.println("Set CC:" + value);
 		}
 	}
 	
@@ -154,7 +163,9 @@ public class Register {
 		//Because we are only using 16 bits of the 32 bits in int, we are not expecting any negative values
 		if(value > MAX_16 || value < MIN_16)
 			throw new IllegalArgumentException("Invalid value.");
+		
 		IR = value;
+		System.out.println("Set IR:" + value);
 	}
 	
 	/**
@@ -175,7 +186,7 @@ public class Register {
 		}
 		else {
 			MAR = value;
-			System.out.println("setMAR " + MAR);
+			System.out.println("set MAR: " + MAR);
 		}		
 	}
 	
@@ -189,10 +200,11 @@ public class Register {
 		return MBR;
 	}
 	public void setMBR(int value) {
-		if(value > MAX_16 || value < MIN_16)
+		if(value > MAX_16 || value < MIN_16) {
 			throw new IllegalArgumentException("Invalid value.");
+		}
 		MBR = value;
-		System.out.println("setMBR " + MBR);
+		System.out.println("set MBR:" + MBR);
 	}
 	
 	/**
@@ -211,6 +223,7 @@ public class Register {
 		}
 		else {
 			MFR = value;
+			System.out.println("Set MFR:" + value);
 		}
 	}
 	

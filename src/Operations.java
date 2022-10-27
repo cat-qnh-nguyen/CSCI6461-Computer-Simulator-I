@@ -13,7 +13,6 @@ public class Operations {
 	//Regular method with Indirect bit
 	public static void loadRegister(int reg, int effAddress) {
 		register.setGeneralReg(reg, memory.load(effAddress));
-		System.out.println("Register R" + reg + " has " + register.getGeneralReg(reg));
 	}
 	
 	
@@ -23,7 +22,6 @@ public class Operations {
 	 */
 	public static void storeRegister(int reg, int effAddress) {
 		memory.store(effAddress, register.getGeneralReg(reg));
-		System.out.println("Memory["+ effAddress +"] has " + memory.load(effAddress));
 	}
 
 	
@@ -33,7 +31,6 @@ public class Operations {
 	 */
 	public static void loadAddress(int reg, int effAddress)	{
 		register.setGeneralReg(reg, effAddress);
-		System.out.println("Register R" + reg + " has " + register.getGeneralReg(reg));
 	}
 	
 	
@@ -43,7 +40,6 @@ public class Operations {
 	 */
 	public static void loadIndex(int reg, int effAddress) {
 		register.setIndexReg(reg, memory.load(effAddress));
-		System.out.println("Register I" + reg + " has " + register.getIndexReg(reg));
 	}
 	
 	
@@ -53,7 +49,6 @@ public class Operations {
 	 */
 	public static void storeIndex(int reg, int effAddress) {
 		memory.store(effAddress, register.getIndexReg(reg));
-		System.out.println("Memory["+ effAddress +"] has " + memory.load(effAddress));
 	}
 	
 	
@@ -63,18 +58,105 @@ public class Operations {
 	 * Storing the second hex number in the first number as the address
 	 * @param hexInstruction as a string
 	 */
-	public static void saveInstruction(String hexInstruction) {
+	public static void saveInstructionFromText(String hexInstruction) {
 		String addressStr = hexInstruction.substring(0,4);
 		String contentStr = hexInstruction.substring(5);
 		
-		int address = Integer.parseInt(addressStr, 16);
-		int content = Integer.parseInt(contentStr, 16);
+		int address = hexToNum(addressStr);
+		int content = hexToNum(contentStr);
 		
 		memory.store(address, content);
-		System.out.println("Address: " + address + " has " + memory.load(address));
 	}
 	
+	
+	/**
+	 * Converting a number into an x-bit string
+	 * @param num is the number to be converted to string
+	 * @param bit is the number of bits that should be formatted
+	 * @return the number in x-bit string
+	 */
+	public static String numToStr(int num, int bit) {
+		String result = Integer.toBinaryString(num);
 
+		if(num >= 0) {
+			if(bit == 16) {
+		        result = String.format("%16s", result).replaceAll(" ", "0");
+			}
+			else if(bit == 12) {
+		        result = String.format("%12s", result).replaceAll(" ", "0");
+			}
+			else if(bit == 4) {
+		        result = String.format("%4s", result).replaceAll(" ", "0");
+			}
+		}
+		else {
+			if(bit == 16) {
+		        result = result.substring(result.length()-16);
+			}
+			else if(bit == 12) {
+		        result = result.substring(result.length()-12);
+			}
+//			else if(bit == 4) {
+//		        result = result.substring(result.length()-4);
+//			}
+		}
+		//System.out.println(bit + "-bit string= " + result);
+		
+		return result;
+	}
+
+	/**
+	 * Returning the data in integer (32 bits) form from a string of various sizes
+	 * @param str the data in string form
+	 * @param bits the number of bits for that particular data type (4 bits, 12 bits, or 16 bits)
+	 * @return the data in int form (32 bits)
+	 */
+	public static int strToNum(String str) {
+		int result = 0;
+		String resultStr = "";
+		
+		if(str.charAt(0) == '1') {
+			for(int i = 0; i < str.length(); i++) {
+				if(str.charAt(i) == '0') {
+					resultStr += '1';
+				}
+				else {
+					resultStr += '0';
+				}
+			}
+
+			result = -(Integer.parseInt(resultStr,2) + 1);
+		}
+		
+		else {
+			result = Integer.parseInt(str,2);
+		}
+		
+		System.out.println("String " + str + " is: " + result);
+		return result;
+	}
+	
+	
+	/**
+	 * Converting a hex number to a number to store in memory
+	 * @param hex is the hex string
+	 * @return a number converted in 2's complement
+	 */
+	public static int hexToNum(String hex) {
+		int result;
+		String total = "";
+		for(int i = 0; i < hex.length(); i++) {
+			int temp = Integer.parseInt(hex.substring(i, i+1), 16);
+			total += Operations.numToStr(temp, 4);
+		}
+		result = Operations.strToNum(total);
+		
+		System.out.println(hex + " is converted to: " + result);
+		return result;
+		
+	}
+	
+	//Transfer Instructions
 	public static void jumpZero (int reg, int ea) {
 		if (register.getGeneralReg(reg) == 0) {
 			register.setPC(ea);
@@ -142,7 +224,126 @@ public class Operations {
 		}
 	}
 
-
+	// arithmetic instructions
+	
+	// add EA value to register
+	public static void addMemoryToReg(int r, int ea) {
+		// when value is more than 16 bit - "Overflow"
+		if(register.getGeneralReg(r) + memory.load(ea) > 32767) {
+			register.setCC(8);
+			System.out.println("OVERFLOW");
+		}
+		else
+			register.setGeneralReg(r, register.getGeneralReg(r) + memory.load(ea));
+	}
+	
+	// subtract EA value from register
+	public static void subtractMemoryFromRegister(int r, int ea) {
+		// when value is less than the 16 bit range - "Underflow"
+		if(register.getGeneralReg(r) - memory.load(ea) < -32768) {
+			register.setCC(4);
+			System.out.println("Underflow");
+		}
+		else
+			register.setGeneralReg(r, register.getGeneralReg(r) - memory.load(ea));
+	}
+	
+	// doubt
+	// add immediate value to register
+	public static void addImmediateToRegister(int r, int immediate) {
+		if(immediate != 0) {
+			// when value is more than 16 bit - "Overflow"
+			if(register.getGeneralReg(r) + immediate > 32767) {
+				register.setCC(8);
+				System.out.println("OVERFLOW");
+			}
+			else
+				register.setGeneralReg(r, register.getGeneralReg(r) + immediate);
+		}
+	}
+	
+	// doubt immediate and cc values
+	// subtract immediate value to register
+	public static void subtractImmediateFromRegister(int r, int immediate) {
+		if(immediate != 0) {
+			// when value is less than the 16 bit range - "Underflow"
+			if(register.getGeneralReg(r) - immediate < -32768) {
+				register.setCC(4);
+				System.out.println("Underflow");
+			}
+			else
+				register.setGeneralReg(r, register.getGeneralReg(r) - immediate);			
+		}	
+	}
+	
+	// multiple the values in both the registers.
+	public static void multiplyRegisterByRegister(int Rx, int Ry) {
+		// when multiplied value is more than 32 bit - "Overflow"
+		if(register.getGeneralReg(Rx)*register.getGeneralReg(Ry) > 2147483647) {
+			register.setCC(8);
+			System.out.println("OVERFLOW");
+		}
+		// when multiplied value is less than 32 bit - "Underflow"
+		else if(register.getGeneralReg(Rx)*register.getGeneralReg(Ry) < -2147483648) {
+			register.setCC(4);
+			System.out.println("Underflow");
+		}
+		else {
+			// store high order bits in Rx and low order bits in Rx+1.
+			if(register.getGeneralReg(Rx)*register.getGeneralReg(Ry) <= 65535) {
+				register.setGeneralReg(Rx, 0);
+				register.setGeneralReg(Rx+1, register.getGeneralReg(Rx)*register.getGeneralReg(Ry));
+			}
+			else {
+				int multipliedValue = register.getGeneralReg(Rx)*register.getGeneralReg(Ry);
+				register.setGeneralReg(Rx, multipliedValue-65535);
+				register.setGeneralReg(Rx+1, 65535);
+			}
+		}
+	} 
+	
+	// divide one register value by another register value.
+	public static void divideRegisterByRegister(int Rx, int Ry) {
+		if(register.getGeneralReg(Ry) == 0) {
+			register.setCC(2);		
+			System.out.println("DIVZERO");
+		}
+		else {
+			// store quotient in Rx and remainder in Rx+1
+			register.setGeneralReg(Rx, register.getGeneralReg(Rx)%register.getGeneralReg(Ry));
+			register.setGeneralReg(Rx+1, register.getGeneralReg(Rx)/register.getGeneralReg(Ry));
+		}
+	} 
+	
+	// logical operations
+	
+	// Check if the register values are equal.
+	public static void testEqualityOfRegisterAndRegister(int Rx, int Ry) {
+		if(register.getGeneralReg(Rx) == register.getGeneralReg(Ry)) {
+			register.setCC(1);		
+			System.out.println("Equal");
+		}
+		else {
+			register.setCC(0);		
+			System.out.println("Not Equal");
+		}
+	} 
+	
+	
+	// logical AND of two register values.
+	public static void logicalAndOfRegisterAndRegister(int Rx, int Ry) {
+		register.setGeneralReg(Rx, register.getGeneralReg(Rx) & register.getGeneralReg(Ry));
+	} 
+	
+	// logical OR of two register values.
+	public static void logicalOrOfRegisterAndRegister(int Rx, int Ry) {
+		register.setGeneralReg(Rx, register.getGeneralReg(Rx) | register.getGeneralReg(Ry));
+	} 
+	
+	// logical NOT of a register value.
+	public static void logicalNotOfRegister(int Rx) {
+		register.setGeneralReg(Rx, ~register.getGeneralReg(Rx));
+	} 
 
 
 
