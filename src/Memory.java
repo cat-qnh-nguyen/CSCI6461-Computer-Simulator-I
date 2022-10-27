@@ -13,7 +13,8 @@ public class Memory {
 	private int[] memory = new int[2048];
 	
 	//Max value is 2^16 which is 65535
-	private final int MAX_VALUE = 65535;
+	public final int MAX_16 = 32768;
+	public final int MIN_16 = -32768;
 	
 	
 	private Memory() {}
@@ -34,9 +35,9 @@ public class Memory {
 	 * @return value in memory[index]
 	 */
 	public int load(int index) {
+		System.out.println("Load: memory[" + index + "] = " + memory[index] + "\n");
 		return memory[index];
 	}
-	
 	/**
 	 * store value into memory
 	 * @param index: the memory address
@@ -45,8 +46,10 @@ public class Memory {
 	public void store(int index, int content) {
 		//Because we are only using 16 bits of the 32 bits of type int
 		//we are not expecting any negative values
-		if(content > MAX_VALUE && content < 0)
+		if(content > MAX_16 || content < MIN_16)
 			throw new IllegalArgumentException("Invalid Value.");
+		
 		memory[index] = content;
+		System.out.println("Save: memory[" + index + "] = " + memory[index] +"\n");
 	}
 }
