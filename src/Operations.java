@@ -248,7 +248,6 @@ public class Operations {
 			register.setGeneralReg(r, register.getGeneralReg(r) - memory.load(ea));
 	}
 	
-	// doubt
 	// add immediate value to register
 	public static void addImmediateToRegister(int r, int immediate) {
 		if(immediate != 0) {
@@ -262,7 +261,6 @@ public class Operations {
 		}
 	}
 	
-	// doubt immediate and cc values
 	// subtract immediate value to register
 	public static void subtractImmediateFromRegister(int r, int immediate) {
 		if(immediate != 0) {
@@ -345,6 +343,62 @@ public class Operations {
 		register.setGeneralReg(Rx, ~register.getGeneralReg(Rx));
 	} 
 
+	// shift/rotate operations
+	
+	// Shift Register by Count 
+	public static void shiftRegisterByCount (int r, int count, char leftRight, char arithLogic) {
+		if(count > 0) {
+			String regBitVal = numToStr(register.getGeneralReg(r), 16);
+			// left shift
+			if(leftRight == '1') {
+				// arithmetic shift
+				if(arithLogic == '0')
+					regBitVal = regBitVal.charAt(0) + regBitVal.substring(count+1, regBitVal.length());
+				// logical shift
+				else 
+					regBitVal = regBitVal.substring(count, regBitVal.length());
+				// adding 0s at the end for the remaining bits
+				while(regBitVal.length()<16) {
+					regBitVal += "0";
+				}
+			}
+			//right shift
+			else {
+				String rightShiftedVal = "";
+				// arithmetic shift
+				if(arithLogic == '0') {
+					rightShiftedVal += regBitVal.charAt(0);
+					for(int i=0; i<count; i++)
+						rightShiftedVal += "0";
+					regBitVal = rightShiftedVal + regBitVal.substring(count+1, regBitVal.length()-count-1);
+				}
+				// logical shift
+				else {
+					for(int i=0; i<count; i++)
+						rightShiftedVal += "0";
+					regBitVal = rightShiftedVal + regBitVal.substring(count, regBitVal.length()-count);
+				}
+			}
+			register.setGeneralReg(r, Integer.parseInt(regBitVal, 2));
+		}
+	} 
+	
+	// Rotate Register by Count 
+	public static void rotateRegisterByCount (int r, int count, char leftRight) {
+		if(count > 0) {
+			String regBitVal = numToStr(register.getGeneralReg(r), 16);
+			// left shift
+			if(leftRight == '1') 
+				regBitVal = regBitVal.substring(count, regBitVal.length()) + regBitVal.substring(0, count);
+			//right shift
+			else 
+				regBitVal = regBitVal.substring(regBitVal.length()-count, regBitVal.length()) + regBitVal.substring(0, regBitVal.length()-count);
+			register.setGeneralReg(r, Integer.parseInt(regBitVal, 2));
+		}
+	} 
+	
+	
+	
 
 
 

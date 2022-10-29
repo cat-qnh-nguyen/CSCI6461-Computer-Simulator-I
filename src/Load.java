@@ -12,6 +12,9 @@ public class Load {
     public int I;   			//Indirect Bit
     public int address; 		//Address field in the instruction
     public int EA; 				//Effective address
+    public char AorL;			//Arithmetic or Logic
+    public char LorR;			//Left or Right
+    public int count;			//Count to shift/rotate
     
     
     //Constructor for each object/instruction
@@ -23,12 +26,16 @@ public class Load {
     
     //Decodes instructions and separates them into opcode, R, IX, I and Address
     public void instructionDecode(String ins) {
-    	
+    	System.out.println("opcodeStr: " + ins.substring(0,6));
         opcode = Integer.parseInt(ins.substring(0, 6),2);
         R = Integer.parseInt(ins.substring(6, 8),2);
         IX = Integer.parseInt(ins.substring(8, 10), 2);
         I = Integer.parseInt(ins.substring(10, 11), 2);
         address = Integer.parseInt(ins.substring(11, 16), 2);
+        
+        AorL = ins.charAt(8);
+        LorR = ins.charAt(9);
+        count = Integer.parseInt(ins.substring(12, 16), 2);
         
         computeEA();
     }
@@ -44,7 +51,7 @@ public class Load {
         int insInMem = memory.load(memAddress);
         
         instruction = Operations.numToStr(insInMem, 16);
-        
+        System.out.println("Instruction: " + instruction);
         instructionDecode(instruction);
     }
 
@@ -138,24 +145,30 @@ public class Load {
     			System.out.println("---jumpGreaterEqual.");
     			break;
     		//Arithmetic Instructions
-    		case 20: Operations.multiplyRegisterByRegister(R, IX); 				// multiple the values in both the registers. Rx - R, Ry - IX .
+    		case 16: Operations.multiplyRegisterByRegister(R, IX); 				// multiple the values in both the registers. Rx - R, Ry - IX .
 				System.out.println("multiplyRegister: " + R + "\tByRegister:" + IX);
 				break;
-    		case 21: Operations.divideRegisterByRegister(R, IX); 				// divide one register value by another register value. Rx - R, Ry - IX.
+    		case 17: Operations.divideRegisterByRegister(R, IX); 				// divide one register value by another register value. Rx - R, Ry - IX.
 				System.out.println("divideRegister: " + R + "\nByRegister:" + IX);
 				break;
     		//Logical operations
-    		case 22: Operations.testEqualityOfRegisterAndRegister(R, IX); 		// check if two registers are equal. Rx - R, Ry - IX.
+    		case 18: Operations.testEqualityOfRegisterAndRegister(R, IX); 		// check if two registers are equal. Rx - R, Ry - IX.
 				System.out.println("testEqualityOfRegister: " + R + "\tAndRegister:" + IX);
 				break;
-    		case 23: Operations.logicalAndOfRegisterAndRegister(R, IX); 		// logical AND of two register values. Rx - R, Ry - IX.
+    		case 19: Operations.logicalAndOfRegisterAndRegister(R, IX); 		// logical AND of two register values. Rx - R, Ry - IX.
 				System.out.println("logicalAndOfRegister: " + R + "\nAndRegister:" + IX);
 				break;
-    		case 24: Operations.logicalOrOfRegisterAndRegister(R, IX); 			// logical OR of two register values. Rx - R, Ry - IX.
+    		case 20: Operations.logicalOrOfRegisterAndRegister(R, IX); 			// logical OR of two register values. Rx - R, Ry - IX.
 				System.out.println("logicalOrOfRegister: " + R + "\nAndRegister:" + IX);
-				break;
-    		case 25: Operations.logicalNotOfRegister(R); 						// logical NOT of a register value.
+				break;	
+    		case 21: Operations.logicalNotOfRegister(R); 						// logical NOT of a register value.
 				System.out.println("logicalNotOfRegister: " + R);
+				break;				
+    		case 25: Operations.shiftRegisterByCount(R, count, LorR, AorL); 	// Shift RegisterBy Count.
+				System.out.println("shiftRegister: " + R + "\nByCount" + count);
+				break;
+    		case 26: Operations.rotateRegisterByCount(R, count, LorR); 			// Rotate Register By Count.
+				System.out.println("rotateRegisterByCount: " + R + "\nByCount" + count);
 				break;	
     		case 33: Operations.loadIndex(IX, EA);					//load index register from memory
 				System.out.println("---loadIndex: "+ IX + " with data at memory location " + EA);

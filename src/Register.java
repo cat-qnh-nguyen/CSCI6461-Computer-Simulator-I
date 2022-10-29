@@ -40,10 +40,10 @@ public class Register {
 	/**
 	 * 4 general purpose registers: R0-3, 16 bits
 	 */
-	private int R0;
-	private int R1;
-	private int R2;
-	private int R3;
+	private int R0 = 0;
+	private int R1 = 0;
+	private int R2 = 0;
+	private int R3 = 0;
 	
 	public int getGeneralReg(int reg) {
 		switch(reg) {
@@ -61,16 +61,16 @@ public class Register {
 			throw new IllegalArgumentException("Invalid value.");
 		switch(reg) {
 			case 0: R0 = value; 
-				System.out.println("Set R0:" + value);
+			System.out.println("SetR" + reg + "= " + value);
 				break;
 			case 1: R1 = value;
-				System.out.println("Set R1:" + value);
+			System.out.println("SetR" + reg + "= " + value);
 				break;
 			case 2: R2 = value;
-				System.out.println("Set R2:" + value);
+			System.out.println("SetR" + reg + "= " + value);
 				break;
 			case 3: R3 = value;
-				System.out.println("Set R3:" + value);
+			System.out.println("SetR" + reg + "= " + value);
 				break;
 			default: throw new IllegalArgumentException("Invalid General Register.");
 		}
@@ -79,9 +79,9 @@ public class Register {
 	/**
 	 * 3 index registers: X1-3, 16 bits
 	 */
-	private int X1;
-	private int X2;
-	private int X3;
+	private int X1 = 0;
+	private int X2 = 0;
+	private int X3 = 0;
 	
 	public int getIndexReg(int reg) {
 		switch(reg) {
@@ -98,13 +98,13 @@ public class Register {
 			throw new IllegalArgumentException("Invalid value.");
 		switch(reg) {
 			case 1: X1 = value;
-				System.out.println("Set X1:" + value);
+			System.out.println("SetX" + reg + "= " + value);
 				break;
 			case 2: X2 = value;
-				System.out.println("Set X2:" + value);
+			System.out.println("SetX" + reg + "= " + value);
 				break;
 			case 3: X3 = value;
-				System.out.println("Set X3:" + value);
+			System.out.println("SetX" + reg + "= " + value);
 				break;
 			default: throw new IllegalArgumentException("Invalid Index Register.");
 		}
@@ -114,7 +114,7 @@ public class Register {
 	 * Program counter: address of the next instruction to be executed
 	 */
 	// Need to limit the PC to 12 bits: 4095 max
-	private int PC;
+	private int PC = 0;
 	
 	public int getPC() {
 		return PC;
@@ -127,26 +127,26 @@ public class Register {
 		}
 		else {
 			PC = value;
-			System.out.println("Set PC:" + value);
 		}
 	}
 	
 	/**
 	 * Condition Code: 4 bits, need to limit to 4 bits only
+	 * cc(0), cc(1), cc(2), cc(3). Or by the names OVERFLOW, UNDERFLOW, DIVZERO, EQUALORNOT
 	 */
-	private int CC;
+	private int CC = 0;
 	
 	public int getCC() {
 		return CC;
 	}
 	public void setCC(int value) {
+		// doubt should be unsigned (we are using 8, 4, 2, 1 for overflow, underflow, divide by zero, equal or not)
 		//Since CC can only be 4 bits, it cannot be bigger than 15
 		if(value > MAX_4 || value < MIN_4) {
 			throw new IllegalArgumentException("Invalid CC value.");			
 		}
 		else {
 			CC = value;
-			System.out.println("Set CC:" + value);
 		}
 	}
 	
@@ -154,7 +154,7 @@ public class Register {
 	/**
 	 * Instruction Register: Holds the instruction to be executed, 16 bits
 	 */
-	private int IR;
+	private int IR = 0;
 	
 	public int getIR() {
 		return IR;
@@ -163,16 +163,14 @@ public class Register {
 		//Because we are only using 16 bits of the 32 bits in int, we are not expecting any negative values
 		if(value > MAX_16 || value < MIN_16)
 			throw new IllegalArgumentException("Invalid value.");
-		
 		IR = value;
-		System.out.println("Set IR:" + value);
 	}
 	
 	/**
 	 * Memory Address Register: holds the address of the word to be fetched from memory
 	 */
 	// 12 bits only
-	private int MAR;
+	private int MAR = 0;
 	
 	public int getMAR() {
 		return MAR;
@@ -186,7 +184,7 @@ public class Register {
 		}
 		else {
 			MAR = value;
-			System.out.println("set MAR: " + MAR);
+			System.out.println("setMAR " + MAR);
 		}		
 	}
 	
@@ -200,11 +198,10 @@ public class Register {
 		return MBR;
 	}
 	public void setMBR(int value) {
-		if(value > MAX_16 || value < MIN_16) {
+		if(value > MAX_16 || value < MIN_16)
 			throw new IllegalArgumentException("Invalid value.");
-		}
 		MBR = value;
-		System.out.println("set MBR:" + MBR);
+		System.out.println("setMBR " + MBR);
 	}
 	
 	/**
@@ -223,7 +220,6 @@ public class Register {
 		}
 		else {
 			MFR = value;
-			System.out.println("Set MFR:" + value);
 		}
 	}
 	
