@@ -61,12 +61,16 @@ public class Register {
 			throw new IllegalArgumentException("Invalid value.");
 		switch(reg) {
 			case 0: R0 = value; 
+			System.out.println("SetR" + reg + "= " + value);
 				break;
 			case 1: R1 = value;
+			System.out.println("SetR" + reg + "= " + value);
 				break;
 			case 2: R2 = value;
+			System.out.println("SetR" + reg + "= " + value);
 				break;
 			case 3: R3 = value;
+			System.out.println("SetR" + reg + "= " + value);
 				break;
 			default: throw new IllegalArgumentException("Invalid General Register.");
 		}
@@ -94,10 +98,13 @@ public class Register {
 			throw new IllegalArgumentException("Invalid value.");
 		switch(reg) {
 			case 1: X1 = value;
+			System.out.println("SetX" + reg + "= " + value);
 				break;
 			case 2: X2 = value;
+			System.out.println("SetX" + reg + "= " + value);
 				break;
 			case 3: X3 = value;
+			System.out.println("SetX" + reg + "= " + value);
 				break;
 			default: throw new IllegalArgumentException("Invalid Index Register.");
 		}
