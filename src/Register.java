@@ -127,6 +127,7 @@ public class Register {
 		}
 		else {
 			PC = value;
+			System.out.println("PC: " + PC + " is " + Operations.numToStr(PC, 12));
 		}
 	}
 	
@@ -147,6 +148,7 @@ public class Register {
 		}
 		else {
 			CC = value;
+			System.out.println("CC: " + CC + " is " + Operations.numToStr(CC, 4));
 		}
 	}
 	
@@ -164,6 +166,7 @@ public class Register {
 		if(value > MAX_16 || value < MIN_16)
 			throw new IllegalArgumentException("Invalid value.");
 		IR = value;
+		System.out.println("IR: " + IR + " is " + Operations.numToStr(IR, 16));
 	}
 	
 	/**
@@ -184,7 +187,7 @@ public class Register {
 		}
 		else {
 			MAR = value;
-			System.out.println("setMAR " + MAR);
+			System.out.println("MAR: " + MAR + " is " + Operations.numToStr(MAR, 12));
 		}		
 	}
 	
@@ -201,7 +204,7 @@ public class Register {
 		if(value > MAX_16 || value < MIN_16)
 			throw new IllegalArgumentException("Invalid value.");
 		MBR = value;
-		System.out.println("setMBR " + MBR);
+		System.out.println("MBR: " + MBR + " is " + Operations.numToStr(MBR, 16));
 	}
 	
 	/**
@@ -220,6 +223,7 @@ public class Register {
 		}
 		else {
 			MFR = value;
+			System.out.println("MFR: " + MFR + " is " + Operations.numToStr(MFR, 12));
 		}
 	}
 	

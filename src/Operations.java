@@ -79,6 +79,9 @@ public class Operations {
 		String result = Integer.toBinaryString(num);
 
 		if(num >= 0) {
+			if(bit == 32) {
+		        result = String.format("%32s", result).replaceAll(" ", "0");
+			}
 			if(bit == 16) {
 		        result = String.format("%16s", result).replaceAll(" ", "0");
 			}
@@ -96,11 +99,7 @@ public class Operations {
 			else if(bit == 12) {
 		        result = result.substring(result.length()-12);
 			}
-//			else if(bit == 4) {
-//		        result = result.substring(result.length()-4);
-//			}
 		}
-		//System.out.println(bit + "-bit string= " + result);
 		
 		return result;
 	}
@@ -157,6 +156,12 @@ public class Operations {
 	}
 	
 	//Transfer Instructions
+
+	/**
+	 * Jump if Zero
+	 * @param reg is the register to be considered
+	 * @param ea is the address to jump to
+	 */
 	public static void jumpZero (int reg, int ea) {
 		if (register.getGeneralReg(reg) == 0) {
 			register.setPC(ea);
@@ -166,7 +171,11 @@ public class Operations {
 		}
 	}
 	
-
+	/**
+	 * Jump if Not Zero
+	 * @param reg is the register to be considered
+	 * @param ea is the address to jump to
+	 */
 	public static void jumpNotZero (int reg, int ea) {
 		if (register.getGeneralReg(reg)!= 0) {
 			register.setPC(ea);
@@ -176,6 +185,12 @@ public class Operations {
 		}
 	}
 	
+	
+	/**
+	 * Jump condition code
+	 * @param cc is the bit of the condition to be checked
+	 * @param ea is the address to jump to
+	 */
 	public static void jumpConditionCode (int cc, int ea) {
 		String conditionStr = Integer.toBinaryString(register.getCC());
         conditionStr = String.format("%4s", conditionStr).replaceAll(" ", "0");
@@ -190,21 +205,38 @@ public class Operations {
         }        
 	}
 	
-	
+	/**
+	 * Jump to address unconditionally
+	 * @param ea the address to jump to
+	 */
 	public static void jumpAddress(int ea) {
 		register.setPC(ea);
 	}
 	
+	/**
+	 * Jump save return address in R3
+	 * @param ea address to jump to
+	 */
 	public static void jumpSaveReturn(int ea) {
 		register.setGeneralReg(3, register.getPC() + 1);
 		register.setPC(ea);
 	}
 	
+	/**
+	 * Return from subroutine
+	 * @param immed is the immediate stored in R0
+	 */
 	public static void returnFromSubroutine(int immed) {
 		register.setGeneralReg(0, immed);
 		register.setPC(register.getGeneralReg(3));
 	}
 	
+	
+	/**
+	 * Subtract One and Branch
+	 * @param r is the register to be subtracted
+	 * @param ea is the address to jump to
+	 */
 	public static void subtractOneBranch(int r, int ea) {
 		register.setGeneralReg(r, register.getGeneralReg(r) - 1);
 		if(register.getGeneralReg(r) > 0) {
@@ -215,6 +247,11 @@ public class Operations {
 		}
 	}
 	
+	/**
+	 * Jump greater than or equal to
+	 * @param r is the register to consider
+	 * @param ea is the address to jump to
+	 */
 	public static void jumpGreaterEqual (int r, int ea) {
 		if(register.getGeneralReg(r) >= 0) {
 			register.setPC(ea);
@@ -225,98 +262,140 @@ public class Operations {
 	}
 
 	// arithmetic instructions
-	
-	// add EA value to register
-	public static void addMemoryToReg(int r, int ea) {
-		// when value is more than 16 bit - "Overflow"
-		if(register.getGeneralReg(r) + memory.load(ea) > 32767) {
-			register.setCC(8);
+
+	/**
+	 * Add memory to register
+	 * @param r is the register
+	 * @param ea the address in memory
+	 */
+	public static void addMemToReg(int r, int ea) {
+		int result = register.getGeneralReg(r) + memory.load(ea);
+		
+		if(result > 32767) {
+			register.setCC(register.getCC() | 8);
 			System.out.println("OVERFLOW");
 		}
-		else
-			register.setGeneralReg(r, register.getGeneralReg(r) + memory.load(ea));
-	}
-	
-	// subtract EA value from register
-	public static void subtractMemoryFromRegister(int r, int ea) {
-		// when value is less than the 16 bit range - "Underflow"
-		if(register.getGeneralReg(r) - memory.load(ea) < -32768) {
-			register.setCC(4);
-			System.out.println("Underflow");
+		else if(result < -32768) {
+			register.setCC(register.getCC() | 4);
+			System.out.println("UNDERFLOW");
 		}
 		else
-			register.setGeneralReg(r, register.getGeneralReg(r) - memory.load(ea));
+			register.setGeneralReg(r, result);
 	}
 	
-	// add immediate value to register
-	public static void addImmediateToRegister(int r, int immediate) {
+	/**
+	 * Subtract memory to register
+	 * @param r is the register
+	 * @param ea the address in memory
+	 */
+	public static void subMemFromReg(int r, int ea) {
+		int result = register.getGeneralReg(r) - memory.load(ea);
+		
+		if(result > 32767) {
+			register.setCC(register.getCC() | 8);
+			System.out.println("OVERFLOW");
+		}
+		else if(result < -32768) {
+			register.setCC(register.getCC() | 4);
+			System.out.println("UNDERFLOW");
+		}
+		else
+			register.setGeneralReg(r, result);
+	}
+	
+	/**
+	 * Add immediate to register
+	 * @param r is the register
+	 * @param immediate the number to add to
+	 */
+	public static void addImmedToReg(int r, int immediate) {
 		if(immediate != 0) {
-			// when value is more than 16 bit - "Overflow"
-			if(register.getGeneralReg(r) + immediate > 32767) {
-				register.setCC(8);
+			int result = register.getGeneralReg(r) + immediate;
+
+			if(result > 32767) {
+				register.setCC(register.getCC() | 8);
 				System.out.println("OVERFLOW");
 			}
+			else if(result < -32768) {
+				register.setCC(register.getCC() | 4);
+				System.out.println("UNDERFLOW");
+			}
 			else
-				register.setGeneralReg(r, register.getGeneralReg(r) + immediate);
+				register.setGeneralReg(r, result);
 		}
 	}
 	
-	// subtract immediate value to register
-	public static void subtractImmediateFromRegister(int r, int immediate) {
+	/**
+	 * Subtract immediate to register
+	 * @param r is the register
+	 * @param immediate the number to subtract from c(reg)
+	 */
+	public static void subImmedFromReg(int r, int immediate) {
 		if(immediate != 0) {
-			// when value is less than the 16 bit range - "Underflow"
-			if(register.getGeneralReg(r) - immediate < -32768) {
-				register.setCC(4);
-				System.out.println("Underflow");
+			int result = register.getGeneralReg(r) - immediate;
+			if(result > 32767) {
+				register.setCC(register.getCC() | 8);
+				System.out.println("OVERFLOW");
+			}
+			else if(result < -32768) {
+				register.setCC(register.getCC() | 4);
+				System.out.println("UNDERFLOW");
 			}
 			else
-				register.setGeneralReg(r, register.getGeneralReg(r) - immediate);			
+				register.setGeneralReg(r, result);			
 		}	
 	}
 	
-	// multiple the values in both the registers.
-	public static void multiplyRegisterByRegister(int Rx, int Ry) {
+	/**
+	 * Multiply register by register
+	 * @param Rx the first register
+	 * @param Ry the second register
+	 */
+	public static void multRegByReg(int Rx, int Ry) {
 		// when multiplied value is more than 32 bit - "Overflow"
-		if(register.getGeneralReg(Rx)*register.getGeneralReg(Ry) > 2147483647) {
-			register.setCC(8);
+		int result = register.getGeneralReg(Rx)*register.getGeneralReg(Ry);
+		if(result > 2147483647) {
+			register.setCC(register.getCC() |8);
 			System.out.println("OVERFLOW");
 		}
 		// when multiplied value is less than 32 bit - "Underflow"
-		else if(register.getGeneralReg(Rx)*register.getGeneralReg(Ry) < -2147483648) {
-			register.setCC(4);
+		else if(result < -2147483648) {
+			register.setCC(register.getCC() | 4);
 			System.out.println("Underflow");
 		}
 		else {
 			// store high order bits in Rx and low order bits in Rx+1.
-			if(register.getGeneralReg(Rx)*register.getGeneralReg(Ry) <= 65535) {
-				register.setGeneralReg(Rx, 0);
-				register.setGeneralReg(Rx+1, register.getGeneralReg(Rx)*register.getGeneralReg(Ry));
-			}
-			else {
-				int multipliedValue = register.getGeneralReg(Rx)*register.getGeneralReg(Ry);
-				register.setGeneralReg(Rx, multipliedValue-65535);
-				register.setGeneralReg(Rx+1, 65535);
-			}
+			String resultStr = numToStr(result, 32);
+			System.out.println("Result of mult is " + resultStr + " = " + result);
+			register.setGeneralReg(Rx, strToNum(resultStr.substring(0,16)));
+			register.setGeneralReg(Rx + 1, strToNum(resultStr.substring(16)));
 		}
 	} 
 	
-	// divide one register value by another register value.
-	public static void divideRegisterByRegister(int Rx, int Ry) {
+	/**
+	 * Dividing one register by another
+	 * @param Rx holds the dividend
+	 * @param Ry holds the divisor
+	 */
+	public static void divRegByReg(int Rx, int Ry) {
 		if(register.getGeneralReg(Ry) == 0) {
-			register.setCC(2);		
+			register.setCC(register.getCC() | 2);		
 			System.out.println("DIVZERO");
 		}
 		else {
 			// store quotient in Rx and remainder in Rx+1
-			register.setGeneralReg(Rx, register.getGeneralReg(Rx)%register.getGeneralReg(Ry));
-			register.setGeneralReg(Rx+1, register.getGeneralReg(Rx)/register.getGeneralReg(Ry));
+			int quotient =  register.getGeneralReg(Rx) / register.getGeneralReg(Ry);
+			int remainder =  register.getGeneralReg(Rx) % register.getGeneralReg(Ry);
+			
+			register.setGeneralReg(Rx, quotient);
+			register.setGeneralReg(Rx + 1, remainder);
 		}
 	} 
 	
 	// logical operations
 	
 	// Check if the register values are equal.
-	public static void testEqualityOfRegisterAndRegister(int Rx, int Ry) {
+	public static void testRegReg(int Rx, int Ry) {
 		if(register.getGeneralReg(Rx) == register.getGeneralReg(Ry)) {
 			register.setCC(1);		
 			System.out.println("Equal");

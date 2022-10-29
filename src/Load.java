@@ -107,16 +107,16 @@ public class Load {
 				System.out.println("---loadAddress: "+ R + " with address " + EA);
     			break;
         	//Arithmetic instructions
-        	case 4: Operations.addMemoryToReg(R, EA); 							// registerValue += memory[EA]
+        	case 4: Operations.addMemToReg(R, EA); 							// registerValue += memory[EA]
         		System.out.println("addMemoryToReg: " + R + "\tEA:" + EA);
         		break;
-        	case 5: Operations.subtractMemoryFromRegister(R, EA); 				// registerValue -= memory[EA]
+        	case 5: Operations.subMemFromReg(R, EA); 				// registerValue -= memory[EA]
     			System.out.println("subtractMemoryFromRegister: " + R + "\tEA:" + EA);
     			break;
-        	case 6: Operations.addImmediateToRegister(R, address); 				// add immediate to the register
+        	case 6: Operations.addImmedToReg(R, address); 				// add immediate to the register
     			System.out.println("addImmediateToRegister: " + R + "\tImmediate:" + address);
     			break;
-        	case 7: Operations.subtractImmediateFromRegister(R, address); 		// subtract immediate from the register
+        	case 7: Operations.subImmedFromReg(R, address); 		// subtract immediate from the register
     			System.out.println("subtractImmediateFromRegister: " + R + "\tImmediate:" + address);
     			break;
     		//Transfer instructions
@@ -145,14 +145,14 @@ public class Load {
     			System.out.println("---jumpGreaterEqual.");
     			break;
     		//Arithmetic Instructions
-    		case 16: Operations.multiplyRegisterByRegister(R, IX); 				// multiple the values in both the registers. Rx - R, Ry - IX .
+    		case 16: Operations.multRegByReg(R, IX); 				// multiple the values in both the registers. Rx - R, Ry - IX .
 				System.out.println("multiplyRegister: " + R + "\tByRegister:" + IX);
 				break;
-    		case 17: Operations.divideRegisterByRegister(R, IX); 				// divide one register value by another register value. Rx - R, Ry - IX.
+    		case 17: Operations.divRegByReg(R, IX); 				// divide one register value by another register value. Rx - R, Ry - IX.
 				System.out.println("divideRegister: " + R + "\nByRegister:" + IX);
 				break;
     		//Logical operations
-    		case 18: Operations.testEqualityOfRegisterAndRegister(R, IX); 		// check if two registers are equal. Rx - R, Ry - IX.
+    		case 18: Operations.testRegReg(R, IX); 		// check if two registers are equal. Rx - R, Ry - IX.
 				System.out.println("testEqualityOfRegister: " + R + "\tAndRegister:" + IX);
 				break;
     		case 19: Operations.logicalAndOfRegisterAndRegister(R, IX); 		// logical AND of two register values. Rx - R, Ry - IX.
