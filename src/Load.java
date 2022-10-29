@@ -23,7 +23,7 @@ public class Load {
     
     //Decodes instructions and separates them into opcode, R, IX, I and Address
     public void instructionDecode(String ins) {
-    	
+    	System.out.println("opcodeStr: " + ins.substring(0,6));
         opcode = Integer.parseInt(ins.substring(0, 6),2);
         R = Integer.parseInt(ins.substring(6, 8),2);
         IX = Integer.parseInt(ins.substring(8, 10), 2);
@@ -44,7 +44,7 @@ public class Load {
         int insInMem = memory.load(memAddress);
         
         instruction = Operations.numToStr(insInMem, 16);
-        
+        System.out.println("Instruction: " + instruction);
         instructionDecode(instruction);
     }
 

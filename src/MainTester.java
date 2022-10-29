@@ -1,13 +1,20 @@
 
 public class MainTester {
+	public static Memory memory = Memory.getInstance();
 	public static Register register = Register.getInstance();
+	
 	public static void main(String[] args) {
 		int num1 =  -430;
 		int bit = 12;
 		//System.out.println("After in " + bit + "-bit format: " + Operations.numToStr(3, bit));
+		memory.store(7, 1000);
 		
-		String str = "A130";
-		
+		String line = "000A 8447";
+		Operations.saveInstructionFromText(line);
+		Load load = new Load();
+		load.loadInstruction(10);
+		System.out.println("opcode: " + load.R);
+		load.runInstruction();
 		
 	}
 	
