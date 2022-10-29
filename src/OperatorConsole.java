@@ -26,9 +26,10 @@ public class OperatorConsole {
         txtField.setBounds(10, 5, 95, 25);
         panel.add(txtField);
 
-        JTextArea consolTextArea = new JTextArea("");
-        consolTextArea.setBounds(5, 30, 754, 401);
-        panel.add(consolTextArea);
+        JTextArea consolePrinter = new JTextArea("");
+        consolePrinter.setBounds(5, 30, 754, 401);
+        consolePrinter.setEditable(false);
+        panel.add(consolePrinter);
 
         JTextField searchText = new JTextField("");
         searchText.setBounds(0, 517, 608, 45);
