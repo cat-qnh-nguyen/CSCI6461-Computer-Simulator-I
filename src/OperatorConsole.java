@@ -14,7 +14,8 @@ public class OperatorConsole {
     public static JTextField consoleKeyboard;
     public JButton enterBtn;
     public static String message;
-
+    
+    //The Console User Interface
     public OperatorConsole(){
         frame = new JFrame();
         frame.setTitle("CISC Operators Console");
@@ -33,6 +34,7 @@ public class OperatorConsole {
         pnlPrinter.setLayout(new BoxLayout(pnlPrinter, BoxLayout.Y_AXIS));
         panel.add(pnlPrinter);
 
+        //Scroll Panel for Console Printer
         scrollPane1 = new JScrollPane();
         pnlPrinter.add(scrollPane1);
 
@@ -41,36 +43,12 @@ public class OperatorConsole {
         panel.add(txtField);
 
         consolePrinter = new JTextArea("");
-        // consolePrinter.setBounds(5, 30, 754, 201);
         consolePrinter.setEditable(false);
         scrollPane1.setViewportView(consolePrinter);
 
         consoleKeyboard = new JTextField("");
         consoleKeyboard.setForeground(Color.GRAY);
-        consoleKeyboard.setBounds(0, 517, 608, 45);
         panel.add(consoleKeyboard);
-
-        enterBtn = new JButton("Enter");
-        enterBtn.setBounds(607, 517, 100, 45);
-        
-
-        enterBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-                if (consoleKeyboard.getText() == null || consoleKeyboard.getText().length() == 0) {
-                    JOptionPane.showMessageDialog(null, "type numbers in the console keyboard");
-
-                } else {
-                    printConsole("The number entered: ");
-                    message = consoleKeyboard.getText();
-                    
-                    printConsole(message);
-                    consoleKeyboard.setText("");
-                }
-            }
-        });
- 
-        panel.add(enterBtn);
     }
     
     /**
@@ -78,27 +56,20 @@ public class OperatorConsole {
      * @param mes
      */
     public static int decodeMessage() {
-//    	String hex = "";
-//    	for(int i = 0; i < mes.length(); i++) {
-//    		hex += charToHex(mes.substring(i,i+1));
-//    		if (hex.length() == 4) {
-//    			
-//    		}
-//    	}
     	message ="";
     	if(consoleKeyboard.getText() == null || consoleKeyboard.getText().length() == 0){
     		message = JOptionPane.showInputDialog(null, "Please enter the numbers in the console keyboard");
 
     	}
-    	
     	return Integer.parseInt(message);
-    	
-
     }
     
+    /**
+     * converting the char to hex
+     * @param character
+     */
     public static String charToHex(String character) {
-    	String result = "";
-    	
+    	String result = "";	
     	return result;
     }
 
@@ -108,6 +79,5 @@ public class OperatorConsole {
      */
     public static void printConsole(String mes) {
         consolePrinter.append(mes + "\n");
-    }
-    
+    }  
 }

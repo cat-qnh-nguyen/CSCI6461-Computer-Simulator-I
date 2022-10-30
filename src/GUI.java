@@ -232,6 +232,7 @@ public class GUI extends JFrame {
 				try {
 					GUI frame = new GUI();
 					frame.setVisible(true);
+					//Opening the Console at the same time the GUI is opened
 					OperatorConsole OperatorConsole = new OperatorConsole();
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -1608,6 +1609,7 @@ public class GUI extends JFrame {
 
 	}
 	
+	//Display the values in GPR, IXR, PC, MAR, MBR, IR, MFR
 	public void display() {
 		String GPR_0 = Operations.numToStr(get_number(1), 16);
 
@@ -1874,7 +1876,8 @@ public class GUI extends JFrame {
 		MFR_TF3.setText(mfrValue[2]);
 		MFR_TF4.setText(mfrValue[3]);
 	}
-	
+
+	// Load Button Function to set values in the register
 	public void LD_button(String InputofBin, int index) {
 		int Input = Operations.strToNum(InputofBin);
 		switch (index) {
@@ -1951,7 +1954,11 @@ public class GUI extends JFrame {
 		}
 		return 0;
 	}
-
+    
+	/**
+	 * Setting the data in any registers
+	 * @param index
+	 */
 	public void setBtnvalue(int index){
 		if (commonbtn.getText() == "0") {
 			commonbtn.setText("1");
@@ -1962,6 +1969,7 @@ public class GUI extends JFrame {
 		}
 	}
 
+	//GPR Load Button Functionality
 	public void GPRloadBtn() {
 		op_bit0 = btnNewButton_15.getText();
 		op_bit1 = btnNewButton_14.getText();

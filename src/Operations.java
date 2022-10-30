@@ -571,12 +571,8 @@ public class Operations {
 	 * @param device
 	 */
 	public static void in(int r, int device) {
-		//device = keyboard
 		if(device == 0) {
-			
 			int value = OperatorConsole.decodeMessage();
-			//value = OperatorConsole.
-
 			register.setGeneralReg(r, value);
 		}
 	}
