@@ -53,10 +53,11 @@ public class OperatorConsole {
         enterBtn = new JButton("Enter");
         enterBtn.setBounds(607, 517, 100, 45);
         
-
+        // enter button action method
         enterBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// prompting if the user clicked enter when keyboard text box is empty
                 if (consoleKeyboard.getText() == null || consoleKeyboard.getText().length() == 0) {
                     JOptionPane.showMessageDialog(null, "type numbers in the console keyboard");
 

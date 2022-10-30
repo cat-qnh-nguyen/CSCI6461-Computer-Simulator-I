@@ -97,6 +97,7 @@ public class Load {
      */
     public void runInstruction() {
     	switch(opcode) {
+    		// Load/Store Instructions
     		case 1: Operations.loadRegister(R, EA);						//load register from memory
     			System.out.println("---loadRegister: "+ R + " with data at memory " + EA);
     			break;
@@ -106,7 +107,7 @@ public class Load {
     		case 3: Operations.loadAddress(R, EA);						//load register with address
 				System.out.println("---loadAddress: "+ R + " with address " + EA);
     			break;
-        	//Arithmetic instructions
+        	// Arithmetic instructions
         	case 4: Operations.addMemToReg(R, EA); 							// registerValue += memory[EA]
         		System.out.println("---addMemoryToReg: " + R + "\tEA:" + EA);
         		break;
@@ -119,7 +120,7 @@ public class Load {
         	case 7: Operations.subImmedFromReg(R, address); 		// subtract immediate from the register
     			System.out.println("---subtractImmediateFromRegister: " + R + "\tImmediate:" + address);
     			break;
-    		//Transfer instructions
+    		// Transfer instructions
     		case 8: Operations.jumpZero(R, EA);						//Jump if Zero
     			System.out.println("---jumpZero: " + R + "\nPC:" + register.getPC());
     			break;
@@ -144,14 +145,14 @@ public class Load {
     		case 15: Operations.jumpGreaterEqual(R, EA);			//jump greater than or equal to
     			System.out.println("---jumpGreaterEqual.");
     			break;
-    		//Arithmetic Instructions
+    		// Arithmetic Instructions
     		case 16: Operations.multRegByReg(R, IX); 				// multiple the values in both the registers. Rx - R, Ry - IX .
 				System.out.println("---multiplyRegister: " + R + "\tByRegister:" + IX);
 				break;
     		case 17: Operations.divRegByReg(R, IX); 				// divide one register value by another register value. Rx - R, Ry - IX.
 				System.out.println("---divideRegister: " + R + "\nByRegister:" + IX);
 				break;
-    		//Logical operations
+    		// Logical operations
     		case 18: Operations.testRegReg(R, IX); 		// check if two registers are equal. Rx - R, Ry - IX.
 				System.out.println("---testEqualityOfRegister: " + R + "\tAndRegister:" + IX);
 				break;
@@ -164,7 +165,7 @@ public class Load {
     		case 21: Operations.logicalNot(R); 						// logical NOT of a register value.
 				System.out.println("---logicalNotOfRegister: " + R);
 				break;			
-			//Shift Instructions
+			// Shift Instructions
     		case 25: Operations.shiftRegByCount(R, count, LorR, AorL); 	// Shift RegisterBy Count.
 				System.out.println("---shiftRegister: " + R + "\nByCount" + count);
 				break;
@@ -177,6 +178,7 @@ public class Load {
     		case 34: Operations.storeIndex(IX, EA);					//store index register to memory
 				System.out.println("---storeIndex: "+ IX + " into memory location " + EA);
     			break;
+    		// In/Out Instructions
     		case 49: Operations.in(R, address);						//In instruction
     			System.out.println("---in R" + R + ", Device: " + address);
     			break;
