@@ -53,6 +53,7 @@ public class OperatorConsole {
         enterBtn = new JButton("Enter");
         enterBtn.setBounds(607, 517, 100, 45);
         
+
         enterBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -68,6 +69,7 @@ public class OperatorConsole {
                 }
             }
         });
+ 
         panel.add(enterBtn);
     }
     
@@ -75,7 +77,7 @@ public class OperatorConsole {
      * decoding the message written by user
      * @param mes
      */
-    public static void decodeMessage() {
+    public static int decodeMessage() {
 //    	String hex = "";
 //    	for(int i = 0; i < mes.length(); i++) {
 //    		hex += charToHex(mes.substring(i,i+1));
@@ -85,12 +87,12 @@ public class OperatorConsole {
 //    	}
     	message ="";
     	if(consoleKeyboard.getText() == null || consoleKeyboard.getText().length() == 0){
-    		JOptionPane.showMessageDialog(null, "Please enter the numbers in the console keyboard");
+    		message = JOptionPane.showInputDialog(null, "Please enter the numbers in the console keyboard");
 
     	}
-    	else {
-    		Integer.parseInt(message);
-    	}
+    	
+    	return Integer.parseInt(message);
+    	
 
     }
     

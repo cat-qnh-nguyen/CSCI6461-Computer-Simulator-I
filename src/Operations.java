@@ -573,7 +573,6 @@ public class Operations {
 	public static void in(int r, int device) {
 		//device = keyboard
 		if(device == 0) {
-			OperatorConsole.promptToEnterValues();
 			
 			int value = OperatorConsole.decodeMessage();
 			//value = OperatorConsole.
