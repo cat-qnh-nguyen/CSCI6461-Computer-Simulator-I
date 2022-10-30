@@ -4,15 +4,22 @@ public class MainTester {
 	public static Register register = Register.getInstance();
 	
 	public static void main(String[] args) {
-		int num1 =  -20;
 
-		//System.out.println("After in " + bit + "-bit format: " + Operations.numToStr(3, bit));
-		register.setCC(2);
-		memory.store(7, 32768);
-		register.setGeneralReg(0, -2048);
-		register.setGeneralReg(2, 2500);
 		
-		makeInstruction(2,1,0,0,7);
+		String address = Operations.numToStr(-5, 16);
+		String tag = address.substring(0,14);
+		int tagNum = Operations.strToNum(tag);
+		String block = address.substring(14, 16);
+		
+		int blockNum = Integer.parseInt(block,2);
+		
+		System.out.println("\nAddress: " + address +"\nTag as string: " + tag +
+				"\nTag as num: " + tagNum + "\nConverted back: " + 
+				Operations.numToStr(tagNum, 14) + "\nBlock string: " + block
+				+"\nBlock num: " + blockNum + "\nBlock converted back: " +
+				Operations.numToStr(blockNum, 2) +
+				"\nPut back together: " + tag + block + "\nAddress num is: " +
+				Operations.strToNum(tag + block));
 				
 	}
 	

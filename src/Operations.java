@@ -82,8 +82,11 @@ public class Operations {
 			if(bit == 32) {
 		        result = String.format("%32s", result).replaceAll(" ", "0");
 			}
-			if(bit == 16) {
+			else if(bit == 16) {
 		        result = String.format("%16s", result).replaceAll(" ", "0");
+			}
+			else if(bit == 14) {
+				result = String.format("%14s", result).replaceAll(" ", "0");
 			}
 			else if(bit == 12) {
 		        result = String.format("%12s", result).replaceAll(" ", "0");
@@ -91,10 +94,16 @@ public class Operations {
 			else if(bit == 4) {
 		        result = String.format("%4s", result).replaceAll(" ", "0");
 			}
+			else if(bit == 2) {
+				result = String.format("%2s", result).replaceAll(" ", "0");
+			}
 		}
 		else {
 			if(bit == 16) {
 		        result = result.substring(result.length()-16);
+			}
+			else if(bit == 14) {
+		        result = result.substring(result.length()-14);
 			}
 			else if(bit == 12) {
 		        result = result.substring(result.length()-12);

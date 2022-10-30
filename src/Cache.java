@@ -6,88 +6,138 @@ public class Cache {
 	//Creating an Instance to ensure only one memory object is created
 	private static Cache INSTANCE = new Cache();
    
-    public static int[] cache_tag = new int [16];
-    public static int[] cache_valid = new int [16];
-    public static int[][] cache_data = new int [16][4]; 
-    public static int tag;
-    public static int block;
-    public static int cache_pointer=0;
+    private static int[] cache_tag = new int [16];
+    private static int[] cache_valid = new int [16];
+    private static int[][] cache_data = new int [16][4]; 
+    private static int tag;
+    private static int block;
+    private static int cache_pointer = 0;
 
+    public static Memory memory = Memory.getInstance();
     
-    public static int LoadCache(int address)
+    private Cache() {}
+    
+    //Singleton function to access Cache
+    public static Cache getInstance() {
+    	if(INSTANCE == null) {
+    		INSTANCE = new Cache();
+    	}
+    	return INSTANCE;
+    }
+    
+    /**
+     * loading data from cache
+     * @param address the memory address that user wants to get data from
+     * @return the data at that memory address stored in cache
+     */
+    public static int loadCache(int address)
     {   
-        //Check for space in cache, and if foun full, we reset the pointer to 0 thereby implementing a FIFO
+        //Check for space in cache, and if found full, we reset the pointer to 0 thereby implementing a FIFO
         if(cache_pointer == 16)
         {
             cache_pointer = 0;
         }
 
-        //Exteracting the data from memory
-        String add=Operations.numToStr(address);
-        tag=Operations.strToNum(add.substring(0,14));
-        block=Operations.strToNum(add.substring(14,16));
+        //add stores the address given in string
+        String add = Operations.numToStr(address,16);
+        
+        tag = Operations.strToNum(add.substring(0,14));
+        
+        //Using parseInt because these values do not need to be negative
+        block = Integer.parseInt(add.substring(14,16),2);
+        
+        boolean foundTag = false;
+        int i = 0;
+        
         //Search for the existence of tag in the cache 
-        for(int i=0; i<16; i++)
-        {    
-            //If tag is found and has a valid ID
-            if((cache_tag[i] == tag)&&(cache_valid==1))
-            {    
-                // return the data bit
-                return cache_data[i][block]
-            }  
-
-            //if tag is found and does not have a valid ID
-            else if((cache_tag[i] == tag)&&(cache_valid==0))
-            {
-                //retrieve the data and update the valid bit value
-                cache_valid[i]=1;
-                cache_data[i][block]=memory.load(address);
-                return cache_data[i][block]
-            }
-
-            //If tag is not found in the cache at all
-            else
-            {
-                //Store the tag in cache
-                cache_tag[cache_pointer]=tag;
-                cache_valid[cache_pointer]=1;
-                for(i=0;i<4;i++)
-                {
-                    int data_address;
-                    data_address=Operations.strToNum(tag + Operations.numToStr(i));
-                    cache_data[cache_pointer][i]=memory.load(data_address);
-                }
-                cache_pointer++;
-                return cache_data[cache_pointer][block];
-            }
-        }       
+        while(!foundTag || i < 16) {
+        	if(cache_tag[i] == tag) {
+        		foundTag = true;
+        	}
+        	i++;
+        }
+              
+        //if tag is found and valid is 1
+        if(foundTag && cache_valid[i] == 1) {
+        	return cache_data[i][block];
+        }
+        
+        //if tag is not found at all
+        if(!foundTag) {
+        	//set i as the cache_pointer so we can appropriately add data
+        	i = cache_pointer;
+        	cache_pointer++;
+        }
+        
+        cache_tag[i] = tag;
+        cache_valid[i] = 1;
+        
+        for(int j = 0; j < 4; j++) {
+        	add = Operations.numToStr(tag,14) + Operations.numToStr(j,2);
+        	int memAdd = Operations.strToNum(add);
+        	
+        	cache_data[i][j] = memory.load(memAdd);
+        }
+        
+        return cache_data[i][block];
+        
     }    
 
-    public static int WriteCache(int address,int data)
+    public static void writeCache(int address,int data)
     {
-        //Check for space in cache, and if founf full, we reset the pointer to 0 thereby implementing a FIFO
+        //Check for space in cache, and if found full, we reset the pointer to 0 thereby implementing a FIFO
         if(cache_pointer==16)
         {
             cache_pointer=0;
         }
 
-        //Exteracting the data from memory
-        String add=Operations.numToStr(address);
-        tag=Operations.strToNum(add.substring(0,14));
-        block=Operations.strToNum(add.substring(14,16));
-
-        //Store the tag in cache
-        cache_tag[cache_pointer]=tag;
-        cache_valid[cache_pointer]=1;
+        //Extracting the data from memory
+        //add stores the address given in string
+        String add = Operations.numToStr(address,16);
         
-        for(i=0;i<4;i++)
-        {
-            int data_address;
-            data_address=Operations.strToNum(tag + Operations.numToStr(i));
-            cache_data[cache_pointer][i]=memory.load(data_address);
+        tag = Operations.strToNum(add.substring(0,14));
+        
+        //Using parseInt because these values do not need to be negative
+        block = Integer.parseInt(add.substring(14,16),2);
+        
+        boolean foundTag = false;
+        int i = 0;
+        
+        //Search for the existence of tag in the cache 
+        while(!foundTag || i < 16) {
+        	if(cache_tag[i] == tag) {
+        		foundTag = true;
+        	}
+        	i++;
         }
-        cache_pointer++;
+              
+        //if tag is found and valid is 1
+        if(foundTag && cache_valid[i] == 1) {
+        	cache_data[i][block] = data;
+        	memory.store(address, data);
+        }
+        
+        //if tag is not found at all
+        if(!foundTag) {
+        	//set i as the cache_pointer so we can appropriately add data
+        	i = cache_pointer;
+        	cache_pointer++;
+        }
+        
+        //both situations where valid bit is 0
+        cache_tag[i] = tag;
+        cache_valid[i] = 1;
+        
+        //Updating cache so it has the same memory block in memory
+        for(int j = 0; j < 4; j++) {
+        	add = Operations.numToStr(tag,14) + Operations.numToStr(j,2);
+        	int memAdd = Operations.strToNum(add);     	
+        	cache_data[i][j] = memory.load(memAdd);
+        }
+        
+        //Now update the memory and cache in that block that needs writing to
+        cache_data[i][block] = data;
+    	memory.store(address, data); 
     }
-	
 	
 }
