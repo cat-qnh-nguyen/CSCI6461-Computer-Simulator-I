@@ -6,9 +6,9 @@ public class Cache {
 	//Creating an Instance to ensure only one memory object is created
 	private static Cache INSTANCE = new Cache();
    
-    public int[] cache_tag = new int [16];
-    public int[] cache_valid = new int [16];
-    public int[][] cache_data = new int [16][4]; 
+    public static int[] cache_tag = new int [16];
+    public static int[] cache_valid = new int [16];
+    public static int[][] cache_data = new int [16][4]; 
     public static int tag;
     public static int block;
     public static int cache_pointer=0;
@@ -79,7 +79,12 @@ public class Cache {
         //Store the tag in cache
         cache_tag[cache_pointer]=tag;
         cache_valid[cache_pointer]=1;
-        cache_data[cache_pointer][block]=data;
+        for(i=0;i<4;i++)
+        {
+            int data_address;
+            data_address=Operations.strToNum(tag + Operations.numToStr(i));
+            cache_data[cache_pointer][i]=memory.load(data_address);
+        }
         cache_pointer++;
     }
 	
