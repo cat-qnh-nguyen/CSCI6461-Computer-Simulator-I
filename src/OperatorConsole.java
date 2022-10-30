@@ -58,7 +58,7 @@ public class OperatorConsole {
     public static int decodeMessage() {
     	message ="";
     	if(consoleKeyboard.getText() == null || consoleKeyboard.getText().length() == 0){
-    		message = JOptionPane.showInputDialog(null, "Please enter the numbers in the console keyboard");
+    		message = JOptionPane.showInputDialog(null, "Please enter the number in the console keyboard");
 
     	}
     	return Integer.parseInt(message);

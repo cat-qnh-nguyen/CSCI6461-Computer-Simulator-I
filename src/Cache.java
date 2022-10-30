@@ -79,6 +79,7 @@ public class Cache {
         //Store the tag in cache
         cache_tag[cache_pointer]=tag;
         cache_valid[cache_pointer]=1;
+        
         for(i=0;i<4;i++)
         {
             int data_address;

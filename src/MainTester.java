@@ -11,16 +11,9 @@ public class MainTester {
 		memory.store(7, 32768);
 		register.setGeneralReg(0, -2048);
 		register.setGeneralReg(2, 2500);
-
-//		String line = "000A 8447";
-//		Operations.saveInstructionFromText(line);
-//		Load load = new Load();
-//		load.loadInstruction(10);
-//		System.out.println("LR: " + load.AorL);
-//		load.runInstruction();
 		
-		makeInstruction(49, 1, 0, 0, 0);
-		
+		makeInstruction(2,1,0,0,7);
+				
 	}
 	
 	public static void makeInstruction(int op, int r, int ix, int i, int address) {

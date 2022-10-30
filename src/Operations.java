@@ -166,9 +166,7 @@ public class Operations {
 		if (register.getGeneralReg(reg) == 0) {
 			register.setPC(ea);
 		}
-		else {
-			register.setPC(register.getPC()+1);
-		}
+
 	}
 	
 	/**
@@ -179,9 +177,6 @@ public class Operations {
 	public static void jumpNotZero (int reg, int ea) {
 		if (register.getGeneralReg(reg)!= 0) {
 			register.setPC(ea);
-		}
-		else {
-			register.setPC(register.getPC()+1);
 		}
 	}
 	
@@ -200,9 +195,7 @@ public class Operations {
         if(Integer.parseInt(ccBit) == 1) {
         	register.setPC(ea);
         }
-        else {
-        	register.setPC(register.getPC()+1);
-        }        
+        
 	}
 	
 	/**
@@ -242,9 +235,6 @@ public class Operations {
 		if(register.getGeneralReg(r) > 0) {
 			register.setPC(ea);
 		}
-		else {
-			register.setPC(register.getPC() + 1);
-		}
 	}
 	
 	/**
@@ -256,9 +246,7 @@ public class Operations {
 		if(register.getGeneralReg(r) >= 0) {
 			register.setPC(ea);
 		}
-		else {
-			register.setPC(register.getPC() + 1);
-		}
+
 	}
 
 	// arithmetic instructions
