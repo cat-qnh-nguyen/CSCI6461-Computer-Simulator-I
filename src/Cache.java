@@ -50,7 +50,7 @@ public class Cache {
         int i = 0;
         
         //Search for the existence of tag in the cache 
-        while(!foundTag || i < 16) {
+        while(!foundTag && i < 16) {
         	if(cache_tag[i] == tag) {
         		foundTag = true;
         	}
@@ -104,7 +104,7 @@ public class Cache {
         int i = 0;
         
         //Search for the existence of tag in the cache 
-        while(!foundTag || i < 16) {
+        while(!foundTag && i < 16) {
         	if(cache_tag[i] == tag) {
         		foundTag = true;
         	}
