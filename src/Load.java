@@ -171,10 +171,10 @@ public class Load {
     		case 26: Operations.rotateRegByCount(R, count, LorR); 			// Rotate Register By Count.
 				System.out.println("---rotateRegisterByCount: " + R + "\nByCount" + count);
 				break;	
-    		case 33: Operations.loadIndex(R,EA);					//load index register from memory
+    		case 33: Operations.loadIndex(IX,EA);					//load index register from memory
 				System.out.println("---loadIndex: "+ IX + " with data at memory location " + EA);
     			break;
-    		case 34: Operations.storeIndex(R, EA);					//store index register to memory
+    		case 34: Operations.storeIndex(IX, EA);					//store index register to memory
 				System.out.println("---storeIndex: "+ IX + " into memory location " + EA);
     			break;
     		case 49: Operations.in(R, address);						//In instruction
