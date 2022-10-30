@@ -9,14 +9,14 @@ public class MainTester {
 		//System.out.println("After in " + bit + "-bit format: " + Operations.numToStr(3, bit));
 		register.setCC(2);
 		memory.store(7, 32768);
-		register.setGeneralReg(0, -3200);
+		register.setGeneralReg(0, -2048);
 		register.setGeneralReg(2, 2500);
 		
 		String str = "01234567";
+		//Want to cut 3
+        System.out.println(str.substring(0,str.length()-3));
 		
-        System.out.println(str.substring(0, 4));
-		
-		//Operations.shiftRegByCount(0, 4, 1, 0); //shift left logical
+		Operations.rotateRegByCount(2, 4, 1);; //shift right arithmetic
         
 //		String line = "000A 8447";
 //		Operations.saveInstructionFromText(line);

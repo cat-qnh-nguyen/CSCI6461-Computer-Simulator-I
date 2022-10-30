@@ -168,7 +168,7 @@ public class Load {
     		case 25: Operations.shiftRegByCount(R, count, LorR, AorL); 	// Shift RegisterBy Count.
 				System.out.println("shiftRegister: " + R + "\nByCount" + count);
 				break;
-    		case 26: Operations.rotateRegisterByCount(R, count, LorR); 			// Rotate Register By Count.
+    		case 26: Operations.rotateRegByCount(R, count, LorR); 			// Rotate Register By Count.
 				System.out.println("rotateRegisterByCount: " + R + "\nByCount" + count);
 				break;	
     		case 33: Operations.loadIndex(IX, EA);					//load index register from memory

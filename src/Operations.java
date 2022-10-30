@@ -489,24 +489,45 @@ public class Operations {
 					System.out.println("Arithmetic left shift by " + count + " count.");
 					
 					cut = regBitVal.substring(0, count);
-					System.out.println("cut: " + )
 
+					regBitVal = regBitVal.substring(count);
 					
 					//This means the value stored in r will become junk
-					if(regBitVal.length() > 16) {
+					
+					if(cut.contains("01") ||(cut.contains("10"))) {
 						register.setCC(register.getCC() |8);
 						System.out.println("OVERFLOW");
+					}
+					
+					regBitVal = sign + regBitVal;
+					
+					for(int i = 0; i < count; i++) {
+						regBitVal += "0";
 					}
 				}
 				//Right
 				else {
 					System.out.println("Arithmetic right shift by " + count + " count.");
 					
-					result = register.getGeneralReg(r) / moveAmt;
+					cut = regBitVal.substring(regBitVal.length() - count);
+					System.out.println(cut);
+					regBitVal = regBitVal.substring(0, regBitVal.length() - count);
 					
-					regBitVal = numToStr(result, 16);
+					if(cut.contains("1")) {
+						register.setCC(register.getCC() | 4);
+						System.out.println("UNDERFLOW");
+					}
+					
+					for(int i = 0; i < count; i++) {
+						if(sign.equals("1")) {
+							regBitVal = "1" + regBitVal;
+						}
+						else {
+							regBitVal = "0" + regBitVal;
+						}
+					}
+					regBitVal = sign + regBitVal;
 				}
-				
 			}
 
 			System.out.println("Original: " + Operations.numToStr(register.getGeneralReg(r), 16) +
@@ -515,17 +536,32 @@ public class Operations {
 		}
 	} 
 	
-	// Rotate Register by Count 
-	public static void rotateRegisterByCount (int r, int count, int leftRight) {
+	/**
+	 * Rotate register by count
+	 * @param r the register to rotate
+	 * @param count is how many bits to rotate
+	 * @param leftRight left = 1, right = 0
+	 */
+	public static void rotateRegByCount (int r, int count, int leftRight) {
 		if(count > 0) {
 			String regBitVal = numToStr(register.getGeneralReg(r), 16);
-			// left shift
-			if(leftRight == '1') 
-				regBitVal = regBitVal.substring(count, regBitVal.length()) + regBitVal.substring(0, count);
-			//right shift
-			else 
-				regBitVal = regBitVal.substring(regBitVal.length()-count, regBitVal.length()) + regBitVal.substring(0, regBitVal.length()-count);
-			register.setGeneralReg(r, Integer.parseInt(regBitVal, 2));
+			// left rotate
+			if(leftRight == 1) {
+				System.out.println("Rotate left by " + count);
+				regBitVal = regBitVal.substring(count, regBitVal.length()) 
+						+ regBitVal.substring(0, count);
+				
+			}
+			//right rotate
+			else {
+				System.out.println("Rotate right by " + count);
+				regBitVal = regBitVal.substring(regBitVal.length()-count, regBitVal.length()) 
+						+ regBitVal.substring(0, regBitVal.length()-count);
+			}
+			
+			System.out.println("Original: " + Operations.numToStr(register.getGeneralReg(r), 16) +
+					"\nRotated: " + regBitVal);
+			register.setGeneralReg(r, strToNum(regBitVal));
 		}
 	} 
 	

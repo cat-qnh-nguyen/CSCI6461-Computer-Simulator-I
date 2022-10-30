@@ -27,8 +27,7 @@ public class Register {
 	
 	//Because Java does not have unsigned data type
 	//we will limit the data value instead of having a short
-	//For data of 16 bits, the max value is = 65535
-	public final int MAX_16 = 32768;
+	public final int MAX_16 = 32767;
 	public final int MIN_16 = -32768;
 	
 	public final int MAX_12 = 2047;
