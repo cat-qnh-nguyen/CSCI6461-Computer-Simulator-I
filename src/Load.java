@@ -108,16 +108,16 @@ public class Load {
     			break;
         	//Arithmetic instructions
         	case 4: Operations.addMemToReg(R, EA); 							// registerValue += memory[EA]
-        		System.out.println("addMemoryToReg: " + R + "\tEA:" + EA);
+        		System.out.println("---addMemoryToReg: " + R + "\tEA:" + EA);
         		break;
         	case 5: Operations.subMemFromReg(R, EA); 				// registerValue -= memory[EA]
-    			System.out.println("subtractMemoryFromRegister: " + R + "\tEA:" + EA);
+    			System.out.println("---subtractMemoryFromRegister: " + R + "\tEA:" + EA);
     			break;
         	case 6: Operations.addImmedToReg(R, address); 				// add immediate to the register
-    			System.out.println("addImmediateToRegister: " + R + "\tImmediate:" + address);
+    			System.out.println("---addImmediateToRegister: " + R + "\tImmediate:" + address);
     			break;
         	case 7: Operations.subImmedFromReg(R, address); 		// subtract immediate from the register
-    			System.out.println("subtractImmediateFromRegister: " + R + "\tImmediate:" + address);
+    			System.out.println("---subtractImmediateFromRegister: " + R + "\tImmediate:" + address);
     			break;
     		//Transfer instructions
     		case 8: Operations.jumpZero(R, EA);						//Jump if Zero
@@ -146,41 +146,41 @@ public class Load {
     			break;
     		//Arithmetic Instructions
     		case 16: Operations.multRegByReg(R, IX); 				// multiple the values in both the registers. Rx - R, Ry - IX .
-				System.out.println("multiplyRegister: " + R + "\tByRegister:" + IX);
+				System.out.println("---multiplyRegister: " + R + "\tByRegister:" + IX);
 				break;
     		case 17: Operations.divRegByReg(R, IX); 				// divide one register value by another register value. Rx - R, Ry - IX.
-				System.out.println("divideRegister: " + R + "\nByRegister:" + IX);
+				System.out.println("---divideRegister: " + R + "\nByRegister:" + IX);
 				break;
     		//Logical operations
     		case 18: Operations.testRegReg(R, IX); 		// check if two registers are equal. Rx - R, Ry - IX.
-				System.out.println("testEqualityOfRegister: " + R + "\tAndRegister:" + IX);
+				System.out.println("---testEqualityOfRegister: " + R + "\tAndRegister:" + IX);
 				break;
     		case 19: Operations.logicalAND(R, IX); 		// logical AND of two register values. Rx - R, Ry - IX.
-				System.out.println("logicalAndOfRegister: " + R + "\nAndRegister:" + IX);
+				System.out.println("---logicalAndOfRegister: " + R + "\nAndRegister:" + IX);
 				break;
     		case 20: Operations.logicalOR(R, IX); 			// logical OR of two register values. Rx - R, Ry - IX.
-				System.out.println("logicalOrOfRegister: " + R + "\nAndRegister:" + IX);
+				System.out.println("---logicalOrOfRegister: " + R + "\nAndRegister:" + IX);
 				break;	
     		case 21: Operations.logicalNot(R); 						// logical NOT of a register value.
-				System.out.println("logicalNotOfRegister: " + R);
+				System.out.println("---logicalNotOfRegister: " + R);
 				break;			
 			//Shift Instructions
     		case 25: Operations.shiftRegByCount(R, count, LorR, AorL); 	// Shift RegisterBy Count.
-				System.out.println("shiftRegister: " + R + "\nByCount" + count);
+				System.out.println("---shiftRegister: " + R + "\nByCount" + count);
 				break;
     		case 26: Operations.rotateRegByCount(R, count, LorR); 			// Rotate Register By Count.
-				System.out.println("rotateRegisterByCount: " + R + "\nByCount" + count);
+				System.out.println("---rotateRegisterByCount: " + R + "\nByCount" + count);
 				break;	
-    		case 33: Operations.loadIndex(IX, EA);					//load index register from memory
+    		case 33: Operations.loadIndex(R,EA);					//load index register from memory
 				System.out.println("---loadIndex: "+ IX + " with data at memory location " + EA);
     			break;
-    		case 34: Operations.storeIndex(IX, EA);					//store index register to memory
+    		case 34: Operations.storeIndex(R, EA);					//store index register to memory
 				System.out.println("---storeIndex: "+ IX + " into memory location " + EA);
     			break;
     		case 49: Operations.in(R, address);						//In instruction
     			System.out.println("---in R" + R + ", Device: " + address);
     			break;
-    		case 50:
+    		case 50: Operations.out(R, address);					//Out instruction
     			System.out.println("---out R" + R + ", Device: " + address);
     			break;
     		default: throw new IllegalArgumentException("Invalid instruction code.");

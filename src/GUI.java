@@ -1532,6 +1532,8 @@ public class GUI extends JFrame {
 				register.setMAR(register.getPC());
 				register.setMBR(memory.load(register.getMAR()));
 				register.setIR(register.getMBR());
+				//Increment PC
+				register.setPC(register.getPC() + 1);
 				
 				Load loadInst = new Load();
 				loadInst.loadInstruction(register.getMAR());
@@ -1543,8 +1545,7 @@ public class GUI extends JFrame {
 					
 					loadInst.runInstruction();
 					display();
-					//Increment PC
-					register.setPC(register.getPC() + 1);
+
 				
 				}
 				textfield_1.setBackground(Color.red);
@@ -1566,6 +1567,10 @@ public class GUI extends JFrame {
 					register.setMBR(memory.load(register.getMAR()));
 					register.setIR(register.getMBR());
 					
+					//Increment PC
+					register.setPC(register.getPC() + 1);
+			
+					
 					Load loadInst = new Load();
 					loadInst.loadInstruction(register.getMAR());
 					
@@ -1578,7 +1583,6 @@ public class GUI extends JFrame {
 					loadInst.runInstruction();
 					// increment MAR
 					display();
-					register.setMAR(register.getMAR() + 1);
 	
 				} while(true);
 			}
@@ -1836,11 +1840,11 @@ public class GUI extends JFrame {
 		textMbr_15.setText(mbrValue[14]);
 		textMbr_16.setText(mbrValue[15]);
 		
-		String IR = Operations.numToStr(get_number(11), 12);
-		String[] irValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+		String IR = Operations.numToStr(get_number(11), 16);
+		String[] irValue = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
 
 		for (int i = 0; i < IR.length(); i++) {
-			irValue[12 - IR.length() + i] = IR.substring(i, i + 1);
+			irValue[16 - IR.length() + i] = IR.substring(i, i + 1);
 		}
 		textIR_1.setText(irValue[0]);
 		textIR_2.setText(irValue[1]);
@@ -1853,8 +1857,12 @@ public class GUI extends JFrame {
 		textIR_9.setText(irValue[8]);
 		textIR_10.setText(irValue[9]);
 		textIR_11.setText(irValue[10]);
-		textIR_12.setText(irValue[11]);
-		
+		textIR_12.setText(irValue[11]);		
+		textIR_13.setText(mbrValue[12]);
+		textIR_14.setText(mbrValue[13]);
+		textIR_15.setText(mbrValue[14]);
+		textIR_16.setText(mbrValue[15]);
+	
 		String MFR = Operations.numToStr(get_number(12), 4);
 		String[] mfrValue = { "0", "0", "0", "0" };
 

@@ -15,7 +15,7 @@ public class Cache {
 
     public static int LoadCache(int address)
     {   
-        //Check for space in cache, and if foun full, we reset the pointer to 0 thereby implementing a FIFO
+        //Check for space in cache, and if found full, we reset the pointer to 0 thereby implementing a FIFO
         if(cache_pointer == 16)
         {
             cache_pointer = 0;
