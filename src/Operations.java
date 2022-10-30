@@ -565,9 +565,32 @@ public class Operations {
 		}
 	} 
 	
+	/**
+	 * In instruction
+	 * @param r the register to hold input character
+	 * @param device
+	 */
+	public static void in(int r, int device) {
+		//device = keyboard
+		if(device == 0) {
+			int value = OperatorConsole.decodeMessage();
+			//value = OperatorConsole.
+			register.setGeneralReg(r, value);
+		}
+	}
 	
-	
-
+	/**
+	 * Out instruction
+	 * @param r holds the data for output
+	 * @param device
+	 */
+	public static void out(int r, int device) {
+		//device = printer
+		if (device == 1) {
+			String result = String.valueOf(register.getGeneralReg(r));
+			OperatorConsole.printConsole(result);
+		}
+	}
 
 
 }

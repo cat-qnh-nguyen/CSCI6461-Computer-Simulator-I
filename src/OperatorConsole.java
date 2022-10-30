@@ -13,6 +13,7 @@ public class OperatorConsole {
     public static JTextArea consolePrinter;
     public JTextField consoleKeyboard;
     public JButton enterBtn;
+    public static String message;
 
     public OperatorConsole(){
         frame = new JFrame();
@@ -58,13 +59,36 @@ public class OperatorConsole {
                     JOptionPane.showMessageDialog(null, "type numbers in the console keyboard");
 
                 } else {
-                    printConsole("The numbers have been entered");
-                    printConsole(consoleKeyboard.getText());
+                    printConsole("The number entered: ");
+                    message = consoleKeyboard.getText();
+                    
+                    printConsole(message);
                     consoleKeyboard.setText("");
                 }
             }
         });
         panel.add(enterBtn);
+    }
+    
+    /**
+     * decoding the message written by user
+     * @param mes
+     */
+    public static int decodeMessage() {
+//    	String hex = "";
+//    	for(int i = 0; i < mes.length(); i++) {
+//    		hex += charToHex(mes.substring(i,i+1));
+//    		if (hex.length() == 4) {
+//    			
+//    		}
+//    	}
+    	return Integer.parseInt(message);
+    }
+    
+    public static String charToHex(String character) {
+    	String result = "";
+    	
+    	return result;
     }
 
      /**

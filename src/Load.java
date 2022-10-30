@@ -177,6 +177,12 @@ public class Load {
     		case 34: Operations.storeIndex(IX, EA);					//store index register to memory
 				System.out.println("---storeIndex: "+ IX + " into memory location " + EA);
     			break;
+    		case 49: Operations.in(R, address);						//In instruction
+    			System.out.println("---in R" + R + ", Device: " + address);
+    			break;
+    		case 50:
+    			System.out.println("---out R" + R + ", Device: " + address);
+    			break;
     		default: throw new IllegalArgumentException("Invalid instruction code.");
     	}
     }
