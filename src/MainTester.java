@@ -11,12 +11,9 @@ public class MainTester {
 		memory.store(7, 32768);
 		register.setGeneralReg(0, -2048);
 		register.setGeneralReg(2, 2500);
+
 		
-		String str = "01234567";
-		//Want to cut 3
-        System.out.println(str.substring(0,str.length()-3));
 		
-		Operations.rotateRegByCount(2, 4, 1);; //shift right arithmetic
         
 //		String line = "000A 8447";
 //		Operations.saveInstructionFromText(line);
