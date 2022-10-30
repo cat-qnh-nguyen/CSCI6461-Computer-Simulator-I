@@ -407,63 +407,116 @@ public class Operations {
 	} 
 	
 	
-	// logical AND of two register values.
-	public static void logicalAndOfRegisterAndRegister(int Rx, int Ry) {
+	/**
+	 * Logical AND of 2 registers
+	 * @param Rx
+	 * @param Ry
+	 */
+	public static void logicalAND(int Rx, int Ry) {
+		System.out.println(numToStr(register.getGeneralReg(Rx),16));
+		System.out.println(numToStr(register.getGeneralReg(Ry),16));
+		System.out.println(numToStr(register.getGeneralReg(Rx) & register.getGeneralReg(Ry),16));
+		
 		register.setGeneralReg(Rx, register.getGeneralReg(Rx) & register.getGeneralReg(Ry));
 	} 
 	
-	// logical OR of two register values.
-	public static void logicalOrOfRegisterAndRegister(int Rx, int Ry) {
+	/**
+	 * Logical OR of 2 registers
+	 * @param Rx
+	 * @param Ry
+	 */
+	public static void logicalOR(int Rx, int Ry) {
+		System.out.println(numToStr(register.getGeneralReg(Rx),16));
+		System.out.println(numToStr(register.getGeneralReg(Ry),16));
+		System.out.println(numToStr(register.getGeneralReg(Rx) | register.getGeneralReg(Ry),16));
+		
 		register.setGeneralReg(Rx, register.getGeneralReg(Rx) | register.getGeneralReg(Ry));
 	} 
 	
-	// logical NOT of a register value.
-	public static void logicalNotOfRegister(int Rx) {
+	/**
+	 * Logical Not of a register value
+	 * @param Rx
+	 */
+	public static void logicalNot(int Rx) {
+		System.out.println(numToStr(register.getGeneralReg(Rx),16));
+		System.out.println(numToStr(~register.getGeneralReg(Rx),16));
+		
 		register.setGeneralReg(Rx, ~register.getGeneralReg(Rx));
 	} 
 
 	// shift/rotate operations
 	
-	// Shift Register by Count 
-	public static void shiftRegisterByCount (int r, int count, char leftRight, char arithLogic) {
+	/**
+	 * Shift register by count
+	 * @param r the register to shift
+	 * @param count how many bits to shift
+	 * @param leftRight 1 for left, 0 for right
+	 * @param arithLogic 0 for arithmetic, 1 for logical
+	 */
+	public static void shiftRegByCount (int r, int count, int leftRight, int arithLogic) {
 		if(count > 0) {
 			String regBitVal = numToStr(register.getGeneralReg(r), 16);
-			// left shift
-			if(leftRight == '1') {
-				// arithmetic shift
-				if(arithLogic == '0')
-					regBitVal = regBitVal.charAt(0) + regBitVal.substring(count+1, regBitVal.length());
-				// logical shift
-				else 
+			
+			//Logical shift (shift left or right regardless of sign bit)
+			if(arithLogic == 1) {
+				//Left
+				if(leftRight == 1) {
+					System.out.println("Logical left shift by " + count + " count.");
+					
 					regBitVal = regBitVal.substring(count, regBitVal.length());
-				// adding 0s at the end for the remaining bits
-				while(regBitVal.length()<16) {
-					regBitVal += "0";
+					while(regBitVal.length()<16) {
+						regBitVal += "0";
+					}
 				}
-			}
-			//right shift
-			else {
-				String rightShiftedVal = "";
-				// arithmetic shift
-				if(arithLogic == '0') {
-					rightShiftedVal += regBitVal.charAt(0);
-					for(int i=0; i<count; i++)
-						rightShiftedVal += "0";
-					regBitVal = rightShiftedVal + regBitVal.substring(count+1, regBitVal.length()-count-1);
-				}
-				// logical shift
+				//Right
 				else {
-					for(int i=0; i<count; i++)
-						rightShiftedVal += "0";
-					regBitVal = rightShiftedVal + regBitVal.substring(count, regBitVal.length()-count);
-				}
+					System.out.println("Logical right shift by " + count + " count.");
+					
+					for(int i = 0; i < count; i++) {
+						regBitVal = "0" + regBitVal;
+					}
+					regBitVal = regBitVal.substring(0, 16);
+				}	
 			}
-			register.setGeneralReg(r, Integer.parseInt(regBitVal, 2));
+			
+			//Arithmetic shift (shift left or right but preserving sign bit)
+			else {
+				String sign = regBitVal.substring(0,1);
+				regBitVal = regBitVal.substring(1);
+				String cut;
+				//Left
+				if(leftRight == 1) {
+					System.out.println("Arithmetic left shift by " + count + " count.");
+					
+					cut = regBitVal.substring(0, count);
+					System.out.println("cut: " + )
+
+					
+					//This means the value stored in r will become junk
+					if(regBitVal.length() > 16) {
+						register.setCC(register.getCC() |8);
+						System.out.println("OVERFLOW");
+					}
+				}
+				//Right
+				else {
+					System.out.println("Arithmetic right shift by " + count + " count.");
+					
+					result = register.getGeneralReg(r) / moveAmt;
+					
+					regBitVal = numToStr(result, 16);
+				}
+				
+			}
+
+			System.out.println("Original: " + Operations.numToStr(register.getGeneralReg(r), 16) +
+					"\nShifted: " + regBitVal);
+			register.setGeneralReg(r, strToNum(regBitVal));
 		}
 	} 
 	
 	// Rotate Register by Count 
-	public static void rotateRegisterByCount (int r, int count, char leftRight) {
+	public static void rotateRegisterByCount (int r, int count, int leftRight) {
 		if(count > 0) {
 			String regBitVal = numToStr(register.getGeneralReg(r), 16);
 			// left shift

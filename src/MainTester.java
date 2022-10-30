@@ -9,18 +9,20 @@ public class MainTester {
 		//System.out.println("After in " + bit + "-bit format: " + Operations.numToStr(3, bit));
 		register.setCC(2);
 		memory.store(7, 32768);
-		register.setGeneralReg(0, 3200);
+		register.setGeneralReg(0, -3200);
 		register.setGeneralReg(2, 2500);
 		
+		String str = "01234567";
 		
-        System.out.println();
+        System.out.println(str.substring(0, 4));
 		
-		Operations.divRegByReg(0, 2);
+		//Operations.shiftRegByCount(0, 4, 1, 0); //shift left logical
+        
 //		String line = "000A 8447";
 //		Operations.saveInstructionFromText(line);
 //		Load load = new Load();
 //		load.loadInstruction(10);
-//		System.out.println("opcode: " + load.R);
+//		System.out.println("LR: " + load.AorL);
 //		load.runInstruction();
 		
 	}

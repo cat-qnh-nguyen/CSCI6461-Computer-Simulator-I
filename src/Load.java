@@ -12,8 +12,8 @@ public class Load {
     public int I;   			//Indirect Bit
     public int address; 		//Address field in the instruction
     public int EA; 				//Effective address
-    public char AorL;			//Arithmetic or Logic
-    public char LorR;			//Left or Right
+    public int AorL;			//Arithmetic or Logic
+    public int LorR;			//Left or Right
     public int count;			//Count to shift/rotate
     
     
@@ -33,8 +33,8 @@ public class Load {
         I = Integer.parseInt(ins.substring(10, 11), 2);
         address = Integer.parseInt(ins.substring(11, 16), 2);
         
-        AorL = ins.charAt(8);
-        LorR = ins.charAt(9);
+        AorL = Integer.parseInt(ins.substring(8,9),2);
+        LorR = Integer.parseInt(ins.substring(9,10),2);
         count = Integer.parseInt(ins.substring(12, 16), 2);
         
         computeEA();
@@ -155,16 +155,17 @@ public class Load {
     		case 18: Operations.testRegReg(R, IX); 		// check if two registers are equal. Rx - R, Ry - IX.
 				System.out.println("testEqualityOfRegister: " + R + "\tAndRegister:" + IX);
 				break;
-    		case 19: Operations.logicalAndOfRegisterAndRegister(R, IX); 		// logical AND of two register values. Rx - R, Ry - IX.
+    		case 19: Operations.logicalAND(R, IX); 		// logical AND of two register values. Rx - R, Ry - IX.
 				System.out.println("logicalAndOfRegister: " + R + "\nAndRegister:" + IX);
 				break;
-    		case 20: Operations.logicalOrOfRegisterAndRegister(R, IX); 			// logical OR of two register values. Rx - R, Ry - IX.
+    		case 20: Operations.logicalOR(R, IX); 			// logical OR of two register values. Rx - R, Ry - IX.
 				System.out.println("logicalOrOfRegister: " + R + "\nAndRegister:" + IX);
 				break;	
-    		case 21: Operations.logicalNotOfRegister(R); 						// logical NOT of a register value.
+    		case 21: Operations.logicalNot(R); 						// logical NOT of a register value.
 				System.out.println("logicalNotOfRegister: " + R);
-				break;				
-    		case 25: Operations.shiftRegisterByCount(R, count, LorR, AorL); 	// Shift RegisterBy Count.
+				break;			
+			//Shift Instructions
+    		case 25: Operations.shiftRegByCount(R, count, LorR, AorL); 	// Shift RegisterBy Count.
 				System.out.println("shiftRegister: " + R + "\nByCount" + count);
 				break;
     		case 26: Operations.rotateRegisterByCount(R, count, LorR); 			// Rotate Register By Count.

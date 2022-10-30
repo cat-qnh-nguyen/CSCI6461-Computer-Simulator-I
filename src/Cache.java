@@ -9,16 +9,16 @@ public class Cache {
     public int[] cache_tag = new int [16];
     public int[] cache_valid = new int [16];
     public int[][] cache_data = new int [16][4]; 
-    public int tag;
-    public int block;
-    public int cache_pointer=0;
+    public static int tag;
+    public static int block;
+    public static int cache_pointer=0;
 
     public static int LoadCache(int address)
     {   
-        //Check for space in cache, and if founf full, we reset the pointer to 0 thereby implementing a FIFO
-        if(cache_pointer==16)
+        //Check for space in cache, and if foun full, we reset the pointer to 0 thereby implementing a FIFO
+        if(cache_pointer == 16)
         {
-            cache_pointer=0;
+            cache_pointer = 0;
         }
 
         //Exteracting the data from memory
