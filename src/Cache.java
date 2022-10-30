@@ -13,9 +13,10 @@ public class Cache {
     public static int block;
     public static int cache_pointer=0;
 
+    
     public static int LoadCache(int address)
     {   
-        //Check for space in cache, and if found full, we reset the pointer to 0 thereby implementing a FIFO
+        //Check for space in cache, and if foun full, we reset the pointer to 0 thereby implementing a FIFO
         if(cache_pointer == 16)
         {
             cache_pointer = 0;
@@ -25,7 +26,6 @@ public class Cache {
         String add=Operations.numToStr(address);
         tag=Operations.strToNum(add.substring(0,14));
         block=Operations.strToNum(add.substring(14,16));
-
         //Search for the existence of tag in the cache 
         for(int i=0; i<16; i++)
         {    
@@ -51,7 +51,12 @@ public class Cache {
                 //Store the tag in cache
                 cache_tag[cache_pointer]=tag;
                 cache_valid[cache_pointer]=1;
-                cache_data[cache_pointer][block]=memory.load(address);
+                for(i=0;i<4;i++)
+                {
+                    int data_address;
+                    data_address=Operations.strToNum(tag + Operations.numToStr(i));
+                    cache_data[cache_pointer][i]=memory.load(data_address);
+                }
                 cache_pointer++;
                 return cache_data[cache_pointer][block];
             }
