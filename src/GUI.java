@@ -1597,6 +1597,7 @@ public class GUI extends JFrame {
 				textfield_2.setBackground(Color.green);
 				int halt = Init_button();
 				display();
+				OperatorConsole.printConsole("Intial load is completed");
 			}
 		});
 		panel.add(initBtn);
