@@ -224,6 +224,8 @@ public class GUI extends JFrame {
 	public Register register = Register.getInstance();
 	public Memory memory = Memory.getInstance();
 	
+	public Cache cache = Cache.getInstance();
+	
 	String data[] = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
 	public static void main(String[] args) {

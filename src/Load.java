@@ -23,6 +23,7 @@ public class Load {
     // Creating a memory and register instance
     public static Memory memory = Memory.getInstance();
     public static Register register = Register.getInstance();
+    public static Cache cache = Cache.getInstance();
     
     //Decodes instructions and separates them into opcode, R, IX, I and Address
     public void instructionDecode(String ins) {

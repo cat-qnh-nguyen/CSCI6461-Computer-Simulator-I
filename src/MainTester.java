@@ -12,14 +12,7 @@ public class MainTester {
 		String block = address.substring(14, 16);
 		
 		int blockNum = Integer.parseInt(block,2);
-		
-		System.out.println("\nAddress: " + address +"\nTag as string: " + tag +
-				"\nTag as num: " + tagNum + "\nConverted back: " + 
-				Operations.numToStr(tagNum, 14) + "\nBlock string: " + block
-				+"\nBlock num: " + blockNum + "\nBlock converted back: " +
-				Operations.numToStr(blockNum, 2) +
-				"\nPut back together: " + tag + block + "\nAddress num is: " +
-				Operations.strToNum(tag + block));
+
 				
 	}
 	

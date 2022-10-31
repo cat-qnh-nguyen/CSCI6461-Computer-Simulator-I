@@ -6,12 +6,12 @@ public class Cache {
 	//Creating an Instance to ensure only one memory object is created
 	private static Cache INSTANCE = new Cache();
    
-    private static int[] cache_tag = new int [16];
-    private static int[] cache_valid = new int [16];
-    private static int[][] cache_data = new int [16][4]; 
-    private static int tag;
-    private static int block;
-    private static int cache_pointer = 0;
+    private int[] cache_tag = new int [16];
+    private int[] cache_valid = new int [16];
+    private int[][] cache_data = new int [16][4]; 
+    private int tag;
+    private int block;
+    private int cache_pointer = 0;
 
     public static Memory memory = Memory.getInstance();
     
@@ -30,7 +30,7 @@ public class Cache {
      * @param address the memory address that user wants to get data from
      * @return the data at that memory address stored in cache
      */
-    public static int loadCache(int address)
+    public int loadCache(int address)
     {   
         //Check for space in cache, and if found full, we reset the pointer to 0 thereby implementing a FIFO
         if(cache_pointer == 16)
@@ -41,6 +41,10 @@ public class Cache {
         //add stores the address given in string
         String add = Operations.numToStr(address,16);
         
+        System.out.println(add + 
+        		"\nTag: " + add.substring(0,14));
+        
+
         tag = Operations.strToNum(add.substring(0,14));
         
         //Using parseInt because these values do not need to be negative
@@ -76,6 +80,17 @@ public class Cache {
         	add = Operations.numToStr(tag,14) + Operations.numToStr(j,2);
         	int memAdd = Operations.strToNum(add);
         	
+        	
+        	
+    		System.out.println("\nAddress: " + address +"\nTag as string: " + Operations.numToStr(tag,14) +
+    				"\nTag as num: " + tag  + "\nBlock string: " + Operations.numToStr(j,2)
+    				+"\nBlock num: " + j + "\nBlock converted back: " +
+    				"\nPut back together: " + add + "\nAddress num is: " +
+    				memAdd);
+    				
+        	
+
+        	System.out.println("Address in cache to pass to mem " + add + " is " + memAdd);
         	cache_data[i][j] = memory.load(memAdd);
         }
         
@@ -83,7 +98,7 @@ public class Cache {
         
     }    
 
-    public static void writeCache(int address,int data)
+    public void writeCache(int address,int data)
     {
         //Check for space in cache, and if found full, we reset the pointer to 0 thereby implementing a FIFO
         if(cache_pointer==16)

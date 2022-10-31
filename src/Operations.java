@@ -5,7 +5,7 @@ public class Operations {
 	//Creating a register object that points to the singleton
 	public static Register register = Register.getInstance();
 	
-	
+	public static Cache cache = Cache.getInstance();
 	/**
 	 * Loading the content of an address in memory to a general register
 	 * @param the register number, effective address
