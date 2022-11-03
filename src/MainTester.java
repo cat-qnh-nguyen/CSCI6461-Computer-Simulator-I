@@ -2,21 +2,32 @@
 public class MainTester {
 	public static Memory memory = Memory.getInstance();
 	public static Register register = Register.getInstance();
+	public static Cache cache = Cache.getInstance();
+	
 	
 	public static void main(String[] args) {
-
+		for(int i = 1; i < 65; i++) {
+			memory.store(i, i*10);
+		}
 		
-		String address = Operations.numToStr(-5, 16);
-		String tag = address.substring(0,14);
-		int tagNum = Operations.strToNum(tag);
-		String block = address.substring(14, 16);
 		
-		int blockNum = Integer.parseInt(block,2);
-
-				
 	}
 	
-	public static void makeInstruction(int op, int r, int ix, int i, int address) {
+	
+	public static String binToHex(String bin) {
+		String result = "";
+		if(bin.length()%4 == 0) {
+			int length = bin.length()/4;
+			
+			for(int i = 0; i < length; i++) {
+				result += Integer.toHexString(Integer.parseInt(bin.substring(i*4, i*4 + 4),2)).toUpperCase();
+			}
+		}
+		return result;
+	}
+	
+	
+	public static String makeInstruction(int op, int r, int ix, int i, int address) {
 		String opcode = Integer.toBinaryString(op);
 		int add = 6 - opcode.length();
 		for(int j = 0; j < add; j++) {
@@ -44,7 +55,7 @@ public class MainTester {
 			ADD = "0" + ADD;
 		}
 		
-		System.out.println(opcode + R + IX + I + ADD);
+		return opcode + R + IX + I + ADD;
 	}
 	
 	

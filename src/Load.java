@@ -179,6 +179,15 @@ public class Load {
     		case 34: Operations.storeIndex(IX, EA);					//store index register to memory
 				System.out.println("---storeIndex: "+ IX + " into memory location " + EA);
     			break;
+    			
+    		//Add + subtract immediate for index registers
+    		case 35: Operations.addImmedToX(IX, address);
+    			System.out.println("---addImmedToX: " + IX + " immed: " + address);
+    			break;
+    		case 36: Operations.subImmedFromX(IX, address);
+				System.out.println("---subImmedFromX: " + IX + " immed: " + address);
+    			break;
+    			
     		// In/Out Instructions
     		case 49: Operations.in(R, address);						//In instruction
     			System.out.println("---in R" + R + ", Device: " + address);

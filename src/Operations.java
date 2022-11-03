@@ -586,6 +586,49 @@ public class Operations {
 			OperatorConsole.printConsole(result);
 		}
 	}
+	
+	//Immediate arithmetic instructions added for index registers
+	/**
+	 * Add immediate to Index Register
+	 * @param x the index register to alter
+	 * @param immed the immediate to add to index register
+	 */
+	public static void addImmedToX(int x, int immed) {
+		if(immed != 0) {
+			int result = register.getIndexReg(x) + immed;
 
+			if(result > 32767) {
+				register.setCC(register.getCC() | 8);
+				System.out.println("OVERFLOW");
+			}
+			else if(result < -32768) {
+				register.setCC(register.getCC() | 4);
+				System.out.println("UNDERFLOW");
+			}
+			else
+				register.setIndexReg(x, result);
+		}
+	}
+	
+	/**
+	 * Subtract immediate from index register
+	 * @param x the index register to alter
+	 * @param immed the immediate to subtract from the index register
+	 */
+	public static void subImmedFromX(int x, int immed) {
+		if(immed != 0) {
+			int result = register.getIndexReg(x) - immed;
 
+			if(result > 32767) {
+				register.setCC(register.getCC() | 8);
+				System.out.println("OVERFLOW");
+			}
+			else if(result < -32768) {
+				register.setCC(register.getCC() | 4);
+				System.out.println("UNDERFLOW");
+			}
+			else
+				register.setIndexReg(x, result);
+		}
+	}
 }

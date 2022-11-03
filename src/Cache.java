@@ -32,23 +32,26 @@ public class Cache {
      */
     public int loadCache(int address)
     {   
-        //Check for space in cache, and if found full, we reset the pointer to 0 thereby implementing a FIFO
+        //Check for space in cache, and if found full, we reset the 
+    	//pointer to 0 thereby implementing a FIFO data structure
         if(cache_pointer == 16)
         {
             cache_pointer = 0;
         }
 
-        //add stores the address given in string
-        String add = Operations.numToStr(address,16);
+        //addressStr stores the address given in string
+        String addressStr = Operations.numToStr(address,16);
         
-        System.out.println(add + 
-        		"\nTag: " + add.substring(0,14));
+        System.out.println("Address: " + addressStr + 
+        		"\nTag: " + addressStr.substring(0,14));
         
 
-        tag = Operations.strToNum(add.substring(0,14));
+        tag = Operations.strToNum(addressStr.substring(0,14));
+        System.out.println("Tag num: " + tag);
         
         //Using parseInt because these values do not need to be negative
-        block = Integer.parseInt(add.substring(14,16),2);
+        block = Integer.parseInt(addressStr.substring(14,16),2);
+        System.out.println("Block is: " + block);
         
         boolean foundTag = false;
         int i = 0;
@@ -58,11 +61,14 @@ public class Cache {
         	if(cache_tag[i] == tag) {
         		foundTag = true;
         	}
-        	i++;
+        	else {
+        		i++;
+        	}
         }
               
         //if tag is found and valid is 1
         if(foundTag && cache_valid[i] == 1) {
+        	System.out.println("Cache hit");
         	return cache_data[i][block];
         }
         
@@ -77,20 +83,20 @@ public class Cache {
         cache_valid[i] = 1;
         
         for(int j = 0; j < 4; j++) {
-        	add = Operations.numToStr(tag,14) + Operations.numToStr(j,2);
-        	int memAdd = Operations.strToNum(add);
+        	addressStr = Operations.numToStr(tag,14) + Operations.numToStr(j,2);
+        	int memAdd = Operations.strToNum(addressStr);
         	
         	
         	
     		System.out.println("\nAddress: " + address +"\nTag as string: " + Operations.numToStr(tag,14) +
     				"\nTag as num: " + tag  + "\nBlock string: " + Operations.numToStr(j,2)
     				+"\nBlock num: " + j + "\nBlock converted back: " +
-    				"\nPut back together: " + add + "\nAddress num is: " +
+    				"\nPut back together: " + addressStr + "\nAddress num is: " +
     				memAdd);
     				
         	
 
-        	System.out.println("Address in cache to pass to mem " + add + " is " + memAdd);
+        	System.out.println("Address in cache to pass to mem " + addressStr + " is " + memAdd);
         	cache_data[i][j] = memory.load(memAdd);
         }
         
