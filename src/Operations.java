@@ -1,6 +1,7 @@
 public class Operations {
 	//Creating a memory object that points to the singleton
-	public static Memory memory = Memory.getInstance();
+	//No need for memory instance now that cache is implemented
+	//public static Memory memory = Memory.getInstance();
 	
 	//Creating a register object that points to the singleton
 	public static Register register = Register.getInstance();
@@ -12,7 +13,7 @@ public class Operations {
 	 */
 	//Regular method with Indirect bit
 	public static void loadRegister(int reg, int effAddress) {
-		register.setGeneralReg(reg, memory.load(effAddress));
+		register.setGeneralReg(reg, cache.loadCache(effAddress));
 	}
 	
 	
@@ -21,7 +22,7 @@ public class Operations {
 	 * @param the register number, effective address
 	 */
 	public static void storeRegister(int reg, int effAddress) {
-		memory.store(effAddress, register.getGeneralReg(reg));
+		cache.writeCache(effAddress, register.getGeneralReg(reg));
 	}
 
 	
@@ -39,7 +40,7 @@ public class Operations {
 	 * @param index register number, effective address
 	 */
 	public static void loadIndex(int reg, int effAddress) {
-		register.setIndexReg(reg, memory.load(effAddress));
+		register.setIndexReg(reg, cache.loadCache(effAddress));
 	}
 	
 	
@@ -48,7 +49,7 @@ public class Operations {
 	 * @param index register number, effective address
 	 */
 	public static void storeIndex(int reg, int effAddress) {
-		memory.store(effAddress, register.getIndexReg(reg));
+		cache.writeCache(effAddress, register.getIndexReg(reg));
 	}
 	
 	
@@ -65,7 +66,7 @@ public class Operations {
 		int address = hexToNum(addressStr);
 		int content = hexToNum(contentStr);
 		
-		memory.store(address, content);
+		cache.writeCache(address, content);
 	}
 	
 	
@@ -266,7 +267,7 @@ public class Operations {
 	 * @param ea the address in memory
 	 */
 	public static void addMemToReg(int r, int ea) {
-		int result = register.getGeneralReg(r) + memory.load(ea);
+		int result = register.getGeneralReg(r) + cache.loadCache(ea);
 		
 		if(result > 32767) {
 			register.setCC(register.getCC() | 8);
@@ -286,7 +287,7 @@ public class Operations {
 	 * @param ea the address in memory
 	 */
 	public static void subMemFromReg(int r, int ea) {
-		int result = register.getGeneralReg(r) - memory.load(ea);
+		int result = register.getGeneralReg(r) - cache.loadCache(ea);
 		
 		if(result > 32767) {
 			register.setCC(register.getCC() | 8);

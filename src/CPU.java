@@ -4,7 +4,6 @@ import java.util.Scanner;
 import javax.swing.JFileChooser;
 
 public class CPU {
-	public static Memory memory = Memory.getInstance();
 	public static Register register = Register.getInstance();
 	public int halt = 0;
 

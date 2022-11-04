@@ -222,7 +222,9 @@ public class GUI extends JFrame {
 	 String instruction, operation, address, gpr, ixr;
 
 	public Register register = Register.getInstance();
-	public Memory memory = Memory.getInstance();
+	
+	//No need for memory instance now that cache is implemented
+	//public Memory memory = Memory.getInstance();
 	
 	public Cache cache = Cache.getInstance();
 	
@@ -1432,7 +1434,7 @@ public class GUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				memory.store(register.getMAR(), register.getMBR());
+				cache.writeCache(register.getMAR(), register.getMBR());
 			}
 		});
 		panel.add(storeBtn);
@@ -1447,7 +1449,7 @@ public class GUI extends JFrame {
 				// TODO Auto-generated method stub
 
 				// storing the value MBR in MAR
-				memory.store(register.getMAR(), register.getMBR());
+				cache.writeCache(register.getMAR(), register.getMBR());
 
 				String MAR = Integer.toBinaryString(register.getMAR() + 1);
 
@@ -1486,7 +1488,7 @@ public class GUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				String str = Integer.toBinaryString(memory.load(register.getMAR()));
+				String str = Integer.toBinaryString(cache.loadCache(register.getMAR()));
 
 				for (int i = 0; i <= 15 - str.length(); i++) {
 					data[i] = "0";
@@ -1533,7 +1535,7 @@ public class GUI extends JFrame {
 				System.out.println("\n ---------------------------------------------- \n");
 				// load and run the instruction
 				register.setMAR(register.getPC());
-				register.setMBR(memory.load(register.getMAR()));
+				register.setMBR(cache.loadCache(register.getMAR()));
 				register.setIR(register.getMBR());
 				//Increment PC
 				register.setPC(register.getPC() + 1);
@@ -1567,7 +1569,7 @@ public class GUI extends JFrame {
 				// load and run the instruction
 				do {
 					register.setMAR(register.getPC());
-					register.setMBR(memory.load(register.getMAR()));
+					register.setMBR(cache.loadCache(register.getMAR()));
 					register.setIR(register.getMBR());
 					
 					//Increment PC

@@ -10,6 +10,25 @@ public class MainTester {
 			memory.store(i, i*10);
 		}
 		
+//		int fake = 20;
+//		
+//		int tag = Operations.strToNum(Operations.numToStr(fake, 16).substring(0,14));
+//		int block = Integer.parseInt(Operations.numToStr(fake, 16).substring(14,16), 2);
+//		String addStr;
+//		for(int i = 0; i < 4; i++) {
+//			//addStr = Operations.numToStr(tag, 14) + Operations.numToStr(i, 2);
+//			addStr = Operations.numToStr(tag, 14) + Operations.numToStr(block, 2);
+//			System.out.println(addStr);
+//			System.out.println(Operations.strToNum(addStr));
+//			
+//		}
+		
+		for(int i = 1; i <= 32; i++) {
+			System.out.println("\n---Result of cache load: " + cache.loadCache(i) + "\n");
+		}
+		
+		cache.writeCache(1, 23405);
+		System.out.println("memory now: " + memory.load(1));
 		
 	}
 	

@@ -21,7 +21,10 @@ public class Load {
     public Load() {}
     
     // Creating a memory and register instance
-    public static Memory memory = Memory.getInstance();
+    
+    //No need for memory instance since cache is implemented
+    //public static Memory memory = Memory.getInstance();
+    
     public static Register register = Register.getInstance();
     public static Cache cache = Cache.getInstance();
     
@@ -49,7 +52,7 @@ public class Load {
      */
     public void loadInstruction(int memAddress) {
     	
-        int insInMem = memory.load(memAddress);
+        int insInMem = cache.loadCache(memAddress);
         
         instruction = Operations.numToStr(insInMem, 16);
         System.out.println("Instruction: " + instruction);
@@ -76,11 +79,11 @@ public class Load {
         {             
         	if(IX == 0)
         	{
-        		EA = memory.load(address);
+        		EA = cache.loadCache(address);
         	}
         	else
         	{
-        		EA = memory.load(register.getIndexReg(IX) + address);
+        		EA = cache.loadCache(register.getIndexReg(IX) + address);
         	}
         }
     }

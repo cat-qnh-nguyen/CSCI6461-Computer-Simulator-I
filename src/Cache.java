@@ -42,16 +42,16 @@ public class Cache {
         //addressStr stores the address given in string
         String addressStr = Operations.numToStr(address,16);
         
-        System.out.println("Address: " + addressStr + 
-        		"\nTag: " + addressStr.substring(0,14));
+//        System.out.println("Address: " + addressStr + 
+//        		"\nTag: " + addressStr.substring(0,14));
         
 
         tag = Operations.strToNum(addressStr.substring(0,14));
-        System.out.println("Tag num: " + tag);
+//        System.out.println("Tag num: " + tag);
         
         //Using parseInt because these values do not need to be negative
         block = Integer.parseInt(addressStr.substring(14,16),2);
-        System.out.println("Block is: " + block);
+//        System.out.println("Block is: " + block);
         
         boolean foundTag = false;
         int i = 0;
@@ -88,15 +88,15 @@ public class Cache {
         	
         	
         	
-    		System.out.println("\nAddress: " + address +"\nTag as string: " + Operations.numToStr(tag,14) +
-    				"\nTag as num: " + tag  + "\nBlock string: " + Operations.numToStr(j,2)
-    				+"\nBlock num: " + j + "\nBlock converted back: " +
-    				"\nPut back together: " + addressStr + "\nAddress num is: " +
-    				memAdd);
-    				
+//    		System.out.println("\nAddress: " + address +"\nTag as string: " + Operations.numToStr(tag,14) +
+//    				"\nTag as num: " + tag  + "\nBlock string: " + Operations.numToStr(j,2)
+//    				+"\nBlock num: " + j + "\nBlock converted back: " +
+//    				"\nPut back together: " + addressStr + "\nAddress num is: " +
+//    				memAdd);
+//    				
         	
 
-        	System.out.println("Address in cache to pass to mem " + addressStr + " is " + memAdd);
+//        	System.out.println("Address in cache to pass to mem " + addressStr + " is " + memAdd);
         	cache_data[i][j] = memory.load(memAdd);
         }
         
@@ -114,12 +114,12 @@ public class Cache {
 
         //Extracting the data from memory
         //add stores the address given in string
-        String add = Operations.numToStr(address,16);
+        String addressStr = Operations.numToStr(address,16);
         
-        tag = Operations.strToNum(add.substring(0,14));
+        tag = Operations.strToNum(addressStr.substring(0,14));
         
         //Using parseInt because these values do not need to be negative
-        block = Integer.parseInt(add.substring(14,16),2);
+        block = Integer.parseInt(addressStr.substring(14,16),2);
         
         boolean foundTag = false;
         int i = 0;
@@ -129,36 +129,41 @@ public class Cache {
         	if(cache_tag[i] == tag) {
         		foundTag = true;
         	}
-        	i++;
+        	else {
+        		i++;
+        	}
         }
               
         //if tag is found and valid is 1
         if(foundTag && cache_valid[i] == 1) {
         	cache_data[i][block] = data;
         	memory.store(address, data);
+        	System.out.println("Write cache hit.");
         }
-        
+        else
+        {
         //if tag is not found at all
-        if(!foundTag) {
-        	//set i as the cache_pointer so we can appropriately add data
-        	i = cache_pointer;
-        	cache_pointer++;
+	        if(!foundTag) {
+	        	//set i as the cache_pointer so we can appropriately add data
+	        	i = cache_pointer;
+	        	cache_pointer++;
+	        }
+	        
+	        //both situations where valid bit is 0
+	        cache_tag[i] = tag;
+	        cache_valid[i] = 1;
+	        
+	        //Updating cache so it has the same memory block in memory
+	        for(int j = 0; j < 4; j++) {
+	        	addressStr = Operations.numToStr(tag,14) + Operations.numToStr(j,2);
+	        	int memAdd = Operations.strToNum(addressStr);     	
+	        	cache_data[i][j] = memory.load(memAdd);
+	        }
+	        
+	        //Now update the memory and cache in that block that needs writing to
+	        cache_data[i][block] = data;
+	    	memory.store(address, data); 
         }
-        
-        //both situations where valid bit is 0
-        cache_tag[i] = tag;
-        cache_valid[i] = 1;
-        
-        //Updating cache so it has the same memory block in memory
-        for(int j = 0; j < 4; j++) {
-        	add = Operations.numToStr(tag,14) + Operations.numToStr(j,2);
-        	int memAdd = Operations.strToNum(add);     	
-        	cache_data[i][j] = memory.load(memAdd);
-        }
-        
-        //Now update the memory and cache in that block that needs writing to
-        cache_data[i][block] = data;
-    	memory.store(address, data); 
     }
 	
 }
