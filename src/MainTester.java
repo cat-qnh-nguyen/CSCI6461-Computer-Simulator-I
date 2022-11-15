@@ -1,3 +1,8 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import javax.swing.JFileChooser;
 
 public class MainTester {
 	public static Memory memory = Memory.getInstance();
@@ -22,17 +27,38 @@ public class MainTester {
 //			System.out.println(Operations.strToNum(addStr));
 //			
 //		}
-		
-		for(int i = 1; i <= 32; i++) {
-			System.out.println("\n---Result of cache load: " + cache.loadCache(i) + "\n");
-		}
-		
-		cache.writeCache(1, 23405);
-		System.out.println("memory now: " + memory.load(1));
+		CPU.readIPL();
+		readFromFile();
+		readFromFile();
+		CPU.readIPL();
 		
 	}
 	
-	
+	public static void readFromFile() {
+		JFileChooser cardReader = new JFileChooser();
+		cardReader.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		File dir = new File("");
+		cardReader.setCurrentDirectory(dir.getAbsoluteFile());
+
+		int response = cardReader.showOpenDialog(null);
+		if(response == JFileChooser.APPROVE_OPTION) {
+			File file = new File(cardReader.getSelectedFile().getAbsolutePath());
+			try {
+				Scanner reader = new Scanner(file);
+
+				while (reader.hasNextLine()) {
+					String line = reader.nextLine();
+//					Operations.saveInstructionFromText(line);
+					System.out.println("There's one line: " + line);
+				}
+
+				reader.close();
+			} catch (FileNotFoundException e) {
+				System.out.println("File not found.");
+				e.printStackTrace();
+			}
+		}
+	}
 	public static String binToHex(String bin) {
 		String result = "";
 		if(bin.length()%4 == 0) {

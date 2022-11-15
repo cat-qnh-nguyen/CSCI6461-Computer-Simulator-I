@@ -13,8 +13,13 @@ public class CPU {
 	public static void readIPL() { 
 		resetRegister();
 		JFileChooser fileChooser = new JFileChooser();
-		String pwd = System.clearProperty("user.dir");
-		fileChooser.setCurrentDirectory(new File(pwd));
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		
+		File dir = new File("");
+		fileChooser.setCurrentDirectory(dir.getAbsoluteFile());
+//		String pwd = System.clearProperty("user.dir");
+//		fileChooser.setCurrentDirectory(new File(pwd));
+		
 		int response = fileChooser.showOpenDialog(null);
 		if(response == JFileChooser.APPROVE_OPTION) {
 			File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
