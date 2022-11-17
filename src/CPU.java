@@ -59,5 +59,5 @@ public class CPU {
 		register.setMFR(0);
 	}
 
-
+	
 }

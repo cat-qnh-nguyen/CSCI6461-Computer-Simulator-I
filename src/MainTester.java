@@ -28,22 +28,25 @@ public class MainTester {
 //			System.out.println(Operations.strToNum(addStr));
 //			
 //		}
+		CountDownLatch IO = new CountDownLatch(1);
+	
+		IO.countDown();
+		
 
 	
 		CardReader.readFromFile(10);
 		int value = memory.load(10);
 		int i = 11;
 		String result = "";
+		
+		//Test printing out the values
 		while(value != 3) {
 			result += (char)value;
 			value = cache.loadCache(i);
 			i++;
 		}
 		System.out.println(result);
-		
-
-
-		
+				
 	}
 
 	

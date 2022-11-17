@@ -12,11 +12,25 @@ public class CardReader {
 	public static Memory memory = Memory.getInstance();
 	public static Cache cache = Cache.getInstance();	
 	
+	public static int status = 0; //status 0 means free, 1 means busy
+	
+	/**
+	 * @return the status of the device
+	 */
+	public static int getStatus() {
+		return status;
+	}
+	
+	public static void setStatus(int newStatus) {
+		status = newStatus;
+	}
+	
 	/**
 	 * Reading from the file and storing it into memory
 	 * @param address is the address that indicates the beginning of the file.
 	 */
 	public static void readFromFile(int address){		
+		status = 1;
 		
 		JFileChooser cardReader = new JFileChooser();
 		cardReader.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -54,6 +68,7 @@ public class CardReader {
 				e.printStackTrace();
 			}
 		}
+		status = 0;
 		
 	}
 }
