@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.concurrent.CountDownLatch;
 
 import javax.swing.JFileChooser;
 
@@ -27,38 +28,27 @@ public class MainTester {
 //			System.out.println(Operations.strToNum(addStr));
 //			
 //		}
-		CPU.readIPL();
-		readFromFile();
-		readFromFile();
-		CPU.readIPL();
+
+	
+		CardReader.readFromFile(10);
+		int value = memory.load(10);
+		int i = 11;
+		String result = "";
+		while(value != 3) {
+			result += (char)value;
+			value = cache.loadCache(i);
+			i++;
+		}
+		System.out.println(result);
+		
+
+
 		
 	}
+
 	
-	public static void readFromFile() {
-		JFileChooser cardReader = new JFileChooser();
-		cardReader.setFileSelectionMode(JFileChooser.FILES_ONLY);
-		File dir = new File("");
-		cardReader.setCurrentDirectory(dir.getAbsoluteFile());
-
-		int response = cardReader.showOpenDialog(null);
-		if(response == JFileChooser.APPROVE_OPTION) {
-			File file = new File(cardReader.getSelectedFile().getAbsolutePath());
-			try {
-				Scanner reader = new Scanner(file);
-
-				while (reader.hasNextLine()) {
-					String line = reader.nextLine();
-//					Operations.saveInstructionFromText(line);
-					System.out.println("There's one line: " + line);
-				}
-
-				reader.close();
-			} catch (FileNotFoundException e) {
-				System.out.println("File not found.");
-				e.printStackTrace();
-			}
-		}
-	}
+	
+	//Stuff for writing program 1 and 2
 	public static String binToHex(String bin) {
 		String result = "";
 		if(bin.length()%4 == 0) {
