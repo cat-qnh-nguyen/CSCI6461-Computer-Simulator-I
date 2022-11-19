@@ -12,45 +12,41 @@ public class MainTester {
 	
 	
 	public static void main(String[] args) {
-		for(int i = 1; i < 65; i++) {
-			memory.store(i, i*10);
-		}
-		
-//		int fake = 20;
-//		
-//		int tag = Operations.strToNum(Operations.numToStr(fake, 16).substring(0,14));
-//		int block = Integer.parseInt(Operations.numToStr(fake, 16).substring(14,16), 2);
-//		String addStr;
-//		for(int i = 0; i < 4; i++) {
-//			//addStr = Operations.numToStr(tag, 14) + Operations.numToStr(i, 2);
-//			addStr = Operations.numToStr(tag, 14) + Operations.numToStr(block, 2);
-//			System.out.println(addStr);
-//			System.out.println(Operations.strToNum(addStr));
-//			
+//		for(int i = 1; i < 65; i++) {
+//			memory.store(i, i*10);
 //		}
-		CountDownLatch IO = new CountDownLatch(1);
+//	
+//		CardReader.readFromFile(10);
+//		int value = memory.load(10);
+//		int i = 11;
+//		String result = "";
+//		
+//		//Test printing out the values
+//		while(value != 3) {
+//			result += (char)value;
+//			value = cache.loadCache(i);
+//			i++;
+//		}
+//		System.out.println(result);
 	
-		IO.countDown();
+		String prompt1 = "Please choose file containing paragraph.\n";
+		String prompt2 = "Please input the word you are looking for.\n";
+		convertCharStr(prompt1);
+		convertCharStr(prompt2);
 		
-
-	
-		CardReader.readFromFile(10);
-		int value = memory.load(10);
-		int i = 11;
-		String result = "";
-		
-		//Test printing out the values
-		while(value != 3) {
-			result += (char)value;
-			value = cache.loadCache(i);
-			i++;
-		}
-		System.out.println(result);
-				
+		System.out.println((char)3);
 	}
 
 	
-	
+	public static void convertCharStr(String str) {
+		int length = str.length();
+		
+		//Store each character into memory
+		for(int i = 0; i < length; i++) {
+			System.out.println((int)str.charAt(i));
+		}
+		System.out.println(3);
+	}
 	//Stuff for writing program 1 and 2
 	public static String binToHex(String bin) {
 		String result = "";

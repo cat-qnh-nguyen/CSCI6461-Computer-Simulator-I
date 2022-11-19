@@ -583,7 +583,8 @@ public class Operations {
 	public static void out(int r, int device) {
 		//device = printer
 		if (device == 1) {
-			String result = String.valueOf(register.getGeneralReg(r));
+			String result = "";
+			result += (char)register.getGeneralReg(r);
 			OperatorConsole.printConsole(result);
 		}
 	}
@@ -632,4 +633,6 @@ public class Operations {
 				register.setIndexReg(x, result);
 		}
 	}
+	
+	
 }
