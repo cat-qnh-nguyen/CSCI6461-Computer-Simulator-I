@@ -19,7 +19,6 @@ public class OperatorConsole {
     public String temp; //the variable of the input box
     public int counter = 0;
 	public static String numbers [] = new String [21];
-    private static OperatorConsole INSTANCE = new OperatorConsole();
     
     
  
@@ -97,12 +96,6 @@ public class OperatorConsole {
     // public static void decodeMessage() {
     // 	return Integer.parseInt(dataBuffer);
     // }
-
-    public static OperatorConsole getInstance() {
-		if(INSTANCE == null)
-			INSTANCE = new OperatorConsole();
-		return INSTANCE;
-	}
     
     public void pushData() {
         temp = consoleKeyboard.getText();

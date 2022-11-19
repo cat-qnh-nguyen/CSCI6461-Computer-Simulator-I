@@ -168,7 +168,13 @@ public class Load {
 				break;	
     		case 21: Operations.logicalNot(R); 						// logical NOT of a register value.
 				System.out.println("---logicalNotOfRegister: " + R);
-				break;			
+				break;	
+			// Trap Instruction
+    		case 24: 
+    			int trapCode = count;
+    			Operations.trap(trapCode);
+    			System.out.println("---Trap: " + trapCode);
+    			break;
 			// Shift Instructions
     		case 25: Operations.shiftRegByCount(R, count, LorR, AorL); 	// Shift RegisterBy Count.
 				System.out.println("---shiftRegister: " + R + "\nByCount" + count);
@@ -196,19 +202,21 @@ public class Load {
 				System.out.println("---subImmedFromX: " + IX + " immed: " + address);
     			break;
     			
-    		case 37: Operations.copyIndexToReg(R, IX); 				//Copies the c(X) into c(R)
-    			System.out.println("---copyIndexToReg: R" + R + " = X" + IX + " = " + register.getGeneralReg(R));
-    			break;
-    			
-    		// In/Out Instructions
+    		// In, Out, CHK Instructions
     		case 49: Operations.in(R, address);						//In instruction
     			System.out.println("---in R" + R + ", Device: " + address);
     			break;
     		case 50: Operations.out(R, address);					//Out instruction
     			System.out.println("---out R" + R + ", Device: " + address);
     			break;
-    		default: throw new IllegalArgumentException("Invalid instruction code.");
-				register.faultTolSetMFR(4);
+    		case 51:
+    			Operations.chk(R,  address);
+    			System.out.println("---chk R" + R + ", Device: " + address);
+    			break;
+    			
+    		default: //register.faultTolSetMFR(4);
+    			throw new IllegalArgumentException("Invalid instruction code.");
+
     			
     	}
     }

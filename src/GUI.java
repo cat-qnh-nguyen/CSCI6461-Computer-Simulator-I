@@ -201,7 +201,6 @@ public class GUI extends JFrame {
 	public JButton btnNewButton_1;
 	public JButton btnNewButton_0;
 	public JButton commonbtn;
-	public static CountDownLatch IO = new CountDownLatch(1);	
 	
 	 String op_bit0;
 	 String op_bit1;

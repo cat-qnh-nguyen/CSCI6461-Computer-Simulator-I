@@ -59,7 +59,7 @@ public class CardReader {
 					address++;
 				}
 				//Store the indicator of end of text
-				cache.writeCache(address, 3);
+				cache.writeCache(address, 0);
 				
 				reader.close();
 				
