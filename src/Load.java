@@ -176,6 +176,10 @@ public class Load {
     		case 26: Operations.rotateRegByCount(R, count, LorR); 			// Rotate Register By Count.
 				System.out.println("---rotateRegisterByCount: " + R + "\nByCount" + count);
 				break;	
+				
+    		case 32: Operations.resetIndex(IX); 					//reset the IX to value zero
+    			System.out.println("---resetIndex: " + IX + " = " + register.getIndexReg(IX));
+    			break;
     		case 33: Operations.loadIndex(IX,EA);					//load index register from memory
 				System.out.println("---loadIndex: "+ IX + " with data at memory location " + EA);
     			break;

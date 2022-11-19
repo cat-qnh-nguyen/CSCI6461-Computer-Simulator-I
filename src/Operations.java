@@ -634,5 +634,7 @@ public class Operations {
 		}
 	}
 	
-	
+	public static void resetIndex(int x) {
+		register.setIndexReg(x, 0);
+	}
 }
