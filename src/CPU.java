@@ -6,7 +6,7 @@ import javax.swing.JFileChooser;
 public class CPU {
 	public static Register register = Register.getInstance();
 	public int halt = 0;
-
+	public static Cache cache = Cache.getInstance();
 	/**
 	 * Reading IPL.txt file and saving instructions into memory
 	 */
@@ -59,5 +59,27 @@ public class CPU {
 		register.setMFR(0);
 	}
 
-	
+	public static void machineFault(int ID) {
+		switch(ID) {
+		case 0: //Illegal memory address to reserved locations
+			register.setMFR(1);
+			break;
+		case 1: //Illegal TRAP code
+			register.setMFR(2);
+			break;
+		case 2: //Illegal Operation Code
+			register.setMFR(4);
+			break;
+		case 3: //Illegal Memory Address beyond 2048 (memory installed)
+			register.setMFR(8);
+			break;
+		}
+		
+		//Not sure about this part, but professor said it's this
+		cache.writeCache(1, register.getMFR());
+		
+		cache.writeCache(4, register.getPC() + 1);
+		
+		register.setPC(cache.loadCache(1));
+	}
 }
