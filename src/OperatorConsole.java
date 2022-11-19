@@ -15,6 +15,8 @@ public class OperatorConsole {
     public JButton enterBtn;
     public static String message;
     
+    
+ 
     //The Console User Interface
     public OperatorConsole(){
         frame = new JFrame();

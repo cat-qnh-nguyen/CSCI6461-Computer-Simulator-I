@@ -215,6 +215,7 @@ public class Register {
 	public int getMFR() {
 		return MFR;
 	}
+ 	
 	public void setMFR(int value) {
 		//Since CC can only be 4 bits, value has to be between 0 and 15
 		if(value > MAX_4 || value < MIN_4) {
@@ -225,6 +226,10 @@ public class Register {
 			System.out.println("MFR: " + MFR + " is " + Operations.numToStr(MFR, 12));
 		}
 	}
-	
+
+	public void faultTolSetMFR(int value) {	
+		//Instructions for fault tolerance procedures
+		MFR = value;
+	}
 	
 }
