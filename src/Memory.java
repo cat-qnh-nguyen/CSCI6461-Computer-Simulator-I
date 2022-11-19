@@ -48,7 +48,7 @@ public class Memory {
 		//we are not expecting any negative values
 		if(content > MAX_16 || content < MIN_16){
 			throw new IllegalArgumentException("Invalid Value.");
-			register.faultTolSetMFR(1);
+			CPU.machineFault(0);
 		}
 		
 		memory[index] = content;

@@ -214,8 +214,9 @@ public class Load {
     			System.out.println("---chk R" + R + ", Device: " + address);
     			break;
     			
-    		default: throw new IllegalArgumentException("Invalid instruction code.");
-				register.faultTolSetMFR(4);
+    		default: //register.faultTolSetMFR(4);
+    			throw new IllegalArgumentException("Invalid instruction code.");
+
     			
     	}
     }
