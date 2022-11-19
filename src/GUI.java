@@ -201,7 +201,7 @@ public class GUI extends JFrame {
 	public JButton btnNewButton_1;
 	public JButton btnNewButton_0;
 	public JButton commonbtn;
-	
+	public static CountDownLatch IO = new CountDownLatch(1);	
 	
 	 String op_bit0;
 	 String op_bit1;
@@ -236,8 +236,8 @@ public class GUI extends JFrame {
 				try {
 					GUI frame = new GUI();
 					frame.setVisible(true);
-					//Opening the Console at the same time the GUI is opened
 					OperatorConsole OperatorConsole = new OperatorConsole();
+					OperatorConsole.printConsole("Enter 20 numbers");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -1567,6 +1567,7 @@ public class GUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// load and run the instruction
+				// OperatorConsole.printConsole("Intial load is completed");
 				do {
 					register.setMAR(register.getPC());
 					register.setMBR(cache.loadCache(register.getMAR()));
@@ -1584,7 +1585,6 @@ public class GUI extends JFrame {
 						textfield_2.setBackground(Color.white);
 						break; // HLT
 					}
-					
 					loadInst.runInstruction();
 					// increment MAR
 					display();
@@ -1610,6 +1610,16 @@ public class GUI extends JFrame {
 			}
 		});
 		panel.add(initBtn);
+
+		JButton cardReaderBtn = new JButton("Card Reader");
+		cardReaderBtn.setBounds(615, 362, 115, 30);
+		cardReaderBtn.setBackground(Color.red);
+		cardReaderBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Need to implement
+			}
+		});
+		panel.add(cardReaderBtn);
 
 	}
 	

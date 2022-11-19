@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 public class Operations {
 	//Creating a memory object that points to the singleton
 	//No need for memory instance now that cache is implemented
@@ -5,6 +7,9 @@ public class Operations {
 	
 	//Creating a register object that points to the singleton
 	public static Register register = Register.getInstance();
+	public static OperatorConsole console = OperatorConsole.getInstance();
+	public static int value;
+	public static String programResult;
 	
 	public static Cache cache = Cache.getInstance();
 	/**
@@ -569,10 +574,10 @@ public class Operations {
 	 * @param device
 	 */
 	public static void in(int r, int device) {
-		if(device == 0) {
-			int value = OperatorConsole.decodeMessage();
-			register.setGeneralReg(r, value);
-		}
+		for (int i = 0; i < OperatorConsole.numbers.length; i++){
+			value = Integer.parseInt(OperatorConsole.numbers[i]);
+		} 
+		register.setGeneralReg(r, value);
 	}
 	
 	/**
@@ -583,9 +588,9 @@ public class Operations {
 	public static void out(int r, int device) {
 		//device = printer
 		if (device == 1) {
-			String result = String.valueOf(register.getGeneralReg(r));
-			OperatorConsole.printConsole(result);
+			programResult = String.valueOf(register.getGeneralReg(r));
 		}
+		OperatorConsole.printConsole("repeated value is" + programResult);
 	}
 	
 	//Immediate arithmetic instructions added for index registers
