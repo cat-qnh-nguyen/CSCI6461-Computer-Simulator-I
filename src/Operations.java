@@ -1,7 +1,7 @@
 public class Operations {
 	//Creating a memory object that points to the singleton
 	//No need for memory instance now that cache is implemented
-	//public static Memory memory = Memory.getInstance();
+	public static Memory memory = Memory.getInstance();
 	
 	//Creating a register object that points to the singleton
 	public static Register register = Register.getInstance();
@@ -588,6 +588,10 @@ public class Operations {
 		}
 	}
 	
+	public static void chk(int r, int device) {
+		
+	}
+	
 	//Immediate arithmetic instructions added for index registers
 	/**
 	 * Add immediate to Index Register
@@ -632,4 +636,12 @@ public class Operations {
 				register.setIndexReg(x, result);
 		}
 	}
+	
+	// Trap instruction
+	public static void trap(int trapCode) {
+		// storing PC+1 in memory[2] and setting PC value to the index of the table(trapCode+memory[0])
+		memory.store(2, register.getPC() + 1);
+		register.setPC(trapCode + memory.load(0));
+	}
+	
 }
