@@ -59,7 +59,7 @@ public class CPU {
 		register.setMFR(0);
 	}
 
-	public static void machineFault(int ID) {
+	public void machineFault(int ID) {
 		switch(ID) {
 		case 0: //Illegal memory address to reserved locations
 			register.setMFR(1);

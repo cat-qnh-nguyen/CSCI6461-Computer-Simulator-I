@@ -1434,7 +1434,12 @@ public class GUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				cache.writeCache(register.getMAR(), register.getMBR());
+				// setting MFR for illegal Memory Address to Reserved Locations 
+				if(register.getMAR()>=0 && register.getMAR()<=5)
+					CPU.machineFault(0);
+				else 
+					cache.writeCache(register.getMAR(), register.getMBR());
+				
 			}
 		});
 		panel.add(storeBtn);
@@ -1447,35 +1452,38 @@ public class GUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				// setting MFR for illegal Memory Address to Reserved Locations 
+				if(register.getMAR()>=0 && register.getMAR()<=5)
+					CPU.machineFault(0);
+				else {
+					// storing the value MBR in MAR
+					cache.writeCache(register.getMAR(), register.getMBR());
 
-				// storing the value MBR in MAR
-				cache.writeCache(register.getMAR(), register.getMBR());
+					String MAR = Integer.toBinaryString(register.getMAR() + 1);
+					
+					String[] dataValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
-				String MAR = Integer.toBinaryString(register.getMAR() + 1);
+					for (int i = 0; i < MAR.length(); i++) {
+						dataValue[12 - MAR.length() + i] = MAR.substring(i, i + 1);
+					}
 
-				String[] dataValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+					// setting the new incremented MAR value
+					register.setMAR(Integer.parseInt(MAR.toString(), 2));
 
-				for (int i = 0; i < MAR.length(); i++) {
-					dataValue[12 - MAR.length() + i] = MAR.substring(i, i + 1);
+					// displaying on the MAR field
+					textMar_1.setText(dataValue[0]);
+					textMar_2.setText(dataValue[1]);
+					textMar_3.setText(dataValue[2]);
+					textMar_4.setText(dataValue[3]);
+					textMar_5.setText(dataValue[4]);
+					textMar_6.setText(dataValue[5]);
+					textMar_7.setText(dataValue[6]);
+					textMar_8.setText(dataValue[7]);
+					textMar_9.setText(dataValue[8]);
+					textMar_10.setText(dataValue[9]);
+					textMar_11.setText(dataValue[10]);
+					textMar_12.setText(dataValue[11]);
 				}
-
-				// setting the new incremented MAR value
-				register.setMAR(Integer.parseInt(MAR.toString(), 2));
-
-				// displaying on the MAR field
-				textMar_1.setText(dataValue[0]);
-				textMar_2.setText(dataValue[1]);
-				textMar_3.setText(dataValue[2]);
-				textMar_4.setText(dataValue[3]);
-				textMar_5.setText(dataValue[4]);
-				textMar_6.setText(dataValue[5]);
-				textMar_7.setText(dataValue[6]);
-				textMar_8.setText(dataValue[7]);
-				textMar_9.setText(dataValue[8]);
-				textMar_10.setText(dataValue[9]);
-				textMar_11.setText(dataValue[10]);
-				textMar_12.setText(dataValue[11]);
-
 			}
 		});
 		panel.add(stBtn);

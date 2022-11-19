@@ -574,10 +574,6 @@ public class Operations {
 		}
 	}
 
-	public static void ins(int r, int device) {
-
-	}
-
 	/**
 	 * Out instruction
 	 * 
@@ -642,10 +638,17 @@ public class Operations {
 
 	// Trap instruction
 	public static void trap(int trapCode) {
-		// storing PC+1 in memory[2] and setting PC value to the index of the
-		// table(trapCode+memory[0])
-		memory.store(2, register.getPC() + 1);
-		register.setPC(trapCode + memory.load(0));
+		// setting MFR for illegal trap code
+		if(memory.load(trapCode + memory.load(0)) == 0) {
+			CPU cpu = new CPU();
+			cpu.machineFault(1);
+		}
+		else {
+			// storing PC+1 in memory[2] and setting PC value to the index of the
+			// table(trapCode+memory[0])
+			memory.store(2, register.getPC() + 1);
+			register.setPC(trapCode + memory.load(0));
+		}
 	}
 
 	/**
