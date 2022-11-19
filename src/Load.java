@@ -176,7 +176,8 @@ public class Load {
     		case 26: Operations.rotateRegByCount(R, count, LorR); 			// Rotate Register By Count.
 				System.out.println("---rotateRegisterByCount: " + R + "\nByCount" + count);
 				break;	
-				
+			
+			//Index register instructions
     		case 32: Operations.resetIndex(IX); 					//reset the IX to value zero
     			System.out.println("---resetIndex: " + IX + " = " + register.getIndexReg(IX));
     			break;
@@ -193,6 +194,10 @@ public class Load {
     			break;
     		case 36: Operations.subImmedFromX(IX, address);
 				System.out.println("---subImmedFromX: " + IX + " immed: " + address);
+    			break;
+    			
+    		case 37: Operations.copyIndexToReg(R, IX); 				//Copies the c(X) into c(R)
+    			System.out.println("---copyIndexToReg: R" + R + " = X" + IX + " = " + register.getGeneralReg(R));
     			break;
     			
     		// In/Out Instructions

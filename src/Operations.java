@@ -633,8 +633,20 @@ public class Operations {
 				register.setIndexReg(x, result);
 		}
 	}
-	
+	/**
+	 * resetting the value of an index register
+	 * @param x the index register to be reset
+	 */
 	public static void resetIndex(int x) {
 		register.setIndexReg(x, 0);
+	}
+	
+	/**
+	 * Copies the value of an index register into a general register
+	 * @param r the register to hold the value
+	 * @param x the index register whose value is to be copied into r
+	 */
+	public static void copyIndexToReg(int r, int x) {
+		register.setGeneralReg(r, register.getIndexReg(x));
 	}
 }
