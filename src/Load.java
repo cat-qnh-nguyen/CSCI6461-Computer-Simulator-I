@@ -176,6 +176,11 @@ public class Load {
     		case 26: Operations.rotateRegByCount(R, count, LorR); 			// Rotate Register By Count.
 				System.out.println("---rotateRegisterByCount: " + R + "\nByCount" + count);
 				break;	
+			
+			//Index register instructions
+    		case 32: Operations.resetIndex(IX); 					//reset the IX to value zero
+    			System.out.println("---resetIndex: " + IX + " = " + register.getIndexReg(IX));
+    			break;
     		case 33: Operations.loadIndex(IX,EA);					//load index register from memory
 				System.out.println("---loadIndex: "+ IX + " with data at memory location " + EA);
     			break;
@@ -191,6 +196,10 @@ public class Load {
 				System.out.println("---subImmedFromX: " + IX + " immed: " + address);
     			break;
     			
+    		case 37: Operations.copyIndexToReg(R, IX); 				//Copies the c(X) into c(R)
+    			System.out.println("---copyIndexToReg: R" + R + " = X" + IX + " = " + register.getGeneralReg(R));
+    			break;
+    			
     		// In/Out Instructions
     		case 49: Operations.in(R, address);						//In instruction
     			System.out.println("---in R" + R + ", Device: " + address);
@@ -199,6 +208,8 @@ public class Load {
     			System.out.println("---out R" + R + ", Device: " + address);
     			break;
     		default: throw new IllegalArgumentException("Invalid instruction code.");
+				register.faultTolSetMFR(4);
+    			
     	}
     }
 }

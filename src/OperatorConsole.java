@@ -21,6 +21,8 @@ public class OperatorConsole {
 	public static String numbers [] = new String [21];
     private static OperatorConsole INSTANCE = new OperatorConsole();
     
+    
+ 
     //The Console User Interface
     public OperatorConsole(){
         d = new JDialog(); 

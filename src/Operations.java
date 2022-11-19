@@ -588,7 +588,10 @@ public class Operations {
 	public static void out(int r, int device) {
 		//device = printer
 		if (device == 1) {
-			programResult = String.valueOf(register.getGeneralReg(r));
+			// programResult = String.valueOf(register.getGeneralReg(r));
+			// String result = "";
+			programResult += (char)register.getGeneralReg(r);
+			// OperatorConsole.printConsole(result);
 		}
 		OperatorConsole.printConsole("repeated value is" + programResult);
 	}
@@ -636,5 +639,21 @@ public class Operations {
 			else
 				register.setIndexReg(x, result);
 		}
+	}
+	/**
+	 * resetting the value of an index register
+	 * @param x the index register to be reset
+	 */
+	public static void resetIndex(int x) {
+		register.setIndexReg(x, 0);
+	}
+	
+	/**
+	 * Copies the value of an index register into a general register
+	 * @param r the register to hold the value
+	 * @param x the index register whose value is to be copied into r
+	 */
+	public static void copyIndexToReg(int r, int x) {
+		register.setGeneralReg(r, register.getIndexReg(x));
 	}
 }
