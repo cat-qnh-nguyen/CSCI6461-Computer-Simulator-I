@@ -29,12 +29,12 @@ public class MainTester {
 //		}
 //		System.out.println(result);
 	
-		String prompt1 = "Please choose file containing paragraph.\n";
+		String prompt1 = "Found: ";
 		String prompt2 = "Please input the word you are looking for.\n";
 		convertCharStr(prompt1);
-		convertCharStr(prompt2);
+		//convertCharStr(prompt2);
 		
-		System.out.println((char)3);
+		//System.out.println((char)3);
 	}
 
 	
@@ -45,7 +45,7 @@ public class MainTester {
 		for(int i = 0; i < length; i++) {
 			System.out.println((int)str.charAt(i));
 		}
-		System.out.println(3);
+		System.out.println(0);
 	}
 	//Stuff for writing program 1 and 2
 	public static String binToHex(String bin) {

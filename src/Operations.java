@@ -575,6 +575,10 @@ public class Operations {
 		}
 	}
 	
+	public static void ins(int r, int device) {
+		
+	}
+	
 	/**
 	 * Out instruction
 	 * @param r holds the data for output
