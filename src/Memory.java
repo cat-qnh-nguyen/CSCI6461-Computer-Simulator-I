@@ -46,8 +46,10 @@ public class Memory {
 	public void store(int index, int content) {
 		//Because we are only using 16 bits of the 32 bits of type int
 		//we are not expecting any negative values
-		if(content > MAX_16 || content < MIN_16)
+		if(content > MAX_16 || content < MIN_16){
 			throw new IllegalArgumentException("Invalid Value.");
+			register.faultTolSetMFR(1);
+		}
 		
 		memory[index] = content;
 		System.out.println("Save: memory[" + index + "] = " + memory[index] +"\n");

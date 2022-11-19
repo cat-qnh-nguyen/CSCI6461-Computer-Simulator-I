@@ -208,6 +208,7 @@ public class Load {
     			System.out.println("---out R" + R + ", Device: " + address);
     			break;
     		default: throw new IllegalArgumentException("Invalid instruction code.");
+				register.faultTolSetMFR(4);
     			
     	}
     }
