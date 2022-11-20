@@ -224,7 +224,7 @@ public class Load {
 				break;
     		// setting MFR for Illegal Operation Code
     		default:
-    			cpu.machineFault(2);
+    			cpu.machineFault(2); 
     			
     	}
     }

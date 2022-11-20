@@ -29,34 +29,59 @@ public class MainTester {
 //		}
 //		System.out.println(result);
 	
-//		String prompt1 = " 32";
-//		String prompt2 = " on sentence number ";
-//		String prompt3 = ".\nTHE END.\n";
+
+		
+//		Operations.ins(1, 2);
+//		int i = 0;
+//		String result = "";
+//		while(cache.loadCache(i) != 0){
+//			register.setGeneralReg(1, cache.loadCache(i));
+//			result += (char) register.getGeneralReg(1);
+//			i++;
+//		}
+//		
+//		System.out.println(result);
+//		
+//		String instruction = makeInstruction(13, 0,0,0,0);
+//		System.out.println(instruction);
+//		System.out.println(binToHex(instruction));
+		
+		String prompt = ".\nTHE END.\n";
+		int[] num = convertCharStr(prompt);
+		for(int i = 0; i < num.length; i++) {
+			System.out.println(decToHex(num[i]));
+		}
+		
+//		
+//		String prompt1 = "Word not found.\nTHE END.\n";
+//
 //		convertCharStr(prompt1);
 		
-		Operations.ins(1, 2);
-		int i = 0;
-		String result = "";
-		while(cache.loadCache(i) != 0){
-			register.setGeneralReg(1, cache.loadCache(i));
-			result += (char) register.getGeneralReg(1);
-			i++;
-		}
-		
-		System.out.println(result);
-		
+//		for (int i = 1300; i <= 1457; i++) {
+//			System.out.println(decToHex(i));
+//		}
+
 	}
 
-	
-	public static void convertCharStr(String str) {
+	public static int[] convertCharStr(String str) {
 		int length = str.length();
-		
-		//Store each character into memory
+		int[] result = new int[length + 1];
 		for(int i = 0; i < length; i++) {
-			System.out.println((int)str.charAt(i));
+			result[i] = (int)str.charAt(i);
 		}
-		System.out.println(0);
+		result[length] = 0;
+		return result;
 	}
+	
+	public static String decToHex(int dec) {
+		String result = Integer.toHexString(dec).toUpperCase();
+		while(result.length() < 4) {
+			result = "0" + result;
+		}
+		
+		return result;
+	}
+	
 	//Stuff for writing program 1 and 2
 	public static String binToHex(String bin) {
 		String result = "";
