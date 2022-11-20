@@ -631,6 +631,17 @@ public class Operations {
 	}
 	
 	/**
+	 * printing the literal value in the register
+	 * @param r the register to print out
+	 * @param device
+	 */
+	public static void outl(int r, int device) {
+		if(device == 1) {
+			String result = Integer.toString(register.getGeneralReg(r));
+			OperatorConsole.printConsole(result);
+		}
+	}
+	/**
 	 * Chk instruction - Check Device Status to Register
 	 * @param r holds the data for output
 	 * @param device

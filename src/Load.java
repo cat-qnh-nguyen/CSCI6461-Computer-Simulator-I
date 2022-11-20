@@ -202,7 +202,9 @@ public class Load {
     		case 36: Operations.subImmedFromX(IX, address);
 				System.out.println("---subImmedFromX: " + IX + " immed: " + address);
     			break;
-    			
+    		case 37: Operations.copyIndexToReg(R, IX);
+    			System.out.println("---copyIndexToReg: R" + R + " = X" + IX + register.getGeneralReg(R));
+    			break;
     		// In, Out, CHK Instructions
     		case 49: Operations.in(R, address);						//In instruction
     			System.out.println("---in R" + R + ", Device: " + address);
@@ -214,6 +216,12 @@ public class Load {
     			Operations.chk(R,  address);						// Check Device Status to Register
     			System.out.println("---chk R" + R + ", Device: " + address);
     			break;
+    		case 52: Operations.ins(R, address);
+    			System.out.println("---inString R" + R + ", Device: "+ address);
+    			break;
+    		case 54: Operations.outl(R, address);
+				System.out.println("---outLiteral R" + R + ", Device: " + address);
+				break;
     		// setting MFR for Illegal Operation Code
     		default:
     			cpu.machineFault(2);
