@@ -7,6 +7,7 @@ public class Memory {
 	
 	//Creating an Instance to ensure only one memory object is created
 	private static Memory INSTANCE = new Memory();
+	CPU cpu = new CPU();
 	
 	//Because Java does not have unsigned data types
 	//we will use int and limit the value of data
@@ -49,8 +50,12 @@ public class Memory {
 		if(content > MAX_16 || content < MIN_16){
 			throw new IllegalArgumentException("Invalid Value.");
 		}
-		
-		memory[index] = content;
-		System.out.println("Save: memory[" + index + "] = " + memory[index] +"\n");
+		// setting MFR for Illegal Memory Address beyond 2048
+		if(index>2048)
+			cpu.machineFault(3);
+		else {
+			memory[index] = content;
+			System.out.println("Save: memory[" + index + "] = " + memory[index] +"\n");
+		}
 	}
 }

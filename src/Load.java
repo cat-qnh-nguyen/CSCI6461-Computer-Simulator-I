@@ -27,6 +27,7 @@ public class Load {
     
     public static Register register = Register.getInstance();
     public static Cache cache = Cache.getInstance();
+    CPU cpu = new CPU();
     
     //Decodes instructions and separates them into opcode, R, IX, I and Address
     public void instructionDecode(String ins) {
@@ -213,10 +214,9 @@ public class Load {
     			Operations.chk(R,  address);
     			System.out.println("---chk R" + R + ", Device: " + address);
     			break;
-    			
-    		default: //register.faultTolSetMFR(4);
-    			throw new IllegalArgumentException("Invalid instruction code.");
-
+    		// setting MFR for Illegal Operation Code
+    		default:
+    			cpu.machineFault(2);
     			
     	}
     }
