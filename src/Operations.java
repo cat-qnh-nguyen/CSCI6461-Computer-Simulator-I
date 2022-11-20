@@ -563,21 +563,62 @@ public class Operations {
 
 	/**
 	 * In instruction
-	 * 
-	 * @param r      the register to hold input character
+	 * @param r the register to hold input character
 	 * @param device
 	 */
 	public static void in(int r, int device) {
-		if (device == 0) {
-			int value = OperatorConsole.decodeMessage();
-			register.setGeneralReg(r, value);
+		if (device == 0) //getting data from the keyboard
+		{
+			String str = OperatorConsole.decodeMessage();
+			if(str == null || str == "") {
+				OperatorConsole.printConsole("You enter nothing! Enter again!");
+				in(r, device);
+			}
+			else if(str.length() > 1) {
+				OperatorConsole.printConsole("Too long. Enter only one character.");
+				in(r, device);
+			}
+			else {
+				register.setGeneralReg(r, (int)str.charAt(0));
+			}
+		}
+		else if (device == 2) //getting data from the card reader
+		{
+			OperatorConsole.printConsole("First character is read.");
+			CardReader.readFromFile(r, false);
 		}
 	}
-
+	
+	/**
+	 * Input everything as a string saved in memory
+	 * @param r is the register that holds the first address of the string
+	 * @param device is the input device
+	 */
+	public static void ins(int r, int device) {
+		if(device == 0) //getting data from the keyboard
+		{
+			String str = OperatorConsole.decodeMessage();
+			int length = str.length();
+			
+			int add = register.getGeneralReg(r);
+			
+			//Store each character into memory
+			for(int i = 0; i < length; i++) {
+				cache.writeCache(add, (int)str.charAt(i));
+				add++;
+			}
+			//Store the new line
+			cache.writeCache(add, (int)'\n');
+		}
+		else if (device == 2) //getting data from the cardReader
+		{
+			CardReader.readFromFile(r, true);
+		}
+	}
+	
 	/**
 	 * Out instruction
-	 * 
-	 * @param r      holds the data for output
+	 * @param r holds the data for output
 	 * @param device
 	 */
 	public static void out(int r, int device) {
@@ -596,8 +637,7 @@ public class Operations {
 	// Immediate arithmetic instructions added for index registers
 	/**
 	 * Add immediate to Index Register
-	 * 
-	 * @param x     the index register to alter
+	 * @param x the index register to alter
 	 * @param immed the immediate to add to index register
 	 */
 	public static void addImmedToX(int x, int immed) {
@@ -617,8 +657,7 @@ public class Operations {
 
 	/**
 	 * Subtract immediate from index register
-	 * 
-	 * @param x     the index register to alter
+	 * @param x the index register to alter
 	 * @param immed the immediate to subtract from the index register
 	 */
 	public static void subImmedFromX(int x, int immed) {
@@ -647,13 +686,12 @@ public class Operations {
 			// storing PC+1 in memory[2] and setting PC value to the index of the
 			// table(trapCode+memory[0])
 			memory.store(2, register.getPC() + 1);
-			register.setPC(trapCode + memory.load(0));
+			register.setPC(memory.load(trapCode + memory.load(0)));
 		}
 	}
 
 	/**
 	 * resetting the value of an index register
-	 * 
 	 * @param x the index register to be reset
 	 */
 	public static void resetIndex(int x) {
@@ -662,7 +700,6 @@ public class Operations {
 
 	/**
 	 * Copies the value of an index register into a general register
-	 * 
 	 * @param r the register to hold the value
 	 * @param x the index register whose value is to be copied into r
 	 */

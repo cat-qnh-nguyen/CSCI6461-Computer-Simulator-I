@@ -11,8 +11,11 @@ public class CardReader {
 	
 	public static Memory memory = Memory.getInstance();
 	public static Cache cache = Cache.getInstance();	
+	public static Register register = Register.getInstance();
 	
+	public static boolean saveStr = false; //saveStr = false: IN; saveStr = true: INS
 	public static int status = 0; //status 0 means free, 1 means busy
+	
 	
 	/**
 	 * @return the status of the device
@@ -27,10 +30,12 @@ public class CardReader {
 	
 	/**
 	 * Reading from the file and storing it into memory
-	 * @param address is the address that indicates the beginning of the file.
+	 * @param r is the address that indicates the beginning of the file or the register number
+	 * @param mode indicates whether to save into the register or into memory
 	 */
-	public static void readFromFile(int address){		
+	public static void readFromFile(int r, boolean mode){		
 		status = 1;
+		saveStr = mode;
 		
 		JFileChooser cardReader = new JFileChooser();
 		cardReader.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -43,23 +48,32 @@ public class CardReader {
 			
 			try {
 				Scanner reader = new Scanner(file);
+				//saveStr = true means save to memory and rOrAdd serves as a memory address
+				if(saveStr) {
+					int add = register.getGeneralReg(r);
+					while (reader.hasNextLine()) {
+						String line = reader.nextLine();
+	
+						int length = line.length();
+						
 
-				while (reader.hasNextLine()) {
-					String line = reader.nextLine();
-
-					int length = line.length();
-					
-					//Store each character into memory
-					for(int i = 0; i < length; i++) {
-						cache.writeCache(address, (int)line.charAt(i));
-						address++;
+						//Store each character into memory
+						for(int i = 0; i < length; i++) {
+							cache.writeCache(add, (int)line.charAt(i));
+							add++;
+						}
+						//Store the new line
+						cache.writeCache(add, (int)'\n');
+						add++;
 					}
-					//Store the new line
-					cache.writeCache(address, (int)'\n');
-					address++;
+					//Store the indicator of end of text
+					cache.writeCache(add, 0);
 				}
-				//Store the indicator of end of text
-				cache.writeCache(address, 0);
+				//if not the first character is saved into the register
+				else {
+					String line = reader.nextLine();
+					register.setGeneralReg(r, (int)line.charAt(0));
+				}
 				
 				reader.close();
 				
@@ -68,7 +82,8 @@ public class CardReader {
 				e.printStackTrace();
 			}
 		}
-		status = 0;
-		
+		status = 0;	
 	}
+	
+
 }

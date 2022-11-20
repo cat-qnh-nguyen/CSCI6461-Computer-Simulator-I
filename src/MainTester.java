@@ -34,7 +34,16 @@ public class MainTester {
 //		String prompt3 = ".\nTHE END.\n";
 //		convertCharStr(prompt1);
 		
+		Operations.ins(1, 2);
+		int i = 0;
+		String result = "";
+		while(cache.loadCache(i) != 0){
+			register.setGeneralReg(1, cache.loadCache(i));
+			result += (char) register.getGeneralReg(1);
+			i++;
+		}
 		
+		System.out.println(result);
 		
 	}
 

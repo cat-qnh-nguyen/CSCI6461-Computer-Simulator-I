@@ -15,7 +15,8 @@ public class OperatorConsole {
     public JButton enterBtn;
     public static String message;
     
-    
+    public static int keyboardStatus = 0;
+    public static int printerStatus = 0;
  
     //The Console User Interface
     public OperatorConsole(){
@@ -57,13 +58,15 @@ public class OperatorConsole {
      * decoding the message written by user
      * @param mes
      */
-    public static int decodeMessage() {
+    public static String decodeMessage() {
+    	keyboardStatus = 1;
     	message ="";
     	if(consoleKeyboard.getText() == null || consoleKeyboard.getText().length() == 0){
     		message = JOptionPane.showInputDialog(null);
 
     	}
-    	return Integer.parseInt(message);
+    	keyboardStatus = 0;
+    	return message;
     }
     
     /**
@@ -80,6 +83,8 @@ public class OperatorConsole {
      * @param message the message you want to print to console
      */
     public static void printConsole(String mes) {
-        consolePrinter.append(mes + "\n");
+    	printerStatus = 0;
+        consolePrinter.append(mes);
+        printerStatus = 1;
     }  
 }
