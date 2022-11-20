@@ -29,12 +29,13 @@ public class MainTester {
 //		}
 //		System.out.println(result);
 	
-		String prompt1 = "Found: ";
-		String prompt2 = "Please input the word you are looking for.\n";
-		convertCharStr(prompt1);
-		//convertCharStr(prompt2);
+//		String prompt1 = " 32";
+//		String prompt2 = " on sentence number ";
+//		String prompt3 = ".\nTHE END.\n";
+//		convertCharStr(prompt1);
 		
-		//System.out.println((char)3);
+		
+		
 	}
 
 	
