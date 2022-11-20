@@ -211,7 +211,7 @@ public class Load {
     			System.out.println("---out R" + R + ", Device: " + address);
     			break;
     		case 51:
-    			Operations.chk(R,  address);
+    			Operations.chk(R,  address);						// Check Device Status to Register
     			System.out.println("---chk R" + R + ", Device: " + address);
     			break;
     		// setting MFR for Illegal Operation Code

@@ -629,9 +629,27 @@ public class Operations {
 			OperatorConsole.printConsole(result);
 		}
 	}
-
+	
+	/**
+	 * Chk instruction - Check Device Status to Register
+	 * @param r holds the data for output
+	 * @param device
+	 */
 	public static void chk(int r, int device) {
-
+		switch(device) {
+		case 0: 
+			// Console Keyboard
+			register.setGeneralReg(r, OperatorConsole.keyboardStatus);
+			break;
+		case 1:
+			// Console Printer 
+			register.setGeneralReg(r, OperatorConsole.printerStatus);
+			break;
+		case 2:
+			// Card Reader
+			register.setGeneralReg(r, CardReader.getStatus());
+			break;	
+		}
 	}
 
 	// Immediate arithmetic instructions added for index registers
