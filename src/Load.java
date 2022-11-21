@@ -203,7 +203,7 @@ public class Load {
 				System.out.println("---subImmedFromX: " + IX + " immed: " + address);
     			break;
     		case 37: Operations.copyIndexToReg(R, IX);
-    			System.out.println("---copyIndexToReg: R" + R + " = X" + IX + register.getGeneralReg(R));
+    			System.out.println("---copyIndexToReg: R" + R + " = X" + IX  + " = "+ register.getGeneralReg(R));
     			break;
     		// In, Out, CHK Instructions
     		case 49: Operations.in(R, address);						//In instruction
@@ -218,6 +218,9 @@ public class Load {
     			break;
     		case 52: Operations.ins(R, address);
     			System.out.println("---inString R" + R + ", Device: "+ address);
+    			break;
+    		case 53: Operations.outs(R, address);
+    			System.out.println("---outString R" + R + ", Device: " + address);
     			break;
     		case 54: Operations.outl(R, address);
 				System.out.println("---outLiteral R" + R + ", Device: " + address);

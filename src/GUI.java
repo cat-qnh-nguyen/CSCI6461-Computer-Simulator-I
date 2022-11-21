@@ -1574,8 +1574,11 @@ public class GUI extends JFrame {
 		runBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				// load and run the instruction
 				do {
+					System.out.println("\n ---------------------------------------------- \n");
+					
 					register.setMAR(register.getPC());
 					register.setMBR(cache.loadCache(register.getMAR()));
 					register.setIR(register.getMBR());
@@ -1614,7 +1617,7 @@ public class GUI extends JFrame {
 				textfield_2.setBackground(Color.green);
 				int halt = Init_button();
 				display();
-				OperatorConsole.printConsole("Intial load is completed");
+				OperatorConsole.printConsole("Intial load is completed.\n");
 			}
 		});
 		panel.add(initBtn);

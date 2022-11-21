@@ -40,18 +40,13 @@ public class Cache {
         }
 
         //addressStr stores the address given in string
-        String addressStr = Operations.numToStr(address,16);
-        
-//        System.out.println("Address: " + addressStr + 
-//        		"\nTag: " + addressStr.substring(0,14));
-        
+        String addressStr = Operations.numToStr(address,16);      
 
         tag = Operations.strToNum(addressStr.substring(0,14));
-//        System.out.println("Tag num: " + tag);
         
         //Using parseInt because these values do not need to be negative
         block = Integer.parseInt(addressStr.substring(14,16),2);
-//        System.out.println("Block is: " + block);
+
         
         boolean foundTag = false;
         int i = 0;
@@ -68,7 +63,7 @@ public class Cache {
               
         //if tag is found and valid is 1
         if(foundTag && cache_valid[i] == 1) {
-        	System.out.println("Cache hit");
+        	//System.out.println("Cache hit");
         	return cache_data[i][block];
         }
         
@@ -86,17 +81,6 @@ public class Cache {
         	addressStr = Operations.numToStr(tag,14) + Operations.numToStr(j,2);
         	int memAdd = Operations.strToNum(addressStr);
         	
-        	
-        	
-//    		System.out.println("\nAddress: " + address +"\nTag as string: " + Operations.numToStr(tag,14) +
-//    				"\nTag as num: " + tag  + "\nBlock string: " + Operations.numToStr(j,2)
-//    				+"\nBlock num: " + j + "\nBlock converted back: " +
-//    				"\nPut back together: " + addressStr + "\nAddress num is: " +
-//    				memAdd);
-//    				
-        	
-
-//        	System.out.println("Address in cache to pass to mem " + addressStr + " is " + memAdd);
         	cache_data[i][j] = memory.load(memAdd);
         }
         
@@ -138,7 +122,7 @@ public class Cache {
         if(foundTag && cache_valid[i] == 1) {
         	cache_data[i][block] = data;
         	memory.store(address, data);
-        	System.out.println("Write cache hit.");
+        	//System.out.println("Write cache hit.");
         }
         else
         {

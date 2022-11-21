@@ -12,65 +12,50 @@ public class MainTester {
 	
 	
 	public static void main(String[] args) {
-//		for(int i = 1; i < 65; i++) {
-//			memory.store(i, i*10);
-//		}
-//	
-//		CardReader.readFromFile(10);
-//		int value = memory.load(10);
-//		int i = 11;
-//		String result = "";
-//		
-//		//Test printing out the values
-//		while(value != 3) {
-//			result += (char)value;
-//			value = cache.loadCache(i);
-//			i++;
-//		}
-//		System.out.println(result);
-	
+		/**
+		 * For making instructions
+		 */
+//		makeInstruction(8,1,0,1,2);
 
 		
-//		Operations.ins(1, 2);
-//		int i = 0;
-//		String result = "";
-//		while(cache.loadCache(i) != 0){
-//			register.setGeneralReg(1, cache.loadCache(i));
-//			result += (char) register.getGeneralReg(1);
-//			i++;
-//		}
-//		
-//		System.out.println(result);
-//		
-//		String instruction = makeInstruction(13, 0,0,0,0);
-//		System.out.println(instruction);
-//		System.out.println(binToHex(instruction));
+		/**
+		 * For printing out letters in hex
+		 */
+		String prompt = "\n\nParagraph:\n\n";
+		convertCharStr(prompt);
+
 		
-		String prompt = ".\nTHE END.\n";
-		int[] num = convertCharStr(prompt);
-		for(int i = 0; i < num.length; i++) {
-			System.out.println(decToHex(num[i]));
-		}
 		
-//		
-//		String prompt1 = "Word not found.\nTHE END.\n";
-//
-//		convertCharStr(prompt1);
-		
-//		for (int i = 1300; i <= 1457; i++) {
+		/**
+		 * For printing out address in hex
+		 */
+//		int[] address = {0,500};
+//		for (int i = address[0]; i <= address[1]; i++) {
 //			System.out.println(decToHex(i));
+//		}
+		
+		/**
+		 * For printing some numbers in hex
+		 */
+//		int[] num = {116,103};
+//		for(int i = 0; i < num.length; i++) {
+//			System.out.println(decToHex(num[i]));
 //		}
 
 	}
 
-	public static int[] convertCharStr(String str) {
+	public static void convertCharStr(String str) {
 		int length = str.length();
 		int[] result = new int[length + 1];
 		for(int i = 0; i < length; i++) {
 			result[i] = (int)str.charAt(i);
+			System.out.println(result[i]);
 		}
 		result[length] = 0;
-		return result;
+		
+		for(int i = 0; i < result.length; i++) {
+			System.out.println(decToHex(result[i]));
+		}
 	}
 	
 	public static String decToHex(int dec) {
@@ -96,7 +81,7 @@ public class MainTester {
 	}
 	
 	
-	public static String makeInstruction(int op, int r, int ix, int i, int address) {
+	public static void makeInstruction(int op, int r, int ix, int i, int address) {
 		String opcode = Integer.toBinaryString(op);
 		int add = 6 - opcode.length();
 		for(int j = 0; j < add; j++) {
@@ -124,7 +109,9 @@ public class MainTester {
 			ADD = "0" + ADD;
 		}
 		
-		return opcode + R + IX + I + ADD;
+		String instruction = opcode + R + IX + I + ADD;
+		System.out.println(instruction);
+		System.out.println(binToHex(instruction));
 	}
 	
 	

@@ -60,16 +60,16 @@ public class Register {
 			throw new IllegalArgumentException("Invalid value.");
 		switch(reg) {
 			case 0: R0 = value; 
-			System.out.println("SetR" + reg + "= " + value);
+			System.out.println("SetR" + reg + "= " + value + "= " + (char)value);
 				break;
 			case 1: R1 = value;
-			System.out.println("SetR" + reg + "= " + value);
+			System.out.println("SetR" + reg + "= " + value + "= " + (char)value);
 				break;
 			case 2: R2 = value;
-			System.out.println("SetR" + reg + "= " + value);
+			System.out.println("SetR" + reg + "= " + value + "= " + (char)value);
 				break;
 			case 3: R3 = value;
-			System.out.println("SetR" + reg + "= " + value);
+			System.out.println("SetR" + reg + "= " + value + "= " + (char)value);
 				break;
 			default: throw new IllegalArgumentException("Invalid General Register.");
 		}

@@ -169,7 +169,12 @@ public class Operations {
 	 */
 	public static void jumpZero(int reg, int ea) {
 		if (register.getGeneralReg(reg) == 0) {
+			System.out.println("R" + reg + " = 0: jump");
 			register.setPC(ea);
+		}
+		else
+		{
+			System.out.println("Not 0: EA = PC + 1");
 		}
 
 	}
@@ -182,7 +187,12 @@ public class Operations {
 	 */
 	public static void jumpNotZero(int reg, int ea) {
 		if (register.getGeneralReg(reg) != 0) {
+			System.out.println("R" + reg + " != 0: jump");
 			register.setPC(ea);
+		}
+		else
+		{
+			System.out.println("R" + reg + " = 0: EA = PC + 1");
 		}
 	}
 
@@ -219,7 +229,7 @@ public class Operations {
 	 * @param ea address to jump to
 	 */
 	public static void jumpSaveReturn(int ea) {
-		register.setGeneralReg(3, register.getPC() + 1);
+		register.setGeneralReg(3, register.getPC());
 		register.setPC(ea);
 	}
 
@@ -391,10 +401,13 @@ public class Operations {
 	// Check if the register values are equal.
 	public static void testRegReg(int Rx, int Ry) {
 		if (register.getGeneralReg(Rx) == register.getGeneralReg(Ry)) {
-			register.setCC(1);
+			register.setCC(register.getCC() | 1);
 			System.out.println("Equal");
 		} else {
-			register.setCC(0);
+			if(register.getCC() % 2 != 0) {
+				register.setCC(register.getCC() - 1);
+			}
+
 			System.out.println("Not Equal");
 		}
 	}
@@ -608,7 +621,7 @@ public class Operations {
 				add++;
 			}
 			//Store the new line
-			cache.writeCache(add, (int)'\n');
+			cache.writeCache(add, 0);
 		}
 		else if (device == 2) //getting data from the cardReader
 		{
@@ -627,9 +640,25 @@ public class Operations {
 			String result = "";
 			result += (char) register.getGeneralReg(r);
 			OperatorConsole.printConsole(result);
+			System.out.println("Printing " + result + " to console");
 		}
 	}
 	
+	public static void outs(int r, int device) {
+		if(device == 1) {
+			String result = "";
+			int i = register.getGeneralReg(r);
+			int temp = cache.loadCache(i);
+			while(temp!= 0) {
+				result += (char)temp;
+				i++;
+			}
+			OperatorConsole.printConsole(result);
+			//i points at 0 aka the end of string
+			register.setGeneralReg(r, i);
+			System.out.println("Printing: " + result);
+		}
+	}
 	/**
 	 * printing the literal value in the register
 	 * @param r the register to print out
@@ -639,6 +668,7 @@ public class Operations {
 		if(device == 1) {
 			String result = Integer.toString(register.getGeneralReg(r));
 			OperatorConsole.printConsole(result);
+			System.out.println("Printing " + result + " to console");
 		}
 	}
 	/**
@@ -714,7 +744,7 @@ public class Operations {
 		else {
 			// storing PC+1 in memory[2] and setting PC value to the index of the
 			// table(trapCode+memory[0])
-			memory.store(2, register.getPC() + 1);
+			memory.store(2, register.getPC());
 			register.setPC(memory.load(trapCode + memory.load(0)));
 		}
 	}

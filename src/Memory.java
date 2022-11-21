@@ -36,7 +36,7 @@ public class Memory {
 	 * @return value in memory[index]
 	 */
 	public int load(int index) {
-		System.out.println("Load: memory[" + index + "] = " + memory[index] + "\n");
+		//System.out.println("Load: memory[" + index + "] = " + memory[index] + "\n");
 		return memory[index];
 	}
 	/**
