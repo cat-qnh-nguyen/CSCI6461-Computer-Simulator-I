@@ -1,5 +1,6 @@
-Hi, my name is Cat.
-
-Sentence 1.
-word count hehe.
-no No
+This is a text file.
+It is used to test Program 2.
+Consists of a paragraph of 6 sentences.
+Prints the sentences on the console printer!
+It then asks the user for a word.
+And output the search result.
