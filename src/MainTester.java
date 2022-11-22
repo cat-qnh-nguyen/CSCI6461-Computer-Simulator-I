@@ -15,14 +15,14 @@ public class MainTester {
 		/**
 		 * For making instructions
 		 */
-//		makeInstruction(8,1,0,1,2);
+		makeInstruction(8, 2, 0, 1, 2);
 
 		
 		/**
 		 * For printing out letters in hex
 		 */
-		String prompt = "\n\nParagraph:\n\n";
-		convertCharStr(prompt);
+//		String prompt = "Found word at word number ";
+//		convertCharStr(prompt);
 
 		
 		
@@ -36,8 +36,8 @@ public class MainTester {
 		
 		/**
 		 * For printing some numbers in hex
-		 */
-//		int[] num = {116,103};
+//		 */
+//		int[] num = {95,110,102,91,113,100};
 //		for(int i = 0; i < num.length; i++) {
 //			System.out.println(decToHex(num[i]));
 //		}

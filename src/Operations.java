@@ -135,7 +135,7 @@ public class Operations {
 			result = Integer.parseInt(str, 2);
 		}
 
-		System.out.println("String " + str + " is: " + result);
+		//System.out.println("String " + str + " is: " + result);
 		return result;
 	}
 
@@ -652,6 +652,7 @@ public class Operations {
 			while(temp!= 0) {
 				result += (char)temp;
 				i++;
+				temp = cache.loadCache(i);
 			}
 			OperatorConsole.printConsole(result);
 			//i points at 0 aka the end of string
@@ -737,15 +738,15 @@ public class Operations {
 	// Trap instruction
 	public static void trap(int trapCode) {
 		// setting MFR for illegal trap code
-		if(memory.load(trapCode + memory.load(0)) == 0) {
+		if(cache.loadCache(trapCode + cache.loadCache(0)) == 0) {
 			CPU cpu = new CPU();
 			cpu.machineFault(1);
 		}
 		else {
 			// storing PC+1 in memory[2] and setting PC value to the index of the
 			// table(trapCode+memory[0])
-			memory.store(2, register.getPC());
-			register.setPC(memory.load(trapCode + memory.load(0)));
+			cache.writeCache(2, register.getPC());
+			register.setPC(cache.loadCache(trapCode + cache.loadCache(0)));
 		}
 	}
 
