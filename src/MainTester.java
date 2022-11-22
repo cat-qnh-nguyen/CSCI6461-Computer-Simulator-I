@@ -15,21 +15,21 @@ public class MainTester {
 		/**
 		 * For making instructions
 		 */
-		makeInstruction(8, 2, 0, 1, 2);
+//		makeInstruction(11, 0, 0, 1, 2);
 
 		
 		/**
 		 * For printing out letters in hex
 		 */
-//		String prompt = "Found word at word number ";
-//		convertCharStr(prompt);
+		String prompt = "\n>>Word not found.\n\nTHE END.\n";
+		convertCharStr(prompt);
 
 		
 		
 		/**
 		 * For printing out address in hex
 		 */
-//		int[] address = {0,500};
+//		int[] address = {250,278};
 //		for (int i = address[0]; i <= address[1]; i++) {
 //			System.out.println(decToHex(i));
 //		}
@@ -49,7 +49,7 @@ public class MainTester {
 		int[] result = new int[length + 1];
 		for(int i = 0; i < length; i++) {
 			result[i] = (int)str.charAt(i);
-			System.out.println(result[i]);
+			//System.out.println(result[i]);
 		}
 		result[length] = 0;
 		
