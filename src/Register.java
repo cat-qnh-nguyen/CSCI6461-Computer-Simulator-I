@@ -37,6 +37,36 @@ public class Register {
 	public final int MIN_4 = 0;
 	
 	/**
+	 * Part 4: 2 floating point registers: FR0, FR1
+	 * Each 16 bits
+	 */
+	private int FR0 = 0;
+	private int FR1 = 0;
+	
+	public int getFloat(int reg) {
+		switch(reg) {
+			case 0: return FR0;
+			case 1: return FR1;
+			default: throw new IllegalArgumentException("Invalid General Register.");
+		}
+	}
+	
+	public void setFloat(int reg, int value) {
+		//Because we are only using 16 bits of the 32 bits in int, we are not expecting any negative values
+		if(value > MAX_16 || value < MIN_16)
+			throw new IllegalArgumentException("Invalid value.");
+		switch(reg) {
+			case 0: FR0 = value; 
+			System.out.println("SetFloat" + reg + "= " + value);
+				break;
+			case 1: FR1 = value;
+			System.out.println("SetFloat" + reg + "= " + value);
+				break;
+			default: throw new IllegalArgumentException("Invalid General Register.");
+		}
+	}
+	
+	/**
 	 * 4 general purpose registers: R0-3, 16 bits
 	 */
 	private int R0 = 0;
