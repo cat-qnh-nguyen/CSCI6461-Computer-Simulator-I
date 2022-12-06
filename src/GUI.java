@@ -180,6 +180,38 @@ public class GUI extends JFrame {
 	public JTextField textIR_14;
 	public JTextField textIR_15;
 	public JTextField textIR_16;
+	public JTextField textFR_0_1;
+	public JTextField textFR_0_2;
+	public JTextField textFR_0_3;
+	public JTextField textFR_0_4;
+	public JTextField textFR_0_5;
+	public JTextField textFR_0_6;
+	public JTextField textFR_0_7;
+	public JTextField textFR_0_8;
+	public JTextField textFR_0_9;
+	public JTextField textFR_0_10;
+	public JTextField textFR_0_11;
+	public JTextField textFR_0_12;
+	public JTextField textFR_0_13;
+	public JTextField textFR_0_14;
+	public JTextField textFR_0_15;
+	public JTextField textFR_0_16;
+	public JTextField textFR_1_1;
+	public JTextField textFR_1_2;
+	public JTextField textFR_1_3;
+	public JTextField textFR_1_4;
+	public JTextField textFR_1_5;
+	public JTextField textFR_1_6;
+	public JTextField textFR_1_7;
+	public JTextField textFR_1_8;
+	public JTextField textFR_1_9;
+	public JTextField textFR_1_10;
+	public JTextField textFR_1_11;
+	public JTextField textFR_1_12;
+	public JTextField textFR_1_13;
+	public JTextField textFR_1_14;
+	public JTextField textFR_1_15;
+	public JTextField textFR_1_16;
 	public JTextField MFR_TF1;
 	public JTextField MFR_TF2;
 	public JTextField MFR_TF3;
@@ -1027,6 +1059,165 @@ public class GUI extends JFrame {
 		});
 		panel.add(IXR_3_loadBtn);
 
+		//FR
+		JLabel lblFR_0 = new JLabel("FR 0");
+		lblFR_0.setBounds(20, 200, 41, 16);
+		panel.add(lblFR_0);
+
+		textFR_0_1 = new JTextField("0");
+		textFR_0_1.setBounds(65, 200, 20, 16);
+		panel.add(textFR_0_1);
+
+		textFR_0_2 = new JTextField("0");
+		textFR_0_2.setBounds(85, 200, 20, 16);
+		panel.add(textFR_0_2);
+
+		textFR_0_3 = new JTextField("0");
+		textFR_0_3.setBounds(105, 200, 20, 16);
+		panel.add(textFR_0_3);
+
+		textFR_0_4 = new JTextField("0");
+		textFR_0_4.setBounds(125, 200, 20, 16);
+		panel.add(textFR_0_4);
+
+		textFR_0_5 = new JTextField("0");
+		textFR_0_5.setBounds(145, 200, 20, 16);
+		panel.add(textFR_0_5);
+
+		textFR_0_6 = new JTextField("0");
+		textFR_0_6.setBounds(165, 200, 20, 16);
+		panel.add(textFR_0_6);
+
+		textFR_0_7 = new JTextField("0");
+		textFR_0_7.setBounds(185, 200, 20, 16);
+		panel.add(textFR_0_7);
+
+		textFR_0_8 = new JTextField("0");
+		textFR_0_8.setBounds(205, 200, 20, 16);
+		panel.add(textFR_0_8);
+
+		textFR_0_9 = new JTextField("0");
+		textFR_0_9.setBounds(225, 200, 20, 16);
+		panel.add(textFR_0_9);
+
+		textFR_0_10 = new JTextField("0");
+		textFR_0_10.setBounds(245, 200, 20, 16);
+		panel.add(textFR_0_10);
+
+		textFR_0_11 = new JTextField("0");
+		textFR_0_11.setBounds(265, 200, 20, 16);
+		panel.add(textFR_0_11);
+
+		textFR_0_12 = new JTextField("0");
+		textFR_0_12.setBounds(285, 200, 20, 16);
+		panel.add(textFR_0_12);
+
+		textFR_0_13 = new JTextField("0");
+		textFR_0_13.setBounds(305, 200, 20, 16);
+		panel.add(textFR_0_13);
+
+		textFR_0_14 = new JTextField("0");
+		textFR_0_14.setBounds(325, 200, 20, 16);
+		panel.add(textFR_0_14);
+
+		textFR_0_15 = new JTextField("0");
+		textFR_0_15.setBounds(345, 200, 20, 16);
+		panel.add(textFR_0_15);
+
+		textFR_0_16 = new JTextField("0");
+		textFR_0_16.setBounds(365, 200, 20, 16);
+		panel.add(textFR_0_16);
+
+		JButton textFR_0_loadBtn = new JButton("LD");
+		textFR_0_loadBtn.setBounds(395, 200, 55, 16);
+		textFR_0_loadBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GPRloadBtn();
+				LD_button(instruction, 8);
+				display();
+			}
+		});
+		panel.add(textFR_0_loadBtn);
+
+		JLabel lblFR_1 = new JLabel("FR 1");
+		lblFR_1.setBounds(20, 220, 41, 16);
+		panel.add(lblFR_1);
+
+		textFR_1_1 = new JTextField("0");
+		textFR_1_1.setBounds(65, 220, 20, 16);
+		panel.add(textFR_1_1);
+
+		textFR_1_2 = new JTextField("0");
+		textFR_1_2.setBounds(85, 220, 20, 16);
+		panel.add(textFR_1_2);
+
+		textFR_1_3 = new JTextField("0");
+		textFR_1_3.setBounds(105, 220, 20, 16);
+		panel.add(textFR_1_3);
+
+		textFR_1_4 = new JTextField("0");
+		textFR_1_4.setBounds(125, 220, 20, 16);
+		panel.add(textFR_1_4);
+
+		textFR_1_5 = new JTextField("0");
+		textFR_1_5.setBounds(145, 220, 20, 16);
+		panel.add(textFR_1_5);
+
+		textFR_1_6 = new JTextField("0");
+		textFR_1_6.setBounds(165, 220, 20, 16);
+		panel.add(textFR_1_6);
+
+		textFR_1_7 = new JTextField("0");
+		textFR_1_7.setBounds(185, 220, 20, 16);
+		panel.add(textFR_1_7);
+
+		textFR_1_8 = new JTextField("0");
+		textFR_1_8.setBounds(205, 220, 20, 16);
+		panel.add(textFR_1_8);
+
+		textFR_1_9 = new JTextField("0");
+		textFR_1_9.setBounds(225, 220, 20, 16);
+		panel.add(textFR_1_9);
+
+		textFR_1_10 = new JTextField("0");
+		textFR_1_10.setBounds(245, 220, 20, 16);
+		panel.add(textFR_1_10);
+
+		textFR_1_11 = new JTextField("0");
+		textFR_1_11.setBounds(265, 220, 20, 16);
+		panel.add(textFR_1_11);
+
+		textFR_1_12 = new JTextField("0");
+		textFR_1_12.setBounds(285, 220, 20, 16);
+		panel.add(textFR_1_12);
+
+		textFR_1_13 = new JTextField("0");
+		textFR_1_13.setBounds(305, 220, 20, 16);
+		panel.add(textFR_1_13);
+
+		textFR_1_14 = new JTextField("0");
+		textFR_1_14.setBounds(325, 220, 20, 16);
+		panel.add(textFR_1_14);
+
+		textFR_1_15 = new JTextField("0");
+		textFR_1_15.setBounds(345, 220, 20, 16);
+		panel.add(textFR_1_15);
+
+		textFR_1_16 = new JTextField("0");
+		textFR_1_16.setBounds(365, 220, 20, 16);
+		panel.add(textFR_1_16);
+
+		JButton textFR_1_loadBtn = new JButton("LD");
+		textFR_1_loadBtn.setBounds(395, 220, 55, 16);
+		textFR_1_loadBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GPRloadBtn();
+				LD_button(instruction, 9);
+				display();
+			}
+		});
+		panel.add(textFR_1_loadBtn);		
+
 		// Labels for PC
 		JLabel PClbl = new JLabel("PC");
 		PClbl.setBounds(500, 20, 25, 16);
@@ -1793,8 +1984,56 @@ public class GUI extends JFrame {
 		IXR_3_TF14.setText(ixr3Value[13]);
 		IXR_3_TF15.setText(ixr3Value[14]);
 		IXR_3_TF16.setText(ixr3Value[15]);
+
+		String FP_0 = Operations.numToStr(get_number(8), 16);
+
+		String[] fp0Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+
+		for (int i = 0; i < FP_0.length(); i++) {
+			fp0Value[16 - FP_0.length() + i] = FP_0.substring(i, i + 1);
+		}
+		textFR_0_1.setText(fp0Value[0]);
+		textFR_0_2.setText(fp0Value[1]);
+		textFR_0_3.setText(fp0Value[2]);
+		textFR_0_4.setText(fp0Value[3]);
+		textFR_0_5.setText(fp0Value[4]);
+		textFR_0_6.setText(fp0Value[5]);
+		textFR_0_7.setText(fp0Value[6]);
+		textFR_0_8.setText(fp0Value[7]);
+		textFR_0_9.setText(fp0Value[8]);
+		textFR_0_10.setText(fp0Value[9]);
+		textFR_0_11.setText(fp0Value[10]);
+		textFR_0_12.setText(fp0Value[11]);
+		textFR_0_13.setText(fp0Value[12]);
+		textFR_0_14.setText(fp0Value[13]);
+		textFR_0_15.setText(fp0Value[14]);
+		textFR_0_16.setText(fp0Value[15]);
+
+		String FP_1 = Operations.numToStr(get_number(9), 16);
+
+		String[] fp1Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+
+		for (int i = 0; i < FP_1.length(); i++) {
+			fp1Value[16 - FP_1.length() + i] = FP_1.substring(i, i + 1);
+		}
+		textFR_1_1.setText(fp1Value[0]);
+		textFR_1_2.setText(fp1Value[1]);
+		textFR_1_3.setText(fp1Value[2]);
+		textFR_1_4.setText(fp1Value[3]);
+		textFR_1_5.setText(fp1Value[4]);
+		textFR_1_6.setText(fp1Value[5]);
+		textFR_1_7.setText(fp1Value[6]);
+		textFR_1_8.setText(fp1Value[7]);
+		textFR_1_9.setText(fp1Value[8]);
+		textFR_1_10.setText(fp1Value[9]);
+		textFR_1_11.setText(fp1Value[10]);
+		textFR_1_12.setText(fp1Value[11]);
+		textFR_1_13.setText(fp1Value[12]);
+		textFR_1_14.setText(fp1Value[13]);
+		textFR_1_15.setText(fp1Value[14]);
+		textFR_1_16.setText(fp1Value[15]);
 		
-		String PC = Operations.numToStr(get_number(8), 12);
+		String PC = Operations.numToStr(get_number(10), 12);
 
 		String[] dataValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -1814,7 +2053,7 @@ public class GUI extends JFrame {
 		textPc_11.setText(dataValue[10]);
 		textPc_12.setText(dataValue[11]);
 		
-		String MAR = Operations.numToStr(get_number(9), 12);
+		String MAR = Operations.numToStr(get_number(11), 12);
 		String[] marValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
 		for (int i = 0; i < MAR.length(); i++) {
@@ -1834,7 +2073,7 @@ public class GUI extends JFrame {
 		textMar_12.setText(marValue[11]);
 		
 		
-		String MBR = Operations.numToStr(get_number(10), 16);
+		String MBR = Operations.numToStr(get_number(12), 16);
 		String[] mbrValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
 		for (int i = 0; i < MBR.length(); i++) {
@@ -1857,7 +2096,7 @@ public class GUI extends JFrame {
 		textMbr_15.setText(mbrValue[14]);
 		textMbr_16.setText(mbrValue[15]);
 		
-		String IR = Operations.numToStr(get_number(11), 16);
+		String IR = Operations.numToStr(get_number(13), 16);
 		String[] irValue = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
 
 		for (int i = 0; i < IR.length(); i++) {
@@ -1880,7 +2119,7 @@ public class GUI extends JFrame {
 		textIR_15.setText(mbrValue[14]);
 		textIR_16.setText(mbrValue[15]);
 	
-		String MFR = Operations.numToStr(get_number(12), 4);
+		String MFR = Operations.numToStr(get_number(14), 4);
 		String[] mfrValue = { "0", "0", "0", "0" };
 
 		for (int i = 0; i < MFR.length(); i++) {
@@ -1918,12 +2157,18 @@ public class GUI extends JFrame {
 			 register.setIndexReg(3, Input);
 			 break;
 		case 8:
-			 register.setPC(Input);
+		     register.setFloat(0, Input);
 			 break;
 		case 9:
-			 register.setMAR(Input);
+		     register.setFloat(1, Input);
 			 break;
 		case 10:
+			 register.setPC(Input);
+			 break;
+		case 11:
+			 register.setMAR(Input);
+			 break;
+		case 12:
 			 register.setMBR(Input);
 			 break;
 		}
@@ -1957,14 +2202,18 @@ public class GUI extends JFrame {
 			case 7:
 				return register.getIndexReg(3);
 			case 8:
-				return register.getPC();
+			     return register.getFloat(0);
 			case 9:
-				return register.getMAR();
+			    return register.getFloat(1);
 			case 10:
-				return register.getMBR();
+				return register.getPC();
 			case 11:
-				return register.getIR();
+				return register.getMAR();
 			case 12:
+				return register.getMBR();
+			case 13:
+				return register.getIR();
+			case 14:
 				return register.getMFR();
 		}
 		return 0;
