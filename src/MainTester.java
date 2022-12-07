@@ -21,8 +21,8 @@ public class MainTester {
 		/**
 		 * For printing out letters in hex
 		 */
-//		String prompt = "\n>>Word not found.\n\nTHE END.\n";
-//		convertCharStr(prompt);
+		String prompt = "\n>>The closest number is: ";
+		convertCharStr(prompt);
 
 		
 		
@@ -41,12 +41,8 @@ public class MainTester {
 //		for(int i = 0; i < num.length; i++) {
 //			System.out.println(decToHex(num[i]));
 //		}
+
 		
-		memory.store(0, 3642);
-		
-		int num = memory.load(0);
-		String numStr = Operations.numToStr(num, 16);
-		System.out.println(numStr);
 
 	}
 

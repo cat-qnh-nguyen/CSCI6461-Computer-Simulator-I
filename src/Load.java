@@ -233,6 +233,9 @@ public class Load {
     			break;
     			
     		// In, Out, CHK Instructions
+    		case 48: Operations.inl(R, address); 					//In literal
+    			System.out.println("---in Literal: " + R + ", Device: " + address);
+    			break;
     		case 49: Operations.in(R, address);						//In instruction
     			System.out.println("---in R" + R + ", Device: " + address);
     			break;

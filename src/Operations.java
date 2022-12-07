@@ -630,6 +630,19 @@ public class Operations {
 	}
 	
 	/**
+	 * Input literal
+	 * @param r the register to store the literal
+	 * @param device to get input from
+	 */
+	public static void inl (int r, int device) {
+		if(device == 0) {
+			String str = OperatorConsole.decodeMessage();
+			
+			register.setGeneralReg(r, Integer.parseInt(str));
+		}
+	}
+	
+	/**
 	 * Out instruction
 	 * @param r holds the data for output
 	 * @param device
@@ -846,4 +859,5 @@ public class Operations {
 			
 		}
 	}
+	
 }
