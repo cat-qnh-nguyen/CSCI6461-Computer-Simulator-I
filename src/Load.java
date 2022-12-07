@@ -184,6 +184,24 @@ public class Load {
 				System.out.println("---rotateRegisterByCount: " + R + "\nByCount" + count);
 				break;	
 			
+			// Floating points and Vector instructions
+    		case 27: 
+    			System.out.println("---floatingAddMemToReg: " + R + " = " + register.getFloat(R));
+    			break;
+    		case 28:
+    			System.out.println("---floatingSubMemToReg: " + R + " = " + register.getFloat(R));
+    			break;
+    		case 29: Operations.vectorAdd(R, EA, I);
+    			System.out.println("---vectorAdd");
+    			break;
+    		case 30: Operations.vectorSub(R, EA, I);
+    			System.out.println("---vectorSub");
+    			break;
+    		case 31: Operations.convertToFixedFloat(R, EA);
+    			System.out.println("---convertToFixedFloat");
+    			break;
+  
+			
 			//Index register instructions
     		case 32: Operations.resetIndex(IX); 					//reset the IX to value zero
     			System.out.println("---resetIndex: " + IX + " = " + register.getIndexReg(IX));
@@ -205,6 +223,15 @@ public class Load {
     		case 37: Operations.copyIndexToReg(R, IX);
     			System.out.println("---copyIndexToReg: R" + R + " = X" + IX  + " = "+ register.getGeneralReg(R));
     			break;
+    			
+    		//Floating point instructions
+    		case 40:
+    			System.out.println("---loadFloatRegFromMem");
+    			break;
+    		case 41:
+    			System.out.println("---storeFloatRegToMem");
+    			break;
+    			
     		// In, Out, CHK Instructions
     		case 49: Operations.in(R, address);						//In instruction
     			System.out.println("---in R" + R + ", Device: " + address);

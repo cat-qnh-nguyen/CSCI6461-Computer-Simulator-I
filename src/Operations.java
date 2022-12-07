@@ -766,4 +766,84 @@ public class Operations {
 	public static void copyIndexToReg(int r, int x) {
 		register.setGeneralReg(r, register.getIndexReg(x));
 	}
+	
+	
+	//Floating point and Vector operations
+	/**
+	 * Adding 2 vectors stored in memory
+	 * @param fr store the length of the vectors
+	 * @param ea store the address of the vectors or the address of where the address is
+	 * @param i determines if the address is c(EA) or c(c(EA))
+	 */
+	public static void vectorAdd(int fr, int ea, int i) {
+		int v1 = 0;
+		int v2 = 0;
+		
+		//if I = 0, v1 = c(EA), v2 = c(EA + 1)
+		v1 = cache.loadCache(ea);
+		v2 = cache.loadCache(ea + 1);
+		
+		// if I = 1, v1 = c(c(EA)), v2 = c(c(EA+1))
+		if(i == 1) {
+			v1 = cache.loadCache(v1);
+			v2 = cache.loadCache(v2);
+		}
+		
+		for(int j = 0; j < register.getFloat(fr); i++) {
+			cache.writeCache(v1, cache.loadCache(v1) + cache.loadCache(v2));
+			v1++;
+			v2++;
+		}
+		
+	}
+
+	/**
+	 * Subtracting 2 vectors stored in memory
+	 * @param fr store the length of the vectors
+	 * @param ea store the address of the vectors or the address of where the address is
+	 * @param i determines if the address is c(EA) or c(c(EA))
+	 */
+	public static void vectorSub(int fr, int ea, int i) {
+		int v1 = 0;
+		int v2 = 0;
+		
+		//if I = 0, v1 = c(EA), v2 = c(EA + 1)
+		v1 = cache.loadCache(ea);
+		v2 = cache.loadCache(ea + 1);
+		
+		// if I = 1, v1 = c(c(EA)), v2 = c(c(EA+1))
+		if(i == 1) {
+			v1 = cache.loadCache(v1);
+			v2 = cache.loadCache(v2);
+		}
+		
+		for(int j = 0; j < register.getFloat(fr); i++) {
+			cache.writeCache(v1, cache.loadCache(v1) - cache.loadCache(v2));
+			v1++;
+			v2++;
+		}
+	}
+	
+	/**
+	 * converting a fixed number to a floating point number
+	 * @param r the register to store the new number
+	 * @param ea the address of the pre-converted number
+	 */
+	public static void convertToFixedFloat(int r, int ea) {
+		int F = register.getGeneralReg(r);
+		
+		//since the exponent is 7 bits Bias = 0111111
+		final int bias = 63;
+		int num = cache.loadCache(ea);
+		
+		//convert floating to fixed
+		if (F == 0) {
+			String numStr = numToStr(num, 16);
+			
+		}
+		//convert fixed to floating
+		else if (F == 1) {
+			
+		}
+	}
 }
