@@ -860,4 +860,61 @@ public class Operations {
 		}
 	}
 	
+	
+	// Floating Add Memory To Register
+	public static void floatAdd(int fr, int ea, int I) {
+		if(fr == 0 || fr == 1) {
+			
+			int memVal = cache.loadCache(ea);
+			if(I==1)
+				memVal = cache.loadCache(memVal);
+			int result = register.getFloat(fr) + memVal;
+			
+			if (result > 32767) {
+				register.setCC(register.getCC() | 8);
+				System.out.println("OVERFLOW");
+			} 
+			else
+				register.setFloat(fr, result);
+		}
+	}
+	
+	// Floating Subtract Memory From Register 
+	public static void floatSub(int fr, int ea, int I) {
+		if(fr == 0 || fr == 1) {
+			
+			int memVal = cache.loadCache(ea);
+			if(I==1)
+				memVal = cache.loadCache(memVal);
+			
+			int result = register.getFloat(fr) - memVal;
+		
+			if (result < -32768) {
+				register.setCC(register.getCC() | 4);
+				System.out.println("UNDERFLOW");
+			} 
+			else
+				register.setFloat(fr, result);
+			
+		}
+	}
+	
+	// Load Floating Register From Memory
+	public static void loadFR(int fr, int ea, int I) {
+		int memVal = cache.loadCache(ea);
+		if(I==1)
+			memVal = cache.loadCache(memVal);
+		register.setFloat(fr, memVal);
+		
+	}
+	
+	// Store Floating Register To Memory
+	public static void storeFR(int fr, int ea, int I) {
+		int EA = ea;
+		if(I==1)
+			EA = cache.loadCache(ea);
+		cache.writeCache(EA, register.getFloat(fr));
+	}
+	
+	
 }

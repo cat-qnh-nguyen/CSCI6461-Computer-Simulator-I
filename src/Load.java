@@ -186,9 +186,11 @@ public class Load {
 			
 			// Floating points and Vector instructions
     		case 27: 
+    			Operations.floatAdd(R, EA, I);						// Floating Add Memory To Register
     			System.out.println("---floatingAddMemToReg: " + R + " = " + register.getFloat(R));
     			break;
     		case 28:
+    			Operations.floatSub(R, EA, I);						// Floating Subtract Memory From Register 
     			System.out.println("---floatingSubMemToReg: " + R + " = " + register.getFloat(R));
     			break;
     		case 29: Operations.vectorAdd(R, EA, I);
@@ -226,9 +228,11 @@ public class Load {
     			
     		//Floating point instructions
     		case 40:
+    			Operations.loadFR(R, EA, I);
     			System.out.println("---loadFloatRegFromMem");
     			break;
     		case 41:
+    			Operations.storeFR(R, EA, I);
     			System.out.println("---storeFloatRegToMem");
     			break;
     			
