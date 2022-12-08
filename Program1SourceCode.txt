@@ -1,0 +1,35 @@
+LDA 0, 0, 20	
+LDX 1, 7	#X1 = mem[7]
+LDR 3, 0, 8	#R1 points at first prompt
+OUTS 3, 1	#"Please input 20 numbers"
+AIR 3, 1	#Increment to point at next prompt
+LDA 2, 0, 10	#R2 holds \n
+INL 1, 0	#Input number
+STR 1, 1, 0	#mem[X1] = R1
+OUTL 1, 1	#Print num to printer
+OUT 2, 1	#Print line
+AIX 1,1	#Increment X1
+SOB 0, 0, 11, 1	#R0 -=1 and branch if R0 > 0
+RIX 1	#Reset X1 = 0
+OUTS 3, 1	#print prompt
+AIR 3, 1	#Increment R3
+LDX 1, 7	#X1 = mem[7]
+INL 2, 0	#input num to compare
+LDA 0, 0, 20	#R0=20 for loop
+OUTL 2, 1	#print back newNum
+STR 2,0,9	#mem[9] = newNum
+LDR 1,1,0	#R1 = mem[X1]
+SMR 1,0,9	#R1 = R1 - mem[9]
+JGE 1, 0, 13, 1	#jump to else if R>= 0
+NOT 1	#Flip bits
+AIR 1, 1	#Increment R1
+STR 1, 0, 10	#difference
+SMR 1, 0, 6	#R1 - smallestDiff
+JGE 1, 0, 14, 1	#if R1 < 0, diff < smallestDiff
+LDR 1, 0, 10	#R1 = diff
+LDR 2, 1, 0	#R2 = current number
+STR 1, 0, 6	#update new smallestDiff
+AIX 1,1	#increment X1
+SOB 0, 0, 12, 1	# jump to findLoop
+OUTS 3, 1	#print last prompt
+OUTL 2, 1	#print closest number

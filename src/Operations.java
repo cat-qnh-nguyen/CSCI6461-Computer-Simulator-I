@@ -836,6 +836,9 @@ public class Operations {
 			v2++;
 		}
 	}
+	public static void floatToDec(String f) {
+		
+	}
 	
 	/**
 	 * converting a fixed number to a floating point number
@@ -862,6 +865,12 @@ public class Operations {
 	
 	
 	// Floating Add Memory To Register
+	/**
+	 * Floating add
+	 * @param fr the floating point register to add to
+	 * @param ea contains the address of the value to add
+	 * @param I whether direct or indirect
+	 */
 	public static void floatAdd(int fr, int ea, int I) {
 		if(fr == 0 || fr == 1) {
 			
@@ -880,6 +889,12 @@ public class Operations {
 	}
 	
 	// Floating Subtract Memory From Register 
+	/**
+	 * Floating subtract
+	 * @param fr the floating point register to subtract from to
+	 * @param ea contains the address of the value to subtract
+	 * @param I whether direct or indirect
+	 */
 	public static void floatSub(int fr, int ea, int I) {
 		if(fr == 0 || fr == 1) {
 			
@@ -900,19 +915,33 @@ public class Operations {
 	}
 	
 	// Load Floating Register From Memory
+	/**
+	 * Loading floating register from memory
+	 * @param fr the floating register to load
+	 * @param ea the address in memory
+	 * @param I direct or indirect
+	 */
 	public static void loadFR(int fr, int ea, int I) {
 		int memVal = cache.loadCache(ea);
-		if(I==1)
+		if(I==1) {
 			memVal = cache.loadCache(memVal);
+		}
 		register.setFloat(fr, memVal);
 		
 	}
 	
 	// Store Floating Register To Memory
+	/**
+	 * Storing floating register to memory
+	 * @param fr the floating register to store
+	 * @param ea the address in memory
+	 * @param I direct or indirect
+	 */
 	public static void storeFR(int fr, int ea, int I) {
 		int EA = ea;
-		if(I==1)
+		if(I==1) {
 			EA = cache.loadCache(ea);
+		}
 		cache.writeCache(EA, register.getFloat(fr));
 	}
 	

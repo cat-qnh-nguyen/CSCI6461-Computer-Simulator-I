@@ -1,0 +1,118 @@
+TRAP 0	STR 1, 0, 15	# mem[15] = R1
+		RIX 3	# reset X3
+		LDX 3, 13	# X3 = nem[13]
+Begin:	SMR 1, 3, 0	# R1 -= mem[X3]
+		JZ 1, 0, 2,1	# If R1 =0, jump back to PC at mem[2]
+		AMR 1, 3, 0	# Add mem[X3] back if not 0
+		AIX 3, 1	# Increment X3
+		LDR 2, 3, 0	# R2 = mem[X3] = next character
+		JNE 2, 0, 22, 1	# If R2 != 0, list not done, jump back to begin
+		JZ 2, 0, 2, 1	# Jump back to mem[2] if R2 =0, list done, and word not ended
+		
+printing	LDR 0, 3, 0	# R0 = mem[c(X3)]
+		JZ 0, 0, 23, 1	# R0 = 0 => jump to end
+		OUT 0, 1	# print to printer
+		AIX 3, 1	# Increment X3
+		JMA 0, 20, 1	# unconditionally jump to beginning
+End:		RFS 0	# R0 = 0 (unused), PC <- x(R3)
+		
+compareWord	TRR 1, 2	# Test if R1 = R2
+		JCC 3, 0, 24, 1	# Skip to if 2 characters matched
+Not match	JZ 2, 0, 25, 1	# If R2 = 0, word 2 has ended, check if word 1 has ended or not, jump to pc + 2
+		RFS 0	# If no match, but word 2 hasn't ended => return with cc(4) = 0, R0 =0
+jump1		TRAP 0	# Send to TRAP 0 to check if word 1 has ended
+		JNE 2, 0, 26, 1	# If R2 != 0, means that char matched a special character => word 1 has ended, jump to pc + 2
+		RFS 0	# If word 1 hasn't ended, return with R0 = 0
+jump2		RFS 1	# If word 1 also ended, return R0 = 1 to indicate match word
+Match		AIX 1, 1	# Increment X1
+		AIX 2, 1	# Increment X2
+		LDR 1, 1, 0	# R1 = mem[X1] =next char in paragraph
+		LDR 2, 2, 0	# R2 = mem[X2] = next char in word
+		JNE 1, 0, 21, 1	# unconditionally jump back to top
+		RFS 1	# indicate found if both are 0 at the same time
+		
+		
+TRAP 1	RIX 3	# Reset X3 = 0
+		LDX 3, 14	# X3 = mem[14] 
+Begin		LDR 2, 3, 0	# R2 = mem[X3]
+		JZ 2, 0, 27, 1	# If R2 = 0, not the end of a sentence
+		TRR 1, 2	# cc(4) = 1 if R1 = R2
+		JCC 3, 0, 28, 1	# if cc(4) =1, the sentence has ended
+		AIX 3, 1	# Increment X3
+		JMA 0, 29, 1	# Jump back to Begin
+endOfSentence	LDR 0, 0, 11	# R0 = mem[11] = current sentence number
+		AIR 0, 1	# Increment R0
+		STR 0, 0, 11	# mem[11] incremented
+		LDR 0, 0, 6	# R0 = 1
+		STR 0, 0, 12	# mem[12] = 1, word count reset since it's a new sentence
+		JMA 0, 2	# Jump back to calling function
+notSentence	LDR 0, 0, 12	# R0 = mem[12]
+		AIR 0, 1	# Increment R0
+		STR 0, 0, 12	# Store back incremented word count
+		JMA 0, 2, 1	# Jump back
+		
+MAIN		LDX 3, 7	# X3 = mem[7] = 1300
+		JSR 0, 20, 1	# Jump to print promp 1
+		LDR 0, 0, 8	# R0 = mem[8] = 1500
+		INS 0, 2	# Read paragraph from card reader and save to mem[1500]
+		AIX 3, 1	# Increment X3 to point at 2nd prompt
+		CXR 1, 3	# X3 copied to R1
+		STR 1, 0, 7	# mem[7] = R1
+		RIX 3	# Reset X3 = 0
+		LDX 3, 8, 0	# X3 = mem[8] = 1500
+		JSR 0, 20, 1	# jump to print out paragraph
+		RIX 3	# Reset X3 = 0
+		LDX 3, 7	
+		JSR 0, 20, 1	# Print "Please input the word you are looking for."
+		AIX 3, 1	# X3 incremented to point at next prompt
+		LDR 0, 0, 9	# R0 = mem[9] = 1200
+		INS 0, 0 	# Get word from keyboard save to mem[1200]
+		JSR 0, 20, 1	# Print "Looking.."
+		AIX 3, 1	# X3 points at prompt for "Found"
+		CXR 1, 3	# Copy X3 into R1
+		STR 1, 0, 7	# mem[7] = R1
+		LDX 1, 8	# X1 = mem[8] = 600, beginning of paragraph
+		LDX 2, 9	# X2 = mem[9] = 500, beginning of word
+BeginCompare	LDR 1, 1, 0	# R1 = mem[X1]
+		LDR 2, 2, 0	# R2 = mem[X2]
+		JSR 0, 21, 1	# Jump to compareWord
+		JNE 0, 0, 30, 1	# If word matched, jump to MAIN: foundWord
+wordNotMatch	LDR 1, 1, 0	# Load character back
+		TRAP 0	# Test if it's the end of word
+		JNE 2, 0, 31, 1	# Jump if word has ended (endOfWord)
+		AIX 1, 1	# Increment X1
+		JMA 0, 16, 1	# Jump back to word not match (MAIN: wordNotMatch)
+endOfWord	LDR 1, 0, 15	# Load R1 back in case it's changed
+		TRAP 1	# Check if sentence has ended
+goToNextWord	AIX 1, 1	# Increment X1
+		LDR 1, 1, 0	# R1 = mem[X1]
+		JZ 1, 0, 17, 1	# Jump to the end not found (MAIN: theEndNotFound)
+		TRAP 0	# If not 0, check if is a special character
+		JNE 2, 0, 18, 1	# If it's a special character, go back (MAIN: goToNextWord)
+		RIX 2	# Reset X2 = 0
+		LDX 2, 9	# points back to beginning of word
+		JMA 0, 19, 1	# go to MAIN: BeginCompare
+theEndNotFound	RIX 3	# Reset X3
+		JSR 0, 20, 1	# print "Word not found"
+		HALT	
+foundWord	RIX 3	# Reset X3
+		LDX 3, 7	# X3 = mem[7] 
+		JSR 0, 20, 1	# print "Found..."
+		AIX 3, 1	# Increment X3
+		CXR 0, 3	# Copy R0 = X3
+		STR 0, 0, 7	# mem[7] = next prompt
+		RIX 3	# Reset X3
+		LDX 3, 9	# points to word
+		JSR 0, 20, 1	# print word
+		RIX 3	# Reset X3
+		LDX 3, 7	# continue prompt printing
+		JSR 0, 20, 1	# jump to printing
+		AIX 3, 1	# Increment X3
+		LDR 0, 0, 12	# R0 = word number
+		OUTL 0, 1	# print actual value
+		JSR 0, 20, 1	# print next prompt
+		AIX 3, 1	# Increment X3
+		LDR 0, 0, 11	# R0 = sentence number
+		OUTL 0, 1	# print sentence number
+		JSR 0, 20, 1	# print the end
+		HALT	

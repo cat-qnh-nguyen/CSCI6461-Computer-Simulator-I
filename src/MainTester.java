@@ -2,8 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
-
-import javax.swing.JFileChooser;
+import javax.swing.*;
 
 public class MainTester {
 	public static Memory memory = Memory.getInstance();
@@ -15,14 +14,15 @@ public class MainTester {
 		/**
 		 * For making instructions
 		 */
-//		makeInstruction(11, 0, 0, 1, 2);
+	
+		printInstruction();
 
 		
 		/**
 		 * For printing out letters in hex
 		 */
-		String prompt = "\n>>The closest number is: ";
-		convertCharStr(prompt);
+//		String prompt = "\n>>The closest number is: ";
+//		convertCharStr(prompt);
 
 		
 		
@@ -46,6 +46,24 @@ public class MainTester {
 
 	}
 
+	
+	public static void printInstruction() {
+		boolean stop = false;
+		int op, r, ix, i, address;
+		while(!stop) {
+    		op = Integer.parseInt(JOptionPane.showInputDialog(null,"opcode"));
+    		r = Integer.parseInt(JOptionPane.showInputDialog(null,"r"));
+    		ix = Integer.parseInt(JOptionPane.showInputDialog(null,"ix"));
+    		i = Integer.parseInt(JOptionPane.showInputDialog(null,"i"));
+    		address = Integer.parseInt(JOptionPane.showInputDialog(null,"address"));
+    		
+    		makeInstruction(op, r, ix, i, address);
+    		
+    		if(JOptionPane.showConfirmDialog(null,"Continue?", null, JOptionPane.YES_NO_OPTION) == 1) {
+    			stop = true;
+    		}
+		}
+	}
 	public static void convertCharStr(String str) {
 		int length = str.length();
 		int[] result = new int[length + 1];
@@ -112,7 +130,7 @@ public class MainTester {
 		}
 		
 		String instruction = opcode + R + IX + I + ADD;
-		System.out.println(instruction);
+		//System.out.println(instruction);
 		System.out.println(binToHex(instruction));
 	}
 	
