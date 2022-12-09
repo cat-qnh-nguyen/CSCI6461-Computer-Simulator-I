@@ -5,7 +5,12 @@
 public class Helper {
 	public static Register register = Register.getInstance();
 	
-	public static int floatToDec(double decimal) {
+	/**
+	 * Changing a decimal number into an int representing the floating format
+	 * @param decimal the number that we are trying to represent
+	 * @return the floating point number in int 
+	 */
+	public static int decToFloatFormat(double decimal) {
 		String f = "";
 		
 		//Processing sign bit
@@ -74,8 +79,12 @@ public class Helper {
 		return strToNum(f);
 	}
 	
-	
-	public static double decToFloat(int value) {
+	/**
+	 * changing a number in floating format into regular decimal
+	 * @param value the value of float needs to be converted
+	 * @return the float number in decimal format
+	 */
+	public static double floatFormatToDec(int value) {
 		String f = numToStr(value,16);
 		double decimal = 1;
 		

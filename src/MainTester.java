@@ -44,7 +44,7 @@ public class MainTester {
 //		}
 		double d = 1.75;
 		//System.out.println(Helper.decToFloat(d));
-		System.out.println(Helper.floatToDec(Helper.decToFloat(d)));
+		System.out.println(Helper.floatFormatToDec(Helper.decToFloatFormat(d)));
 	}
 
 	
