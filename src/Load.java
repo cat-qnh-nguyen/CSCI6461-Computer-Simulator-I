@@ -55,7 +55,7 @@ public class Load {
     	
         int insInMem = cache.loadCache(memAddress);
         
-        instruction = Operations.numToStr(insInMem, 16);
+        instruction = Helper.numToStr(insInMem, 16);
         System.out.println("Instruction: " + instruction);
         instructionDecode(instruction);
     }

@@ -40,9 +40,9 @@ public class Cache {
         }
 
         //addressStr stores the address given in string
-        String addressStr = Operations.numToStr(address,16);      
+        String addressStr = Helper.numToStr(address,16);      
 
-        tag = Operations.strToNum(addressStr.substring(0,14));
+        tag = Helper.strToNum(addressStr.substring(0,14));
         
         //Using parseInt because these values do not need to be negative
         block = Integer.parseInt(addressStr.substring(14,16),2);
@@ -78,8 +78,8 @@ public class Cache {
         cache_valid[i] = 1;
         
         for(int j = 0; j < 4; j++) {
-        	addressStr = Operations.numToStr(tag,14) + Operations.numToStr(j,2);
-        	int memAdd = Operations.strToNum(addressStr);
+        	addressStr = Helper.numToStr(tag,14) + Helper.numToStr(j,2);
+        	int memAdd = Helper.strToNum(addressStr);
         	
         	cache_data[i][j] = memory.load(memAdd);
         }
@@ -98,9 +98,9 @@ public class Cache {
 
         //Extracting the data from memory
         //add stores the address given in string
-        String addressStr = Operations.numToStr(address,16);
+        String addressStr = Helper.numToStr(address,16);
         
-        tag = Operations.strToNum(addressStr.substring(0,14));
+        tag = Helper.strToNum(addressStr.substring(0,14));
         
         //Using parseInt because these values do not need to be negative
         block = Integer.parseInt(addressStr.substring(14,16),2);
@@ -139,8 +139,8 @@ public class Cache {
 	        
 	        //Updating cache so it has the same memory block in memory
 	        for(int j = 0; j < 4; j++) {
-	        	addressStr = Operations.numToStr(tag,14) + Operations.numToStr(j,2);
-	        	int memAdd = Operations.strToNum(addressStr);     	
+	        	addressStr = Helper.numToStr(tag,14) + Helper.numToStr(j,2);
+	        	int memAdd = Helper.strToNum(addressStr);     	
 	        	cache_data[i][j] = memory.load(memAdd);
 	        }
 	        

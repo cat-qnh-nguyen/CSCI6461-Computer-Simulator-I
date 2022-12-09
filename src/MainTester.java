@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
 import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
 import javax.swing.*;
@@ -15,7 +16,7 @@ public class MainTester {
 		 * For making instructions
 		 */
 	
-		printInstruction();
+		//printInstruction();
 
 		
 		/**
@@ -41,9 +42,9 @@ public class MainTester {
 //		for(int i = 0; i < num.length; i++) {
 //			System.out.println(decToHex(num[i]));
 //		}
-
-		
-
+		double d = 1.75;
+		//System.out.println(Helper.decToFloat(d));
+		System.out.println(Helper.floatToDec(Helper.decToFloat(d)));
 	}
 
 	

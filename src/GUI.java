@@ -1297,7 +1297,7 @@ public class GUI extends JFrame {
 					joiner.add(data[i]);
 				}
 
-				register.setPC(Operations.strToNum(joiner.toString()));
+				register.setPC(Helper.strToNum(joiner.toString()));
 			}
 		});
 		panel.add(PCbtn);
@@ -1381,7 +1381,7 @@ public class GUI extends JFrame {
 					joiner.add(data[i]);
 				}
 
-				register.setMAR(Operations.strToNum(joiner.toString()));
+				register.setMAR(Helper.strToNum(joiner.toString()));
 			}
 		});
 		panel.add(MARbtn);
@@ -1483,7 +1483,7 @@ public class GUI extends JFrame {
 					joiner.add(data[i]);
 				}
 
-				register.setMBR(Operations.strToNum(joiner.toString()));
+				register.setMBR(Helper.strToNum(joiner.toString()));
 			}
 		});
 		panel.add(MBRbtn);
@@ -1719,7 +1719,7 @@ public class GUI extends JFrame {
 					joiner.add(data[i]);
 				}
 				
-				register.setMBR(Operations.strToNum(joiner.toString()));
+				register.setMBR(Helper.strToNum(joiner.toString()));
 			}
 		});
 		panel.add(loadBtn);
@@ -1817,7 +1817,7 @@ public class GUI extends JFrame {
 	
 	//Display the values in GPR, IXR, PC, MAR, MBR, IR, MFR
 	public void display() {
-		String GPR_0 = Operations.numToStr(get_number(1), 16);
+		String GPR_0 = Helper.numToStr(get_number(1), 16);
 
 		String[] gpr0Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -1841,7 +1841,7 @@ public class GUI extends JFrame {
 		GPR_0_TF15.setText(gpr0Value[14]);
 		GPR_0_TF16.setText(gpr0Value[15]);
 		
-		String GPR_1 = Operations.numToStr(get_number(2), 16);
+		String GPR_1 = Helper.numToStr(get_number(2), 16);
 
 		String[] gpr1Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -1865,7 +1865,7 @@ public class GUI extends JFrame {
 		GPR_1_TF15.setText(gpr1Value[14]);
 		GPR_1_TF16.setText(gpr1Value[15]);
 		
-		String GPR_2 = Operations.numToStr(get_number(3), 16);
+		String GPR_2 = Helper.numToStr(get_number(3), 16);
 
 		String[] gpr2Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -1889,7 +1889,7 @@ public class GUI extends JFrame {
 		GPR_2_TF15.setText(gpr2Value[14]);
 		GPR_2_TF16.setText(gpr2Value[15]);
 		
-		String GPR_3 = Operations.numToStr(get_number(4), 16);
+		String GPR_3 = Helper.numToStr(get_number(4), 16);
 
 		String[] gpr3Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -1913,7 +1913,7 @@ public class GUI extends JFrame {
 		GPR_3_TF15.setText(gpr3Value[14]);
 		GPR_3_TF16.setText(gpr3Value[15]);
 		
-		String IXR_1 = Operations.numToStr(get_number(5), 16);
+		String IXR_1 = Helper.numToStr(get_number(5), 16);
 
 		String[] ixr1Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -1937,7 +1937,7 @@ public class GUI extends JFrame {
 		IXR_1_TF15.setText(ixr1Value[14]);
 		IXR_1_TF16.setText(ixr1Value[15]);
 		
-		String IXR_2 = Operations.numToStr(get_number(6), 16);
+		String IXR_2 = Helper.numToStr(get_number(6), 16);
 
 		String[] ixr2Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -1961,7 +1961,7 @@ public class GUI extends JFrame {
 		IXR_2_TF15.setText(ixr2Value[14]);
 		IXR_2_TF16.setText(ixr2Value[15]);
 		
-		String IXR_3 = Operations.numToStr(get_number(7), 16);
+		String IXR_3 = Helper.numToStr(get_number(7), 16);
 
 		String[] ixr3Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -1985,7 +1985,7 @@ public class GUI extends JFrame {
 		IXR_3_TF15.setText(ixr3Value[14]);
 		IXR_3_TF16.setText(ixr3Value[15]);
 
-		String FP_0 = Operations.numToStr(get_number(8), 16);
+		String FP_0 = Helper.numToStr(get_number(8), 16);
 
 		String[] fp0Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -2009,7 +2009,7 @@ public class GUI extends JFrame {
 		textFR_0_15.setText(fp0Value[14]);
 		textFR_0_16.setText(fp0Value[15]);
 
-		String FP_1 = Operations.numToStr(get_number(9), 16);
+		String FP_1 = Helper.numToStr(get_number(9), 16);
 
 		String[] fp1Value = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -2033,7 +2033,7 @@ public class GUI extends JFrame {
 		textFR_1_15.setText(fp1Value[14]);
 		textFR_1_16.setText(fp1Value[15]);
 		
-		String PC = Operations.numToStr(get_number(10), 12);
+		String PC = Helper.numToStr(get_number(10), 12);
 
 		String[] dataValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
@@ -2053,7 +2053,7 @@ public class GUI extends JFrame {
 		textPc_11.setText(dataValue[10]);
 		textPc_12.setText(dataValue[11]);
 		
-		String MAR = Operations.numToStr(get_number(11), 12);
+		String MAR = Helper.numToStr(get_number(11), 12);
 		String[] marValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
 		for (int i = 0; i < MAR.length(); i++) {
@@ -2073,7 +2073,7 @@ public class GUI extends JFrame {
 		textMar_12.setText(marValue[11]);
 		
 		
-		String MBR = Operations.numToStr(get_number(12), 16);
+		String MBR = Helper.numToStr(get_number(12), 16);
 		String[] mbrValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
 
 		for (int i = 0; i < MBR.length(); i++) {
@@ -2096,7 +2096,7 @@ public class GUI extends JFrame {
 		textMbr_15.setText(mbrValue[14]);
 		textMbr_16.setText(mbrValue[15]);
 		
-		String IR = Operations.numToStr(get_number(13), 16);
+		String IR = Helper.numToStr(get_number(13), 16);
 		String[] irValue = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
 
 		for (int i = 0; i < IR.length(); i++) {
@@ -2119,7 +2119,7 @@ public class GUI extends JFrame {
 		textIR_15.setText(mbrValue[14]);
 		textIR_16.setText(mbrValue[15]);
 	
-		String MFR = Operations.numToStr(get_number(14), 4);
+		String MFR = Helper.numToStr(get_number(14), 4);
 		String[] mfrValue = { "0", "0", "0", "0" };
 
 		for (int i = 0; i < MFR.length(); i++) {
@@ -2133,7 +2133,7 @@ public class GUI extends JFrame {
 
 	// Load Button Function to set values in the register
 	public void LD_button(String InputofBin, int index) {
-		int Input = Operations.strToNum(InputofBin);
+		int Input = Helper.strToNum(InputofBin);
 		switch (index) {
 		case 1:
 			 register.setGeneralReg(0,Input);

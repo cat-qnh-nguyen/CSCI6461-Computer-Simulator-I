@@ -1,3 +1,4 @@
+
 public class Operations {
 	// Creating a memory object that points to the singleton
 	// No need for memory instance now that cache is implemented
@@ -54,113 +55,8 @@ public class Operations {
 		cache.writeCache(effAddress, register.getIndexReg(reg));
 	}
 
-	// For reading the file with address and instruction in one line
-	/**
-	 * Storing the second hex number in the first number as the address
-	 * 
-	 * @param hexInstruction as a string
-	 */
-	public static void saveInstructionFromText(String hexInstruction) {
-		String addressStr = hexInstruction.substring(0, 4);
-		String contentStr = hexInstruction.substring(5);
-
-		int address = hexToNum(addressStr);
-		int content = hexToNum(contentStr);
-
-		cache.writeCache(address, content);
-	}
-
-	/**
-	 * Converting a number into an x-bit string
-	 * 
-	 * @param num is the number to be converted to string
-	 * @param bit is the number of bits that should be formatted
-	 * @return the number in x-bit string
-	 */
-	public static String numToStr(int num, int bit) {
-		String result = Integer.toBinaryString(num);
-
-		if (num >= 0) {
-			if (bit == 32) {
-				result = String.format("%32s", result).replaceAll(" ", "0");
-			} else if (bit == 16) {
-				result = String.format("%16s", result).replaceAll(" ", "0");
-			} else if (bit == 14) {
-				result = String.format("%14s", result).replaceAll(" ", "0");
-			} else if (bit == 12) {
-				result = String.format("%12s", result).replaceAll(" ", "0");
-			} else if (bit == 4) {
-				result = String.format("%4s", result).replaceAll(" ", "0");
-			} else if (bit == 2) {
-				result = String.format("%2s", result).replaceAll(" ", "0");
-			}
-		} else {
-			if (bit == 16) {
-				result = result.substring(result.length() - 16);
-			} else if (bit == 14) {
-				result = result.substring(result.length() - 14);
-			} else if (bit == 12) {
-				result = result.substring(result.length() - 12);
-			}
-		}
-
-		return result;
-	}
-
-	/**
-	 * Returning the data in integer (32 bits) form from a string of various sizes
-	 * 
-	 * @param str  the data in string form
-	 * @param bits the number of bits for that particular data type (4 bits, 12
-	 *             bits, or 16 bits)
-	 * @return the data in int form (32 bits)
-	 */
-	public static int strToNum(String str) {
-		int result = 0;
-		String resultStr = "";
-
-		if (str.charAt(0) == '1') {
-			for (int i = 0; i < str.length(); i++) {
-				if (str.charAt(i) == '0') {
-					resultStr += '1';
-				} else {
-					resultStr += '0';
-				}
-			}
-
-			result = -(Integer.parseInt(resultStr, 2) + 1);
-		}
-
-		else {
-			result = Integer.parseInt(str, 2);
-		}
-
-		//System.out.println("String " + str + " is: " + result);
-		return result;
-	}
-
-	/**
-	 * Converting a hex number to a number to store in memory
-	 * 
-	 * @param hex is the hex string
-	 * @return a number converted in 2's complement
-	 */
-	public static int hexToNum(String hex) {
-		int result;
-		String total = "";
-		for (int i = 0; i < hex.length(); i++) {
-			int temp = Integer.parseInt(hex.substring(i, i + 1), 16);
-			total += Operations.numToStr(temp, 4);
-		}
-		result = Operations.strToNum(total);
-
-		System.out.println(hex + " is converted to: " + result);
-		return result;
-
-	}
 
 	// Transfer Instructions
-
 	/**
 	 * Jump if Zero
 	 * 
@@ -369,10 +265,10 @@ public class Operations {
 			System.out.println("Underflow");
 		} else {
 			// store high order bits in Rx and low order bits in Rx+1.
-			String resultStr = numToStr(result, 32);
+			String resultStr = Helper.numToStr(result, 32);
 			System.out.println("Result of mult is " + resultStr + " = " + result);
-			register.setGeneralReg(Rx, strToNum(resultStr.substring(0, 16)));
-			register.setGeneralReg(Rx + 1, strToNum(resultStr.substring(16)));
+			register.setGeneralReg(Rx, Helper.strToNum(resultStr.substring(0, 16)));
+			register.setGeneralReg(Rx + 1, Helper.strToNum(resultStr.substring(16)));
 		}
 	}
 
@@ -419,9 +315,9 @@ public class Operations {
 	 * @param Ry
 	 */
 	public static void logicalAND(int Rx, int Ry) {
-		System.out.println(numToStr(register.getGeneralReg(Rx), 16));
-		System.out.println(numToStr(register.getGeneralReg(Ry), 16));
-		System.out.println(numToStr(register.getGeneralReg(Rx) & register.getGeneralReg(Ry), 16));
+		System.out.println(Helper.numToStr(register.getGeneralReg(Rx), 16));
+		System.out.println(Helper.numToStr(register.getGeneralReg(Ry), 16));
+		System.out.println(Helper.numToStr(register.getGeneralReg(Rx) & register.getGeneralReg(Ry), 16));
 
 		register.setGeneralReg(Rx, register.getGeneralReg(Rx) & register.getGeneralReg(Ry));
 	}
@@ -433,9 +329,9 @@ public class Operations {
 	 * @param Ry
 	 */
 	public static void logicalOR(int Rx, int Ry) {
-		System.out.println(numToStr(register.getGeneralReg(Rx), 16));
-		System.out.println(numToStr(register.getGeneralReg(Ry), 16));
-		System.out.println(numToStr(register.getGeneralReg(Rx) | register.getGeneralReg(Ry), 16));
+		System.out.println(Helper.numToStr(register.getGeneralReg(Rx), 16));
+		System.out.println(Helper.numToStr(register.getGeneralReg(Ry), 16));
+		System.out.println(Helper.numToStr(register.getGeneralReg(Rx) | register.getGeneralReg(Ry), 16));
 
 		register.setGeneralReg(Rx, register.getGeneralReg(Rx) | register.getGeneralReg(Ry));
 	}
@@ -446,8 +342,8 @@ public class Operations {
 	 * @param Rx
 	 */
 	public static void logicalNot(int Rx) {
-		System.out.println(numToStr(register.getGeneralReg(Rx), 16));
-		System.out.println(numToStr(~register.getGeneralReg(Rx), 16));
+		System.out.println(Helper.numToStr(register.getGeneralReg(Rx), 16));
+		System.out.println(Helper.numToStr(~register.getGeneralReg(Rx), 16));
 
 		register.setGeneralReg(Rx, ~register.getGeneralReg(Rx));
 	}
@@ -464,7 +360,7 @@ public class Operations {
 	 */
 	public static void shiftRegByCount(int r, int count, int leftRight, int arithLogic) {
 		if (count > 0) {
-			String regBitVal = numToStr(register.getGeneralReg(r), 16);
+			String regBitVal = Helper.numToStr(register.getGeneralReg(r), 16);
 
 			// Logical shift (shift left or right regardless of sign bit)
 			if (arithLogic == 1) {
@@ -538,9 +434,9 @@ public class Operations {
 				}
 			}
 
-			System.out.println("Original: " + Operations.numToStr(register.getGeneralReg(r), 16) +
+			System.out.println("Original: " + Helper.numToStr(register.getGeneralReg(r), 16) +
 					"\nShifted: " + regBitVal);
-			register.setGeneralReg(r, strToNum(regBitVal));
+			register.setGeneralReg(r, Helper.strToNum(regBitVal));
 		}
 	}
 
@@ -553,7 +449,7 @@ public class Operations {
 	 */
 	public static void rotateRegByCount(int r, int count, int leftRight) {
 		if (count > 0) {
-			String regBitVal = numToStr(register.getGeneralReg(r), 16);
+			String regBitVal = Helper.numToStr(register.getGeneralReg(r), 16);
 			// left rotate
 			if (leftRight == 1) {
 				System.out.println("Rotate left by " + count);
@@ -568,9 +464,9 @@ public class Operations {
 						+ regBitVal.substring(0, regBitVal.length() - count);
 			}
 
-			System.out.println("Original: " + Operations.numToStr(register.getGeneralReg(r), 16) +
+			System.out.println("Original: " + Helper.numToStr(register.getGeneralReg(r), 16) +
 					"\nRotated: " + regBitVal);
-			register.setGeneralReg(r, strToNum(regBitVal));
+			register.setGeneralReg(r, Helper.strToNum(regBitVal));
 		}
 	}
 
@@ -836,9 +732,7 @@ public class Operations {
 			v2++;
 		}
 	}
-	public static void floatToDec(String f) {
-		
-	}
+
 	
 	/**
 	 * converting a fixed number to a floating point number
@@ -854,7 +748,7 @@ public class Operations {
 		
 		//convert floating to fixed
 		if (F == 0) {
-			String numStr = numToStr(num, 16);
+			String numStr = Helper.numToStr(num, 16);
 			
 		}
 		//convert fixed to floating

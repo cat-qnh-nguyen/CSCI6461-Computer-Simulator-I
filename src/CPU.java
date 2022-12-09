@@ -28,7 +28,7 @@ public class CPU {
 
 				while (reader.hasNextLine()) {
 					String line = reader.nextLine();
-					Operations.saveInstructionFromText(line);
+					Helper.saveInstructionFromText(line);
 				}
 
 				reader.close();
