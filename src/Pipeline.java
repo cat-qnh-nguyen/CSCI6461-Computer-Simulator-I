@@ -47,10 +47,10 @@ public class Pipeline {
 	
 	private int EXE;
 	
-	public int getIR() {
+	public int getEXE() {
 		return EXE;
 	}
-	public void setIR(int value) {
+	public void setEXE(int value) {
 		//Because we are only using 16 bits of the 32 bits in int, we are not expecting any negative values
 		if(value > MAX_16 || value < MIN_16)
 			throw new IllegalArgumentException("Invalid value.");
