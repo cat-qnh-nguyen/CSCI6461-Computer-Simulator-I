@@ -5,7 +5,7 @@
 public class Helper {
 	public static Register register = Register.getInstance();
 	
-	public static int decToFloat(double decimal) {
+	public static int floatToDec(double decimal) {
 		String f = "";
 		
 		//Processing sign bit
@@ -75,7 +75,7 @@ public class Helper {
 	}
 	
 	
-	public static double floatToDec(int value) {
+	public static double decToFloat(int value) {
 		String f = numToStr(value,16);
 		double decimal = 1;
 		

@@ -769,16 +769,17 @@ public class Operations {
 		if(fr == 0 || fr == 1) {
 			
 			int memVal = cache.loadCache(ea);
+			double frVal = Helper.decToFloat(register.getFloat(fr));
 			if(I==1)
-				memVal = cache.loadCache(memVal);
-			int result = register.getFloat(fr) + memVal;
+				memVal = cache.loadCache(cache.loadCache(ea));
+			double result = frVal + memVal;
 			
-			if (result > 32767) {
+			if (result > Double.MAX_VALUE) {
 				register.setCC(register.getCC() | 8);
 				System.out.println("OVERFLOW");
 			} 
 			else
-				register.setFloat(fr, result);
+				register.setFloat(fr, Helper.floatToDec(result));
 		}
 	}
 	
@@ -793,17 +794,18 @@ public class Operations {
 		if(fr == 0 || fr == 1) {
 			
 			int memVal = cache.loadCache(ea);
+			double frVal = Helper.decToFloat(register.getFloat(fr));
 			if(I==1)
 				memVal = cache.loadCache(memVal);
 			
-			int result = register.getFloat(fr) - memVal;
+			double result = frVal - memVal;
 		
-			if (result < -32768) {
+			if (result < -Double.MIN_VALUE) {
 				register.setCC(register.getCC() | 4);
 				System.out.println("UNDERFLOW");
 			} 
 			else
-				register.setFloat(fr, result);
+				register.setFloat(fr, Helper.floatToDec(result));
 			
 		}
 	}
