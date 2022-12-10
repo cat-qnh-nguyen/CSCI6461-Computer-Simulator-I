@@ -212,6 +212,70 @@ public class GUI extends JFrame {
 	public JTextField textFR_1_14;
 	public JTextField textFR_1_15;
 	public JTextField textFR_1_16;
+	public JTextField textEXE_1;
+	public JTextField textEXE_2;
+	public JTextField textEXE_3;
+	public JTextField textEXE_4;
+	public JTextField textEXE_5;
+	public JTextField textEXE_6;
+	public JTextField textEXE_7;
+	public JTextField textEXE_8;
+	public JTextField textEXE_9;
+	public JTextField textEXE_10;
+	public JTextField textEXE_11;
+	public JTextField textEXE_12;
+	public JTextField textEXE_13;
+	public JTextField textEXE_14;
+	public JTextField textEXE_15;
+	public JTextField textEXE_16;
+	public JTextField textIF_1;
+	public JTextField textIF_2;
+	public JTextField textIF_3;
+	public JTextField textIF_4;
+	public JTextField textIF_5;
+	public JTextField textIF_6;
+	public JTextField textIF_7;
+	public JTextField textIF_8;
+	public JTextField textIF_9;
+	public JTextField textIF_10;
+	public JTextField textIF_11;
+	public JTextField textIF_12;
+	public JTextField textIF_13;
+	public JTextField textIF_14;
+	public JTextField textIF_15;
+	public JTextField textIF_16;
+	public JTextField textWB_1;
+	public JTextField textWB_2;
+	public JTextField textWB_3;
+	public JTextField textWB_4;
+	public JTextField textWB_5;
+	public JTextField textWB_6;
+	public JTextField textWB_7;
+	public JTextField textWB_8;
+	public JTextField textWB_9;
+	public JTextField textWB_10;
+	public JTextField textWB_11;
+	public JTextField textWB_12;
+	public JTextField textWB_13;
+	public JTextField textWB_14;
+	public JTextField textWB_15;
+	public JTextField textWB_16;
+	public JTextField textMEM_1;
+	public JTextField textMEM_2;
+	public JTextField textMEM_3;
+	public JTextField textMEM_4;
+	public JTextField textMEM_5;
+	public JTextField textMEM_6;
+	public JTextField textMEM_7;
+	public JTextField textMEM_8;
+	public JTextField textMEM_9;
+	public JTextField textMEM_10;
+	public JTextField textMEM_11;
+	public JTextField textMEM_12;
+	public JTextField textMEM_13;
+	public JTextField textMEM_14;
+	public JTextField textMEM_15;
+	public JTextField textMEM_16;
 	public JTextField MFR_TF1;
 	public JTextField MFR_TF2;
 	public JTextField MFR_TF3;
@@ -254,6 +318,7 @@ public class GUI extends JFrame {
 	 String instruction, operation, address, gpr, ixr;
 
 	public Register register = Register.getInstance();
+	public Pipeline pipeline = Pipeline.getInstance();
 	
 	//No need for memory instance now that cache is implemented
 	//public Memory memory = Memory.getInstance();
@@ -1578,6 +1643,278 @@ public class GUI extends JFrame {
 		MFR_TF4.setBounds(605, 101, 20, 16);
 		panel.add(MFR_TF4);
 
+		JLabel lblIF = new JLabel("IF");
+		lblIF.setBounds(500, 141, 30, 16);
+		panel.add(lblIF);
+
+		textIF_1 = new JTextField("0");
+		textIF_1.setBounds(545, 141, 20, 16);
+		panel.add(textIF_1);
+
+		textIF_2 = new JTextField("0");
+		textIF_2.setBounds(565, 141, 20, 16);
+		panel.add(textIF_2);
+
+		textIF_3 = new JTextField("0");
+		textIF_3.setBounds(585, 141, 20, 16);
+		panel.add(textIF_3);
+
+		textIF_4 = new JTextField("0");
+		textIF_4.setBounds(605, 141, 20, 16);
+		panel.add(textIF_4);
+
+		textIF_5 = new JTextField("0");
+		textIF_5.setBounds(625, 141, 20, 16);
+		panel.add(textIF_5);
+
+		textIF_6 = new JTextField("0");
+		textIF_6.setBounds(645, 141, 20, 16);
+		panel.add(textIF_6);
+
+		textIF_7 = new JTextField("0");
+		textIF_7.setBounds(665, 141, 20, 16);
+		panel.add(textIF_7);
+
+		textIF_8 = new JTextField("0");
+		textIF_8.setBounds(685, 141, 20, 16);
+		panel.add(textIF_8);
+
+		textIF_9 = new JTextField("0");
+		textIF_9.setBounds(705, 141, 20, 16);
+		panel.add(textIF_9);
+
+		textIF_10 = new JTextField("0");
+		textIF_10.setBounds(725, 141, 20, 16);
+		panel.add(textIF_10);
+
+		textIF_11 = new JTextField("0");
+		textIF_11.setBounds(745, 141, 20, 16);
+		panel.add(textIF_11);
+
+		textIF_12 = new JTextField("0");
+		textIF_12.setBounds(765, 141, 20, 16);
+		panel.add(textIF_12);
+
+		textIF_13 = new JTextField("0");
+		textIF_13.setBounds(785, 141, 20, 16);
+		panel.add(textIF_13);
+
+		textIF_14 = new JTextField("0");
+		textIF_14.setBounds(805, 141, 20, 16);
+		panel.add(textIF_14);
+
+		textIF_15 = new JTextField("0");
+		textIF_15.setBounds(825, 141, 20, 16);
+		panel.add(textIF_15);
+
+		textIF_16 = new JTextField("0");
+		textIF_16.setBounds(845, 141, 20, 16);
+		panel.add(textIF_16);
+
+		JLabel lblEXE = new JLabel("EXE");
+		lblEXE.setBounds(500, 161, 30, 16);
+		panel.add(lblEXE);
+
+		textEXE_1 = new JTextField("0");
+		textEXE_1.setBounds(545, 161, 20, 16);
+		panel.add(textEXE_1);
+
+		textEXE_2 = new JTextField("0");
+		textEXE_2.setBounds(565, 161, 20, 16);
+		panel.add(textEXE_2);
+
+		textEXE_3 = new JTextField("0");
+		textEXE_3.setBounds(585, 161, 20, 16);
+		panel.add(textEXE_3);
+
+		textEXE_4 = new JTextField("0");
+		textEXE_4.setBounds(605, 161, 20, 16);
+		panel.add(textEXE_4);
+
+		textEXE_5 = new JTextField("0");
+		textEXE_5.setBounds(625, 161, 20, 16);
+		panel.add(textEXE_5);
+
+		textEXE_6 = new JTextField("0");
+		textEXE_6.setBounds(645, 161, 20, 16);
+		panel.add(textEXE_6);
+
+		textEXE_7 = new JTextField("0");
+		textEXE_7.setBounds(665, 161, 20, 16);
+		panel.add(textEXE_7);
+
+		textEXE_8 = new JTextField("0");
+		textEXE_8.setBounds(685, 161, 20, 16);
+		panel.add(textEXE_8);
+
+		textEXE_9 = new JTextField("0");
+		textEXE_9.setBounds(705, 161, 20, 16);
+		panel.add(textEXE_9);
+
+		textEXE_10 = new JTextField("0");
+		textEXE_10.setBounds(725, 161, 20, 16);
+		panel.add(textEXE_10);
+
+		textEXE_11 = new JTextField("0");
+		textEXE_11.setBounds(745, 161, 20, 16);
+		panel.add(textEXE_11);
+
+		textEXE_12 = new JTextField("0");
+		textEXE_12.setBounds(765, 161, 20, 16);
+		panel.add(textEXE_12);
+
+		textEXE_13 = new JTextField("0");
+		textEXE_13.setBounds(785, 161, 20, 16);
+		panel.add(textEXE_13);
+
+		textEXE_14 = new JTextField("0");
+		textEXE_14.setBounds(805, 161, 20, 16);
+		panel.add(textEXE_14);
+
+		textEXE_15 = new JTextField("0");
+		textEXE_15.setBounds(825, 161, 20, 16);
+		panel.add(textEXE_15);
+
+		textEXE_16 = new JTextField("0");
+		textEXE_16.setBounds(845, 161, 20, 16);
+		panel.add(textEXE_16);
+
+		JLabel lblMEM = new JLabel("MEM");
+		lblMEM.setBounds(500, 181, 30, 16);
+		panel.add(lblMEM);
+
+		textMEM_1 = new JTextField("0");
+		textMEM_1.setBounds(545, 181, 20, 16);
+		panel.add(textMEM_1);
+
+		textMEM_2 = new JTextField("0");
+		textMEM_2.setBounds(565, 181, 20, 16);
+		panel.add(textMEM_2);
+
+		textMEM_3 = new JTextField("0");
+		textMEM_3.setBounds(585, 181, 20, 16);
+		panel.add(textMEM_3);
+
+		textMEM_4 = new JTextField("0");
+		textMEM_4.setBounds(605, 181, 20, 16);
+		panel.add(textMEM_4);
+
+		textMEM_5 = new JTextField("0");
+		textMEM_5.setBounds(625, 181, 20, 16);
+		panel.add(textMEM_5);
+
+		textMEM_6 = new JTextField("0");
+		textMEM_6.setBounds(645, 181, 20, 16);
+		panel.add(textMEM_6);
+
+		textMEM_7 = new JTextField("0");
+		textMEM_7.setBounds(665, 181, 20, 16);
+		panel.add(textMEM_7);
+
+		textMEM_8 = new JTextField("0");
+		textMEM_8.setBounds(685, 181, 20, 16);
+		panel.add(textMEM_8);
+
+		textMEM_9 = new JTextField("0");
+		textMEM_9.setBounds(705, 181, 20, 16);
+		panel.add(textMEM_9);
+
+		textMEM_10 = new JTextField("0");
+		textMEM_10.setBounds(725, 181, 20, 16);
+		panel.add(textMEM_10);
+
+		textMEM_11 = new JTextField("0");
+		textMEM_11.setBounds(745, 181, 20, 16);
+		panel.add(textMEM_11);
+
+		textMEM_12 = new JTextField("0");
+		textMEM_12.setBounds(765, 181, 20, 16);
+		panel.add(textMEM_12);
+
+		textMEM_13 = new JTextField("0");
+		textMEM_13.setBounds(785, 181, 20, 16);
+		panel.add(textMEM_13);
+
+		textMEM_14 = new JTextField("0");
+		textMEM_14.setBounds(805, 181, 20, 16);
+		panel.add(textMEM_14);
+
+		textMEM_15 = new JTextField("0");
+		textMEM_15.setBounds(825, 181, 20, 16);
+		panel.add(textMEM_15);
+
+		textMEM_16 = new JTextField("0");
+		textMEM_16.setBounds(845, 181, 20, 16);
+		panel.add(textMEM_16);
+
+		JLabel lblWB = new JLabel("WB");
+		lblWB.setBounds(500, 201, 30, 16);
+		panel.add(lblWB);
+
+		textWB_1 = new JTextField("0");
+		textWB_1.setBounds(545, 201, 20, 16);
+		panel.add(textWB_1);
+
+		textWB_2 = new JTextField("0");
+		textWB_2.setBounds(565, 201, 20, 16);
+		panel.add(textWB_2);
+
+		textWB_3 = new JTextField("0");
+		textWB_3.setBounds(585, 201, 20, 16);
+		panel.add(textWB_3);
+
+		textWB_4 = new JTextField("0");
+		textWB_4.setBounds(605, 201, 20, 16);
+		panel.add(textWB_4);
+
+		textWB_5 = new JTextField("0");
+		textWB_5.setBounds(625, 201, 20, 16);
+		panel.add(textWB_5);
+
+		textWB_6 = new JTextField("0");
+		textWB_6.setBounds(645, 201, 20, 16);
+		panel.add(textWB_6);
+
+		textWB_7 = new JTextField("0");
+		textWB_7.setBounds(665, 201, 20, 16);
+		panel.add(textWB_7);
+
+		textWB_8 = new JTextField("0");
+		textWB_8.setBounds(685, 201, 20, 16);
+		panel.add(textWB_8);
+
+		textWB_9 = new JTextField("0");
+		textWB_9.setBounds(705, 201, 20, 16);
+		panel.add(textWB_9);
+
+		textWB_10 = new JTextField("0");
+		textWB_10.setBounds(725, 201, 20, 16);
+		panel.add(textWB_10);
+
+		textWB_11 = new JTextField("0");
+		textWB_11.setBounds(745, 201, 20, 16);
+		panel.add(textWB_11);
+
+		textWB_12 = new JTextField("0");
+		textWB_12.setBounds(765, 201, 20, 16);
+		panel.add(textWB_12);
+
+		textWB_13 = new JTextField("0");
+		textWB_13.setBounds(785, 201, 20, 16);
+		panel.add(textWB_13);
+
+		textWB_14 = new JTextField("0");
+		textWB_14.setBounds(805, 201, 20, 16);
+		panel.add(textWB_14);
+
+		textWB_15 = new JTextField("0");
+		textWB_15.setBounds(825, 201, 20, 16);
+		panel.add(textWB_15);
+
+		textWB_16 = new JTextField("0");
+		textWB_16.setBounds(845, 201, 20, 16);
+		panel.add(textWB_16);
+
 		// Labels for Operation, GPR, IXR, I, Address
 		JLabel lblNewLabel = new JLabel("Operation");
 		lblNewLabel.setBounds(120, 307, 66, 16);
@@ -1815,7 +2152,7 @@ public class GUI extends JFrame {
 
 	}
 	
-	//Display the values in GPR, IXR, PC, MAR, MBR, IR, MFR
+	//Display the values in GPR, IXR, PC, MAR, MBR, IR, MFR, FR
 	public void display() {
 		String GPR_0 = Helper.numToStr(get_number(1), 16);
 
@@ -2129,6 +2466,102 @@ public class GUI extends JFrame {
 		MFR_TF2.setText(mfrValue[1]);
 		MFR_TF3.setText(mfrValue[2]);
 		MFR_TF4.setText(mfrValue[3]);
+
+		String IF = Helper.numToStr(get_number(15), 16);
+
+		String[] ifValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+
+		for (int i = 0; i < IF.length(); i++) {
+			ifValue[16 - IF.length() + i] = IF.substring(i, i + 1);
+		}
+		textIF_1.setText(ifValue[0]);
+		textIF_2.setText(ifValue[1]);
+		textIF_3.setText(ifValue[2]);
+		textIF_4.setText(ifValue[3]);
+		textIF_5.setText(ifValue[4]);
+		textIF_6.setText(ifValue[5]);
+		textIF_7.setText(ifValue[6]);
+		textIF_8.setText(ifValue[7]);
+		textIF_9.setText(ifValue[8]);
+		textIF_10.setText(ifValue[9]);
+		textIF_11.setText(ifValue[10]);
+		textIF_12.setText(ifValue[11]);
+		textIF_13.setText(ifValue[12]);
+		textIF_14.setText(ifValue[13]);
+		textIF_15.setText(ifValue[14]);
+		textIF_16.setText(ifValue[15]);
+
+		String EXE = Helper.numToStr(get_number(16), 16);
+
+		String[] exeValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+
+		for (int i = 0; i < EXE.length(); i++) {
+			exeValue[16 - EXE.length() + i] = EXE.substring(i, i + 1);
+		}
+		textEXE_1.setText(exeValue[0]);
+		textEXE_2.setText(exeValue[1]);
+		textEXE_3.setText(exeValue[2]);
+		textEXE_4.setText(exeValue[3]);
+		textEXE_5.setText(exeValue[4]);
+		textEXE_6.setText(exeValue[5]);
+		textEXE_7.setText(exeValue[6]);
+		textEXE_8.setText(exeValue[7]);
+		textEXE_9.setText(exeValue[8]);
+		textEXE_10.setText(exeValue[9]);
+		textEXE_11.setText(exeValue[10]);
+		textEXE_12.setText(exeValue[11]);
+		textEXE_13.setText(exeValue[12]);
+		textEXE_14.setText(exeValue[13]);
+		textEXE_15.setText(exeValue[14]);
+		textEXE_16.setText(exeValue[15]);
+
+		String WB = Helper.numToStr(get_number(17), 16);
+
+		String[] wbValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+
+		for (int i = 0; i < WB.length(); i++) {
+			wbValue[16 - WB.length() + i] = WB.substring(i, i + 1);
+		}
+		textWB_1.setText(wbValue[0]);
+		textWB_2.setText(wbValue[1]);
+		textWB_3.setText(wbValue[2]);
+		textWB_4.setText(wbValue[3]);
+		textWB_5.setText(wbValue[4]);
+		textWB_6.setText(wbValue[5]);
+		textWB_7.setText(wbValue[6]);
+		textWB_8.setText(wbValue[7]);
+		textWB_9.setText(wbValue[8]);
+		textWB_10.setText(wbValue[9]);
+		textWB_11.setText(wbValue[10]);
+		textWB_12.setText(wbValue[11]);
+		textWB_13.setText(wbValue[12]);
+		textWB_14.setText(wbValue[13]);
+		textWB_15.setText(wbValue[14]);
+		textWB_16.setText(wbValue[15]);
+
+		String MEM = Helper.numToStr(get_number(18), 16);
+
+		String[] memValue = { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" };
+
+		for (int i = 0; i < MEM.length(); i++) {
+			memValue[16 - MEM.length() + i] = MEM.substring(i, i + 1);
+		}
+		textMEM_1.setText(memValue[0]);
+		textMEM_2.setText(memValue[1]);
+		textMEM_3.setText(memValue[2]);
+		textMEM_4.setText(memValue[3]);
+		textMEM_5.setText(memValue[4]);
+		textMEM_6.setText(memValue[5]);
+		textMEM_7.setText(memValue[6]);
+		textMEM_8.setText(memValue[7]);
+		textMEM_9.setText(memValue[8]);
+		textMEM_10.setText(memValue[9]);
+		textMEM_11.setText(memValue[10]);
+		textMEM_12.setText(memValue[11]);
+		textMEM_13.setText(memValue[12]);
+		textMEM_14.setText(memValue[13]);
+		textMEM_15.setText(memValue[14]);
+		textMEM_16.setText(memValue[15]);
 	}
 
 	// Load Button Function to set values in the register
@@ -2171,6 +2604,18 @@ public class GUI extends JFrame {
 		case 12:
 			 register.setMBR(Input);
 			 break;
+	    case 13:
+		    pipeline.setIF(Input);
+			break;
+		case 14:
+		   pipeline.setEXE(Input);
+			break;
+		case 15:
+		   pipeline.setMEM(Input);
+		   break;
+		case 16:
+		   pipeline.setWB(Input);
+		   break;
 		}
 	}
 
@@ -2215,6 +2660,14 @@ public class GUI extends JFrame {
 				return register.getIR();
 			case 14:
 				return register.getMFR();
+			case 15:
+			    return pipeline.getIF();
+			case 16:
+			    return pipeline.getEXE();
+			case 17:
+			   return pipeline.getWB();
+			case 18:
+			    return pipeline.getMEM();
 		}
 		return 0;
 	}
