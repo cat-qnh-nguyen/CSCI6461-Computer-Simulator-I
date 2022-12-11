@@ -42,9 +42,21 @@ public class MainTester {
 //		for(int i = 0; i < num.length; i++) {
 //			System.out.println(decToHex(num[i]));
 //		}
-		double d = 1.75;
-		//System.out.println(Helper.decToFloat(d));
-		System.out.println(Helper.floatFormatToDec(Helper.decToFloatFormat(d)));
+		
+		
+		//register.setGeneralReg(0, 1); //Fixed to Floating
+		register.setGeneralReg(1, 0); // Floating to Fixed
+		
+		
+		//cache.writeCache(0, Helper.strToNum("0000101111010000"));	//Fixed: value: 11.8125
+		cache.writeCache(1, Helper.strToNum("1100000011010000"));	//Float: value: -3.625
+		
+		
+		//Operations.convertToFixedFloat(0, 0);
+		//System.out.println(Helper.floatFormatToDec(register.getFloat(0)));
+		
+		Operations.convertToFixedFloat(1, 1);
+		System.out.println(Helper.fixedToDec(register.getGeneralReg(1)));
 	}
 
 	

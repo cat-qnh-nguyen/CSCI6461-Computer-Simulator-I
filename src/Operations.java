@@ -743,17 +743,51 @@ public class Operations {
 		int F = register.getGeneralReg(r);
 		
 		//since the exponent is 7 bits Bias = 0111111
-		final int bias = 63;
 		int num = cache.loadCache(ea);
 		
 		//convert floating to fixed
 		if (F == 0) {
-			String numStr = Helper.numToStr(num, 16);
+			double floatNum = Helper.floatFormatToDec(num);
+			
+			System.out.println(floatNum);
+			String result = "";
+			
+			if(floatNum < 0) {
+				result = "1";
+				floatNum = -floatNum;
+			}
+			else
+			{
+				result = "0";
+			}
+			String integer = Integer.toBinaryString((int)floatNum);
+
+			
+			while(integer.length() < 7) {
+				integer = "0" + integer;
+			}
+			
+			if(integer.length() > 7) {
+				register.setCC(register.getCC() | 8);
+				System.out.println("OVERFLOW");
+				
+				//since it's overflow, the value does not matter and is inaccurate
+				integer = integer.substring(0,7);
+			}
+			System.out.println(integer);
+			result += integer;
+			
+			
+			result += Helper.fractionToString(floatNum - (int)floatNum);
+			
+			System.out.println(result);
+			
+			register.setGeneralReg(r, Helper.strToNum(result));
 			
 		}
 		//convert fixed to floating
 		else if (F == 1) {
-			
+			register.setFloat(0, Helper.decToFloatFormat(Helper.fixedToDec(num)));
 		}
 	}
 	

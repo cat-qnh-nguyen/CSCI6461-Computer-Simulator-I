@@ -6,6 +6,64 @@ public class Helper {
 	public static Register register = Register.getInstance();
 	
 	/**
+	 * Converting a fixed point number into a regular decimal number
+	 * @param value the number in fixed point representation
+	 * @return the decimal number in double
+	 */
+	public static double fixedToDec(int value) {
+		double result = 0;
+		
+		String fixed = numToStr(value,16);
+		
+		String sign = fixed.substring(0,1); //first bit indicate sign
+		String integer = fixed.substring(1,8);
+		String fractional = fixed.substring(8);
+		
+		System.out.println ("Sign: " + sign + ", Integer part: " + integer 
+				+ ", Fractional part: " + fractional);
+		
+		//Processing the integer part
+		result = strToNum(integer);
+		
+		///Processing the fractional
+		
+		for(int i = 1; i <= 8; i++) {
+			if(fractional.substring(i-1,i).equals("1")) {
+				System.out.print(Math.pow(2, -i) + " + ");
+				
+				result += Math.pow(2, -i);
+			}
+		}
+		
+		
+		if(sign.equals("1")) {
+			result = -result;
+		}
+
+		return result;
+	}
+	
+	/**
+	 * Converting the fraction from a decimal number into a string
+	 * @param fractional the fractional part
+	 * @return the string in binary number for either mantissa 
+	 * or fractional part in a fixed point number
+	 */
+	public static String fractionToString(double fractional) {
+		String frac = "";
+		for(int i =0; i < 8; i++) {
+			fractional *= 2;
+			if (fractional >= 1) {
+				fractional -= (int)fractional;
+				frac += "1";
+			}
+			else {
+				frac += "0";
+			}
+		}
+		return frac;
+	}
+	/**
 	 * Changing a decimal number into an int representing the floating format
 	 * @param decimal the number that we are trying to represent
 	 * @return the floating point number in int 
@@ -21,25 +79,14 @@ public class Helper {
 			f += "0";
 		}
 		
-		
 		int whole = (int)decimal;
-		
 		
 		//Finding fractional part
 		double fractional = decimal - whole;
 		
 		//System.out.println(fractional);
-		String frac = "";
-		for(int i =0; i < 8; i++) {
-			fractional *= 2;
-			if (fractional >= 1) {
-				fractional -= (int)fractional;
-				frac += "1";
-			}
-			else {
-				frac += "0";
-			}
-		}
+		String frac = fractionToString(fractional);
+
 		//System.out.println(frac);
 		String mantissa = Integer.toBinaryString(whole).substring(1);
 		System.out.println(mantissa);
@@ -104,7 +151,7 @@ public class Helper {
 		
 		///Processing exponent
 		int exp = Integer.parseInt(expStr, 2);
-		System.out.println(exp);
+
 		exp = exp - 63;
 		decimal *= Math.pow(2,exp);
 		
