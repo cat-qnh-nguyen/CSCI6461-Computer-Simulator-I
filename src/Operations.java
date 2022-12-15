@@ -690,7 +690,10 @@ public class Operations {
 		
 		//if I = 0, v1 = c(EA), v2 = c(EA + 1)
 		v1 = cache.loadCache(ea);
+
 		v2 = cache.loadCache(ea + 1);
+		System.out.println("Vector 1 address:" + v1 + "\nVector 2 address: " + v2);
+		
 		
 		// if I = 1, v1 = c(c(EA)), v2 = c(c(EA+1))
 		if(i == 1) {
@@ -698,7 +701,7 @@ public class Operations {
 			v2 = cache.loadCache(v2);
 		}
 		
-		for(int j = 0; j < register.getFloat(fr); i++) {
+		for(int j = 0; j < register.getFloat(fr); j++) {
 			cache.writeCache(v1, cache.loadCache(v1) + cache.loadCache(v2));
 			v1++;
 			v2++;
@@ -726,7 +729,7 @@ public class Operations {
 			v2 = cache.loadCache(v2);
 		}
 		
-		for(int j = 0; j < register.getFloat(fr); i++) {
+		for(int j = 0; j < register.getFloat(fr); j++) {
 			cache.writeCache(v1, cache.loadCache(v1) - cache.loadCache(v2));
 			v1++;
 			v2++;

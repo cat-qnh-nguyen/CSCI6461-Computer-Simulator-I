@@ -16,7 +16,7 @@ public class MainTester {
 		 * For making instructions
 		 */
 	
-		//printInstruction();
+		printInstruction();
 
 		
 		/**
@@ -38,7 +38,7 @@ public class MainTester {
 		/**
 		 * For printing some numbers in hex
 //		 */
-//		int[] num = {95,110,102,91,113,100};
+//		int[] num = {100, 28, 3, 33, 99};
 //		for(int i = 0; i < num.length; i++) {
 //			System.out.println(decToHex(num[i]));
 //		}
@@ -55,8 +55,6 @@ public class MainTester {
 		//Operations.convertToFixedFloat(0, 0);
 		//System.out.println(Helper.floatFormatToDec(register.getFloat(0)));
 		
-		Operations.convertToFixedFloat(1, 1);
-		System.out.println(Helper.fixedToDec(register.getGeneralReg(1)));
 	}
 
 	
