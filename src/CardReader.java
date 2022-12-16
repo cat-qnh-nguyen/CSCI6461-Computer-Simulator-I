@@ -12,6 +12,7 @@ public class CardReader {
 	public static Memory memory = Memory.getInstance();
 	public static Cache cache = Cache.getInstance();	
 	public static Register register = Register.getInstance();
+	public static Pipeline pipeline = Pipeline.getInstance();
 	
 	public static boolean saveStr = false; //saveStr = false: IN; saveStr = true: INS
 	public static int status = 0; //status 0 means free, 1 means busy
@@ -51,6 +52,8 @@ public class CardReader {
 				//saveStr = true means save to memory and rOrAdd serves as a memory address
 				if(saveStr) {
 					int add = register.getGeneralReg(r);
+					pipeline.setEXE(add);
+					
 					while (reader.hasNextLine()) {
 						String line = reader.nextLine();
 	
@@ -60,6 +63,7 @@ public class CardReader {
 						//Store each character into memory
 						for(int i = 0; i < length; i++) {
 							cache.writeCache(add, (int)line.charAt(i));
+							pipeline.setMEM((int)line.charAt(i));
 							add++;
 						}
 						//Store the new line
@@ -68,11 +72,14 @@ public class CardReader {
 					}
 					//Store the indicator of end of text
 					cache.writeCache(add, 0);
+					
 				}
+				
 				//if not the first character is saved into the register
 				else {
 					String line = reader.nextLine();
 					register.setGeneralReg(r, (int)line.charAt(0));
+					pipeline.setWB(register.getGeneralReg(r));
 				}
 				
 				reader.close();

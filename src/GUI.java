@@ -2073,6 +2073,8 @@ public class GUI extends JFrame {
 				register.setMAR(register.getPC());
 				register.setMBR(cache.loadCache(register.getMAR()));
 				register.setIR(register.getMBR());
+				pipeline.setIF(register.getPC());
+				
 				//Increment PC
 				register.setPC(register.getPC() + 1);
 				
@@ -2110,6 +2112,7 @@ public class GUI extends JFrame {
 					register.setMAR(register.getPC());
 					register.setMBR(cache.loadCache(register.getMAR()));
 					register.setIR(register.getMBR());
+					pipeline.setIF(register.getPC());
 					
 					//Increment PC
 					register.setPC(register.getPC() + 1);

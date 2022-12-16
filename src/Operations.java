@@ -8,6 +8,7 @@ public class Operations {
 	public static Register register = Register.getInstance();
 
 	public static Cache cache = Cache.getInstance();
+	public static Pipeline pipeline = Pipeline.getInstance();
 
 	/**
 	 * Loading the content of an address in memory to a general register
@@ -16,6 +17,10 @@ public class Operations {
 	 */
 	// Regular method with Indirect bit
 	public static void loadRegister(int reg, int effAddress) {
+		pipeline.setEXE(effAddress);
+		pipeline.setMEM(cache.loadCache(effAddress));
+		pipeline.setWB(cache.loadCache(effAddress));
+		
 		register.setGeneralReg(reg, cache.loadCache(effAddress));
 	}
 
@@ -25,7 +30,11 @@ public class Operations {
 	 * @param the register number, effective address
 	 */
 	public static void storeRegister(int reg, int effAddress) {
+		pipeline.setEXE(effAddress);
+		pipeline.setMEM(register.getGeneralReg(reg));
+		
 		cache.writeCache(effAddress, register.getGeneralReg(reg));
+		
 	}
 
 	/**
@@ -34,6 +43,9 @@ public class Operations {
 	 * @param register number, effective address
 	 */
 	public static void loadAddress(int reg, int effAddress) {
+		pipeline.setEXE(effAddress);
+		
+		pipeline.setWB(effAddress);
 		register.setGeneralReg(reg, effAddress);
 	}
 
@@ -43,6 +55,9 @@ public class Operations {
 	 * @param index register number, effective address
 	 */
 	public static void loadIndex(int reg, int effAddress) {
+		pipeline.setEXE(effAddress);
+		pipeline.setMEM(cache.loadCache(effAddress));
+		pipeline.setWB(cache.loadCache(effAddress));
 		register.setIndexReg(reg, cache.loadCache(effAddress));
 	}
 
@@ -52,6 +67,8 @@ public class Operations {
 	 * @param index register number, effective address
 	 */
 	public static void storeIndex(int reg, int effAddress) {
+		pipeline.setEXE(effAddress);
+		pipeline.setMEM(register.getIndexReg(reg));
 		cache.writeCache(effAddress, register.getIndexReg(reg));
 	}
 
@@ -64,6 +81,7 @@ public class Operations {
 	 * @param ea  is the address to jump to
 	 */
 	public static void jumpZero(int reg, int ea) {
+		pipeline.setEXE(ea);
 		if (register.getGeneralReg(reg) == 0) {
 			System.out.println("R" + reg + " = 0: jump");
 			register.setPC(ea);
@@ -72,6 +90,8 @@ public class Operations {
 		{
 			System.out.println("Not 0: EA = PC + 1");
 		}
+		//In jump cases, WB will hold the jump address
+		pipeline.setWB(register.getPC());
 
 	}
 
@@ -82,6 +102,8 @@ public class Operations {
 	 * @param ea  is the address to jump to
 	 */
 	public static void jumpNotZero(int reg, int ea) {
+		pipeline.setEXE(ea);
+
 		if (register.getGeneralReg(reg) != 0) {
 			System.out.println("R" + reg + " != 0: jump");
 			register.setPC(ea);
@@ -90,6 +112,7 @@ public class Operations {
 		{
 			System.out.println("R" + reg + " = 0: EA = PC + 1");
 		}
+		pipeline.setWB(register.getPC());
 	}
 
 	/**
@@ -100,14 +123,16 @@ public class Operations {
 	 */
 	public static void jumpConditionCode(int cc, int ea) {
 		String conditionStr = Integer.toBinaryString(register.getCC());
+		pipeline.setEXE(ea);
+		
 		conditionStr = String.format("%4s", conditionStr).replaceAll(" ", "0");
-
+		
 		String ccBit = conditionStr.substring(cc, cc + 1);
-
+		
 		if (Integer.parseInt(ccBit) == 1) {
 			register.setPC(ea);
 		}
-
+		pipeline.setWB(register.getPC());
 	}
 
 	/**
@@ -116,7 +141,10 @@ public class Operations {
 	 * @param ea the address to jump to
 	 */
 	public static void jumpAddress(int ea) {
+		
 		register.setPC(ea);
+		pipeline.setEXE(ea);
+		pipeline.setWB(register.getPC());
 	}
 
 	/**
@@ -125,8 +153,10 @@ public class Operations {
 	 * @param ea address to jump to
 	 */
 	public static void jumpSaveReturn(int ea) {
+		pipeline.setWB(register.getPC());
 		register.setGeneralReg(3, register.getPC());
 		register.setPC(ea);
+		pipeline.setEXE(register.getPC());
 	}
 
 	/**
@@ -135,8 +165,10 @@ public class Operations {
 	 * @param immed is the immediate stored in R0
 	 */
 	public static void returnFromSubroutine(int immed) {
+		pipeline.setEXE(immed);
 		register.setGeneralReg(0, immed);
 		register.setPC(register.getGeneralReg(3));
+		pipeline.setWB(register.getPC());
 	}
 
 	/**
@@ -146,10 +178,12 @@ public class Operations {
 	 * @param ea is the address to jump to
 	 */
 	public static void subtractOneBranch(int r, int ea) {
+		pipeline.setEXE(register.getGeneralReg(r) - 1);
 		register.setGeneralReg(r, register.getGeneralReg(r) - 1);
 		if (register.getGeneralReg(r) > 0) {
 			register.setPC(ea);
 		}
+		pipeline.setWB(register.getPC());
 	}
 
 	/**
@@ -159,10 +193,11 @@ public class Operations {
 	 * @param ea is the address to jump to
 	 */
 	public static void jumpGreaterEqual(int r, int ea) {
+		pipeline.setEXE(register.getGeneralReg(r));
 		if (register.getGeneralReg(r) >= 0) {
 			register.setPC(ea);
 		}
-
+		pipeline.setWB(register.getPC());
 	}
 
 	// arithmetic instructions
@@ -174,16 +209,22 @@ public class Operations {
 	 * @param ea the address in memory
 	 */
 	public static void addMemToReg(int r, int ea) {
+		
 		int result = register.getGeneralReg(r) + cache.loadCache(ea);
-
+		pipeline.setEXE(result);
+		pipeline.setMEM(cache.loadCache(ea));
 		if (result > 32767) {
 			register.setCC(register.getCC() | 8);
 			System.out.println("OVERFLOW");
 		} else if (result < -32768) {
 			register.setCC(register.getCC() | 4);
 			System.out.println("UNDERFLOW");
-		} else
+		} 
+		else {
 			register.setGeneralReg(r, result);
+			pipeline.setWB(result);
+		}
+
 	}
 
 	/**
@@ -194,15 +235,20 @@ public class Operations {
 	 */
 	public static void subMemFromReg(int r, int ea) {
 		int result = register.getGeneralReg(r) - cache.loadCache(ea);
-
+		pipeline.setEXE(result);
+		pipeline.setMEM(cache.loadCache(ea));
+		
 		if (result > 32767) {
 			register.setCC(register.getCC() | 8);
 			System.out.println("OVERFLOW");
 		} else if (result < -32768) {
 			register.setCC(register.getCC() | 4);
 			System.out.println("UNDERFLOW");
-		} else
+		} 
+		else {
 			register.setGeneralReg(r, result);
+			pipeline.setWB(result);
+		}
 	}
 
 	/**
@@ -212,9 +258,10 @@ public class Operations {
 	 * @param immediate the number to add to
 	 */
 	public static void addImmedToReg(int r, int immediate) {
+		
 		if (immediate != 0) {
 			int result = register.getGeneralReg(r) + immediate;
-
+			pipeline.setEXE(result);
 			if (result > 32767) {
 				register.setCC(register.getCC() | 8);
 				System.out.println("OVERFLOW");
@@ -222,8 +269,10 @@ public class Operations {
 				register.setCC(register.getCC() | 4);
 				System.out.println("UNDERFLOW");
 			} else
-				register.setGeneralReg(r, result);
+				register.setGeneralReg(r, result);		
+				pipeline.setWB(result);
 		}
+
 	}
 
 	/**
@@ -235,14 +284,18 @@ public class Operations {
 	public static void subImmedFromReg(int r, int immediate) {
 		if (immediate != 0) {
 			int result = register.getGeneralReg(r) - immediate;
+			pipeline.setEXE(result);
+			
 			if (result > 32767) {
 				register.setCC(register.getCC() | 8);
 				System.out.println("OVERFLOW");
 			} else if (result < -32768) {
 				register.setCC(register.getCC() | 4);
 				System.out.println("UNDERFLOW");
-			} else
+			} else {
 				register.setGeneralReg(r, result);
+				pipeline.setWB(result);
+			}
 		}
 	}
 
@@ -255,6 +308,8 @@ public class Operations {
 	public static void multRegByReg(int Rx, int Ry) {
 		// when multiplied value is more than 32 bit - "Overflow"
 		int result = register.getGeneralReg(Rx) * register.getGeneralReg(Ry);
+		
+		
 		if (result > 2147483647) {
 			register.setCC(register.getCC() | 8);
 			System.out.println("OVERFLOW");
@@ -269,6 +324,8 @@ public class Operations {
 			System.out.println("Result of mult is " + resultStr + " = " + result);
 			register.setGeneralReg(Rx, Helper.strToNum(resultStr.substring(0, 16)));
 			register.setGeneralReg(Rx + 1, Helper.strToNum(resultStr.substring(16)));
+			pipeline.setEXE(register.getGeneralReg(Rx));
+			pipeline.setWB(register.getGeneralReg(Rx + 1));
 		}
 	}
 
@@ -289,6 +346,9 @@ public class Operations {
 
 			register.setGeneralReg(Rx, quotient);
 			register.setGeneralReg(Rx + 1, remainder);
+			
+			pipeline.setEXE(register.getGeneralReg(Rx));
+			pipeline.setWB(register.getGeneralReg(Rx + 1));
 		}
 	}
 
@@ -296,6 +356,7 @@ public class Operations {
 
 	// Check if the register values are equal.
 	public static void testRegReg(int Rx, int Ry) {
+		pipeline.setEXE(register.getGeneralReg(Rx) - register.getGeneralReg(Ry));
 		if (register.getGeneralReg(Rx) == register.getGeneralReg(Ry)) {
 			register.setCC(register.getCC() | 1);
 			System.out.println("Equal");
@@ -306,6 +367,7 @@ public class Operations {
 
 			System.out.println("Not Equal");
 		}
+		pipeline.setWB(register.getCC());
 	}
 
 	/**
@@ -320,6 +382,8 @@ public class Operations {
 		System.out.println(Helper.numToStr(register.getGeneralReg(Rx) & register.getGeneralReg(Ry), 16));
 
 		register.setGeneralReg(Rx, register.getGeneralReg(Rx) & register.getGeneralReg(Ry));
+		pipeline.setEXE(register.getGeneralReg(Rx));
+		pipeline.setWB(register.getGeneralReg(Rx));
 	}
 
 	/**
@@ -334,6 +398,8 @@ public class Operations {
 		System.out.println(Helper.numToStr(register.getGeneralReg(Rx) | register.getGeneralReg(Ry), 16));
 
 		register.setGeneralReg(Rx, register.getGeneralReg(Rx) | register.getGeneralReg(Ry));
+		pipeline.setEXE(register.getGeneralReg(Rx));
+		pipeline.setWB(register.getGeneralReg(Rx));
 	}
 
 	/**
@@ -346,6 +412,8 @@ public class Operations {
 		System.out.println(Helper.numToStr(~register.getGeneralReg(Rx), 16));
 
 		register.setGeneralReg(Rx, ~register.getGeneralReg(Rx));
+		pipeline.setEXE(register.getGeneralReg(Rx));
+		pipeline.setWB(register.getGeneralReg(Rx));
 	}
 
 	// shift/rotate operations
@@ -361,7 +429,7 @@ public class Operations {
 	public static void shiftRegByCount(int r, int count, int leftRight, int arithLogic) {
 		if (count > 0) {
 			String regBitVal = Helper.numToStr(register.getGeneralReg(r), 16);
-
+			
 			// Logical shift (shift left or right regardless of sign bit)
 			if (arithLogic == 1) {
 				// Left
@@ -436,7 +504,11 @@ public class Operations {
 
 			System.out.println("Original: " + Helper.numToStr(register.getGeneralReg(r), 16) +
 					"\nShifted: " + regBitVal);
+			pipeline.setEXE(register.getGeneralReg(r));
+			
 			register.setGeneralReg(r, Helper.strToNum(regBitVal));
+			
+			pipeline.setWB(register.getGeneralReg(r));
 		}
 	}
 
@@ -466,7 +538,12 @@ public class Operations {
 
 			System.out.println("Original: " + Helper.numToStr(register.getGeneralReg(r), 16) +
 					"\nRotated: " + regBitVal);
+			
+			pipeline.setEXE(register.getGeneralReg(r));
+			
 			register.setGeneralReg(r, Helper.strToNum(regBitVal));
+			
+			pipeline.setWB(register.getGeneralReg(r));
 		}
 	}
 
@@ -476,6 +553,8 @@ public class Operations {
 	 * @param device
 	 */
 	public static void in(int r, int device) {
+		pipeline.setEXE(device);
+		
 		if (device == 0) //getting data from the keyboard
 		{
 			String str = OperatorConsole.decodeMessage();
@@ -489,6 +568,7 @@ public class Operations {
 			}
 			else {
 				register.setGeneralReg(r, (int)str.charAt(0));
+				pipeline.setWB(register.getGeneralReg(r));
 			}
 		}
 		else if (device == 2) //getting data from the card reader
@@ -506,6 +586,7 @@ public class Operations {
 	public static void ins(int r, int device) {
 		if(device == 0) //getting data from the keyboard
 		{
+			pipeline.setEXE(device);
 			String str = OperatorConsole.decodeMessage();
 			int length = str.length();
 			
@@ -514,6 +595,7 @@ public class Operations {
 			//Store each character into memory
 			for(int i = 0; i < length; i++) {
 				cache.writeCache(add, (int)str.charAt(i));
+				pipeline.setMEM((int)str.charAt(i));
 				add++;
 			}
 			//Store the new line
@@ -532,9 +614,11 @@ public class Operations {
 	 */
 	public static void inl (int r, int device) {
 		if(device == 0) {
+			pipeline.setEXE(device);
 			String str = OperatorConsole.decodeMessage();
 			
 			register.setGeneralReg(r, Integer.parseInt(str));
+			pipeline.setWB(register.getGeneralReg(r));
 		}
 	}
 	
@@ -545,23 +629,33 @@ public class Operations {
 	 */
 	public static void out(int r, int device) {
 		// device = printer
+		pipeline.setEXE(device);
 		if (device == 1) {
+		
 			String result = "";
 			result += (char) register.getGeneralReg(r);
 			OperatorConsole.printConsole(result);
+			
+			pipeline.setWB(register.getGeneralReg(r));
+			
 			System.out.println("Printing " + result + " to console");
 		}
 	}
 	
 	public static void outs(int r, int device) {
+		pipeline.setEXE(device);
 		if(device == 1) {
 			String result = "";
 			int i = register.getGeneralReg(r);
+			
 			int temp = cache.loadCache(i);
+			
 			while(temp!= 0) {
 				result += (char)temp;
+				pipeline.setMEM(temp);
 				i++;
 				temp = cache.loadCache(i);
+				pipeline.setWB(temp);
 			}
 			OperatorConsole.printConsole(result);
 			//i points at 0 aka the end of string
@@ -575,7 +669,9 @@ public class Operations {
 	 * @param device
 	 */
 	public static void outl(int r, int device) {
+		pipeline.setEXE(device);
 		if(device == 1) {
+			pipeline.setWB(register.getGeneralReg(r));
 			String result = Integer.toString(register.getGeneralReg(r));
 			OperatorConsole.printConsole(result);
 			System.out.println("Printing " + result + " to console");
@@ -587,6 +683,7 @@ public class Operations {
 	 * @param device
 	 */
 	public static void chk(int r, int device) {
+		pipeline.setEXE(device);
 		switch(device) {
 		case 0: 
 			// Console Keyboard
@@ -601,6 +698,7 @@ public class Operations {
 			register.setGeneralReg(r, CardReader.getStatus());
 			break;	
 		}
+		pipeline.setWB(register.getGeneralReg(r));
 	}
 
 	// Immediate arithmetic instructions added for index registers
@@ -610,8 +708,10 @@ public class Operations {
 	 * @param immed the immediate to add to index register
 	 */
 	public static void addImmedToX(int x, int immed) {
+
 		if (immed != 0) {
 			int result = register.getIndexReg(x) + immed;
+			pipeline.setEXE(result);
 
 			if (result > 32767) {
 				register.setCC(register.getCC() | 8);
@@ -621,7 +721,9 @@ public class Operations {
 				System.out.println("UNDERFLOW");
 			} else
 				register.setIndexReg(x, result);
+			pipeline.setWB(result);
 		}
+		
 	}
 
 	/**
@@ -632,7 +734,7 @@ public class Operations {
 	public static void subImmedFromX(int x, int immed) {
 		if (immed != 0) {
 			int result = register.getIndexReg(x) - immed;
-
+			pipeline.setEXE(result);
 			if (result > 32767) {
 				register.setCC(register.getCC() | 8);
 				System.out.println("OVERFLOW");
@@ -641,12 +743,14 @@ public class Operations {
 				System.out.println("UNDERFLOW");
 			} else
 				register.setIndexReg(x, result);
+			pipeline.setWB(result);
 		}
 	}
 
 	// Trap instruction
 	public static void trap(int trapCode) {
 		// setting MFR for illegal trap code
+		pipeline.setEXE(trapCode + cache.loadCache(0));
 		if(cache.loadCache(trapCode + cache.loadCache(0)) == 0) {
 			CPU cpu = new CPU();
 			cpu.machineFault(1);
@@ -654,6 +758,7 @@ public class Operations {
 		else {
 			// storing PC+1 in memory[2] and setting PC value to the index of the
 			// table(trapCode+memory[0])
+			pipeline.setMEM(cache.loadCache(trapCode + cache.loadCache(0)));
 			cache.writeCache(2, register.getPC());
 			register.setPC(cache.loadCache(trapCode + cache.loadCache(0)));
 		}
@@ -664,6 +769,7 @@ public class Operations {
 	 * @param x the index register to be reset
 	 */
 	public static void resetIndex(int x) {
+		pipeline.setWB(0);
 		register.setIndexReg(x, 0);
 	}
 
@@ -673,8 +779,13 @@ public class Operations {
 	 * @param x the index register whose value is to be copied into r
 	 */
 	public static void copyIndexToReg(int r, int x) {
+		pipeline.setEXE(register.getIndexReg(x));
+		
 		register.setGeneralReg(r, register.getIndexReg(x));
+		
+		pipeline.setWB(register.getGeneralReg(r));
 	}
+	
 	
 	
 	//Floating point and Vector operations
@@ -700,9 +811,11 @@ public class Operations {
 			v1 = cache.loadCache(v1);
 			v2 = cache.loadCache(v2);
 		}
+		pipeline.setEXE(v1);
 		
 		for(int j = 0; j < register.getFloat(fr); j++) {
 			cache.writeCache(v1, cache.loadCache(v1) + cache.loadCache(v2));
+			pipeline.setMEM(cache.loadCache(v1));
 			v1++;
 			v2++;
 		}
@@ -729,8 +842,13 @@ public class Operations {
 			v2 = cache.loadCache(v2);
 		}
 		
+		pipeline.setEXE(v1);
+		
 		for(int j = 0; j < register.getFloat(fr); j++) {
 			cache.writeCache(v1, cache.loadCache(v1) - cache.loadCache(v2));
+			
+			pipeline.setMEM(cache.loadCache(v1));
+			
 			v1++;
 			v2++;
 		}
@@ -744,10 +862,10 @@ public class Operations {
 	 */
 	public static void convertToFixedFloat(int r, int ea) {
 		int F = register.getGeneralReg(r);
-		
+		pipeline.setEXE(ea);
 		//since the exponent is 7 bits Bias = 0111111
 		int num = cache.loadCache(ea);
-		
+		pipeline.setMEM(num);
 		//convert floating to fixed
 		if (F == 0) {
 			double floatNum = Helper.floatFormatToDec(num);
@@ -786,12 +904,15 @@ public class Operations {
 			System.out.println(result);
 			
 			register.setGeneralReg(r, Helper.strToNum(result));
+			pipeline.setWB(register.getGeneralReg(r));
 			
 		}
 		//convert fixed to floating
 		else if (F == 1) {
 			register.setFloat(0, Helper.decToFloatFormat(Helper.fixedToDec(num)));
+			pipeline.setWB(register.getFloat(0));
 		}
+		
 	}
 	
 	
@@ -803,15 +924,19 @@ public class Operations {
 	 * @param I whether direct or indirect
 	 */
 	public static void floatAdd(int fr, int ea, int I) {
+		pipeline.setEXE(ea);
 		if(fr == 0 || fr == 1) {
 			
 			int memVal = cache.loadCache(ea);
+			pipeline.setMEM(memVal);
+			
 			double frVal = Helper.floatFormatToDec(register.getFloat(fr));
 			if(I==1)
 				memVal = cache.loadCache(cache.loadCache(ea));
 			double result = frVal + Helper.floatFormatToDec(memVal);
 			
 			register.setFloat(fr, Helper.decToFloatFormat(result));
+			pipeline.setWB(register.getFloat(fr));
 		}
 	}
 	
@@ -823,17 +948,20 @@ public class Operations {
 	 * @param I whether direct or indirect
 	 */
 	public static void floatSub(int fr, int ea, int I) {
+		pipeline.setEXE(ea);
 		if(fr == 0 || fr == 1) {
 			
 			int memVal = cache.loadCache(ea);
+			pipeline.setMEM(memVal);
+			
 			double frVal = Helper.floatFormatToDec(register.getFloat(fr));
 			if(I==1)
 				memVal = cache.loadCache(memVal);
 			
 			double result = frVal - Helper.floatFormatToDec(memVal);
 		
-
 			register.setFloat(fr, Helper.decToFloatFormat(result));
+			pipeline.setWB(register.getFloat(fr));
 			
 		}
 	}
@@ -846,11 +974,16 @@ public class Operations {
 	 * @param I direct or indirect
 	 */
 	public static void loadFR(int fr, int ea, int I) {
+		pipeline.setEXE(ea);
 		int memVal = cache.loadCache(ea);
 		if(I==1) {
+			pipeline.setEXE(memVal);
 			memVal = cache.loadCache(memVal);
 		}
+		pipeline.setMEM(memVal);
+		
 		register.setFloat(fr, memVal);
+		pipeline.setWB(register.getFloat(fr));
 		
 	}
 	
@@ -862,11 +995,13 @@ public class Operations {
 	 * @param I direct or indirect
 	 */
 	public static void storeFR(int fr, int ea, int I) {
-		int EA = ea;
 		if(I==1) {
-			EA = cache.loadCache(ea);
+			ea = cache.loadCache(ea);
 		}
-		cache.writeCache(EA, register.getFloat(fr));
+		pipeline.setEXE(ea);
+		
+		cache.writeCache(ea, register.getFloat(fr));
+		pipeline.setMEM(cache.loadCache(ea));
 	}
 	
 	

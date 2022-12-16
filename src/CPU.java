@@ -5,6 +5,8 @@ import javax.swing.JFileChooser;
 
 public class CPU {
 	public static Register register = Register.getInstance();
+	public static Pipeline pipeline = Pipeline.getInstance();
+	
 	public int halt = 0;
 	public static Cache cache = Cache.getInstance();
 	/**
@@ -57,6 +59,11 @@ public class CPU {
 		register.setCC(0);
 		register.setMBR(0);
 		register.setMFR(0);
+		pipeline.setIF(0);
+		pipeline.setID(0);
+		pipeline.setEXE(0);
+		pipeline.setMEM(0);
+		pipeline.setWB(0);
 	}
 
 	public void machineFault(int ID) {
